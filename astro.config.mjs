@@ -14,9 +14,6 @@ export default defineConfig({
     layout: 'constrained',
     responsiveStyles: true,
   },
-  experimental: {
-    svgo: true,
-  },
   vite: {
     plugins: [tailwindcss()],
   },

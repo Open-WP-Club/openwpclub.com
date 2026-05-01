@@ -242,6 +242,7 @@ const starThreshold = sorted.length > 0
 
 <script>
   import { debounce } from '../../lib/debounce';
+  import { filterItems, sortItems, updateFilterButtons } from '../../lib/catalog-filter';
 
   document.addEventListener('astro:page-load', () => {
     const search = document.getElementById('plugin-search') as HTMLInputElement | null;
@@ -266,32 +267,6 @@ const starThreshold = sorted.length > 0
 
     function getSearch() { return (search?.value || searchMobile?.value || '').toLowerCase().trim(); }
     function getSort() { return sort?.value || sortMobile?.value || 'updated'; }
-
-    function matchesCategory(topics: string): boolean {
-      if (activeCategory === 'all') return true;
-      const keywords = categoryKeywords[activeCategory] || [];
-      return keywords.some((kw) => topics.includes(kw));
-    }
-
-    function updateFilterButtons() {
-      [...filterBtns, ...filterBtnsMobile].forEach((btn) => {
-        const cat = btn.dataset.category;
-        const isActive = cat === activeCategory;
-        if (btn.classList.contains('category-btn')) {
-          btn.className = `category-btn w-full flex items-center justify-between px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-150 ${
-            isActive
-              ? 'bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400'
-              : 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white'
-          }`;
-        } else {
-          btn.className = `category-btn-mobile inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-medium border transition-colors ${
-            isActive
-              ? 'bg-blue-500 text-white border-blue-500'
-              : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border-gray-200 dark:border-gray-700'
-          }`;
-        }
-      });
-    }
 
     function syncControls(source: 'desktop' | 'mobile') {
       if (source === 'desktop') {
@@ -320,21 +295,10 @@ const starThreshold = sorted.length > 0
 
     function update(resetVisible = true) {
       if (resetVisible) visibleCount = PAGE_SIZE;
-      const query = getSearch();
-      const sortBy = getSort();
-
-      currentMatched = items.filter((item) => {
-        const name = item.dataset.name || '';
-        const desc = item.dataset.description || '';
-        const topics = item.dataset.topics || '';
-        return (!query || name.includes(query) || desc.includes(query) || topics.includes(query))
-          && matchesCategory(topics);
-      }).sort((a, b) => {
-        if (sortBy === 'stars') return Number(b.dataset.stars) - Number(a.dataset.stars);
-        if (sortBy === 'name') return (a.dataset.name || '').localeCompare(b.dataset.name || '');
-        return (b.dataset.updated || '').localeCompare(a.dataset.updated || '');
-      });
-
+      currentMatched = sortItems(
+        filterItems(items, getSearch(), activeCategory, categoryKeywords),
+        getSort()
+      );
       showItems();
 
       const urlParams = new URLSearchParams();
@@ -347,7 +311,6 @@ const starThreshold = sorted.length > 0
       history.replaceState(null, '', newUrl);
     }
 
-    // Infinite scroll via IntersectionObserver
     if (sentinel) {
       const observer = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting && visibleCount < currentMatched.length) {
@@ -361,7 +324,7 @@ const starThreshold = sorted.length > 0
     [...filterBtns, ...filterBtnsMobile].forEach((btn) => {
       btn.addEventListener('click', () => {
         activeCategory = btn.dataset.category || 'all';
-        updateFilterButtons();
+        updateFilterButtons(filterBtns, filterBtnsMobile, activeCategory);
         update();
       });
     });
@@ -371,7 +334,6 @@ const starThreshold = sorted.length > 0
     sort?.addEventListener('change', () => { syncControls('desktop'); update(); });
     sortMobile?.addEventListener('change', () => { syncControls('mobile'); update(); });
 
-    // Restore URL state
     const params = new URLSearchParams(window.location.search);
     const initialQuery = params.get('q') || '';
     const initialSort = params.get('sort') || 'updated';
@@ -383,7 +345,7 @@ const starThreshold = sorted.length > 0
     if (sort) sort.value = initialSort;
     if (sortMobile) sortMobile.value = initialSort;
     activeCategory = initialCat;
-    updateFilterButtons();
+    updateFilterButtons(filterBtns, filterBtnsMobile, activeCategory);
 
     update(false);
   });

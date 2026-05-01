@@ -230,6 +230,9 @@ const categoryKeywordsJson = Object.fromEntries(
 </script>
 
 <script>
+  import { debounce } from '../../lib/debounce';
+  import { filterItems, sortItems, updateFilterButtons } from '../../lib/catalog-filter';
+
   document.addEventListener('astro:page-load', () => {
     const search = document.getElementById('app-search') as HTMLInputElement | null;
     const searchMobile = document.getElementById('app-search-mobile') as HTMLInputElement | null;
@@ -247,28 +250,9 @@ const categoryKeywordsJson = Object.fromEntries(
 
     function getSearch() { return (search?.value || searchMobile?.value || '').toLowerCase().trim(); }
 
-    function matchesCategory(topics: string): boolean {
-      if (active === 'all') return true;
-      return (categoryKeywords[active] || []).some((kw) => topics.includes(kw));
-    }
-
     function update() {
-      const query = getSearch();
-      const sortBy = sort?.value || 'updated';
-
-      const matched = items.filter((item) => {
-        const name = item.dataset.name || '';
-        const desc = item.dataset.description || '';
-        const topics = item.dataset.topics || '';
-        return (!query || name.includes(query) || desc.includes(query) || topics.includes(query))
-          && matchesCategory(topics);
-      });
-
-      const sorted = [...matched].sort((a, b) => {
-        if (sortBy === 'stars') return Number(b.dataset.stars) - Number(a.dataset.stars);
-        if (sortBy === 'name') return (a.dataset.name || '').localeCompare(b.dataset.name || '');
-        return (b.dataset.updated || '').localeCompare(a.dataset.updated || '');
-      });
+      const matched = filterItems(items, getSearch(), active, categoryKeywords);
+      const sorted = sortItems(matched, sort?.value || 'updated');
 
       items.forEach((item) => { item.style.display = 'none'; });
       sorted.forEach((el) => { el.style.display = ''; grid!.appendChild(el); });
@@ -277,39 +261,22 @@ const categoryKeywordsJson = Object.fromEntries(
       noResults!.classList.toggle('hidden', matched.length > 0);
     }
 
-    function updateButtons() {
-      filterBtns.forEach((btn) => {
-        const isActive = btn.dataset.category === active;
-        btn.className = `category-btn w-full flex items-center justify-between px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-150 ${
-          isActive
-            ? 'bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400'
-            : 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white'
-        }`;
-      });
-      filterBtnsMobile.forEach((btn) => {
-        const isActive = btn.dataset.category === active;
-        btn.className = `category-btn-mobile inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-medium border transition-colors ${
-          isActive ? 'bg-blue-500 text-white border-blue-500' : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border-gray-200 dark:border-gray-700'
-        }`;
-      });
-    }
-
     [...filterBtns, ...filterBtnsMobile].forEach((btn) => {
       btn.addEventListener('click', () => {
         active = btn.dataset.category || 'all';
-        updateButtons();
+        updateFilterButtons(filterBtns, filterBtnsMobile, active);
         update();
       });
     });
 
-    let debounce: ReturnType<typeof setTimeout>;
+    const debouncedUpdate = debounce(update, 150);
     search?.addEventListener('input', () => {
       if (searchMobile) searchMobile.value = search.value;
-      clearTimeout(debounce); debounce = setTimeout(update, 150);
+      debouncedUpdate();
     });
     searchMobile?.addEventListener('input', () => {
       if (search) search.value = searchMobile.value;
-      clearTimeout(debounce); debounce = setTimeout(update, 150);
+      debouncedUpdate();
     });
     sort?.addEventListener('change', update);
 
