@@ -6,40 +6,40 @@
 </p><h2>Features</h2>
 <h3>Orders</h3>
 <ul>
-<li><strong>Orders Management</strong> — Browse, filter, and search WooCommerce orders. Pull-to-refresh and auto-polling for new orders.</li>
-<li><strong>Batch Status Update</strong> — Long-press to select multiple orders, then change their status in one action. Select All supported.</li>
-<li><strong>Swipe Actions</strong> — Swipe right on an order card to mark it completed, swipe left to view details.</li>
-<li><strong>Shake to Undo</strong> — Shake your device to undo the last status change (single or batch).</li>
-<li><strong>Status-specific Feedback</strong> — Different vibration patterns and sounds for each order status (completed, processing, on-hold, cancelled, failed).</li>
-<li><strong>Order Notes</strong> — View and add order notes (private or customer-facing).</li>
-<li><strong>Status Updates</strong> — Change order status directly from the app with confirmation dialogs.</li>
+<li><strong>Orders Management</strong> - Browse, filter, and search WooCommerce orders. Pull-to-refresh and auto-polling for new orders.</li>
+<li><strong>Batch Status Update</strong> - Long-press to select multiple orders, then change their status in one action. Select All supported.</li>
+<li><strong>Swipe Actions</strong> - Swipe right on an order card to mark it completed, swipe left to view details.</li>
+<li><strong>Shake to Undo</strong> - Shake your device to undo the last status change (single or batch).</li>
+<li><strong>Status-specific Feedback</strong> - Different vibration patterns and sounds for each order status (completed, processing, on-hold, cancelled, failed).</li>
+<li><strong>Order Notes</strong> - View and add order notes (private or customer-facing).</li>
+<li><strong>Status Updates</strong> - Change order status directly from the app with confirmation dialogs.</li>
 </ul>
 <h3>Barcode Scanning</h3>
 <ul>
-<li><strong>Barcode Scanning</strong> — Scan product barcodes using the device camera. Matches by SKU, then by meta keys (<code>_barcode</code>, <code>_ean</code>, <code>_gtin</code>, <code>_upc</code>).</li>
-<li><strong>Flashlight Toggle</strong> — Turn on the camera torch for scanning in low-light environments.</li>
-<li><strong>Scan History</strong> — Persisted list of the last 50 scans with product name, SKU, match status, and timestamp. Long-press to copy barcode.</li>
-<li><strong>Export Scan History</strong> — Share scan history as CSV via the system share sheet.</li>
-<li><strong>Camera Permissions</strong> — Automatic runtime permission request with fallback UI and link to device settings.</li>
+<li><strong>Barcode Scanning</strong> - Scan product barcodes using the device camera. Matches by SKU, then by meta keys (<code>_barcode</code>, <code>_ean</code>, <code>_gtin</code>, <code>_upc</code>).</li>
+<li><strong>Flashlight Toggle</strong> - Turn on the camera torch for scanning in low-light environments.</li>
+<li><strong>Scan History</strong> - Persisted list of the last 50 scans with product name, SKU, match status, and timestamp. Long-press to copy barcode.</li>
+<li><strong>Export Scan History</strong> - Share scan history as CSV via the system share sheet.</li>
+<li><strong>Camera Permissions</strong> - Automatic runtime permission request with fallback UI and link to device settings.</li>
 </ul>
 <h3>Pick &amp; Pack</h3>
 <ul>
-<li><strong>Pick &amp; Pack</strong> — Per-order picking workflow with inline scanner. Track picked/missing/damaged items with progress bar.</li>
-<li><strong>Wave Picking</strong> — Consolidates multiple orders into a single pick list grouped by SKU. Reduces warehouse walks by picking each product once for all orders.</li>
-<li><strong>Priority Queue</strong> — Automatic order scoring based on age, shipping method, value, and customer notes. Toggle priority sort to surface urgent orders first.</li>
-<li><strong>Auto-Advance</strong> — After completing an order, the app offers to open the next pending/processing order automatically.</li>
-<li><strong>Volume Button Scanner</strong> — Press any volume button to activate/reset the barcode scanner during picking (hands-free scanning).</li>
+<li><strong>Pick &amp; Pack</strong> - Per-order picking workflow with inline scanner. Track picked/missing/damaged items with progress bar.</li>
+<li><strong>Wave Picking</strong> - Consolidates multiple orders into a single pick list grouped by SKU. Reduces warehouse walks by picking each product once for all orders.</li>
+<li><strong>Priority Queue</strong> - Automatic order scoring based on age, shipping method, value, and customer notes. Toggle priority sort to surface urgent orders first.</li>
+<li><strong>Auto-Advance</strong> - After completing an order, the app offers to open the next pending/processing order automatically.</li>
+<li><strong>Volume Button Scanner</strong> - Press any volume button to activate/reset the barcode scanner during picking (hands-free scanning).</li>
 </ul>
 <h3>Notifications</h3>
 <ul>
-<li><strong>Daily Summary</strong> — Scheduled morning notification (8:00 AM) with pending/processing/on-hold order counts. Toggle in Settings.</li>
-<li><strong>New Order Alerts</strong> — Push notification when a new order arrives.</li>
+<li><strong>Daily Summary</strong> - Scheduled morning notification (8:00 AM) with pending/processing/on-hold order counts. Toggle in Settings.</li>
+<li><strong>New Order Alerts</strong> - Push notification when a new order arrives.</li>
 </ul>
 <h3>Other</h3>
 <ul>
-<li><strong>Offline Support</strong> — MMKV-backed local cache with mutation queue. Optimistic UI updates, auto-sync on reconnect with retry logic.</li>
-<li><strong>Dark/Light/System Theme</strong> — Full theme support with system preference detection.</li>
-<li><strong>Clipboard</strong> — Long-press to copy order numbers, SKUs, and barcodes.</li>
+<li><strong>Offline Support</strong> - MMKV-backed local cache with mutation queue. Optimistic UI updates, auto-sync on reconnect with retry logic.</li>
+<li><strong>Dark/Light/System Theme</strong> - Full theme support with system preference detection.</li>
+<li><strong>Clipboard</strong> - Long-press to copy order numbers, SKUs, and barcodes.</li>
 </ul>
 <h2>Getting Started</h2>
 <h3>Prerequisites</h3>
@@ -66,14 +66,14 @@ npx react-native run-android
 </ol>
 <h2>Key Design Decisions</h2>
 <ul>
-<li><strong>MMKV</strong> over AsyncStorage — ~30x faster, synchronous reads, no UI jank on hydration</li>
-<li><strong>Normalized store</strong> — <code>Record&lt;number, WcOrder&gt;</code> for O(1) lookups, efficient single-order updates</li>
-<li><strong>Optimistic updates</strong> — UI updates immediately, rolls back on network error</li>
-<li><strong>Mutation queue</strong> — FIFO with max 5 retries per mutation, auto-flush on reconnect</li>
-<li><strong>Barcode matching</strong> — SKU first (most reliable), then common meta keys (<code>_barcode</code>, <code>_ean</code>, <code>_gtin</code>, <code>_upc</code>)</li>
-<li><strong>Pick sessions not persisted</strong> — Fresh start on app restart for accuracy (v1)</li>
-<li><strong>Status-specific haptics</strong> — Different vibration patterns per order status for tactile awareness</li>
-<li><strong>Auto-advance picking</strong> — Reduces manual navigation between orders during high-volume fulfillment</li>
-<li><strong>Wave picking</strong> — Greedy SKU-overlap grouping algorithm; picker visits each bin once for multiple orders</li>
-<li><strong>Priority scoring</strong> — Weighted formula: age (0-40) + shipping method (0-30) + value (0-15) + note (0-10) + status (0-5)</li>
+<li><strong>MMKV</strong> over AsyncStorage - ~30x faster, synchronous reads, no UI jank on hydration</li>
+<li><strong>Normalized store</strong> - <code>Record&lt;number, WcOrder&gt;</code> for O(1) lookups, efficient single-order updates</li>
+<li><strong>Optimistic updates</strong> - UI updates immediately, rolls back on network error</li>
+<li><strong>Mutation queue</strong> - FIFO with max 5 retries per mutation, auto-flush on reconnect</li>
+<li><strong>Barcode matching</strong> - SKU first (most reliable), then common meta keys (<code>_barcode</code>, <code>_ean</code>, <code>_gtin</code>, <code>_upc</code>)</li>
+<li><strong>Pick sessions not persisted</strong> - Fresh start on app restart for accuracy (v1)</li>
+<li><strong>Status-specific haptics</strong> - Different vibration patterns per order status for tactile awareness</li>
+<li><strong>Auto-advance picking</strong> - Reduces manual navigation between orders during high-volume fulfillment</li>
+<li><strong>Wave picking</strong> - Greedy SKU-overlap grouping algorithm; picker visits each bin once for multiple orders</li>
+<li><strong>Priority scoring</strong> - Weighted formula: age (0-40) + shipping method (0-30) + value (0-15) + note (0-10) + status (0-5)</li>
 </ul>

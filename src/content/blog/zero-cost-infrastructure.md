@@ -6,7 +6,7 @@ author: "Open WP Club"
 tags: ["tech-stack", "open-source", "infrastructure"]
 ---
 
-People are often surprised when we mention that Open WP Club's entire infrastructure costs $0 per month. Here's how we do it — and how you can do the same for your open-source project.
+People are often surprised when we mention that Open WP Club's entire infrastructure costs $0 per month. Here's how we do it - and how you can do the same for your open-source project.
 
 ## Hosting
 
@@ -16,11 +16,11 @@ Static sites are fast, secure, and essentially free to host. There's no server t
 
 ## Code and CI/CD
 
-Everything lives on **GitHub**, which is free for public repositories. We use **GitHub Actions** for our CI/CD pipelines — running tests, building the website, and deploying automatically on every push. Public repos get generous free minutes.
+Everything lives on **GitHub**, which is free for public repositories. We use **GitHub Actions** for our CI/CD pipelines - running tests, building the website, and deploying automatically on every push. Public repos get generous free minutes.
 
 ## DNS and security
 
-**Cloudflare** handles our DNS and provides DDoS protection, SSL, and caching — all on the free tier.
+**Cloudflare** handles our DNS and provides DDoS protection, SSL, and caching - all on the free tier.
 
 ## Community
 

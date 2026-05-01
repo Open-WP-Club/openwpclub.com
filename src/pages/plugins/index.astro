@@ -4,6 +4,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import PluginCard from '../../components/PluginCard.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import { getCollection } from 'astro:content';
+import { pluginCategoryMap } from '../../lib/categories';
+import { getPluginBadgeThresholds, pluginIsNew, pluginIsPopular } from '../../lib/plugin-utils';
 
 const allItems = await getCollection('plugins');
 const sorted = allItems
@@ -13,41 +15,8 @@ const sorted = allItems
     return new Date(b.data.lastPush).getTime() - new Date(a.data.lastPush).getTime();
   });
 
-// Build category filters from topics
-const categoryMap: Record<string, { label: string; icon: string; keywords: string[] }> = {
-  woocommerce: {
-    label: 'WooCommerce',
-    icon: 'lucide:shopping-cart',
-    keywords: ['woocommerce', 'woocommerce-plugin', 'wooco', 'woocoommerce', 'e-commerce', 'order-management', 'stock-management', 'pre-order', 'order-history', 'hpos', 'sku', 'inventory-management', 'inventory-management-system', 'shopify-app'],
-  },
-  admin: {
-    label: 'Admin Tools',
-    icon: 'lucide:settings',
-    keywords: ['admin', 'backend', 'admin-notice', 'remover-tool', 'bulk-operation', 'bulk-editing', 'staging', 'tag-management'],
-  },
-  security: {
-    label: 'Security',
-    icon: 'lucide:shield',
-    keywords: ['gdpr', 'sensitive-data', 'blocking', 'ip-blocking', 'restrict-access'],
-  },
-  seo: {
-    label: 'SEO',
-    icon: 'lucide:search',
-    keywords: ['seo', 'seo-optimization', 'rank-math', 'google-scholar', 'google-scholar-scrapper'],
-  },
-  users: {
-    label: 'Users & Roles',
-    icon: 'lucide:users',
-    keywords: ['users', 'user-management', 'roles-management', 'customers', 'historical-preserve'],
-  },
-  content: {
-    label: 'Content & Forms',
-    icon: 'lucide:file-text',
-    keywords: ['forms', 'gravity', 'gravity-forms', 'metadata', 'search', 'searching', 'html-to-markdown', 'markdown', 'llm', 'integration', 'integrations', 'file-sharing', 'filesystem', 'manager-system', 'logo-design'],
-  },
-};
+const categoryMap = pluginCategoryMap;
 
-// Count plugins per category
 const categoryCounts: Record<string, number> = {};
 for (const [key, cat] of Object.entries(categoryMap)) {
   categoryCounts[key] = sorted.filter((p) =>
@@ -55,17 +24,11 @@ for (const [key, cat] of Object.entries(categoryMap)) {
   ).length;
 }
 
-// Build a JSON-friendly version for the client script
 const categoryKeywordsJson = Object.fromEntries(
   Object.entries(categoryMap).map(([key, cat]) => [key, cat.keywords])
 );
 
-// Badge logic
-const now = new Date();
-const thirtyDaysAgo = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
-const starThreshold = sorted.length > 0
-  ? [...sorted].sort((a, b) => b.data.stars - a.data.stars)[Math.min(4, sorted.length - 1)]?.data.stars ?? 0
-  : 0;
+const { thirtyDaysAgo, starThreshold } = getPluginBadgeThresholds(sorted);
 ---
 
 <BaseLayout title="All Plugins - Open WP Club" description={`${sorted.length} free, open-source WordPress plugins. Browse the full catalog, sorted by most recently updated.`}>
@@ -217,8 +180,8 @@ const starThreshold = sorted.length > 0
                 lastPush={plugin.data.lastPush}
                 downloads={plugin.data.downloads}
                 language={plugin.data.language}
-                isNew={new Date(plugin.data.lastPush) > thirtyDaysAgo}
-                isPopular={plugin.data.stars >= starThreshold && starThreshold > 0}
+                isNew={pluginIsNew(plugin.data.lastPush, thirtyDaysAgo)}
+                isPopular={pluginIsPopular(plugin.data.stars, starThreshold)}
               />
             </div>
           ))}

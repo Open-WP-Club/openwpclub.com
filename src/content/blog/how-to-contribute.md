@@ -1,12 +1,12 @@
 ---
 title: "How to Contribute to Open WP Club"
-description: "A step-by-step guide to making your first contribution — from finding an issue to getting your PR merged."
+description: "A step-by-step guide to making your first contribution - from finding an issue to getting your PR merged."
 date: 2026-02-20
 author: "Open WP Club"
 tags: ["guide", "open-source", "contributing"]
 ---
 
-Contributing to open source can feel intimidating, but it doesn't have to be. Here's how to make your first contribution to Open WP Club — whether it's code, documentation, or a bug report.
+Contributing to open source can feel intimidating, but it doesn't have to be. Here's how to make your first contribution to Open WP Club - whether it's code, documentation, or a bug report.
 
 ## Find something to work on
 
@@ -34,15 +34,15 @@ Push your branch and open a PR against the `main` branch. Include:
 
 ## What happens next
 
-A maintainer will review your PR, usually within a few days. We might suggest changes — that's normal and not a criticism. Once approved, your code gets merged and you're officially a contributor.
+A maintainer will review your PR, usually within a few days. We might suggest changes - that's normal and not a criticism. Once approved, your code gets merged and you're officially a contributor.
 
 ## Beyond code
 
 Not a developer? You can still contribute:
 
-- **Report bugs** — Found something broken? Open a GitHub issue
-- **Write documentation** — Help improve README files or tutorials
-- **Help in Discord** — Answer questions from other community members
-- **Write a blog post** — Share your WordPress knowledge with the community
+- **Report bugs** - Found something broken? Open a GitHub issue
+- **Write documentation** - Help improve README files or tutorials
+- **Help in Discord** - Answer questions from other community members
+- **Write a blog post** - Share your WordPress knowledge with the community
 
 Every contribution matters. Welcome aboard.

@@ -8,7 +8,7 @@ const READMES_DIR = resolve(process.cwd(), 'src/data/readmes');
 
 function stripHtml(html: string): string {
   return html
-    .replace(/<pre[^>]*>[\s\S]*?<\/pre>/gi, '') // skip code blocks — too noisy
+    .replace(/<pre[^>]*>[\s\S]*?<\/pre>/gi, '') // skip code blocks - too noisy
     .replace(/<[^>]+>/g, '')
     .replace(/&amp;/g, '&')
     .replace(/&lt;/g, '<')
@@ -35,7 +35,7 @@ export const GET: APIRoute = async () => {
   );
 
   const lines: string[] = [
-    '# Open WP Club — Full Site Content',
+    '# Open WP Club - Full Site Content',
     '',
     '> An open community building free WordPress plugins. No paywalls, no premium tiers.',
     `> Website: https://openwpclub.com | GitHub: ${GITHUB_ORG_URL} | Discord: ${DISCORD_URL}`,

@@ -3,8 +3,8 @@
  * Run with: npm run fetch-data
  *
  * Saves:
- *   src/data/plugins.json      — CSV + GitHub stats + README for each plugin
- *   src/data/contributors.json — aggregated contributors across all repos
+ *   src/data/plugins.json      - CSV + GitHub stats + README for each plugin
+ *   src/data/contributors.json - aggregated contributors across all repos
  *
  * The Astro content collection loader reads these files at build time
  * instead of hitting the GitHub API again.
@@ -38,14 +38,14 @@ try {
     const value = trimmed.slice(eqIndex + 1).trim();
     if (!process.env[key]) process.env[key] = value;
   }
-} catch { /* .env not found — fine */ }
+} catch { /* .env not found - fine */ }
 
 const ORG = 'Open-WP-Club';
 const CSV_URL = `https://raw.githubusercontent.com/${ORG}/.github/main/plugins.csv`;
 const BATCH_SIZE = 10;
 const TOKEN = process.env.GITHUB_TOKEN || '';
 
-/** Known AI/LLM account logins — excluded from contributors unless they are sponsors. */
+/** Known AI/LLM account logins - excluded from contributors unless they are sponsors. */
 const AI_LOGINS = new Set(['claude', 'copilot', 'github-copilot', 'devin-ai', 'coderabbitai', 'sweep-ai']);
 
 interface Sponsor { login: string; name: string; url: string; avatarUrl: string; tier: string; description: string; since: string; }
@@ -64,7 +64,7 @@ function headers(): Record<string, string> {
 }
 
 // ---------------------------------------------------------------------------
-// ETag cache — conditional requests (304) don't count against GitHub rate limit
+// ETag cache - conditional requests (304) don't count against GitHub rate limit
 // ---------------------------------------------------------------------------
 interface CacheEntry { etag: string; data: unknown }
 type ETagCache = Record<string, CacheEntry>;
@@ -184,7 +184,7 @@ async function main() {
     const { remaining, limit, reset } = rate.resources.core;
     const resetTime = new Date(reset * 1000).toLocaleTimeString();
     console.log(`  API: ${remaining}/${limit} requests remaining (resets at ${resetTime})`);
-    if (!TOKEN) console.log('  (no GITHUB_TOKEN set — limited to 60 req/hr)');
+    if (!TOKEN) console.log('  (no GITHUB_TOKEN set - limited to 60 req/hr)');
     if (remaining < 50) console.log('  WARNING: Low API requests remaining.');
   }
   console.log();
@@ -333,7 +333,7 @@ async function main() {
     writeFileSync(resolve(DATA_DIR, 'changelog.json'), JSON.stringify(changelog, null, 2));
     console.log(`  Saved ${changelog.length} releases to changelog.json\n`);
   } else {
-    console.log('  No releases found — keeping existing changelog.json\n');
+    console.log('  No releases found - keeping existing changelog.json\n');
   }
 
   // Save to disk
@@ -365,7 +365,7 @@ async function main() {
   console.log(`  src/data/contributors.json  (${contributors.length} contributors)`);
   console.log(`  src/data/repo-contributors.json (per-repo contributor data)`);
   console.log();
-  console.log(`Cache: ${cacheHits} hits (304) / ${cacheMisses} misses (200) — ${cacheHits + cacheMisses} total API calls`);
+  console.log(`Cache: ${cacheHits} hits (304) / ${cacheMisses} misses (200) - ${cacheHits + cacheMisses} total API calls`);
   if (cacheHits > 0) console.log(`  ${cacheHits} requests served from cache (did not count against rate limit)`);
   console.log();
   console.log('Run "npm run build" to build the site with this data.');

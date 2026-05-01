@@ -9,6 +9,7 @@ import { GITHUB_ORG_URL } from '../lib/config';
 
 const allItems = await getCollection('plugins');
 const pluginCount = allItems.filter((p) => p.data.category === 'plugin').length;
+const appCount = allItems.filter((p) => p.data.category === 'app').length;
 
 const values = [
   {
@@ -44,7 +45,7 @@ const softwareTypes = [
     title: 'Desktop & Mobile Apps',
     description: 'Native applications for managing WordPress and WooCommerce stores - because not everything should live inside a browser tab.',
     href: '/apps/',
-    count: 'In development',
+    count: `${appCount} app${appCount !== 1 ? 's' : ''}`,
   },
   {
     title: 'Developer Tools',
@@ -89,13 +90,16 @@ const softwareTypes = [
             <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white tracking-tight">The problem</h2>
             <div class="mt-6 space-y-5 text-gray-600 dark:text-gray-400 leading-relaxed">
               <p>
-                The WordPress ecosystem has a pattern: someone builds a useful plugin, makes the basic version free, and locks the features people actually need behind a $99/year subscription. Do that across 10 plugins and you're paying more than your hosting.
+                The WordPress ecosystem has a pattern: someone builds a useful plugin, makes the basic version free, and locks the features people actually need behind a $99/year subscription. A real site needs form handling, SEO tools, a cache layer, a backup solution, security monitoring, maybe a WooCommerce extension or two. Stack 10–15 of those "pro" licences and you're spending well over a thousand dollars a year - before you've paid for hosting or a developer.
               </p>
               <p>
-                It's not just plugins. WordPress tooling in general - desktop apps, CLI tools, deployment helpers - is either proprietary, abandoned, or built for enterprise budgets. Individual developers and small agencies get left behind.
+                That cost problem hits small businesses and freelancers the hardest. A local shop owner or a developer building sites for small clients simply doesn't have that budget. So they look for alternatives - and the internet is full of them. Nulled plugins, pirated copies, sketchy repositories that bundle "free" versions of paid tools. The plugin works, until it doesn't: until it quietly phones home, injects spam links, or opens a backdoor. This is one of the real reasons WordPress has a reputation for being insecure - not because the core is bad, but because the ecosystem's pricing pushed people toward unsafe sources.
               </p>
               <p>
-                We think that's backwards. WordPress itself is open source. The software built around it should follow the same principle.
+                There's a third side to this that rarely gets talked about: abandoned software. A developer builds a great plugin, charges a fair price, then moves on - no updates, no security patches, no handoff. The plugin keeps working until WordPress updates something and quietly breaks it, or until a vulnerability is discovered with no one left to fix it. Paid doesn't mean maintained.
+              </p>
+              <p>
+                We think all of this is backwards. WordPress itself is open source. The software built around it should follow the same principle - not as an ideological position, but as a practical one. Free, open, and properly maintained software is simply safer for everyone.
               </p>
             </div>
           </div>
@@ -143,13 +147,13 @@ const softwareTypes = [
             <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white tracking-tight">No bloat, no junk</h2>
             <div class="mt-6 space-y-5 text-gray-600 dark:text-gray-400 leading-relaxed">
               <p>
-                Too many WordPress plugins ship with code that has nothing to do with the plugin's actual purpose. Auto-updaters, telemetry, upsell nag screens, admin notices begging for reviews, bundled analytics, "phone home" license checkers — none of that belongs in a plugin that's supposed to solve a specific problem.
+                Too many WordPress plugins ship with code that has nothing to do with the plugin's actual purpose. Auto-updaters, telemetry, upsell nag screens, admin notices begging for reviews, bundled analytics, "phone home" license checkers - none of that belongs in a plugin that's supposed to solve a specific problem.
               </p>
               <p>
-                Our plugins don't include any of that. No custom auto-update mechanisms, no tracking scripts, no third-party marketing libraries, no hidden API calls to external servers. If a feature doesn't directly serve the plugin's purpose, it doesn't ship. WordPress already handles updates through the core update system — there's no reason for a plugin to reinvent that.
+                Our plugins don't include any of that. No custom auto-update mechanisms, no tracking scripts, no third-party marketing libraries, no hidden API calls to external servers. If a feature doesn't directly serve the plugin's purpose, it doesn't ship. WordPress already handles updates through the core update system - there's no reason for a plugin to reinvent that.
               </p>
               <p>
-                This isn't just a philosophy — it's a practical commitment to keeping our plugins lightweight, fast, and respectful of your server. Every line of code we ship does exactly one thing: solve the problem the plugin was built for. Nothing more.
+                This isn't just a philosophy - it's a practical commitment to keeping our plugins lightweight, fast, and respectful of your server. Every line of code we ship does exactly one thing: solve the problem the plugin was built for. Nothing more.
               </p>
             </div>
           </div>

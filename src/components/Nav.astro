@@ -256,7 +256,7 @@ const searchIndex = [
   import { debounce } from '../lib/debounce';
 
   document.addEventListener('astro:page-load', () => {
-    // — Nav logic (unchanged) —
+    // - Nav logic (unchanged) -
     const btn = document.getElementById('mobile-menu-btn');
     const menu = document.getElementById('mobile-menu');
     const iconOpen = document.getElementById('menu-icon-open');
@@ -325,7 +325,7 @@ const searchIndex = [
       }
     });
 
-    // — Search —
+    // - Search -
     type SearchItem = { title: string; description: string; url: string; type: string };
     const index = (window as any).__searchIndex as SearchItem[];
 

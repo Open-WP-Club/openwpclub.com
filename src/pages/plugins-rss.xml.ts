@@ -10,7 +10,7 @@ export async function GET(context: APIContext) {
     .slice(0, 30);
 
   return rss({
-    title: 'Open WP Club — Plugin Updates',
+    title: 'Open WP Club - Plugin Updates',
     description: 'Recently updated free, open-source WordPress plugins from Open WP Club.',
     site: context.site!,
     items: plugins.map((plugin) => ({

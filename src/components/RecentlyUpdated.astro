@@ -2,6 +2,7 @@
 import { Icon } from 'astro-icon/components';
 import PluginCard from './PluginCard.astro';
 import { getCollection } from 'astro:content';
+import { getPluginBadgeThresholds, pluginIsNew, pluginIsPopular } from '../lib/plugin-utils';
 
 const allItems = await getCollection('plugins');
 const allPlugins = allItems.filter((p) => p.data.category === 'plugin');
@@ -9,12 +10,7 @@ const recent = allPlugins
   .filter((p) => p.data.lastPush)
   .sort((a, b) => new Date(b.data.lastPush).getTime() - new Date(a.data.lastPush).getTime())
   .slice(0, 6);
-
-const now = new Date();
-const thirtyDaysAgo = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
-const starThreshold = allPlugins.length > 0
-  ? [...allPlugins].sort((a, b) => b.data.stars - a.data.stars)[Math.min(4, allPlugins.length - 1)]?.data.stars ?? 0
-  : 0;
+const { thirtyDaysAgo, starThreshold } = getPluginBadgeThresholds(allPlugins);
 ---
 
 <section class="py-16 bg-white dark:bg-gray-900">
@@ -37,8 +33,8 @@ const starThreshold = allPlugins.length > 0
           lastPush={plugin.data.lastPush}
           downloads={plugin.data.downloads}
           language={plugin.data.language}
-          isNew={new Date(plugin.data.lastPush) > thirtyDaysAgo}
-          isPopular={plugin.data.stars >= starThreshold && starThreshold > 0}
+          isNew={pluginIsNew(plugin.data.lastPush, thirtyDaysAgo)}
+          isPopular={pluginIsPopular(plugin.data.stars, starThreshold)}
         />
       ))}
     </div>

@@ -17,9 +17,9 @@ const categories = [
     title: 'Hosting & CDN',
     description: 'Zero-cost, carbon-aware infrastructure that scales without bills.',
     tools: [
-      { name: 'Cloudflare Pages', note: 'Static hosting — free tier, global edge network' },
-      { name: 'Cloudflare DNS', note: 'DNS and DDoS protection — free' },
-      { name: 'GitHub Pages', note: 'Fallback / secondary hosting — free' },
+      { name: 'Cloudflare Pages', note: 'Static hosting - free tier, global edge network' },
+      { name: 'Cloudflare DNS', note: 'DNS and DDoS protection - free' },
+      { name: 'GitHub Pages', note: 'Fallback / secondary hosting - free' },
     ],
   },
   {
@@ -27,9 +27,9 @@ const categories = [
     title: 'Code & CI/CD',
     description: 'Everything lives in the open, built and tested automatically.',
     tools: [
-      { name: 'GitHub', note: 'Source control, issues, project boards — free for open source' },
-      { name: 'GitHub Actions', note: 'CI/CD pipelines, automated builds and deploys — free for public repos' },
-      { name: 'Git', note: 'Version control — open source' },
+      { name: 'GitHub', note: 'Source control, issues, project boards - free for open source' },
+      { name: 'GitHub Actions', note: 'CI/CD pipelines, automated builds and deploys - free for public repos' },
+      { name: 'Git', note: 'Version control - open source' },
     ],
   },
   {
@@ -37,8 +37,8 @@ const categories = [
     title: 'Frontend',
     description: 'Fast, modern tooling that outputs zero JavaScript where possible.',
     tools: [
-      { name: 'Astro', note: 'Static site generator — open source, ships zero JS by default' },
-      { name: 'Tailwind CSS', note: 'Utility-first CSS framework — open source' },
+      { name: 'Astro', note: 'Static site generator - open source, ships zero JS by default' },
+      { name: 'Tailwind CSS', note: 'Utility-first CSS framework - open source' },
       { name: 'TypeScript', note: 'Type safety for content collections and config' },
     ],
   },
@@ -47,9 +47,9 @@ const categories = [
     title: 'WordPress',
     description: 'The ecosystem we build for. Everything GPL, everything free.',
     tools: [
-      { name: 'WordPress', note: 'CMS — GPL, powers 40%+ of the web' },
-      { name: 'WooCommerce', note: 'E-commerce — GPL, the base for many of our plugins' },
-      { name: 'WP-CLI', note: 'Command-line management — open source' },
+      { name: 'WordPress', note: 'CMS - GPL, powers 40%+ of the web' },
+      { name: 'WooCommerce', note: 'E-commerce - GPL, the base for many of our plugins' },
+      { name: 'WP-CLI', note: 'Command-line management - open source' },
       { name: 'PHPStan', note: 'Static analysis for plugin code quality' },
     ],
   },
@@ -58,9 +58,9 @@ const categories = [
     title: 'Community',
     description: 'Where we coordinate, discuss, and help each other.',
     tools: [
-      { name: 'Discord', note: 'Real-time chat, support, and contributor coordination — free' },
-      { name: 'GitHub Discussions', note: 'Long-form conversations and RFCs — free' },
-      { name: 'GitHub Issues', note: 'Bug reports and feature requests — free' },
+      { name: 'Discord', note: 'Real-time chat, support, and contributor coordination - free' },
+      { name: 'GitHub Discussions', note: 'Long-form conversations and RFCs - free' },
+      { name: 'GitHub Issues', note: 'Bug reports and feature requests - free' },
     ],
   },
   {
@@ -68,8 +68,8 @@ const categories = [
     title: 'Testing & Quality',
     description: 'Automated testing and code quality tools.',
     tools: [
-      { name: 'Vitest', note: 'Unit testing for the website — open source' },
-      { name: 'PHPUnit', note: 'Unit testing for WordPress plugins — open source' },
+      { name: 'Vitest', note: 'Unit testing for the website - open source' },
+      { name: 'PHPUnit', note: 'Unit testing for WordPress plugins - open source' },
       { name: 'WordPress Coding Standards', note: 'PHP_CodeSniffer rules for WP conventions' },
     ],
   },
@@ -78,10 +78,10 @@ const categories = [
     title: 'Dev Tools',
     description: 'The tools we actually use, every day.',
     tools: [
-      { name: 'VS Code', note: 'Primary editor — open source' },
-      { name: 'npm', note: 'Package management — free' },
-      { name: 'Docker', note: 'Local WordPress development environments — open source' },
-      { name: 'Playwright', note: 'End-to-end testing — open source' },
+      { name: 'VS Code', note: 'Primary editor - open source' },
+      { name: 'npm', note: 'Package management - free' },
+      { name: 'Docker', note: 'Local WordPress development environments - open source' },
+      { name: 'Playwright', note: 'End-to-end testing - open source' },
     ],
   },
 ];
@@ -107,7 +107,7 @@ const stats = [
           Our <span class="text-blue-500">tech stack</span>
         </h1>
         <p class="mt-6 text-lg sm:text-xl text-gray-600 dark:text-gray-400 leading-relaxed max-w-3xl mx-auto">
-          Every tool we use is either free or open source. We run the entire organization — {pluginCount}+ plugins, this website, CI/CD, community — at <strong class="text-gray-900 dark:text-white">$0 per month</strong>.
+          Every tool we use is either free or open source. We run the entire organization - {pluginCount}+ plugins, this website, CI/CD, community - at <strong class="text-gray-900 dark:text-white">$0 per month</strong>.
         </p>
       </div>
     </div>
@@ -137,7 +137,7 @@ const stats = [
                     <Icon name="lucide:check" class="size-5 shrink-0 text-green-500 mt-0.5" />
                     <span>
                       <strong class="text-gray-900 dark:text-white">{tool.name}</strong>
-                      <span class="text-gray-500 dark:text-gray-500"> — {tool.note}</span>
+                      <span class="text-gray-500 dark:text-gray-500"> - {tool.note}</span>
                     </span>
                   </li>
                 ))}
@@ -153,7 +153,7 @@ const stats = [
                 If we can run an entire open-source organization for free, so can you. We deliberately choose tools that don't lock us (or our contributors) into paid plans, vendor lock-in, or proprietary ecosystems.
               </p>
               <p>
-                This isn't about being cheap — it's about proving that good software doesn't require a budget. Every dollar we don't spend on infrastructure is a dollar we never need to extract from our users.
+                This isn't about being cheap - it's about proving that good software doesn't require a budget. Every dollar we don't spend on infrastructure is a dollar we never need to extract from our users.
               </p>
             </div>
           </div>

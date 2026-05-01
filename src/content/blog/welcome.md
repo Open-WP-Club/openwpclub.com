@@ -12,7 +12,7 @@ We started Open WP Club to fix that. One plugin per problem, fully free, fully o
 
 ## What we've built so far
 
-We now maintain over 30 plugins covering WooCommerce tools, admin utilities, security helpers, and SEO automation. Every one of them is free — no "pro" tier, no premium upsells.
+We now maintain over 30 plugins covering WooCommerce tools, admin utilities, security helpers, and SEO automation. Every one of them is free - no "pro" tier, no premium upsells.
 
 ## What's next
 

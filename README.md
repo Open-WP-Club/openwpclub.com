@@ -1,6 +1,6 @@
 # Open WP Club Website
 
-The community website for [Open WP Club](https://openwpclub.com) — free, open-source WordPress plugins built by the community. Powered by [Astro](https://astro.build), Tailwind CSS v4, and deployed on Cloudflare Workers.
+The community website for [Open WP Club](https://openwpclub.com) - free, open-source WordPress plugins built by the community. Powered by [Astro](https://astro.build), Tailwind CSS v4, and deployed on Cloudflare Workers.
 
 ## Quick Start
 
