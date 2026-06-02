@@ -17,6 +17,9 @@
 .prose pre {
   background-color: #1f2937;
   color: #e5e7eb;
+  tab-size: 2;
+  scrollbar-width: thin;
+  scrollbar-color: #4b5563 #1f2937;
 }
 
 .prose blockquote {

@@ -2,26 +2,16 @@ import type { APIContext, GetStaticPaths } from 'astro';
 import { getCollection } from 'astro:content';
 import satori from 'satori';
 import { Resvg } from '@resvg/resvg-js';
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
 
-// Cache the font so we only fetch once during build
-let fontData: ArrayBuffer | null = null;
-
-async function getFont(): Promise<ArrayBuffer> {
-  if (fontData) return fontData;
-  const res = await fetch('https://cdn.jsdelivr.net/fontsource/fonts/inter@latest/latin-700-normal.woff');
-  if (!res.ok) throw new Error(`Failed to fetch bold font: HTTP ${res.status}`);
-  fontData = await res.arrayBuffer();
-  return fontData;
+function loadFont(filename: string): ArrayBuffer {
+  const buf = readFileSync(resolve(process.cwd(), 'src/assets/fonts', filename));
+  return buf.buffer.slice(buf.byteOffset, buf.byteOffset + buf.byteLength) as ArrayBuffer;
 }
 
-let fontDataRegular: ArrayBuffer | null = null;
-async function getFontRegular(): Promise<ArrayBuffer> {
-  if (fontDataRegular) return fontDataRegular;
-  const res = await fetch('https://cdn.jsdelivr.net/fontsource/fonts/inter@latest/latin-400-normal.woff');
-  if (!res.ok) throw new Error(`Failed to fetch regular font: HTTP ${res.status}`);
-  fontDataRegular = await res.arrayBuffer();
-  return fontDataRegular;
-}
+const fontBold = loadFont('inter-bold.woff');
+const fontRegular = loadFont('inter-regular.woff');
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const allItems = await getCollection('plugins');
@@ -36,7 +26,7 @@ export async function GET({ props }: APIContext) {
   const { plugin } = props as { plugin: { data: { name: string; description: string; stars: number; version: string; language: string | null; downloads: string } } };
   const { name, description, stars, version, language, downloads } = plugin.data;
 
-  const [bold, regular] = await Promise.all([getFont(), getFontRegular()]);
+  const [bold, regular] = [fontBold, fontRegular];
 
   const downloadsNum = downloads ? parseInt(downloads, 10) : 0;
   const statsLine = [

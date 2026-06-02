@@ -1,0 +1,142 @@
+<h1>WooCommerce Product Health Check</h1>
+<p>A WordPress plugin that scans your WooCommerce products for common data issues and displays them in a clean admin dashboard.</p>
+<h2>Features</h2>
+<ul>
+<li>Scans all published products and variations in batches of 50</li>
+<li>Results are cached for 24 hours (transient) — no slow reloads on revisit</li>
+<li>Choose which checks to run before each scan</li>
+<li>Filter results by issue type</li>
+<li>Export issues as CSV (Product ID, Name, Issue Type, Severity, Detail, Last Modified, Edit URL)</li>
+<li>Export all product SKUs as a comma-separated list</li>
+<li>Full/SKU-only view toggle</li>
+<li>Responsive admin UI with mobile-friendly filter drawer</li>
+<li>WP-CLI support for automation and CI/CD pipelines</li>
+</ul>
+<h2>Checks</h2>
+<table>
+<thead>
+<tr>
+<th>Check</th>
+<th>Severity</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Missing Image</td>
+<td>Critical</td>
+<td>An attached image ID (featured or gallery) no longer exists in the media library</td>
+</tr>
+<tr>
+<td>No Product Image</td>
+<td>Critical</td>
+<td>Product has no featured image set at all</td>
+</tr>
+<tr>
+<td>Empty Price</td>
+<td>Critical</td>
+<td>Simple/external product has no regular price, or a variable product has no priced variation</td>
+</tr>
+<tr>
+<td>Empty SKU</td>
+<td>Warning</td>
+<td>Product or variation has no SKU set</td>
+</tr>
+<tr>
+<td>Missing Variation Image</td>
+<td>Warning</td>
+<td>A variation has no image assigned</td>
+</tr>
+<tr>
+<td>Out of Stock / No Quantity</td>
+<td>Warning</td>
+<td>Stock management is enabled but stock quantity is not set</td>
+</tr>
+</tbody></table>
+<h2>Requirements</h2>
+<ul>
+<li>WordPress 5.8+</li>
+<li>PHP 7.4+</li>
+<li>WooCommerce (active)</li>
+</ul>
+<h2>Installation</h2>
+<ol>
+<li>Download or clone this repository into your <code>wp-content/plugins/</code> directory:<pre><code>cd wp-content/plugins/
+git clone https://github.com/Open-WP-Club/product-health-check-woocommerce wc-product-health-check
+</code></pre>
+</li>
+<li>Activate the plugin from <strong>Plugins → Installed Plugins</strong> in WordPress admin.</li>
+<li>Navigate to <strong>WooCommerce → Product Health</strong> to run your first scan.</li>
+</ol>
+<h2>Usage</h2>
+<h3>Running a scan</h3>
+<ol>
+<li>Select the checks you want to run using the checkboxes at the top of the page.</li>
+<li>Click <strong>Run Scan</strong> — results load from cache if available (up to 24 hours old).</li>
+<li>Click <strong>Clear Cache &amp; Re-scan</strong> to force a fresh scan regardless of cache.</li>
+</ol>
+<h3>Filtering results</h3>
+<p>Use the <strong>Filter</strong> dropdown to show only a specific issue type. Filtering is instant and client-side — no page reload. On mobile the filter is accessible via the <strong>Filter issues</strong> toggle button in the toolbar.</p>
+<h3>Exporting to CSV</h3>
+<p>Click <strong>Export CSV</strong> in the toolbar to download all issues as a CSV file, compatible with Excel (UTF-8 BOM included).</p>
+<h3>Exporting SKUs</h3>
+<p>After a scan, a <strong>SKU Export</strong> section appears below the results table with all non-empty SKUs from scanned products and variations. Click <strong>Copy to clipboard</strong> to copy the full comma-separated list.</p>
+<h2>WP-CLI</h2>
+<p>The plugin registers a <code>wp product-health</code> command for running scans from the command line.</p>
+<pre><code class="language-bash"># Full scan, table output
+wp product-health scan
+
+# Force a fresh scan ignoring the cache
+wp product-health scan --force
+
+# Show only critical issues
+wp product-health scan --severity=critical
+
+# Run specific checks only
+wp product-health scan --checks=empty_sku,empty_price
+
+# Export as CSV
+wp product-health scan --format=csv &gt; issues.csv
+
+# Output as JSON
+wp product-health scan --format=json
+
+# Return the issue count only (useful in scripts)
+wp product-health scan --format=count
+</code></pre>
+<p><strong>Available flags:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>--force</code></td>
+<td>—</td>
+<td>Bypass the transient cache and run a fresh scan</td>
+</tr>
+<tr>
+<td><code>--checks=&lt;list&gt;</code></td>
+<td>all</td>
+<td>Comma-separated check types to run</td>
+</tr>
+<tr>
+<td><code>--format=&lt;format&gt;</code></td>
+<td><code>table</code></td>
+<td>Output format: <code>table</code>, <code>json</code>, <code>csv</code>, <code>count</code></td>
+</tr>
+<tr>
+<td><code>--severity=&lt;level&gt;</code></td>
+<td><code>info</code></td>
+<td>Minimum severity to report: <code>info</code>, <code>warning</code>, <code>critical</code></td>
+</tr>
+</tbody></table>
+<p><strong>CI/CD:</strong> The command exits with code <code>1</code> if any critical issues are found, <code>0</code> otherwise — ready to use as a deploy gate in GitHub Actions or similar pipelines.</p>
+<pre><code class="language-yaml"># Example GitHub Actions step
+- name: Product health check
+  run: wp product-health scan --format=count --severity=critical
+</code></pre>
+<h2>License</h2>
+<p><a href="https://www.gnu.org/licenses/gpl-2.0.html">GPL-2.0-or-later</a></p>

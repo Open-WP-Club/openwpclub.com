@@ -7,7 +7,7 @@ const PLUGINS_CACHE = 'src/data/plugins.json';
 const plugins = defineCollection({
   loader: async () => {
     if (!existsSync(PLUGINS_CACHE)) {
-      console.warn('[plugins] src/data/plugins.json not found. Run "npm run fetch-data" first.');
+      console.warn('[plugins] src/data/plugins.json not found. Run "pnpm run fetch-data" first.');
       return [];
     }
     const cached = JSON.parse(readFileSync(PLUGINS_CACHE, 'utf-8'));

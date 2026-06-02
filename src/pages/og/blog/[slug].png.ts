@@ -2,24 +2,16 @@ import type { APIContext, GetStaticPaths } from 'astro';
 import { getCollection } from 'astro:content';
 import satori from 'satori';
 import { Resvg } from '@resvg/resvg-js';
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
 
-let fontBold: ArrayBuffer | null = null;
-let fontRegular: ArrayBuffer | null = null;
-
-async function getFont(weight: '700' | '400'): Promise<ArrayBuffer> {
-  if (weight === '700') {
-    if (fontBold) return fontBold;
-    const res = await fetch('https://cdn.jsdelivr.net/fontsource/fonts/inter@latest/latin-700-normal.woff');
-    if (!res.ok) throw new Error(`Font fetch failed: HTTP ${res.status}`);
-    fontBold = await res.arrayBuffer();
-    return fontBold;
-  }
-  if (fontRegular) return fontRegular;
-  const res = await fetch('https://cdn.jsdelivr.net/fontsource/fonts/inter@latest/latin-400-normal.woff');
-  if (!res.ok) throw new Error(`Font fetch failed: HTTP ${res.status}`);
-  fontRegular = await res.arrayBuffer();
-  return fontRegular;
+function loadFont(filename: string): ArrayBuffer {
+  const buf = readFileSync(resolve(process.cwd(), 'src/assets/fonts', filename));
+  return buf.buffer.slice(buf.byteOffset, buf.byteOffset + buf.byteLength) as ArrayBuffer;
 }
+
+const fontBold = loadFont('inter-bold.woff');
+const fontRegular = loadFont('inter-regular.woff');
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = await getCollection('blog');
@@ -33,7 +25,7 @@ export async function GET({ props }: APIContext) {
   const { post } = props as { post: { data: { title: string; description: string; author: string; date: Date; tags: string[] } } };
   const { title, description, author, date, tags } = post.data;
 
-  const [bold, regular] = await Promise.all([getFont('700'), getFont('400')]);
+  const [bold, regular] = [fontBold, fontRegular];
 
   const formattedDate = date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
   const tagLine = tags.slice(0, 3).map((t) => `#${t}`).join('  ');

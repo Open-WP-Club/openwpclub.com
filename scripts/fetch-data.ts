@@ -1,6 +1,6 @@
 /**
  * Fetches plugin + contributor data from GitHub and saves to src/data/.
- * Run with: npm run fetch-data
+ * Run with: pnpm run fetch-data
  *
  * Saves:
  *   src/data/plugins.json      - CSV + GitHub stats + README for each plugin
@@ -140,14 +140,14 @@ async function fetchReadme(repoName: string, defaultBranch: string): Promise<str
   if (result) {
     const data = result.data as Record<string, string>;
     const content = Buffer.from(data.content, 'base64').toString('utf-8');
-    let html = await marked(content);
+    let html = await marked.parse(content);
     return rewriteImageUrls(html, repoName, defaultBranch);
   }
   // Fallback: raw file (not rate-limited)
   const rawRes = await fetch(`https://raw.githubusercontent.com/${ORG}/${repoName}/${defaultBranch}/README.md`, { signal: AbortSignal.timeout(15000) });
   if (rawRes.ok) {
     const content = await rawRes.text();
-    let html = await marked(content);
+    let html = await marked.parse(content);
     return rewriteImageUrls(html, repoName, defaultBranch);
   }
   return '<p class="text-gray-500 italic">No README available for this plugin.</p>';
@@ -368,7 +368,7 @@ async function main() {
   console.log(`Cache: ${cacheHits} hits (304) / ${cacheMisses} misses (200) - ${cacheHits + cacheMisses} total API calls`);
   if (cacheHits > 0) console.log(`  ${cacheHits} requests served from cache (did not count against rate limit)`);
   console.log();
-  console.log('Run "npm run build" to build the site with this data.');
+  console.log('Run "pnpm run build" to build the site with this data.');
   console.log();
 }
 
