@@ -148,6 +148,45 @@ const steps = [
             </div>
           </div>
 
+          <!-- Bring your plugin -->
+          <div class="bg-gradient-to-br from-blue-50 via-white to-blue-50 dark:from-blue-950/30 dark:via-gray-800 dark:to-blue-950/30 rounded-xl shadow-sm border border-blue-200 dark:border-blue-800/50 p-6 sm:p-8">
+            <div class="flex items-center gap-3 mb-4">
+              <Icon name="lucide:package-open" class="size-6 text-blue-500 shrink-0" />
+              <h2 class="text-xl font-bold text-gray-900 dark:text-white">Bring your plugin here</h2>
+            </div>
+            <div class="space-y-4 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+              <p>
+                Do you maintain a plugin that's currently hosted elsewhere - on your own GitHub, another organisation, or a platform that's shutting down? You can move it here.
+              </p>
+              <p>
+                We accept plugins that meet a few simple requirements:
+              </p>
+              <ul class="list-none space-y-2 ml-1">
+                {[
+                  { icon: 'lucide:gift', text: 'Completely free — no premium tiers, no upsells, no freemium.' },
+                  { icon: 'lucide:shield-check', text: 'GPL-compatible licence — the code must be open source.' },
+                  { icon: 'lucide:star', text: 'Quality bar — functional, reasonably documented, and actively useful to WordPress users.' },
+                  { icon: 'lucide:users', text: 'Willing to collaborate — you stay as maintainer and we help share the load.' },
+                ].map((item) => (
+                  <li class="flex items-start gap-2">
+                    <Icon name={item.icon} class="size-4 text-blue-500 shrink-0 mt-0.5" />
+                    <span>{item.text}</span>
+                  </li>
+                ))}
+              </ul>
+              <p>
+                If that sounds like your plugin, reach out. We'll review it together and help with the migration - no red tape.
+              </p>
+            </div>
+            <a
+              href={`mailto:${CONTACT_EMAIL}?subject=Plugin Migration Inquiry`}
+              class="mt-6 inline-flex items-center text-sm font-medium text-blue-500 hover:text-blue-600 transition-colors"
+            >
+              Get in touch about migrating
+              <Icon name="lucide:arrow-right" class="ml-1 size-4" />
+            </a>
+          </div>
+
           <!-- Quick links -->
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <a
