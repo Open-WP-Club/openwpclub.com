@@ -3,7 +3,7 @@
   "version": "2.0.0",
   "type": "module",
   "description": "A community website for WordPress open source enthusiasts",
-  "packageManager": "pnpm@11.5.0",
+  "packageManager": "pnpm@11.7.0",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
@@ -30,16 +30,16 @@
   "dependencies": {
     "@astrojs/rss": "^4.0.18",
     "@astrojs/sitemap": "^3.7.3",
-    "@iconify-json/lucide": "^1.2.111",
+    "@iconify-json/lucide": "^1.2.112",
     "@resvg/resvg-js": "^2.6.2",
-    "@tailwindcss/typography": "^0.5.19",
-    "@tailwindcss/vite": "^4.3.0",
-    "astro": "^6.4.2",
+    "@tailwindcss/typography": "^0.5.20",
+    "@tailwindcss/vite": "^4.3.1",
+    "astro": "^6.4.7",
     "astro-icon": "^1.1.5",
-    "marked": "^18.0.4",
-    "sanitize-html": "^2.17.4",
+    "marked": "^18.0.5",
+    "sanitize-html": "^2.17.5",
     "satori": "^0.26.0",
-    "tailwindcss": "^4.3.0"
+    "tailwindcss": "^4.3.1"
   },
   "engines": {
     "node": ">=20.0.0"
@@ -47,6 +47,6 @@
   "devDependencies": {
     "@types/sanitize-html": "^2.16.1",
     "tsx": "^4.22.4",
-    "vitest": "^4.1.8"
+    "vitest": "^4.1.9"
   }
 }
