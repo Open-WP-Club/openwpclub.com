@@ -336,6 +336,61 @@ async function main() {
     console.log('  No releases found - keeping existing changelog.json\n');
   }
 
+  // Fetch GitHub Sponsors
+  console.log('Fetching GitHub Sponsors...');
+  if (TOKEN) {
+    const sponsorsQuery = `query {
+      organization(login: "${ORG}") {
+        sponsorshipsAsMaintainer(first: 100, activeOnly: true) {
+          nodes {
+            sponsorEntity {
+              ... on User { login name avatarUrl url }
+              ... on Organization { login name avatarUrl url }
+            }
+            tier { monthlyPriceInDollars name }
+            createdAt
+          }
+        }
+      }
+    }`;
+    const gqlRes = await fetch('https://api.github.com/graphql', {
+      method: 'POST',
+      headers: { ...headers(), 'Content-Type': 'application/json' },
+      body: JSON.stringify({ query: sponsorsQuery }),
+      signal: AbortSignal.timeout(15000),
+    });
+    if (gqlRes.ok) {
+      const gqlData = await gqlRes.json() as { data?: { organization?: { sponsorshipsAsMaintainer?: { nodes?: Array<{ sponsorEntity: { login: string; name: string; avatarUrl: string; url: string } | null; tier: { monthlyPriceInDollars: number; name: string } | null; createdAt: string }> } } } } };
+      const nodes = gqlData.data?.organization?.sponsorshipsAsMaintainer?.nodes ?? [];
+      if (nodes.length > 0) {
+        const sponsors: Sponsor[] = nodes
+          .filter((n) => n.sponsorEntity)
+          .map((n) => {
+            const entity = n.sponsorEntity!;
+            const price = n.tier?.monthlyPriceInDollars ?? 0;
+            const tier = price >= 100 ? 'gold' : price >= 25 ? 'silver' : 'bronze';
+            return {
+              login: entity.login,
+              name: entity.name || entity.login,
+              url: entity.url,
+              avatarUrl: entity.avatarUrl,
+              tier,
+              description: n.tier?.name ?? '',
+              since: n.createdAt,
+            };
+          });
+        writeFileSync(resolve(DATA_DIR, 'sponsors.json'), JSON.stringify(sponsors, null, 2));
+        console.log(`  Saved ${sponsors.length} sponsors to sponsors.json\n`);
+      } else {
+        console.log('  No active sponsors found\n');
+      }
+    } else {
+      console.warn(`  GitHub Sponsors API failed: ${gqlRes.status}\n`);
+    }
+  } else {
+    console.log('  Skipped (no GITHUB_TOKEN)\n');
+  }
+
   // Save to disk
   mkdirSync(DATA_DIR, { recursive: true });
   mkdirSync(READMES_DIR, { recursive: true });

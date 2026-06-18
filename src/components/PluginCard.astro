@@ -42,12 +42,6 @@ const langColor = language ? (languageColors[language] || '#6B7280') : '#6B7280'
             Popular
           </span>
         )}
-        {isNew && (
-          <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-semibold bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-300">
-            <Icon name="lucide:sparkles" class="size-3" />
-            New
-          </span>
-        )}
       </div>
     )}
     <h3 class="text-lg font-semibold text-gray-900 dark:text-white truncate mb-3 pr-16">{name}</h3>

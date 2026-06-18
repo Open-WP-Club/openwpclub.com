@@ -6,12 +6,12 @@
   "packageManager": "pnpm@11.7.0",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && pagefind --site dist",
     "preview": "astro preview",
     "astro": "astro",
     "test": "vitest run",
     "fetch-data": "tsx scripts/fetch-data.ts",
-    "refresh": "tsx scripts/fetch-data.ts && astro build"
+    "refresh": "tsx scripts/fetch-data.ts && astro build && pagefind --site dist"
   },
   "keywords": [
     "wordpress",
@@ -46,6 +46,7 @@
   },
   "devDependencies": {
     "@types/sanitize-html": "^2.16.1",
+    "pagefind": "^1.5.2",
     "tsx": "^4.22.4",
     "vitest": "^4.1.9"
   }

@@ -326,8 +326,8 @@ const searchIndex = [
     });
 
     // - Search -
-    type SearchItem = { title: string; description: string; url: string; type: string };
-    const index = (window as any).__searchIndex as SearchItem[];
+    type SearchItem = { title: string; description: string; url: string; type: string; isHtml?: boolean };
+    const jsonIndex = (window as any).__searchIndex as SearchItem[];
 
     const modal = document.getElementById('search-modal')!;
     const backdrop = document.getElementById('search-backdrop')!;
@@ -340,7 +340,37 @@ const searchIndex = [
       Plugin: 'bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300',
       App:    'bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300',
       Blog:   'bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-300',
+      Page:   'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300',
     };
+
+    // Pagefind: loaded lazily on first search modal open
+    let pagefind: { search: (q: string) => Promise<{ results: Array<{ data: () => Promise<{ url: string; meta: Record<string, string>; excerpt: string }> }> }> } | null = null;
+    let pagefindLoading = false;
+
+    async function initPagefind() {
+      if (pagefind || pagefindLoading) return;
+      pagefindLoading = true;
+      try {
+        // Use Function constructor so Vite/Rollup doesn't try to resolve at build time.
+        // The file only exists after `pnpm build`; in dev mode the import throws → JSON fallback.
+        const dynamicImport = new Function('url', 'return import(url)');
+        pagefind = await dynamicImport('/pagefind/pagefind.js');
+      } catch {
+        pagefind = null;
+      }
+      pagefindLoading = false;
+    }
+
+    function typeFromUrl(url: string): string {
+      if (/^\/plugins\/.+\/$/.test(url)) return 'Plugin';
+      if (/^\/apps\/.+\/$/.test(url)) return 'App';
+      if (/^\/blog\/(?!tag\/).+\/$/.test(url)) return 'Blog';
+      return 'Page';
+    }
+
+    function cleanTitle(title: string): string {
+      return title.replace(/\s*[-–|]\s*Open WP Club\s*$/i, '').trim();
+    }
 
     let selectedIndex = -1;
 
@@ -348,6 +378,7 @@ const searchIndex = [
       modal.classList.remove('hidden');
       document.body.style.overflow = 'hidden';
       setTimeout(() => input.focus(), 50);
+      initPagefind(); // start loading in background
     }
 
     function closeSearch() {
@@ -382,14 +413,17 @@ const searchIndex = [
         li.setAttribute('role', 'option');
         li.setAttribute('aria-selected', 'false');
         li.dataset.index = String(i);
+        const descHtml = item.isHtml
+          ? `<span class="block text-xs text-gray-500 dark:text-gray-400 line-clamp-1 mt-0.5 [&_mark]:bg-yellow-100 [&_mark]:dark:bg-yellow-900/40 [&_mark]:text-yellow-800 [&_mark]:dark:text-yellow-300 [&_mark]:rounded-sm [&_mark]:px-0.5">${item.description}</span>`
+          : `<span class="block text-xs text-gray-500 dark:text-gray-400 truncate mt-0.5">${item.description}</span>`;
         li.innerHTML = `
           <a href="${item.url}" class="flex items-start gap-3 px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors group" tabindex="-1">
-            <span class="mt-0.5 shrink-0 inline-flex items-center px-2 py-0.5 rounded text-xs font-medium ${TYPE_COLORS[item.type] ?? ''}">
+            <span class="mt-0.5 shrink-0 inline-flex items-center px-2 py-0.5 rounded text-xs font-medium ${TYPE_COLORS[item.type] ?? TYPE_COLORS.Page}">
               ${item.type}
             </span>
             <span class="min-w-0">
               <span class="block text-sm font-medium text-gray-900 dark:text-white group-hover:text-blue-500 truncate">${item.title}</span>
-              <span class="block text-xs text-gray-500 dark:text-gray-400 truncate mt-0.5">${item.description}</span>
+              ${descHtml}
             </span>
           </a>`;
         frag.appendChild(li);
@@ -397,10 +431,26 @@ const searchIndex = [
       results.appendChild(frag);
     }
 
-    function search(query: string) {
+    async function search(query: string) {
       if (!query.trim()) { renderResults([]); return; }
+
+      if (pagefind) {
+        const res = await pagefind.search(query);
+        const data = await Promise.all(res.results.slice(0, 8).map((r) => r.data()));
+        const items: SearchItem[] = data.map((d) => ({
+          title: cleanTitle(d.meta?.title ?? ''),
+          description: d.excerpt ?? '',
+          url: d.url,
+          type: typeFromUrl(d.url),
+          isHtml: true,
+        }));
+        renderResults(items);
+        return;
+      }
+
+      // JSON fallback (dev mode or before first build)
       const q = query.toLowerCase();
-      const matched = index.filter(
+      const matched = jsonIndex.filter(
         (item) => item.title.toLowerCase().includes(q) || item.description.toLowerCase().includes(q)
       );
       renderResults(matched);
@@ -418,7 +468,7 @@ const searchIndex = [
       active?.scrollIntoView({ block: 'nearest' });
     }
 
-    input.addEventListener('input', debounce(() => search(input.value), 100));
+    input.addEventListener('input', debounce(() => { search(input.value); }, 150));
 
     input.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowDown') { e.preventDefault(); moveSelection(1); }
