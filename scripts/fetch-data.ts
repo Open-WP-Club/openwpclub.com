@@ -50,6 +50,22 @@ const AI_LOGINS = new Set(['claude', 'copilot', 'github-copilot', 'devin-ai', 'c
 
 interface Sponsor { login: string; name: string; url: string; avatarUrl: string; tier: string; description: string; since: string; }
 
+interface SponsorNode {
+  sponsorEntity: { login: string; name: string; avatarUrl: string; url: string } | null;
+  tier: { monthlyPriceInDollars: number; name: string } | null;
+  createdAt: string;
+}
+
+interface SponsorsGqlResponse {
+  data?: {
+    organization?: {
+      sponsorshipsAsMaintainer?: {
+        nodes?: SponsorNode[];
+      };
+    };
+  };
+}
+
 function loadSponsorLogins(): Set<string> {
   try {
     const sponsors: Sponsor[] = JSON.parse(readFileSync(resolve(DATA_DIR, 'sponsors.json'), 'utf-8'));
@@ -360,7 +376,7 @@ async function main() {
       signal: AbortSignal.timeout(15000),
     });
     if (gqlRes.ok) {
-      const gqlData = await gqlRes.json() as { data?: { organization?: { sponsorshipsAsMaintainer?: { nodes?: Array<{ sponsorEntity: { login: string; name: string; avatarUrl: string; url: string } | null; tier: { monthlyPriceInDollars: number; name: string } | null; createdAt: string }> } } } } };
+      const gqlData = await gqlRes.json() as SponsorsGqlResponse;
       const nodes = gqlData.data?.organization?.sponsorshipsAsMaintainer?.nodes ?? [];
       if (nodes.length > 0) {
         const sponsors: Sponsor[] = nodes

@@ -26,6 +26,7 @@
 <ul>
 <li><strong>Modern Stack</strong>: PHP 8.2+, WordPress 6.4+</li>
 <li><strong>WooCommerce HPOS</strong>: Compatible with High-Performance Order Storage</li>
+<li><strong>WooCommerce Blocks</strong>: Works with both classic and Blocks-based My Account pages</li>
 <li><strong>REST API</strong>: Modern endpoint for account deletion</li>
 <li><strong>Vanilla JavaScript</strong>: No jQuery dependency</li>
 <li><strong>Simplified UX</strong>: Single-step password confirmation, integrated account details placement</li>
@@ -34,8 +35,8 @@
 <h2>Requirements</h2>
 <ul>
 <li><strong>PHP</strong>: 8.2 or higher</li>
-<li><strong>WordPress</strong>: 6.4 or higher</li>
-<li><strong>WooCommerce</strong>: 7.0+ (optional)</li>
+<li><strong>WordPress</strong>: 6.4 or higher (tested up to 6.8)</li>
+<li><strong>WooCommerce</strong>: 7.0+ (optional, tested up to 9.9)</li>
 </ul>
 <h2>Installation</h2>
 <ol>
@@ -110,6 +111,13 @@ wp user-self-delete log --limit=20
 # Export deletion log
 wp user-self-delete export deletions-2024.csv
 </code></pre>
+<p><strong>View Archived Users:</strong></p>
+<ul>
+<li>Go to <strong>Settings &gt; User Self Delete</strong></li>
+<li>Scroll to the <strong>"Archived Users"</strong> section</li>
+<li>Shows all soft-deleted users with deletion date and scheduled permanent removal date</li>
+<li>Paginated at 20 users per page</li>
+</ul>
 <h2>How It Works</h2>
 <h3>Soft Delete Process</h3>
 <ol>

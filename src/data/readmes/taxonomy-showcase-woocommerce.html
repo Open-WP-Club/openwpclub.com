@@ -1,0 +1,78 @@
+<h1>WooCommerce Taxonomy Blocks</h1>
+<p>Two Gutenberg blocks for displaying WooCommerce taxonomy terms — categories, tags, brands, attributes — as a responsive grid or a hero-style showcase.</p>
+<h2>Blocks</h2>
+<h3>Taxonomy Grid</h3>
+<p>Displays taxonomy terms as a card grid with image, name, and product count. Configurable columns, aspect ratio, hover effects, and card styling.</p>
+<h3>Taxonomy Showcase</h3>
+<p>Hero-style panels — large featured image with overlay text and a call-to-action button. Optionally shows a product strip below each term. Suited for brands and collections.</p>
+<h2>Requirements</h2>
+<ul>
+<li>WordPress 6.3+</li>
+<li>WooCommerce (any recent version)</li>
+<li>PHP 8.0+</li>
+</ul>
+<h2>Installation</h2>
+<ol>
+<li>Download the ZIP from the <a href="../../releases/latest">latest release</a></li>
+<li>In WordPress admin: <strong>Plugins → Add New → Upload Plugin</strong></li>
+<li>Activate the plugin</li>
+</ol>
+<h2>Term Images</h2>
+<p><code>product_cat</code> uses WooCommerce's built-in thumbnail field.</p>
+<p>For all other taxonomies (tags, attributes, custom), the plugin adds an <strong>Image</strong> field to the term edit screen. If no image is set, it automatically falls back to the featured image of the first product in that term.</p>
+<p>Fallback chain:</p>
+<pre><code>WooCommerce thumbnail_id → custom wtb_image_id meta → first product's featured image → placeholder
+</code></pre>
+<h2>Customization</h2>
+<h3>Filters</h3>
+<pre><code class="language-php">// Modify query args for Taxonomy Grid
+add_filter( 'woo_taxonomy_blocks_grid_query_args', function ( $args, $attributes ) {
+    return $args;
+}, 10, 2 );
+
+// Modify query args for Taxonomy Showcase
+add_filter( 'woo_taxonomy_blocks_showcase_query_args', function ( $args, $attributes ) {
+    return $args;
+}, 10, 2 );
+
+// Modify individual term data before rendering (Grid)
+add_filter( 'woo_taxonomy_blocks_grid_term', function ( $term, $attributes ) {
+    return $term;
+}, 10, 2 );
+
+// Modify individual term data before rendering (Showcase)
+add_filter( 'woo_taxonomy_blocks_showcase_term', function ( $term, $attributes ) {
+    return $term;
+}, 10, 2 );
+</code></pre>
+<h3>CSS Custom Properties</h3>
+<p>Both blocks expose CSS custom properties on the wrapper element, making it easy to override styles from a theme:</p>
+<pre><code class="language-css">/* Taxonomy Grid */
+.wp-block-woo-taxonomy-blocks-taxonomy-grid {
+    --wtb-columns: 3;
+    --wtb-aspect-ratio: 4/3;
+    --wtb-border-radius: 8px;
+    --wtb-gap: 1.5rem;
+    --wtb-placeholder-color: #f0f0f0;
+}
+
+/* Taxonomy Showcase */
+.wp-block-woo-taxonomy-blocks-taxonomy-showcase {
+    --wtb-overlay-color: #000;
+    --wtb-overlay-opacity: 0.4;
+    --wtb-text-color: #fff;
+    --wtb-border-radius: 12px;
+    --wtb-gap: 2rem;
+    --wtb-min-height: 400px;
+}
+</code></pre>
+<h2>Development</h2>
+<pre><code class="language-bash">pnpm install
+pnpm start    # watch mode
+pnpm build    # production build
+</code></pre>
+<h3>Releasing</h3>
+<p>Push a version tag — GitHub Actions builds the plugin and attaches a ready-to-install ZIP to the release automatically:</p>
+<pre><code class="language-bash">git tag 1.2.0
+git push origin 1.2.0
+</code></pre>

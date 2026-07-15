@@ -1,0 +1,288 @@
+<h1>Agent Ready for WordPress</h1>
+<p>Scan your WordPress site for AI agent readiness and publish the discovery files that AI agents, crawlers, and agentic frameworks need to interact with your content.</p>
+<p><img src="https://img.shields.io/badge/WordPress-6.4%2B-blue?logo=wordpress" alt="WordPress" />
+<img src="https://img.shields.io/badge/PHP-8.1%2B-purple?logo=php" alt="PHP" />
+<img src="https://img.shields.io/badge/License-GPL%20v2-green" alt="License" />
+<img src="https://img.shields.io/github/v/release/Open-WP-Club/agentready-wp" alt="GitHub release" /></p>
+<h2>Features</h2>
+<h3>AI Readiness Scanner</h3>
+<ul>
+<li><strong>20+ Automated Checks</strong>: Scans your live site across six categories — Discoverability, Content Accessibility, Bot Access Control, Protocol Discovery, SEO &amp; Metadata, and Agentic Commerce</li>
+<li><strong>Weighted Score (0–100)</strong>: Aggregates check results into a single readiness score with a clear label (Not Ready → Improving → Ready)</li>
+<li><strong>Smart Fix Guidance</strong>: Each failed check shows exactly what's missing and how to fix it — internal link, plugin recommendation, or external resource</li>
+<li><strong>1-Hour Result Cache</strong>: Scan results are cached in a transient to avoid hammering your own site; a "Re-scan Now" button forces a fresh run</li>
+</ul>
+<h3>Bot Access Control</h3>
+<ul>
+<li><strong>AI Bot Rules Editor</strong>: Add <code>User-agent</code> rules for GPTBot, ClaudeBot, ChatGPT-User, Google-Extended, PerplexityBot, and more directly from the admin</li>
+<li><strong>One-Click Template</strong>: Insert a pre-built template covering all major AI crawlers with a single button click</li>
+<li><strong>Content-Signal Directives</strong>: Declare your site's preferences for AI training, search indexing, and AI input use (<code>ai-train</code>, <code>search</code>, <code>ai-input</code>)</li>
+<li><strong>Non-Destructive Appending</strong>: Additions are appended via the WordPress <code>robots_txt</code> filter — your existing <code>robots.txt</code> is never overwritten</li>
+</ul>
+<h3>Protocol Discovery Files</h3>
+<ul>
+<li><strong>MCP Server Card</strong>: Publish a Model Context Protocol server card at <code>/.well-known/mcp/server-card.json</code> with auto-generated defaults from your site data</li>
+<li><strong>Agent Skills Index</strong>: Publish an Agent Skills discovery index at <code>/.well-known/agent-skills/index.json</code></li>
+<li><strong>A2A Agent Card</strong>: Publish a Google Agent-to-Agent card at <code>/.well-known/agent.json</code></li>
+<li><strong>WordPress-Native Serving</strong>: All files are stored in <code>wp_options</code> and served via WordPress rewrite rules — no physical files, no filesystem permissions required</li>
+<li><strong>JSON Editor with Validation</strong>: Edit the raw JSON in the admin; invalid JSON is rejected with a clear error before saving</li>
+</ul>
+<h3>SEO &amp; Metadata Checks</h3>
+<ul>
+<li><strong>Open Graph Detection</strong>: Checks for <code>og:</code> meta tags on your homepage and links to recommended SEO plugins if missing</li>
+<li><strong>Schema.org / JSON-LD Detection</strong>: Verifies structured data is present and links to Yoast SEO, Rank Math, or Schema Pro if not</li>
+<li><strong>Plugin-Aware Recommendations</strong>: Generates direct WordPress plugin install links so you can act on recommendations in one click</li>
+</ul>
+<h3>llms.txt Support</h3>
+<ul>
+<li><strong>Detection</strong>: Checks whether <code>/llms.txt</code> exists and has meaningful content</li>
+<li><strong>Recommendation</strong>: Points directly to the <a href="https://github.com/Open-WP-Club/llms-txt-for-wp">llms.txt for WP</a> plugin for generation — no duplication of solved problems</li>
+</ul>
+<h2>Checks Reference</h2>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Check</th>
+<th>Weight</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Discoverability</td>
+<td>robots.txt</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Discoverability</td>
+<td>Sitemap</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Discoverability</td>
+<td>llms.txt</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Discoverability</td>
+<td>Link Headers</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Content Accessibility</td>
+<td>Markdown Negotiation</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Bot Access Control</td>
+<td>AI Bot Rules</td>
+<td>8</td>
+</tr>
+<tr>
+<td>Bot Access Control</td>
+<td>Content Signals</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Protocol Discovery</td>
+<td>MCP Server Card</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Protocol Discovery</td>
+<td>Agent Skills</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Protocol Discovery</td>
+<td>A2A Agent Card</td>
+<td>8</td>
+</tr>
+<tr>
+<td>Protocol Discovery</td>
+<td>OAuth / OIDC Discovery</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Protocol Discovery</td>
+<td>OAuth Protected Resource</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Protocol Discovery</td>
+<td>Auth.md</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Protocol Discovery</td>
+<td>API Catalog</td>
+<td>4</td>
+</tr>
+<tr>
+<td>SEO &amp; Metadata</td>
+<td>Open Graph / Twitter Cards</td>
+<td>6</td>
+</tr>
+<tr>
+<td>SEO &amp; Metadata</td>
+<td>Schema.org / JSON-LD</td>
+<td>8</td>
+</tr>
+<tr>
+<td>Agentic Commerce</td>
+<td>x402</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Agentic Commerce</td>
+<td>MPP</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Agentic Commerce</td>
+<td>UCP</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Agentic Commerce</td>
+<td>ACP</td>
+<td>2</td>
+</tr>
+</tbody></table>
+<h2>Requirements</h2>
+<ul>
+<li>WordPress 6.4 or higher</li>
+<li>PHP 8.1 or higher</li>
+</ul>
+<h2>Installation</h2>
+<h3>Method 1: WordPress Admin (Recommended)</h3>
+<ol>
+<li>Download the latest release ZIP from <a href="https://github.com/Open-WP-Club/agentready-wp/releases">GitHub Releases</a></li>
+<li>Go to <strong>Plugins &gt; Add New &gt; Upload Plugin</strong></li>
+<li>Choose the downloaded ZIP file and click <strong>Install Now</strong></li>
+<li>Click <strong>Activate Plugin</strong></li>
+</ol>
+<h3>Method 2: Manual Installation</h3>
+<ol>
+<li>Download and extract the plugin files</li>
+<li>Upload the <code>agentready-wp</code> folder to <code>/wp-content/plugins/</code></li>
+<li>Go to <strong>Plugins</strong> in your WordPress admin</li>
+<li>Find "Agent Ready" and click <strong>Activate</strong></li>
+</ol>
+<h3>Method 3: Git Clone</h3>
+<pre><code class="language-bash">cd /path/to/wordpress/wp-content/plugins/
+git clone https://github.com/Open-WP-Club/agentready-wp.git agentready-wp
+</code></pre>
+<p>After activating the plugin, visit <strong>Settings &gt; Permalinks</strong> and click <strong>Save Changes</strong> to flush rewrite rules — this ensures the <code>/.well-known/</code> endpoints start responding immediately.</p>
+<h2>Usage Guide</h2>
+<h3>Getting Started</h3>
+<ol>
+<li><strong>Activate the plugin</strong> — rewrite rules are registered automatically on activation</li>
+<li><strong>Open Agent Ready</strong> in the WordPress admin sidebar</li>
+<li><strong>Read the Dashboard</strong> — the scan runs automatically on first load</li>
+<li><strong>Work through the Fail items</strong> — start with the highest-weight checks for maximum score improvement</li>
+</ol>
+<h3>Dashboard</h3>
+<p>The dashboard shows your overall score and a table of every check grouped by category. Each row includes:</p>
+<ul>
+<li><strong>Status badge</strong> — Pass (green), Fail (red), Warning (yellow), N/A (grey)</li>
+<li><strong>Check name</strong></li>
+<li><strong>Description</strong> — what was found (or not found)</li>
+<li><strong>Fix action</strong> — internal link, plugin install link, or external documentation</li>
+</ul>
+<p>Click <strong>Re-scan Now</strong> to force a fresh scan after making changes.</p>
+<h3>robots.txt Rules</h3>
+<p>Go to <strong>Agent Ready &gt; robots.txt Rules</strong> to manage AI-specific additions:</p>
+<ol>
+<li>Click <strong>Insert AI Bot Template</strong> to insert a ready-made block covering all major AI crawlers</li>
+<li>Edit the <code>Allow</code> / <code>Disallow</code> rules as needed for your site's policy</li>
+<li>Add <code>Content-Signal:</code> directives to declare your AI content preferences</li>
+<li>Click <strong>Save</strong> — changes appear in your live <code>robots.txt</code> immediately</li>
+<li>Click <strong>View robots.txt ↗</strong> to verify the output</li>
+</ol>
+<h3>MCP Server Card / Agent Skills / A2A Agent Card</h3>
+<p>Go to the relevant submenu under <strong>Agent Ready</strong>:</p>
+<ol>
+<li>The editor is pre-populated with an auto-generated template from your site's name, description, and URL</li>
+<li>Edit the JSON to match your site's actual capabilities</li>
+<li>Click <strong>Save &amp; Publish</strong> — the endpoint goes live instantly</li>
+<li>Verify by clicking <strong>View live ↗</strong> next to the endpoint path</li>
+</ol>
+<p>To take an endpoint offline, click <strong>Delete</strong> — the URL returns 404 until you publish again.</p>
+<h2>Technical Details</h2>
+<h3>How Discovery Files Are Served</h3>
+<p>Protocol discovery files (<code>/.well-known/*</code> and <code>/llms.txt</code>) are served via WordPress rewrite rules, not physical files on disk. Content is stored in <code>wp_options</code> and output with the correct <code>Content-Type</code> headers through <code>template_redirect</code>. This means:</p>
+<ul>
+<li>No filesystem write permissions required</li>
+<li>Files update instantly when saved in the admin</li>
+<li>Files disappear instantly when deleted</li>
+<li>Works behind any caching layer that respects query vars</li>
+</ul>
+<h3>Scan Mechanism</h3>
+<p>The scanner uses the WordPress HTTP API (<code>wp_remote_get</code>) to make requests against the site's own URLs. This means it tests the site exactly as an external agent would see it — through the full WordPress request stack, with any active caching, CDN, or security rules in effect.</p>
+<p>Results are stored in a transient for one hour. Forced re-scans delete the transient before running.</p>
+<h3>robots.txt Integration</h3>
+<p>The plugin hooks into WordPress's built-in <code>robots_txt</code> filter at priority 20. This means it appends after WordPress core and after any SEO plugin that also hooks into <code>robots_txt</code>. Your existing rules are never modified.</p>
+<h2>Development</h2>
+<h3>Local Setup</h3>
+<pre><code class="language-bash"># Clone the repository
+git clone https://github.com/Open-WP-Club/agentready-wp.git
+
+# Install in your local WordPress plugins directory
+cp -r agentready-wp /path/to/wordpress/wp-content/plugins/
+
+# Activate via WP-CLI
+wp plugin activate agentready-wp
+
+# Flush rewrite rules
+wp rewrite flush
+</code></pre>
+<h3>File Structure</h3>
+<pre><code>agentready.php                  Main plugin file, activation hooks
+includes/
+  class-scanner.php             All check logic, transient caching
+  class-well-known.php          .well-known/ endpoint manager
+admin/
+  class-admin.php               Admin menus, form handlers, robots filter
+  views/
+    dashboard.php               Scan results table + score card
+    robots.php                  robots.txt additions editor
+    endpoint.php                Generic .well-known JSON editor
+assets/
+  css/admin.css                 Admin styles
+  js/admin.js                   JSON auto-formatter
+</code></pre>
+<h2>Contributing</h2>
+<p>We welcome contributions from the community.</p>
+<h3>Reporting Issues</h3>
+<ol>
+<li>Check existing <a href="https://github.com/Open-WP-Club/agentready-wp/issues">issues</a></li>
+<li>Create a new issue with detailed information</li>
+<li>Include WordPress version, PHP version, and any error logs</li>
+<li>Describe the expected vs actual behaviour</li>
+</ol>
+<h3>Submitting Pull Requests</h3>
+<ol>
+<li>Fork the repository</li>
+<li>Create a feature branch: <code>git checkout -b feature/your-feature</code></li>
+<li>Make your changes following WordPress coding standards</li>
+<li>Test on a clean WordPress installation</li>
+<li>Commit with a clear message: <code>git commit -m 'Add your feature'</code></li>
+<li>Push to your branch: <code>git push origin feature/your-feature</code></li>
+<li>Open a Pull Request with a description of what changed and why</li>
+</ol>
+<h2>License</h2>
+<p>This project is licensed under the GNU General Public License v2.0 — see the <a href="LICENSE">LICENSE</a> file for details.</p>
+<h2>Support</h2>
+<ul>
+<li><a href="https://github.com/Open-WP-Club/agentready-wp/issues">GitHub Issues</a> — bug reports and feature requests</li>
+<li><a href="https://github.com/Open-WP-Club/agentready-wp/discussions">GitHub Discussions</a> — questions and community help</li>
+</ul>
+<h3>Before Asking for Help</h3>
+<ol>
+<li><strong>Update to the latest version</strong> — many issues are resolved in updates</li>
+<li><strong>Flush rewrite rules</strong> — go to Settings &gt; Permalinks and click Save Changes after any activation/deactivation</li>
+<li><strong>Check existing issues</strong> — your question may already be answered</li>
+<li><strong>Test with a default theme</strong> — rule out theme conflicts</li>
+<li><strong>Disable other plugins</strong> — identify plugin conflicts</li>
+<li><strong>Provide system info</strong> — WordPress version, PHP version, and active plugins list</li>
+</ol>
