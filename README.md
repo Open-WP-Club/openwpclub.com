@@ -6,21 +6,21 @@ The community website for [Open WP Club](https://openwpclub.com) - free, open-so
 
 ### Prerequisites
 
-- Node.js (version 18 or higher)
-- npm
+- Node.js (version 22 or higher)
+- pnpm
 
 ### Installation
 
 ```bash
 git clone https://github.com/Open-WP-Club/www.git
 cd www
-npm install
+pnpm install
 ```
 
 ### Development
 
 ```bash
-npm run dev
+pnpm dev
 ```
 
 The site will be available at `http://localhost:4321`.
@@ -28,39 +28,39 @@ The site will be available at `http://localhost:4321`.
 ### Build
 
 ```bash
-npm run build
-npm run preview   # preview the production build locally
+pnpm build
+pnpm preview   # preview the production build locally
 ```
 
 ## Scripts
 
 | Command | Description |
 |---|---|
-| `npm run dev` | Start development server |
-| `npm run build` | Build for production (fetches latest data from GitHub) |
-| `npm run preview` | Preview production build locally |
-| `npm run fetch-data` | Fetch plugin + contributor data from GitHub and print a summary |
-| `npm run refresh` | Fetch data summary + build in one step |
-| `npm run test` | Run unit tests |
+| `pnpm dev` | Start development server |
+| `pnpm build` | Build for production (fetches latest data from GitHub) |
+| `pnpm preview` | Preview production build locally |
+| `pnpm fetch-data` | Fetch plugin + contributor data from GitHub and print a summary |
+| `pnpm refresh` | Fetch data summary + build in one step |
+| `pnpm test` | Run unit tests |
 
 ### Updating plugin data
 
 Plugin and contributor data is fetched from GitHub at build time. To refresh:
 
 ```bash
-npm run refresh
+pnpm refresh
 ```
 
 Or to check the data first without building:
 
 ```bash
-npm run fetch-data
+pnpm fetch-data
 ```
 
 For higher GitHub API rate limits (60/hr without, 5000/hr with):
 
 ```bash
-GITHUB_TOKEN=ghp_xxx npm run refresh
+GITHUB_TOKEN=ghp_xxx pnpm refresh
 ```
 
 ## Project Structure

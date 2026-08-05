@@ -10,12 +10,7 @@ Open WP Club started with plugins, but we're not stopping there. Here's what we'
 
 ## More plugins
 
-We'll keep building focused WordPress plugins that solve real problems. Our pipeline includes tools for:
-
-- **WooCommerce automation** - Order processing, inventory sync, and reporting
-- **Security hardening** - Login protection, file integrity monitoring, and audit logging
-- **Performance** - Image optimization, caching helpers, and database cleanup
-- **Admin experience** - Dashboard widgets, bulk actions, and workflow tools
+We'll keep building focused WordPress plugins that solve real problems. Right now the pipeline covers WooCommerce automation (order processing, inventory sync, reporting), security hardening (login protection, file integrity monitoring, audit logging), performance tools (image optimization, caching helpers, database cleanup), and a handful of admin experience improvements like dashboard widgets and bulk actions.
 
 If you have a plugin idea, [open an issue](https://github.com/Open-WP-Club/.github/issues/new) or suggest it in Discord.
 
@@ -41,11 +36,6 @@ We're continuing to improve openwpclub.com with better search, filtering, and co
 
 ## How to get involved
 
-Everything we build is open source from day one. The best way to influence what we build is to contribute:
+Everything we build is open source from day one, and the best way to influence what we build is to show up. Join [Discord](/join/) for real-time discussion, star or watch the repos you care about on [GitHub](https://github.com/Open-WP-Club), open issues for bugs and ideas, or just submit a PR - first-timers welcome.
 
-- **Join [Discord](/join/)** for real-time discussion
-- **Star and watch** repos you're interested in on [GitHub](https://github.com/Open-WP-Club)
-- **Open issues** for bugs, features, or ideas
-- **Submit PRs** - first-timers welcome
-
-We don't have a timeline because we don't have deadlines. We ship when things are ready. But we're actively working on all of the above, and you're welcome to help.
+We don't have a timeline because we don't have deadlines - we ship when things are ready. But we're actively working on all of the above, and you're welcome to help.

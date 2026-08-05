@@ -15,11 +15,11 @@ const categories = [
   {
     emoji: '🌐',
     title: 'Hosting & CDN',
-    description: 'Zero-cost, carbon-aware infrastructure that scales without bills.',
+    description: 'Zero-cost infrastructure that scales without bills.',
     tools: [
-      { name: 'Cloudflare Pages', note: 'Static hosting - free tier, global edge network' },
+      { name: 'Cloudflare Workers', note: 'Site hosting - free tier, global edge network' },
       { name: 'Cloudflare DNS', note: 'DNS and DDoS protection - free' },
-      { name: 'GitHub Pages', note: 'Fallback / secondary hosting - free' },
+      { name: 'Cloudflare Workers Builds', note: 'Git-connected builds and deploys on every push - free' },
     ],
   },
   {
@@ -28,7 +28,7 @@ const categories = [
     description: 'Everything lives in the open, built and tested automatically.',
     tools: [
       { name: 'GitHub', note: 'Source control, issues, project boards - free for open source' },
-      { name: 'GitHub Actions', note: 'CI/CD pipelines, automated builds and deploys - free for public repos' },
+      { name: 'GitHub Actions', note: 'CI/CD for plugin repos - release builds and packaging, free for public repos' },
       { name: 'Git', note: 'Version control - open source' },
     ],
   },
@@ -153,7 +153,7 @@ const stats = [
                 If we can run an entire open-source organization for free, so can you. We deliberately choose tools that don't lock us (or our contributors) into paid plans, vendor lock-in, or proprietary ecosystems.
               </p>
               <p>
-                This isn't about being cheap - it's about proving that good software doesn't require a budget. Every dollar we don't spend on infrastructure is a dollar we never need to extract from our users.
+                Really, it's about proving good software doesn't require a budget. Every dollar we don't spend on infrastructure is a dollar we never need to claw back from our users.
               </p>
             </div>
           </div>

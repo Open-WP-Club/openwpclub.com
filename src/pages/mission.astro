@@ -93,13 +93,13 @@ const softwareTypes = [
                 The WordPress ecosystem has a pattern: someone builds a useful plugin, makes the basic version free, and locks the features people actually need behind a $99/year subscription. A real site needs form handling, SEO tools, a cache layer, a backup solution, security monitoring, maybe a WooCommerce extension or two. Stack 10–15 of those "pro" licences and you're spending well over a thousand dollars a year - before you've paid for hosting or a developer.
               </p>
               <p>
-                That cost problem hits small businesses and freelancers the hardest. A local shop owner or a developer building sites for small clients simply doesn't have that budget. So they look for alternatives - and the internet is full of them. Nulled plugins, pirated copies, sketchy repositories that bundle "free" versions of paid tools. The plugin works, until it doesn't: until it quietly phones home, injects spam links, or opens a backdoor. This is one of the real reasons WordPress has a reputation for being insecure - not because the core is bad, but because the ecosystem's pricing pushed people toward unsafe sources.
+                That cost problem hits small businesses and freelancers the hardest. A local shop owner or a developer building sites for small clients simply doesn't have that budget. So they look for alternatives - and the internet is full of them. Nulled plugins, pirated copies, sketchy repositories that bundle "free" versions of paid tools. The plugin works, until it doesn't: until it quietly phones home, injects spam links, or opens a backdoor. WordPress's reputation for being insecure has a lot less to do with its core code than with a pricing model that pushes people toward unsafe sources.
               </p>
               <p>
                 There's a third side to this that rarely gets talked about: abandoned software. A developer builds a great plugin, charges a fair price, then moves on - no updates, no security patches, no handoff. The plugin keeps working until WordPress updates something and quietly breaks it, or until a vulnerability is discovered with no one left to fix it. Paid doesn't mean maintained.
               </p>
               <p>
-                We think all of this is backwards. WordPress itself is open source. The software built around it should follow the same principle - not as an ideological position, but as a practical one. Free, open, and properly maintained software is simply safer for everyone.
+                We think all of this is backwards. WordPress itself is open source, and we think the software built around it should follow the same principle. It's a practical stance more than an ideological one: free, open, properly maintained software is just safer for everyone involved.
               </p>
             </div>
           </div>
@@ -126,7 +126,7 @@ const softwareTypes = [
           <!-- Our Values -->
           <div>
             <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white tracking-tight mb-2">Our promises</h2>
-            <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-8">Four commitments we make to every user. These aren't aspirations or temporary strategies - they're permanent.</p>
+            <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-8">Four permanent commitments we make to every user.</p>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {values.map((value) => (
                 <div class="bg-gradient-to-br from-blue-50 via-white to-blue-50 dark:from-blue-950/30 dark:via-gray-800 dark:to-blue-950/30 rounded-xl p-6 shadow-sm border border-blue-100 dark:border-blue-900/50">
@@ -150,10 +150,10 @@ const softwareTypes = [
                 Too many WordPress plugins ship with code that has nothing to do with the plugin's actual purpose. Auto-updaters, telemetry, upsell nag screens, admin notices begging for reviews, bundled analytics, "phone home" license checkers - none of that belongs in a plugin that's supposed to solve a specific problem.
               </p>
               <p>
-                Our plugins don't include any of that. No custom auto-update mechanisms, no tracking scripts, no third-party marketing libraries, no hidden API calls to external servers. If a feature doesn't directly serve the plugin's purpose, it doesn't ship. WordPress already handles updates through the core update system - there's no reason for a plugin to reinvent that.
+                Our plugins don't include any of that. No custom auto-updaters, no tracking scripts, no third-party marketing libraries calling home. If a feature doesn't directly serve the plugin's purpose, it doesn't ship. WordPress already handles updates through the core update system, so there's no reason for a plugin to reinvent that.
               </p>
               <p>
-                This isn't just a philosophy - it's a practical commitment to keeping our plugins lightweight, fast, and respectful of your server. Every line of code we ship does exactly one thing: solve the problem the plugin was built for. Nothing more.
+                It's a practical commitment, really - keep the code lightweight, fast, and respectful of the server it's running on. Every line we ship solves the problem the plugin was built for, and nothing else.
               </p>
             </div>
           </div>
@@ -163,10 +163,10 @@ const softwareTypes = [
             <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white tracking-tight">The bigger picture</h2>
             <div class="mt-6 space-y-5 text-gray-600 dark:text-gray-400 leading-relaxed">
               <p>
-                WordPress powers over 40% of the web. That's not because of any single company - it's because thousands of developers, designers, and contributors built an ecosystem around an open-source idea. We're part of that tradition.
+                WordPress powers over 40% of the web. No single company owns it - thousands of developers, designers, and contributors built that ecosystem around an open-source idea. We're part of that tradition.
               </p>
               <p>
-                Our goal isn't to be the biggest or the most popular. It's to build WordPress software the right way: open, free, focused, and maintained. Whether that's a plugin that fixes one annoying problem, a desktop app that saves store owners time, or a CLI tool that makes deployments easier - if the ecosystem needs it and nobody's doing it properly, we'll step in.
+                We're not trying to be the biggest or the most popular - we just want to build WordPress software the right way: open, free, focused, and maintained. A plugin that fixes one annoying problem, a desktop app that saves store owners time, a CLI tool that makes deployments easier - if the ecosystem needs it and nobody's doing it properly, we'll step in.
               </p>
               <p>
                 We don't have a business model because we're not a business. We're a community of people who use WordPress every day and want the tools around it to be better. GitHub sponsors, code contributions, bug reports, Discord help - that's what keeps us going. No investors, no growth targets, no pressure to monetize what should be free.

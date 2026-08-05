@@ -10,28 +10,22 @@ If you've used WordPress for any length of time, you know the pattern: install a
 
 ## The freemium trap
 
-Freemium plugins aren't really free - they're demos. The free version exists to funnel you toward the paid version. Features are deliberately withheld, not because they're expensive to maintain, but because they're valuable enough to charge for.
+Freemium plugins are really demos with a free trial attached. The free version exists to funnel you toward the paid one, and the features get withheld less because they're expensive to maintain and more because they're worth enough to charge for.
 
-This creates a weird incentive: plugin developers are motivated to make the free version *just* useful enough to get installed, but not useful enough to be satisfying.
+That sets up a weird incentive: plugin developers end up optimizing the free version to be *just* useful enough to get installed, but not useful enough to actually satisfy you.
 
 ## Our approach
 
 At Open WP Club, every feature goes into the free version. There is no paid tier. There never will be.
 
-This isn't idealism - it's a design constraint that makes our software better:
-
-- **We build focused plugins.** Without upsells to fund feature bloat, we build plugins that solve one problem well.
-- **We ship faster.** No time spent on license validation, payment processing, or marketing funnels.
-- **Users trust us.** When people install our plugins, they know they're getting the complete tool.
+It's less about idealism and more a design constraint we've chosen because it makes the software better. Without upsells to fund, we build plugins that solve one problem well instead of chasing feature bloat. We skip license validation, payment processing, and marketing funnels entirely, which means we ship faster. And when someone installs one of our plugins, they know they're getting the whole thing - nothing held back for later.
 
 ## How we sustain it
 
 We keep infrastructure costs at $0 using free and open-source tools. Development time is contributed by community members who use these plugins daily. For dedicated maintenance, we accept [sponsorships](https://github.com/sponsors/Open-WP-Club).
 
-It's not a business model - it's a community model. And it works.
+Call it a community model rather than a business model. So far, it's held up.
 
 ## The WordPress ecosystem deserves better
 
-WordPress powers 40% of the web because it's open source. The plugin ecosystem should honor that same principle. We're not saying every developer should give their work away for free - but we are saying there should be a real free option for every common WordPress need.
-
-That's what we're building.
+WordPress powers 40% of the web because it's open source, and we think the plugin ecosystem should honor that same principle. Not every developer needs to give their work away for free - but there should be a real free option for every common WordPress need. That's what we're trying to build.

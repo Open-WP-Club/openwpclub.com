@@ -38,11 +38,6 @@ A maintainer will review your PR, usually within a few days. We might suggest ch
 
 ## Beyond code
 
-Not a developer? You can still contribute:
+Not a developer? You can still contribute. Found something broken? Open a GitHub issue. Notice a README or tutorial that's out of date? Fix it. Know your way around WordPress? Answer questions in Discord or write a blog post about what you've learned.
 
-- **Report bugs** - Found something broken? Open a GitHub issue
-- **Write documentation** - Help improve README files or tutorials
-- **Help in Discord** - Answer questions from other community members
-- **Write a blog post** - Share your WordPress knowledge with the community
-
-Every contribution matters. Welcome aboard.
+It all matters, and we mean that literally - most of what's in this org came from someone who started exactly where you are now.

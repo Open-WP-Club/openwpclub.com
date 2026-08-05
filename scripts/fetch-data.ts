@@ -429,7 +429,7 @@ async function main() {
   // Save ETag cache for next run
   saveCache();
 
-  const cats = pluginData.reduce((acc, p) => { const c = p.category as string; acc[c] = (acc[c] || 0) + 1; return acc; }, {} as Record<string, number>);
+  const cats = pluginData.reduce((acc: Record<string, number>, p) => { const c = p.category as string; acc[c] = (acc[c] || 0) + 1; return acc; }, {});
   console.log('=== Saved ===');
   console.log(`  src/data/plugins.json       (${cleanData.length} repos: ${Object.entries(cats).map(([k,v]) => `${v} ${k}s`).join(', ')})`);
   console.log(`  src/data/readmes/           (${cleanData.length} README HTML files)`);
