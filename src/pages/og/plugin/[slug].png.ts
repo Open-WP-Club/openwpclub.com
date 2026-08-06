@@ -2,6 +2,7 @@ import type { APIContext, GetStaticPaths } from 'astro';
 import { getCollection } from 'astro:content';
 import satori from 'satori';
 import { Resvg } from '@resvg/resvg-js';
+import sharp from 'sharp';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
@@ -173,8 +174,9 @@ export async function GET({ props }: APIContext) {
 
   const resvg = new Resvg(svg, { fitTo: { mode: 'width', value: 1200 } });
   const png = resvg.render().asPng();
+  const optimized = await sharp(png).png({ palette: true, quality: 90, compressionLevel: 9, effort: 8 }).toBuffer();
 
-  return new Response(new Uint8Array(png), {
+  return new Response(new Uint8Array(optimized), {
     headers: {
       'Content-Type': 'image/png',
       'Cache-Control': 'public, max-age=31536000, immutable',

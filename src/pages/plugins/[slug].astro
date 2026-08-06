@@ -108,7 +108,7 @@ const softwareSchema = {
 };
 ---
 
-<BaseLayout title={`${name} - Open WP Club`} description={description} ogType="article" ogImage={new URL(`/og/plugin/${plugin.id}.png`, Astro.site).toString()} jsonLd={softwareSchema}>
+<BaseLayout title={`${name} - Open WP Club`} description={description} ogType="website" ogImage={new URL(`/og/plugin/${plugin.id}.png`, Astro.site).toString()} jsonLd={softwareSchema}>
   <Breadcrumbs items={[{ label: 'Plugins', href: '/plugins/' }, { label: name }]} />
 
   <!-- Header -->

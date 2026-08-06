@@ -8,7 +8,8 @@ export default defineConfig({
   trailingSlash: 'always',
   integrations: [sitemap(), icon()],
   prefetch: {
-    defaultStrategy: 'viewport',
+    prefetchAll: true,
+    defaultStrategy: 'tap',
   },
   image: {
     layout: 'constrained',
