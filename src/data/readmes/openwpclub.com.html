@@ -3,21 +3,21 @@
 <h2>Quick Start</h2>
 <h3>Prerequisites</h3>
 <ul>
-<li>Node.js (version 18 or higher)</li>
-<li>npm</li>
+<li>Node.js (version 22 or higher)</li>
+<li>pnpm</li>
 </ul>
 <h3>Installation</h3>
 <pre><code class="language-bash">git clone https://github.com/Open-WP-Club/www.git
 cd www
-npm install
+pnpm install
 </code></pre>
 <h3>Development</h3>
-<pre><code class="language-bash">npm run dev
+<pre><code class="language-bash">pnpm dev
 </code></pre>
 <p>The site will be available at <code>http://localhost:4321</code>.</p>
 <h3>Build</h3>
-<pre><code class="language-bash">npm run build
-npm run preview   # preview the production build locally
+<pre><code class="language-bash">pnpm build
+pnpm preview   # preview the production build locally
 </code></pre>
 <h2>Scripts</h2>
 <table>
@@ -28,39 +28,39 @@ npm run preview   # preview the production build locally
 </tr>
 </thead>
 <tbody><tr>
-<td><code>npm run dev</code></td>
+<td><code>pnpm dev</code></td>
 <td>Start development server</td>
 </tr>
 <tr>
-<td><code>npm run build</code></td>
+<td><code>pnpm build</code></td>
 <td>Build for production (fetches latest data from GitHub)</td>
 </tr>
 <tr>
-<td><code>npm run preview</code></td>
+<td><code>pnpm preview</code></td>
 <td>Preview production build locally</td>
 </tr>
 <tr>
-<td><code>npm run fetch-data</code></td>
+<td><code>pnpm fetch-data</code></td>
 <td>Fetch plugin + contributor data from GitHub and print a summary</td>
 </tr>
 <tr>
-<td><code>npm run refresh</code></td>
+<td><code>pnpm refresh</code></td>
 <td>Fetch data summary + build in one step</td>
 </tr>
 <tr>
-<td><code>npm run test</code></td>
+<td><code>pnpm test</code></td>
 <td>Run unit tests</td>
 </tr>
 </tbody></table>
 <h3>Updating plugin data</h3>
 <p>Plugin and contributor data is fetched from GitHub at build time. To refresh:</p>
-<pre><code class="language-bash">npm run refresh
+<pre><code class="language-bash">pnpm refresh
 </code></pre>
 <p>Or to check the data first without building:</p>
-<pre><code class="language-bash">npm run fetch-data
+<pre><code class="language-bash">pnpm fetch-data
 </code></pre>
 <p>For higher GitHub API rate limits (60/hr without, 5000/hr with):</p>
-<pre><code class="language-bash">GITHUB_TOKEN=ghp_xxx npm run refresh
+<pre><code class="language-bash">GITHUB_TOKEN=ghp_xxx pnpm refresh
 </code></pre>
 <h2>Project Structure</h2>
 <pre><code>src/

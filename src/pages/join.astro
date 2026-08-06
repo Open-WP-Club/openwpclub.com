@@ -53,6 +53,13 @@ const ways = [
     action: 'Contact about sponsoring',
     href: `mailto:${CONTACT_EMAIL}?subject=Sponsorship Inquiry`,
   },
+  {
+    icon: 'lucide:sparkles',
+    title: 'Spare LLM credits',
+    description: 'Got unused Claude, OpenAI, or other LLM credits sitting around? Point them at our open issues - there\'s always a backlog of bug fixes, docs, and small features waiting for someone to pick them up.',
+    action: 'Browse open issues',
+    href: `${GITHUB_ORG_URL}/.github/issues`,
+  },
 ];
 
 const steps = [
@@ -144,6 +151,22 @@ const steps = [
               </p>
               <p>
                 First-time open source contributor? Great - we'll help you through your first PR. Seasoned maintainer? Even better - we could use your expertise. The only requirement is that you treat everyone with respect.
+              </p>
+            </div>
+          </div>
+
+          <!-- LLM friendly -->
+          <div class="bg-gradient-to-br from-purple-50 via-white to-purple-50 dark:from-purple-950/30 dark:via-gray-800 dark:to-purple-950/30 rounded-xl shadow-sm border border-purple-200 dark:border-purple-800/50 p-6 sm:p-8">
+            <div class="flex items-center gap-3 mb-4">
+              <Icon name="lucide:bot" class="size-6 text-purple-500 shrink-0" />
+              <h2 class="text-xl font-bold text-gray-900 dark:text-white">We're LLM-friendly</h2>
+            </div>
+            <div class="space-y-4 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+              <p>
+                We use AI tools ourselves, and we're happy to review PRs written with their help. An LLM is a tool, same as a compiler or a linter - we respect what it can do, but the person who submits the code owns it. Like with any tool, if it makes a mistake, that's on the author, not the tool.
+              </p>
+              <p>
+                Open WP Club exists to help the WordPress community as a whole, and we'll use every tool we have access to if it helps us make the web a little better with every line of code - yours or an AI's.
               </p>
             </div>
           </div>

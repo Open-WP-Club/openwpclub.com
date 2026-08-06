@@ -9,11 +9,12 @@
 <li>Citation metrics</li>
 <li>Interactive sorting and filtering</li>
 </ul>
-<p>The data can be automatically updated on a schedule or manually refreshed as needed.</p>
+<p>The data can be automatically updated on a schedule, or imported manually from
+your browser when Google Scholar blocks server-side requests.</p>
 <h2>Installation</h2>
 <ol>
-<li>Download the plugin files and upload them to your <code>/wp-content/plugins/google-scholar-profile</code> directory</li>
-<li>Activate the plugin through the 'Plugins' menu in WordPress</li>
+<li>Upload the plugin ZIP through <strong>Plugins → Add New → Upload Plugin</strong>, or place it in <code>/wp-content/plugins/google-scholar-wp/</code></li>
+<li>Activate the plugin through the <strong>Plugins</strong> menu in WordPress</li>
 <li>Go to Settings &gt; Scholar Profile to configure the plugin</li>
 </ol>
 <h2>Configuration</h2>
@@ -41,6 +42,11 @@
 </ul>
 </li>
 <li><strong>Max Publications</strong>: Control how many publications to fetch (50, 100, 200, 500)</li>
+<li><strong>Update Method</strong>:<ul>
+<li><strong>Server</strong> (default): WordPress retrieves the profile on the configured schedule.</li>
+<li><strong>Browser</strong>: You import the data from a browser where you can open the Scholar profile. This is useful when Google Scholar blocks requests from your server.</li>
+</ul>
+</li>
 </ul>
 <h2>Usage</h2>
 <h3>Basic Usage</h3>
@@ -97,11 +103,37 @@
 <li><code>scholar_sort_by</code> - Current sort field</li>
 <li><code>scholar_sort_order</code> - Current sort order</li>
 </ul>
-<h3>Manual Updates</h3>
+<h3>Server Updates</h3>
+<p>With <strong>Update Method</strong> set to <strong>Server</strong>, you can refresh immediately from
+<strong>Settings → Scholar Profile → Refresh Profile Data</strong>. WordPress also refreshes
+the data on the configured schedule.</p>
+<h3>Browser-Assisted Import and Bookmarklet</h3>
+<p>Use Browser mode when your server cannot reliably access Google Scholar.</p>
 <ol>
-<li>Go to Settings &gt; Scholar Profile</li>
-<li>Click the "Refresh Profile Data" button to manually update the profile data</li>
+<li>Go to <strong>Settings → Scholar Profile</strong>, select <strong>Browser</strong> as the update method, and save the settings.</li>
+<li>Enter and save your Google Scholar Profile ID if you have not already done so.</li>
+<li>Drag <strong>Import Scholar Data</strong> to your browser's bookmarks bar. Do not click the button on the WordPress settings page.</li>
+<li>Open your public Google Scholar profile and click the saved bookmarklet.</li>
+<li>The bookmarklet collects your profile details and publications, then copies the import data to the clipboard. Return to WordPress, paste it into the import box, and select <strong>Replace profile data</strong>.</li>
 </ol>
+<p>The bookmarklet starts at the first publication page and follows Google
+Scholar's pagination (<code>cstart=0</code>, <code>20</code>, <code>40</code>, and so on) until it reaches the
+configured <strong>Max Publications</strong> value or the final page. It uses the browser's
+existing Scholar session, which helps when an authenticated browser can access
+the profile but your server cannot.</p>
+<p>Some browsers require a fresh user action before granting clipboard access. In
+that case, the bookmarklet shows a small panel: click <strong>Copy data</strong>, then paste
+the JSON into the WordPress import box. If copying is still blocked, the data
+remains selected in that panel so you can press Ctrl/Cmd+C yourself.</p>
+<p>After updating the plugin, delete the previous bookmarklet and drag the button
+to the bookmarks bar again. A bookmark stores its JavaScript at the time it is
+created and does not update itself.</p>
+<h4>Fallback: import page HTML</h4>
+<p>If you cannot use the bookmarklet, open the profile page, select all, copy, and
+paste it into the import box. Use <strong>Replace profile data</strong> for the main profile
+page. For later Scholar pages such as <code>&amp;cstart=20</code> or <code>&amp;cstart=40</code>, paste the
+page and choose <strong>Add publications from another page</strong> to preserve the existing
+profile data.</p>
 <h2>Advanced Features</h2>
 <h3>Performance Considerations</h3>
 <ul>
