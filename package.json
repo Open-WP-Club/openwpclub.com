@@ -35,7 +35,7 @@
     "@resvg/resvg-js": "^2.6.2",
     "@tailwindcss/typography": "^0.5.20",
     "@tailwindcss/vite": "^4.3.3",
-    "astro": "^7.1.6",
+    "astro": "^7.2.0",
     "astro-icon": "^1.1.5",
     "marked": "^18.0.9",
     "sanitize-html": "^2.17.6",
@@ -50,7 +50,7 @@
     "@astrojs/check": "^0.9.10",
     "@types/sanitize-html": "^2.16.1",
     "pagefind": "^1.5.2",
-    "tsx": "^4.23.5",
+    "tsx": "^4.23.10",
     "typescript": "^6.0.3",
     "vitest": "^4.1.10"
   }
