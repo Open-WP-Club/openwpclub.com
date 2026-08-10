@@ -42,6 +42,7 @@ try {
 
 const ORG = 'Open-WP-Club';
 const CSV_URL = `https://raw.githubusercontent.com/${ORG}/.github/main/plugins.csv`;
+const TRAFFIC_URL = `https://raw.githubusercontent.com/${ORG}/.github/main/traffic-state.json`;
 const BATCH_SIZE = 10;
 const TOKEN = process.env.GITHUB_TOKEN || '';
 
@@ -405,6 +406,20 @@ async function main() {
     }
   } else {
     console.log('  Skipped (no GITHUB_TOKEN)\n');
+  }
+
+  // Fetch org-wide traffic stats
+  console.log('Fetching traffic stats...');
+  try {
+    const trafficRes = await fetch(TRAFFIC_URL, { signal: AbortSignal.timeout(15000) });
+    if (trafficRes.ok) {
+      writeFileSync(resolve(DATA_DIR, 'traffic.json'), await trafficRes.text());
+      console.log('  Saved traffic.json\n');
+    } else {
+      console.warn(`  Failed: HTTP ${trafficRes.status} - keeping existing traffic.json\n`);
+    }
+  } catch (err) {
+    console.warn(`  Failed: ${(err as Error).message} - keeping existing traffic.json\n`);
   }
 
   // Save to disk

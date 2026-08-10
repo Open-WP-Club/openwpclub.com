@@ -2,21 +2,22 @@
 import { getCollection } from 'astro:content';
 import type { Contributor } from '../lib/fetchGitHubData';
 import contributorsData from '../data/contributors.json';
+import trafficData from '../data/traffic.json';
 
 const allPlugins = await getCollection('plugins');
-const totalStars = allPlugins.reduce((sum, p) => sum + p.data.stars, 0);
 const contributors = contributorsData as Contributor[];
 
 const stats = [
   { label: 'Open-source projects', value: allPlugins.length.toString() },
-  { label: 'GitHub stars', value: totalStars.toLocaleString() },
   { label: 'Contributors', value: contributors.length.toLocaleString() },
+  { label: 'Repo views', value: trafficData.cumulativeViews.toLocaleString() },
+  { label: 'Repo clones', value: trafficData.cumulativeClones.toLocaleString() },
 ];
 ---
 
-<!-- <section class="py-12 bg-white border-y border-gray-100">
+<section class="py-12 bg-white border-y border-gray-100">
   <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-3 gap-8 text-center">
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-8 text-center">
       {stats.map((stat) => (
         <div>
           <p class="text-3xl sm:text-4xl font-bold text-blue-500 tracking-tight">{stat.value}</p>
@@ -25,4 +26,4 @@ const stats = [
       ))}
     </div>
   </div>
-</section> -->
+</section>

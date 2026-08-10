@@ -1,0 +1,28 @@
+<h1>Payment Method Highlighter for WooCommerce</h1>
+<p>A modern WooCommerce plugin that shows a colour-coded payment-method badge when an administrator opens an order. It does not create or process payments—it works with your existing payment gateways.</p>
+<h2>Features</h2>
+<ul>
+<li>Configure colours for one or more WooCommerce payment gateways from the standard WordPress admin interface.</li>
+<li>Each order displays the payment method as a colour-coded badge in WooCommerce Admin.</li>
+<li>Every payment gateway starts with a built-in colour; uncheck any method you do not want to display.</li>
+<li>Supports legacy order storage and High Performance Order Storage (HPOS).</li>
+<li>Declares compatibility with High Performance Order Storage (HPOS).</li>
+<li>Accessible focus states, <code>prefers-reduced-motion</code> support, and no external dependencies.</li>
+</ul>
+<h2>Installation</h2>
+<ol>
+<li>Upload this directory to <code>wp-content/plugins/</code>, or create a ZIP and install it from the WordPress admin.</li>
+<li>Activate <strong>Payment Method Highlighter for WooCommerce</strong>.</li>
+<li>Open <strong>WooCommerce → Payment highlighter</strong>.</li>
+<li>Choose an active payment gateway, customise the content, and save your changes.</li>
+</ol>
+<h2>Requirements</h2>
+<ul>
+<li>WordPress 6.5+</li>
+<li>PHP 7.4+</li>
+<li>WooCommerce 8.3+ (tested through 10.9)</li>
+</ul>
+<h2>Development</h2>
+<p>The plugin has no build step and adds no npm or PHP dependencies. Before a release, run:</p>
+<pre><code class="language-sh">find . -name '*.php' -print0 | xargs -0 -n1 php -l
+</code></pre>

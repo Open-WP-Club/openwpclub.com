@@ -6,13 +6,12 @@
   "packageManager": "pnpm@11.20.0",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && pagefind --site dist",
+    "build": "tsx scripts/fetch-data.ts && astro build && pagefind --site dist",
     "preview": "astro preview",
     "astro": "astro",
     "check": "astro check",
     "test": "vitest run",
-    "fetch-data": "tsx scripts/fetch-data.ts",
-    "refresh": "tsx scripts/fetch-data.ts && astro build && pagefind --site dist"
+    "fetch-data": "tsx scripts/fetch-data.ts"
   },
   "keywords": [
     "wordpress",

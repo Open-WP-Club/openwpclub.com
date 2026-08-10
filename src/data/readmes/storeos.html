@@ -1,0 +1,248 @@
+<h1>StoreOS - Built for WooCommerce</h1>
+<p>A modern desktop application for managing multiple WooCommerce stores. Built with Electron and React, this app provides a streamlined interface for managing orders, products, and inventory across multiple WooCommerce stores.</p>
+<h2>Features</h2>
+<ul>
+<li><strong>Multiple Store Support</strong> - Connect and manage multiple WooCommerce stores from a single application</li>
+<li><strong>Orders Management</strong> - View, search, filter, and update order statuses</li>
+<li><strong>Products Management</strong> - Full CRUD operations for products with search and filtering</li>
+<li><strong>Inventory Management</strong> - Monitor stock levels, update quantities, and track low-stock items</li>
+<li><strong>Dashboard</strong> - Get an overview of your store's key metrics</li>
+<li><strong>Secure Authentication</strong> - Store credentials are saved locally using WooCommerce REST API keys</li>
+<li><strong>Smart Caching</strong> - Intelligent data caching system that reduces API calls and improves performance</li>
+<li><strong>Manual Sync</strong> - Quick sync buttons in the header to manually refresh data when needed</li>
+</ul>
+<h2>Data Caching</h2>
+<p>The application uses an intelligent caching system to minimize API calls and improve performance:</p>
+<h3>Cache Strategy</h3>
+<p>All data is cached locally using IndexedDB for persistent storage and in-memory caching for fast access. The cache duration varies based on how frequently each data type changes:</p>
+<table>
+<thead>
+<tr>
+<th>Data Type</th>
+<th>Cache Duration</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Products</strong></td>
+<td>1 hour</td>
+<td>Products rarely change</td>
+</tr>
+<tr>
+<td><strong>Inventory</strong></td>
+<td>30 minutes</td>
+<td>Inventory levels change moderately</td>
+</tr>
+<tr>
+<td><strong>Recent Orders</strong> (last 7 days)</td>
+<td>15 minutes</td>
+<td>Recent orders may be updated frequently</td>
+</tr>
+<tr>
+<td><strong>Old Orders</strong> (7+ days)</td>
+<td>7 days</td>
+<td>Old orders almost never change</td>
+</tr>
+</tbody></table>
+<h3>Split Order Caching</h3>
+<p>Orders are automatically split into two separate caches based on their age:</p>
+<ul>
+<li><strong>Recent orders</strong> (created/modified in the last 7 days) are cached for 15 minutes</li>
+<li><strong>Old orders</strong> (7+ days old) are cached for 7 days</li>
+</ul>
+<p>This approach dramatically reduces unnecessary API calls for historical data while ensuring recent orders stay up-to-date.</p>
+<h3>Manual Refresh</h3>
+<p>Use the "Quick Sync" buttons in the application header to manually refresh any data type:</p>
+<ul>
+<li><strong>Orders</strong> - Clears both recent and old order caches</li>
+<li><strong>Products</strong> - Refreshes product catalog</li>
+<li><strong>Inventory</strong> - Updates stock levels</li>
+</ul>
+<h3>Benefits</h3>
+<ul>
+<li>✅ Reduced server load and API usage</li>
+<li>✅ Faster page loads and data access</li>
+<li>✅ Works offline with cached data</li>
+<li>✅ Automatic cache invalidation based on data age</li>
+<li>✅ Manual control when fresh data is needed</li>
+</ul>
+<h2>Screenshots</h2>
+<p>The application includes:</p>
+<ul>
+<li>Store setup page for adding WooCommerce store credentials</li>
+<li>Dashboard with key metrics and quick actions</li>
+<li>Orders page with filtering and status updates</li>
+<li>Products page with grid view and detailed editing</li>
+<li>Inventory page with stock level monitoring</li>
+</ul>
+<h2>Prerequisites</h2>
+<p>Before you begin, ensure you have the following installed:</p>
+<ul>
+<li><a href="https://nodejs.org/">Node.js</a> (version 16 or higher)</li>
+<li><a href="https://www.npmjs.com/">npm</a> (comes with Node.js)</li>
+</ul>
+<h2>Installation</h2>
+<ol>
+<li>Clone this repository:</li>
+</ol>
+<pre><code class="language-bash">git clone &lt;repository-url&gt;
+cd StoreOS
+</code></pre>
+<ol>
+<li>Install dependencies:</li>
+</ol>
+<pre><code class="language-bash">pnpm install
+</code></pre>
+<h2>Development</h2>
+<p>To run the application in development mode:</p>
+<pre><code class="language-bash">pnpm run dev
+</code></pre>
+<p>This will:</p>
+<ol>
+<li>Start the Vite development server on port 5173</li>
+<li>Launch the Electron application</li>
+<li>Open developer tools automatically</li>
+</ol>
+<p>The app will hot-reload as you make changes to the code.</p>
+<h2>Building</h2>
+<p>To build the application for production:</p>
+<pre><code class="language-bash">pnpm run build:electron
+</code></pre>
+<p>This will create distributable packages in the <code>dist</code> folder.</p>
+<h2>Setting Up WooCommerce API Access</h2>
+<p>Before you can connect your WooCommerce store, you need to generate API credentials:</p>
+<ol>
+<li>Log in to your WooCommerce admin panel</li>
+<li>Navigate to <strong>WooCommerce → Settings → Advanced → REST API</strong></li>
+<li>Click <strong>Add key</strong></li>
+<li>Fill in the details:<ul>
+<li>Description: "Desktop Manager" (or any name you prefer)</li>
+<li>User: Select your admin user</li>
+<li>Permissions: Select <strong>Read/Write</strong></li>
+</ul>
+</li>
+<li>Click <strong>Generate API key</strong></li>
+<li>Copy both the <strong>Consumer Key</strong> and <strong>Consumer Secret</strong> (you won't be able to see the secret again!)</li>
+</ol>
+<h2>Using the Application</h2>
+<h3>First Launch</h3>
+<ol>
+<li>When you first launch the app, you'll see the Setup page</li>
+<li>Fill in your store details:<ul>
+<li><strong>Store Name</strong>: A friendly name for your store (e.g., "My Main Store")</li>
+<li><strong>Store URL</strong>: Your WooCommerce store URL (e.g., <a href="https://yourstore.com">https://yourstore.com</a>)</li>
+<li><strong>Consumer Key</strong>: The key you generated (starts with <code>ck_</code>)</li>
+<li><strong>Consumer Secret</strong>: The secret you generated (starts with <code>cs_</code>)</li>
+</ul>
+</li>
+<li>Click <strong>Add Store</strong> to test the connection and save</li>
+</ol>
+<h3>Adding Multiple Stores</h3>
+<ol>
+<li>Navigate to the <strong>Settings</strong> tab</li>
+<li>Fill in the form with your additional store's credentials</li>
+<li>Click <strong>Add Store</strong></li>
+<li>Switch between stores using the dropdown in the header</li>
+</ol>
+<h3>Managing Orders</h3>
+<ul>
+<li><strong>View Orders</strong>: Click on the Orders tab to see all orders</li>
+<li><strong>Filter Orders</strong>: Use the status dropdown to filter by order status</li>
+<li><strong>Search Orders</strong>: Search by order ID, customer name, or email</li>
+<li><strong>Update Status</strong>: Use the dropdown in the Actions column to change order status</li>
+<li><strong>View Details</strong>: Click the "View" button to see full order details</li>
+</ul>
+<h3>Managing Products</h3>
+<ul>
+<li><strong>View Products</strong>: Click on the Products tab to see all products in a grid</li>
+<li><strong>Search Products</strong>: Use the search bar to find products by name, SKU, or ID</li>
+<li><strong>Edit Product</strong>: Click on a product card, then click "Edit Product"</li>
+<li><strong>Update Details</strong>: Modify name, price, stock quantity, and stock status</li>
+<li><strong>Delete Product</strong>: Click "Delete" in the product details modal</li>
+</ul>
+<h3>Managing Inventory</h3>
+<ul>
+<li><strong>View Stock Levels</strong>: See all products with their current stock levels</li>
+<li><strong>Filter Products</strong>: Filter by "In Stock", "Low Stock (≤5)", or "Out of Stock"</li>
+<li><strong>Update Stock</strong>: Enter a new quantity and click "Update" or press Enter</li>
+<li><strong>Monitor Low Stock</strong>: Products with low stock are highlighted in yellow</li>
+<li><strong>Track Out of Stock</strong>: Out of stock products are highlighted in red</li>
+</ul>
+<h2>Technology Stack</h2>
+<ul>
+<li><strong>Electron</strong> - Desktop application framework</li>
+<li><strong>React</strong> - UI framework</li>
+<li><strong>Vite</strong> - Build tool and development server</li>
+<li><strong>Tailwind CSS</strong> - Styling</li>
+<li><strong>Zustand</strong> - State management</li>
+<li><strong>WooCommerce REST API</strong> - Backend integration</li>
+<li><strong>React Router</strong> - Navigation</li>
+</ul>
+<h2>Project Structure</h2>
+<pre><code>StoreOS/
+├── electron/           # Electron main process
+│   └── main.js
+├── src/
+│   ├── components/    # React components
+│   │   ├── Layout.jsx
+│   │   └── StoreSelector.jsx
+│   ├── pages/         # Page components
+│   │   ├── Dashboard.jsx
+│   │   ├── OrdersPage.jsx
+│   │   ├── ProductsPage.jsx
+│   │   ├── InventoryPage.jsx
+│   │   └── SetupPage.jsx
+│   ├── services/      # API services
+│   │   └── woocommerce.js
+│   ├── stores/        # State management
+│   │   └── useStore.js
+│   ├── App.jsx        # Main app component
+│   ├── main.jsx       # React entry point
+│   └── index.css      # Global styles
+├── package.json
+├── vite.config.js
+└── tailwind.config.js
+</code></pre>
+<h2>Security Notes</h2>
+<ul>
+<li>Store credentials are saved locally in your browser's localStorage</li>
+<li>All API communications use HTTPS</li>
+<li>Consumer keys and secrets are never exposed in the UI</li>
+<li>The application runs locally on your machine</li>
+</ul>
+<h2>Troubleshooting</h2>
+<h3>Connection Failed</h3>
+<p>If you get a "Connection failed" error:</p>
+<ol>
+<li>Verify your store URL is correct (include https://)</li>
+<li>Check that your Consumer Key and Secret are correct</li>
+<li>Ensure your WooCommerce REST API is enabled</li>
+<li>Check if your site has SSL (WooCommerce API requires HTTPS)</li>
+</ol>
+<h3>API Errors</h3>
+<p>If you encounter API errors:</p>
+<ol>
+<li>Verify the API user has the correct permissions</li>
+<li>Check your WooCommerce version (requires WooCommerce 3.0+)</li>
+<li>Look at the browser console for detailed error messages</li>
+</ol>
+<h3>Application Won't Start</h3>
+<p>If the application won't launch:</p>
+<ol>
+<li>Make sure all dependencies are installed: <code>pnpm install</code></li>
+<li>Try clearing node_modules and reinstalling: <code>rm -rf node_modules &amp;&amp; pnpm install</code></li>
+<li>Check that ports 5173 is available</li>
+</ol>
+<h3>macOS: “App is damaged and can't be opened”</h3>
+<p>macOS may quarantine unsigned applications downloaded from the internet. If you downloaded StoreOS from a trusted source, move it to Applications and run:</p>
+<pre><code class="language-bash">xattr -dr com.apple.quarantine "/Applications/StoreOS - Built for WooCommerce.app"
+</code></pre>
+<p>Then open the application again.</p>
+<h2>Contributing</h2>
+<p>Contributions are welcome! Please feel free to submit a Pull Request.</p>
+<h2>License</h2>
+<p>MIT</p>
+<h2>Icon Attribution</h2>
+<p>Store icon by <a href="https://www.svgrepo.com/">SVG Repo</a>.</p>
+<h2>Support</h2>
+<p>For issues and questions, please open an issue on the GitHub repository.</p>
