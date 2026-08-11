@@ -44,23 +44,17 @@ pnpm preview   # preview the production build locally
 <td>Fetch plugin + contributor data from GitHub and print a summary</td>
 </tr>
 <tr>
-<td><code>pnpm refresh</code></td>
-<td>Fetch data summary + build in one step</td>
-</tr>
-<tr>
 <td><code>pnpm test</code></td>
 <td>Run unit tests</td>
 </tr>
 </tbody></table>
 <h3>Updating plugin data</h3>
-<p>Plugin and contributor data is fetched from GitHub at build time. To refresh:</p>
-<pre><code class="language-bash">pnpm refresh
-</code></pre>
-<p>Or to check the data first without building:</p>
+<p><code>pnpm build</code> fetches the latest data from GitHub automatically before building.</p>
+<p>To check the data first without building:</p>
 <pre><code class="language-bash">pnpm fetch-data
 </code></pre>
 <p>For higher GitHub API rate limits (60/hr without, 5000/hr with):</p>
-<pre><code class="language-bash">GITHUB_TOKEN=ghp_xxx pnpm refresh
+<pre><code class="language-bash">GITHUB_TOKEN=ghp_xxx pnpm build
 </code></pre>
 <h2>Project Structure</h2>
 <pre><code>src/

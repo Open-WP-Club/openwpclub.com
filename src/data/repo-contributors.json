@@ -148,7 +148,7 @@
       "login": "MrGKanev",
       "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
       "profileUrl": "https://github.com/MrGKanev",
-      "contributions": 63
+      "contributions": 67
     }
   ],
   "logo-link-wp": [
@@ -180,7 +180,7 @@
       "login": "MrGKanev",
       "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
       "profileUrl": "https://github.com/MrGKanev",
-      "contributions": 53
+      "contributions": 57
     }
   ],
   "user-self-delete": [
@@ -325,6 +325,30 @@
       "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
       "profileUrl": "https://github.com/MrGKanev",
       "contributions": 16
+    }
+  ],
+  "storeos": [
+    {
+      "login": "MrGKanev",
+      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
+      "profileUrl": "https://github.com/MrGKanev",
+      "contributions": 6
+    }
+  ],
+  "payment-method-highlighter-for-woocommerce": [
+    {
+      "login": "MrGKanev",
+      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
+      "profileUrl": "https://github.com/MrGKanev",
+      "contributions": 4
+    }
+  ],
+  "multi-store-sync-for-woocommerce": [
+    {
+      "login": "MrGKanev",
+      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
+      "profileUrl": "https://github.com/MrGKanev",
+      "contributions": 39
     }
   ]
 }
