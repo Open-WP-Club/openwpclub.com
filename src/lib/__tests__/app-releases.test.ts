@@ -11,6 +11,17 @@ describe('app release assets', () => {
     expect(classifyReleaseAsset(asset('storeos_1.0.3_amd64.deb'))?.label).toBe('Linux (DEB)');
   });
 
+  it('orders desktop downloads as Windows, macOS, then Linux', () => {
+    const downloads = getPlatformDownloads([
+      asset('app.rpm'),
+      asset('app.dmg'),
+      asset('app.AppImage'),
+      asset('app.Setup.exe'),
+    ]);
+    expect(downloads.map((download) => download.platform)).toEqual(['windows', 'macos', 'linux', 'linux']);
+    expect(downloads.map((download) => download.format)).toEqual(['exe', 'dmg', 'appimage', 'rpm']);
+  });
+
   it('prefers a DMG over a duplicate macOS ZIP', () => {
     const downloads = getPlatformDownloads([
       asset('StoreOS-1.0.3-arm64-mac.zip'),

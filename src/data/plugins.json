@@ -587,11 +587,11 @@
     "stars": 0,
     "forks": 0,
     "openIssues": 0,
-    "lastPush": "2026-08-11T06:54:17Z",
+    "lastPush": "2026-08-26T07:23:36Z",
     "createdAt": "2025-05-19T19:01:14Z",
     "topics": [],
     "license": "MIT",
-    "language": "HTML",
+    "language": "Astro",
     "defaultBranch": "main",
     "category": "website",
     "releasePublishedAt": "",
@@ -954,13 +954,13 @@
     "category": "app",
     "releasePublishedAt": "2026-03-16T21:40:57Z",
     "releaseUrl": "https://github.com/Open-WP-Club/FulFill-for-WooCommerce/releases/tag/0.1.0",
-    "releaseDownloads": 0,
+    "releaseDownloads": 1,
     "releaseAssets": [
       {
         "name": "FulFill-0.1.0.apk",
         "url": "https://github.com/Open-WP-Club/FulFill-for-WooCommerce/releases/download/0.1.0/FulFill-0.1.0.apk",
         "size": 41190234,
-        "downloadCount": 0,
+        "downloadCount": 1,
         "contentType": "application/vnd.android.package-archive"
       }
     ],
@@ -1075,69 +1075,69 @@
     "category": "app",
     "releasePublishedAt": "2026-08-03T14:39:16Z",
     "releaseUrl": "https://github.com/Open-WP-Club/StoreOS/releases/tag/1.0.3",
-    "releaseDownloads": 9,
+    "releaseDownloads": 18,
     "releaseAssets": [
       {
         "name": "storeos-1.0.3.x86_64.rpm",
         "url": "https://github.com/Open-WP-Club/StoreOS/releases/download/1.0.3/storeos-1.0.3.x86_64.rpm",
         "size": 92584153,
-        "downloadCount": 1,
+        "downloadCount": 2,
         "contentType": "application/x-redhat-package-manager"
       },
       {
         "name": "StoreOS.-.Built.for.WooCommerce-1.0.3-arm64-mac.zip",
         "url": "https://github.com/Open-WP-Club/StoreOS/releases/download/1.0.3/StoreOS.-.Built.for.WooCommerce-1.0.3-arm64-mac.zip",
         "size": 133427511,
-        "downloadCount": 1,
+        "downloadCount": 2,
         "contentType": "application/zip"
       },
       {
         "name": "StoreOS.-.Built.for.WooCommerce-1.0.3-arm64.dmg",
         "url": "https://github.com/Open-WP-Club/StoreOS/releases/download/1.0.3/StoreOS.-.Built.for.WooCommerce-1.0.3-arm64.dmg",
         "size": 133206747,
-        "downloadCount": 1,
+        "downloadCount": 2,
         "contentType": "application/x-apple-diskimage"
       },
       {
         "name": "StoreOS.-.Built.for.WooCommerce-1.0.3-mac.zip",
         "url": "https://github.com/Open-WP-Club/StoreOS/releases/download/1.0.3/StoreOS.-.Built.for.WooCommerce-1.0.3-mac.zip",
         "size": 135268330,
-        "downloadCount": 1,
+        "downloadCount": 2,
         "contentType": "application/zip"
       },
       {
         "name": "StoreOS.-.Built.for.WooCommerce-1.0.3.AppImage",
         "url": "https://github.com/Open-WP-Club/StoreOS/releases/download/1.0.3/StoreOS.-.Built.for.WooCommerce-1.0.3.AppImage",
         "size": 141137568,
-        "downloadCount": 1,
+        "downloadCount": 2,
         "contentType": "application/octet-stream"
       },
       {
         "name": "StoreOS.-.Built.for.WooCommerce-1.0.3.dmg",
         "url": "https://github.com/Open-WP-Club/StoreOS/releases/download/1.0.3/StoreOS.-.Built.for.WooCommerce-1.0.3.dmg",
         "size": 135020457,
-        "downloadCount": 1,
+        "downloadCount": 2,
         "contentType": "application/x-apple-diskimage"
       },
       {
         "name": "StoreOS.-.Built.for.WooCommerce.1.0.3.exe",
         "url": "https://github.com/Open-WP-Club/StoreOS/releases/download/1.0.3/StoreOS.-.Built.for.WooCommerce.1.0.3.exe",
         "size": 108474932,
-        "downloadCount": 1,
+        "downloadCount": 2,
         "contentType": "application/x-msdos-program"
       },
       {
         "name": "StoreOS.-.Built.for.WooCommerce.Setup.1.0.3.exe",
         "url": "https://github.com/Open-WP-Club/StoreOS/releases/download/1.0.3/StoreOS.-.Built.for.WooCommerce.Setup.1.0.3.exe",
         "size": 206384923,
-        "downloadCount": 1,
+        "downloadCount": 2,
         "contentType": "application/x-msdos-program"
       },
       {
         "name": "storeos_1.0.3_amd64.deb",
         "url": "https://github.com/Open-WP-Club/StoreOS/releases/download/1.0.3/storeos_1.0.3_amd64.deb",
         "size": 107236304,
-        "downloadCount": 1,
+        "downloadCount": 2,
         "contentType": "application/x-debian-package"
       }
     ],

@@ -13,6 +13,13 @@ const appEntries = allApps.map((app) => ({
   app,
   facets: getAppFacets(app.data.topics, app.data.releaseAssets, app.data.platforms),
 }));
+const platformLabels: Record<string, { label: string; icon: string }> = {
+  windows: { label: 'Windows', icon: 'lucide:monitor' },
+  macos: { label: 'macOS', icon: 'lucide:laptop' },
+  linux: { label: 'Linux', icon: 'lucide:terminal' },
+  android: { label: 'Android', icon: 'lucide:smartphone' },
+  ios: { label: 'iOS', icon: 'lucide:tablet-smartphone' },
+};
 
 const categoryMap: Record<string, { label: string; icon: string; keywords: string[] }> = {
   woocommerce: {
@@ -214,6 +221,16 @@ const categoryKeywordsJson = Object.fromEntries(
                 <p class="mt-4 text-sm text-gray-600 dark:text-gray-400 leading-relaxed flex-1">
                   {app.data.description || 'No description available.'}
                 </p>
+                {app.data.platforms.length > 0 && (
+                  <div class="mt-4 flex flex-wrap gap-1.5" aria-label="Available platforms">
+                    {app.data.platforms.map((platform) => platformLabels[platform] && (
+                      <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300 border border-green-100 dark:border-green-800">
+                        <Icon name={platformLabels[platform].icon} class="size-3.5" />
+                        {platformLabels[platform].label}
+                      </span>
+                    ))}
+                  </div>
+                )}
                 {app.data.topics.length > 0 && (
                   <div class="mt-4 flex flex-wrap gap-1.5">
                     {app.data.topics.slice(0, 5).map((tag) => (

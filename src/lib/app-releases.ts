@@ -53,7 +53,7 @@ export function getPlatformDownloads(assets: ReleaseAsset[]): PlatformDownload[]
   const downloads = assets.map(classifyReleaseAsset).filter((asset): asset is PlatformDownload => Boolean(asset));
 
   // Prefer native macOS disk images over duplicate ZIP packages for the same architecture.
-  return downloads.filter((download) => {
+  const filtered = downloads.filter((download) => {
     if (download.platform !== 'macos' || download.format !== 'zip') return true;
     return !downloads.some((candidate) =>
       candidate.platform === 'macos' &&
@@ -61,6 +61,29 @@ export function getPlatformDownloads(assets: ReleaseAsset[]): PlatformDownload[]
       candidate.architecture === download.architecture
     );
   });
+
+  const platformOrder: Record<PlatformDownload['platform'], number> = {
+    windows: 0,
+    macos: 1,
+    linux: 2,
+    android: 3,
+    ios: 4,
+    archive: 5,
+  };
+  const formatOrder: Record<string, number> = {
+    msi: 0,
+    exe: 1,
+    dmg: 0,
+    appimage: 0,
+    deb: 1,
+    rpm: 2,
+  };
+
+  return filtered.sort((a, b) =>
+    platformOrder[a.platform] - platformOrder[b.platform] ||
+    (formatOrder[a.format] ?? 9) - (formatOrder[b.format] ?? 9) ||
+    a.label.localeCompare(b.label)
+  );
 }
 
 export function getAppFacets(topics: string[], assets: ReleaseAsset[], platforms: string[] = []): string[] {

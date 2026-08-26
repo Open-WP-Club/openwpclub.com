@@ -5,12 +5,17 @@ test('apps catalog identifies desktop and mobile products', async ({ page }) => 
   await expect(page.getByRole('heading', { name: 'Apps', exact: true })).toBeVisible();
   await expect(page.getByRole('button', { name: /Desktop/ })).toBeVisible();
   await expect(page.getByRole('link', { name: /StoreOS/ })).toBeVisible();
+  await expect(page.locator('[data-name="storeos"]')).toContainText('Windows');
+  await expect(page.locator('[data-name="storeos"]')).toContainText('macOS');
+  await expect(page.locator('[data-name="storeos"]')).toContainText('Linux');
+  await expect(page.locator('[data-name="fulfill-for-woocommerce"]')).toContainText('Android');
   await expect(page.getByText(/Updated monthly · Data as of/).first()).toBeVisible();
 });
 
 test('StoreOS exposes real release installers and metadata', async ({ page }) => {
   await page.goto('/apps/storeos/');
   await expect(page.getByRole('heading', { name: 'StoreOS', exact: true })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Download StoreOS' })).toBeVisible();
   await expect(page.getByText('Windows (Installer)')).toBeVisible();
   await expect(page.getByText('macOS (Apple Silicon)')).toBeVisible();
   await expect(page.getByText('Linux (AppImage)')).toBeVisible();
