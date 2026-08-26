@@ -1,20 +1,11 @@
 import { defineCollection } from 'astro:content';
 import { z } from 'astro/zod';
-import { glob } from 'astro/loaders';
-import { readFileSync, existsSync } from 'node:fs';
-
-const PLUGINS_CACHE = 'src/data/plugins.json';
+import { file, glob } from 'astro/loaders';
 
 const plugins = defineCollection({
-  loader: async () => {
-    if (!existsSync(PLUGINS_CACHE)) {
-      console.warn('[plugins] src/data/plugins.json not found. Run "pnpm run fetch-data" first.');
-      return [];
-    }
-    const cached = JSON.parse(readFileSync(PLUGINS_CACHE, 'utf-8'));
-    console.log(`[plugins] Loaded ${cached.length} plugins from src/data/plugins.json`);
-    return cached;
-  },
+  // Track the generated catalog as a real content dependency so Astro reloads
+  // categories and release assets whenever fetch-data changes the JSON file.
+  loader: file('src/data/plugins.json'),
   schema: z.object({
     name: z.string(),
     description: z.string(),

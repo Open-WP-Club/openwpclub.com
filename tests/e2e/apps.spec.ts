@@ -37,6 +37,19 @@ test('catalog search filters apps', async ({ page }) => {
   await expect(page.getByRole('link', { name: /FulFill/ })).toBeHidden();
 });
 
+test('app categories filter desktop and mobile products', async ({ page }) => {
+  await page.goto('/apps/');
+
+  await page.getByRole('button', { name: /Desktop/ }).first().click();
+  await expect(page.getByRole('link', { name: /StoreOS/ })).toBeVisible();
+  await expect(page.getByRole('link', { name: /FulFill/ })).toBeHidden();
+  await expect(page.locator('#app-count')).toHaveText('1 app in this category');
+
+  await page.getByRole('button', { name: /Mobile/ }).first().click();
+  await expect(page.getByRole('link', { name: /StoreOS/ })).toBeHidden();
+  await expect(page.getByRole('link', { name: /FulFill/ })).toBeVisible();
+});
+
 test('mobile navigation opens and reaches apps', async ({ page }, testInfo) => {
   test.skip(!testInfo.project.name.startsWith('mobile'), 'mobile-only navigation check');
   await page.goto('/');

@@ -37,7 +37,8 @@ pnpm preview   # preview the production build locally
 | Command | Description |
 |---|---|
 | `pnpm dev` | Start development server |
-| `pnpm build` | Build for production (fetches latest data from GitHub) |
+| `pnpm build` | Build from the committed catalog data |
+| `pnpm build:fresh` | Refresh GitHub data, then build for production |
 | `pnpm preview` | Preview production build locally |
 | `pnpm fetch-data` | Fetch plugin + contributor data from GitHub and print a summary |
 | `pnpm test` | Run unit tests |
@@ -47,11 +48,12 @@ pnpm preview   # preview the production build locally
 
 ### Updating plugin data
 
-`pnpm build` fetches the latest data from GitHub automatically before building.
-The monthly GitHub Actions workflow refreshes and commits the catalog on the
-first day of each month. App descriptions, platforms, requirements, icons, and
-screenshots are maintained in `src/data/apps.json`; repository versions and
-release assets continue to come from GitHub.
+`pnpm build` uses the committed catalog so builds stay reproducible and do not
+depend on GitHub API availability. Use `pnpm build:fresh` when you intentionally
+want to refresh first. The monthly GitHub Actions workflow refreshes and commits
+the catalog on the first day of each month. App descriptions, platforms,
+requirements, icons, and screenshots are maintained in `src/data/apps.json`;
+repository versions and release assets continue to come from GitHub.
 
 To check the data first without building:
 
@@ -62,7 +64,7 @@ pnpm fetch-data
 For higher GitHub API rate limits (60/hr without, 5000/hr with):
 
 ```bash
-GITHUB_TOKEN=ghp_xxx pnpm build
+GITHUB_TOKEN=ghp_xxx pnpm build:fresh
 ```
 
 Install Chromium once before running the browser tests locally:

@@ -6,7 +6,8 @@
   "packageManager": "pnpm@11.20.0",
   "scripts": {
     "dev": "astro dev",
-    "build": "tsx scripts/fetch-data.ts && astro build && pagefind --site dist",
+    "build": "astro build && pagefind --site dist",
+    "build:fresh": "pnpm fetch-data && pnpm build",
     "preview": "astro preview",
     "astro": "astro",
     "check": "astro check",
