@@ -49,5 +49,15 @@ export interface Plugin {
   license: string | null;
   language: string | null;
   defaultBranch: string;
+  releasePublishedAt: string;
+  releaseUrl: string;
+  releaseDownloads: number;
+  releaseAssets: import('./app-releases').ReleaseAsset[];
+  platforms: Array<'windows' | 'macos' | 'linux' | 'android' | 'ios'>;
+  featured: boolean;
+  icon: string;
+  features: string[];
+  requirements: string[];
+  screenshots: Array<{ src: string; alt: string; caption?: string }>;
   readmeHtml: string;
 }

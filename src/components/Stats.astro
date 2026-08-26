@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import type { Contributor } from '../lib/fetchGitHubData';
 import contributorsData from '../data/contributors.json';
 import trafficData from '../data/traffic.json';
+import DataFreshness from './DataFreshness.astro';
 
 const allPlugins = await getCollection('plugins');
 const contributors = contributorsData as Contributor[];
@@ -25,5 +26,6 @@ const stats = [
         </div>
       ))}
     </div>
+    <p class="mt-6 text-center text-xs text-gray-400"><DataFreshness kind="traffic" /></p>
   </div>
 </section>

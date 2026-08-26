@@ -1,4 +1,5 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection } from 'astro:content';
+import { z } from 'astro/zod';
 import { glob } from 'astro/loaders';
 import { readFileSync, existsSync } from 'node:fs';
 
@@ -32,6 +33,26 @@ const plugins = defineCollection({
     language: z.string().nullable(),
     defaultBranch: z.string(),
     category: z.enum(['plugin', 'app', 'website', 'tool']).default('plugin'),
+    releasePublishedAt: z.string().default(''),
+    releaseUrl: z.string().default(''),
+    releaseDownloads: z.number().default(0),
+    releaseAssets: z.array(z.object({
+      name: z.string(),
+      url: z.string().refine((url) => url.startsWith('https://'), 'release asset URL must start with https://'),
+      size: z.number(),
+      downloadCount: z.number(),
+      contentType: z.string(),
+    })).default([]),
+    platforms: z.array(z.enum(['windows', 'macos', 'linux', 'android', 'ios'])).default([]),
+    featured: z.boolean().default(false),
+    icon: z.string().default(''),
+    features: z.array(z.string()).default([]),
+    requirements: z.array(z.string()).default([]),
+    screenshots: z.array(z.object({
+      src: z.string(),
+      alt: z.string(),
+      caption: z.string().optional(),
+    })).default([]),
   }),
 });
 

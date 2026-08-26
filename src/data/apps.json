@@ -1,0 +1,40 @@
+{
+  "storeos": {
+    "category": "app",
+    "description": "A desktop application for managing WooCommerce orders, products, inventory, and multiple stores from one place.",
+    "platforms": ["windows", "macos", "linux"],
+    "featured": true,
+    "icon": "https://raw.githubusercontent.com/Open-WP-Club/StoreOS/main/assets/icon.png",
+    "features": [
+      "Manage multiple WooCommerce stores",
+      "Process orders and update statuses",
+      "Edit products and monitor inventory",
+      "Work faster with local caching and manual sync"
+    ],
+    "requirements": [
+      "Windows, macOS, or Linux",
+      "A WooCommerce store served over HTTPS",
+      "WooCommerce REST API keys with Read/Write access"
+    ],
+    "screenshots": []
+  },
+  "fulfill-for-woocommerce": {
+    "category": "app",
+    "description": "A mobile warehouse app for WooCommerce order fulfillment, barcode scanning, pick-and-pack workflows, and offline work.",
+    "platforms": ["android"],
+    "featured": true,
+    "icon": "https://raw.githubusercontent.com/Open-WP-Club/FulFill-for-WooCommerce/main/assets/logo.svg",
+    "features": [
+      "Browse, filter, and update WooCommerce orders",
+      "Scan product barcodes",
+      "Run pick-and-pack and wave-picking workflows",
+      "Continue working offline and sync later"
+    ],
+    "requirements": [
+      "An Android device",
+      "A WooCommerce store served over HTTPS",
+      "WooCommerce REST API keys with Read/Write access"
+    ],
+    "screenshots": []
+  }
+}

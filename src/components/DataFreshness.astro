@@ -1,0 +1,18 @@
+---
+import freshness from '../data/freshness.json';
+
+interface Props {
+  kind?: 'catalog' | 'traffic';
+  class?: string;
+}
+
+const { kind = 'catalog', class: className = '' } = Astro.props;
+const sourceDate = kind === 'traffic' ? freshness.trafficUpdatedAt : freshness.catalogUpdatedAt;
+const formattedDate = new Date(sourceDate).toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<span class={className}>Updated monthly · Data as of {formattedDate}</span>

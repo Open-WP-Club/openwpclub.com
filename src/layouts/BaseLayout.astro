@@ -108,13 +108,13 @@ const orgSchema = {
     })} />
 
     <!-- Structured Data -->
-    <script type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
     {jsonLd && (
-      <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+      <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
     )}
 
     <!-- Cloudflare Web Analytics -->
-    <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "5507019663244ab38c6553e6a4123ed6"}'></script>
+    <script is:inline defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "5507019663244ab38c6553e6a4123ed6"}'></script>
     <!-- End Cloudflare Web Analytics -->
   </head>
   <body class="font-sans antialiased bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-gray-100">

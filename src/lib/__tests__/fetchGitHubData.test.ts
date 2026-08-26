@@ -41,6 +41,15 @@ describe('rewriteImageUrls', () => {
     const html = '<p>No images here</p>';
     expect(rewriteImageUrls(html, 'repo', 'main')).toBe(html);
   });
+
+  it('rewrites relative README links to their GitHub repository', () => {
+    const html = '<a href="CHANGELOG.md">Changelog</a><a href="/issues">Issues</a><a href="#setup">Setup</a>';
+    expect(rewriteImageUrls(html, 'repo', 'main')).toBe(
+      '<a href="https://github.com/Open-WP-Club/repo/blob/main/CHANGELOG.md">Changelog</a>' +
+      '<a href="https://github.com/Open-WP-Club/repo/issues">Issues</a>' +
+      '<a href="#setup">Setup</a>'
+    );
+  });
 });
 
 describe('fetchRepoStats', () => {

@@ -1,0 +1,326 @@
+[
+  {
+    "repo": "google-scholar-wp",
+    "name": "1.6.0",
+    "version": "1.6.0",
+    "publishedAt": "2026-08-10T09:03:15Z",
+    "url": "https://github.com/Open-WP-Club/google-scholar-wp/releases/tag/1.6.0",
+    "notes": "**Full Changelog**: https://github.com/Open-WP-Club/google-scholar-wp/compare/1.5.0...1.6.0\n\n---\n\n### 📦 Plugin Download\n- **WordPress Plugin**: [`google-scholar-wp.zip`](https://github.com/Open-WP-Club/google-scholar-wp/releases/download/1.6.0/google-scholar-wp.zip)\n- **Installation**: Download and upload through WordPress Admin → Plugins → Add New → Upload Plugin\n\n*Built automatically from tag 1.6.0*",
+    "category": "plugin"
+  },
+  {
+    "repo": "multi-store-sync-for-woocommerce",
+    "name": "v4.0.1",
+    "version": "4.0.1",
+    "publishedAt": "2026-08-07T06:22:52Z",
+    "url": "https://github.com/Open-WP-Club/multi-store-sync-for-woocommerce/releases/tag/4.0.1",
+    "notes": "## WooCommerce Multi-Store Sync v4.0.1\n\n- Update wc-multi-store-sync.php\n- Migrate feature toggles to central settings\n- Archive cleanup records before DB deletion\n- wip\n- Readme updates\n- Fixing readme\n\n### Installation\nDownload `wc-multi-store-sync-4.0.1.zip` and upload via **Plugins → Add New → Upload Plugin**.\n",
+    "category": "plugin"
+  },
+  {
+    "repo": "payment-method-highlighter-for-woocommerce",
+    "name": "1.2.1",
+    "version": "1.2.1",
+    "publishedAt": "2026-08-06T12:19:43Z",
+    "url": "https://github.com/Open-WP-Club/payment-method-highlighter-for-wooCommerce/releases/tag/1.2.1",
+    "notes": "**Full Changelog**: https://github.com/Open-WP-Club/payment-method-highlighter-for-wooCommerce/commits/1.2.1",
+    "category": "plugin"
+  },
+  {
+    "repo": "storeos",
+    "name": "Release 1.0.3",
+    "version": "1.0.3",
+    "publishedAt": "2026-08-03T14:39:16Z",
+    "url": "https://github.com/Open-WP-Club/StoreOS/releases/tag/1.0.3",
+    "notes": "**Full Changelog**: https://github.com/Open-WP-Club/StoreOS/compare/1.0.1...1.0.3\n\n**Full Changelog**: https://github.com/Open-WP-Club/StoreOS/compare/1.0.1...1.0.3",
+    "category": "app"
+  },
+  {
+    "repo": "user-self-delete",
+    "name": "2.1.0",
+    "version": "2.1.0",
+    "publishedAt": "2026-07-15T06:41:13Z",
+    "url": "https://github.com/Open-WP-Club/User-Self-Delete/releases/tag/2.1.0",
+    "notes": "**Full Changelog**: https://github.com/Open-WP-Club/User-Self-Delete/compare/2.0.0...2.1.0\n\n---\n\n### 📦 Plugin Download\n- **WordPress Plugin**: [`User-Self-Delete.zip`](https://github.com/Open-WP-Club/User-Self-Delete/releases/download/2.1.0/User-Self-Delete.zip)\n- **Installation**: Download and upload through WordPress Admin → Plugins → Add New → Upload Plugin\n\n*Built automatically from tag 2.1.0*",
+    "category": "plugin"
+  },
+  {
+    "repo": "priority-processing-woocommerce",
+    "name": "1.7.0",
+    "version": "1.7.0",
+    "publishedAt": "2026-07-14T14:06:05Z",
+    "url": "https://github.com/Open-WP-Club/Priority-Processing-WooCommerce/releases/tag/1.7.0",
+    "notes": "**Full Changelog**: https://github.com/Open-WP-Club/Priority-Processing-WooCommerce/compare/1.6.0...1.7.0\n\n---\n\n### 📦 Plugin Download\n- **WordPress Plugin**: [`Priority-Processing-WooCommerce.zip`](https://github.com/Open-WP-Club/Priority-Processing-WooCommerce/releases/download/1.7.0/Priority-Processing-WooCommerce.zip)\n- **Installation**: Download and upload via WordPress Admin → Plugins → Add New → Upload Plugin\n\n*Built automatically from tag 1.7.0*",
+    "category": "plugin"
+  },
+  {
+    "repo": "order-printing-woocommerce",
+    "name": "1.3.0",
+    "version": "1.3.0",
+    "publishedAt": "2026-07-14T13:40:15Z",
+    "url": "https://github.com/Open-WP-Club/order-printing-woocommerce/releases/tag/1.3.0",
+    "notes": "**Full Changelog**: https://github.com/Open-WP-Club/order-printing-woocommerce/compare/1.2.0...1.3.0\n\n**Full Changelog**: https://github.com/Open-WP-Club/order-printing-woocommerce/compare/1.2.0...1.3.0",
+    "category": "plugin"
+  },
+  {
+    "repo": "taxonomy-showcase-woocommerce",
+    "name": "1.2.3",
+    "version": "1.2.3",
+    "publishedAt": "2026-06-04T20:22:32Z",
+    "url": "https://github.com/Open-WP-Club/taxonomy-showcase-WooCommerce/releases/tag/1.2.3",
+    "notes": "**Full Changelog**: https://github.com/Open-WP-Club/taxonomy-showcase-WooCommerce/compare/1.2.2...1.2.3",
+    "category": "plugin"
+  },
+  {
+    "repo": "product-health-check-woocommerce",
+    "name": "1.1.1",
+    "version": "1.1.1",
+    "publishedAt": "2026-05-01T12:01:27Z",
+    "url": "https://github.com/Open-WP-Club/product-health-check-woocommerce/releases/tag/1.1.1",
+    "notes": "**Full Changelog**: https://github.com/Open-WP-Club/product-health-check-woocommerce/compare/1.1.0...1.1.1",
+    "category": "plugin"
+  },
+  {
+    "repo": "fulfill-for-woocommerce",
+    "name": "0.1.0",
+    "version": "0.1.0",
+    "publishedAt": "2026-03-16T21:40:57Z",
+    "url": "https://github.com/Open-WP-Club/FulFill-for-WooCommerce/releases/tag/0.1.0",
+    "notes": "**Full Changelog**: https://github.com/Open-WP-Club/FulFill-for-WooCommerce/compare/0.0.8...0.1.0",
+    "category": "app"
+  },
+  {
+    "repo": "team-manager-wordpress",
+    "name": "3.0.0",
+    "version": "3.0.0",
+    "publishedAt": "2026-02-14T18:39:19Z",
+    "url": "https://github.com/Open-WP-Club/team-manager-wordPress/releases/tag/3.0.0",
+    "notes": "**Full Changelog**: https://github.com/Open-WP-Club/wp-Team-Members-Manager/compare/v1.0.0...3.0.0",
+    "category": "plugin"
+  },
+  {
+    "repo": "sku-auto-woocommerce",
+    "name": "2.2.2",
+    "version": "2.2.2",
+    "publishedAt": "2026-02-09T13:29:32Z",
+    "url": "https://github.com/Open-WP-Club/sku-auto-woocommerce/releases/tag/2.2.2",
+    "notes": "**Full Changelog**: https://github.com/Open-WP-Club/sku-auto-woocommerce/compare/2.2.1...2.2.2",
+    "category": "plugin"
+  },
+  {
+    "repo": "llms-txt-for-wp",
+    "name": "1.1.0",
+    "version": "1.1.0",
+    "publishedAt": "2026-01-27T21:51:13Z",
+    "url": "https://github.com/Open-WP-Club/llms-txt-for-wp/releases/tag/1.1.0",
+    "notes": "**Full Changelog**: https://github.com/Open-WP-Club/llms-txt-for-wp/compare/1.0.0...1.1.0\n\n---\n\n### 📦 Plugin Download\n- **WordPress Plugin**: [`llms-txt-for-wp.zip`](https://github.com/Open-WP-Club/llms-txt-for-wp/releases/download/1.1.0/llms-txt-for-wp.zip)\n- **Installation**: Download and upload through WordPress Admin → Plugins → Add New → Upload Plugin\n\n*Built automatically from tag 1.1.0*",
+    "category": "plugin"
+  },
+  {
+    "repo": "spam-user-detective-wp",
+    "name": "1.5.5",
+    "version": "1.5.5",
+    "publishedAt": "2026-01-27T21:47:40Z",
+    "url": "https://github.com/Open-WP-Club/spam-user-detective-wp/releases/tag/1.5.5",
+    "notes": "**Full Changelog**: https://github.com/Open-WP-Club/spam-user-detective-wp/compare/1.5.0...1.5.5\n\n---\n\n### 📦 Plugin Download\n- **WordPress Plugin**: [`spam-user-detective-wp.zip`](https://github.com/Open-WP-Club/spam-user-detective-wp/releases/download/1.5.5/spam-user-detective-wp.zip)\n- **Installation**: Download and upload through WordPress Admin → Plugins → Add New → Upload Plugin\n\n*Built automatically from tag 1.5.5*",
+    "category": "plugin"
+  },
+  {
+    "repo": "logo-link-wp",
+    "name": "1.3.0",
+    "version": "1.3.0",
+    "publishedAt": "2026-01-19T13:04:36Z",
+    "url": "https://github.com/Open-WP-Club/logo-link-wp/releases/tag/1.3.0",
+    "notes": "**Full Changelog**: https://github.com/Open-WP-Club/logo-link-wp/compare/1.2.1...1.3.0\n\n---\n\n### 📦 Plugin Download\n- **WordPress Plugin**: [`logo-link-wp.zip`](https://github.com/Open-WP-Club/logo-link-wp/releases/download/1.3.0/logo-link-wp.zip)\n- **Installation**: Download and upload through WordPress Admin → Plugins → Add New → Upload Plugin\n\n*Built automatically from tag 1.3.0*",
+    "category": "plugin"
+  },
+  {
+    "repo": "phone-order-woo",
+    "name": "2.0.0",
+    "version": "2.0.0",
+    "publishedAt": "2026-01-13T12:04:18Z",
+    "url": "https://github.com/Open-WP-Club/phone-order-woo/releases/tag/2.0.0",
+    "notes": "## What's Changed\r\n* 2.0.0 by @MrGKanev in https://github.com/Open-WP-Club/phone-order-woo/pull/4\r\n\r\n\r\n**Full Changelog**: https://github.com/Open-WP-Club/phone-order-woo/compare/1.1.0...2.0.0\n\n---\n\n### 📦 Plugin Download\n- **WordPress Plugin**: [`phone-order-woo.zip`](https://github.com/Open-WP-Club/phone-order-woo/releases/download/2.0.0/phone-order-woo.zip)\n- **Installation**: Download and upload through WordPress Admin → Plugins → Add New → Upload Plugin\n\n*Built automatically from tag 2.0.0*",
+    "category": "plugin"
+  },
+  {
+    "repo": "stageguard",
+    "name": "1.1.1",
+    "version": "1.1.1",
+    "publishedAt": "2026-01-10T07:01:27Z",
+    "url": "https://github.com/Open-WP-Club/StageGuard/releases/tag/1.1.1",
+    "notes": "**Full Changelog**: https://github.com/Open-WP-Club/StageGuard/compare/1.1.0...1.1.1",
+    "category": "plugin"
+  },
+  {
+    "repo": "plugin-hub",
+    "name": "1.1.0",
+    "version": "1.1.0",
+    "publishedAt": "2026-01-01T23:03:59Z",
+    "url": "https://github.com/Open-WP-Club/plugin-hub/releases/tag/1.1.0",
+    "notes": "**Full Changelog**: https://github.com/Open-WP-Club/plugin-hub/compare/1.0.1...1.1.0\n\n---\n\n### 📦 Plugin Download\n- **WordPress Plugin**: [`plugin-hub.zip`](https://github.com/Open-WP-Club/plugin-hub/releases/download/1.1.0/plugin-hub.zip)\n- **Installation**: Download and upload through WordPress Admin → Plugins → Add New → Upload Plugin\n\n*Built automatically from tag 1.1.0*",
+    "category": "plugin"
+  },
+  {
+    "repo": "eu-vat-wp",
+    "name": "1.0.0",
+    "version": "1.0.0",
+    "publishedAt": "2026-01-01T12:59:01Z",
+    "url": "https://github.com/Open-WP-Club/eu-vat-wp/releases/tag/1.0.0",
+    "notes": "## What's Changed\r\n* v0.0.1 by @MrGKanev in https://github.com/Open-WP-Club/WP-eu-vat/pull/1\r\n\r\n## New Contributors\r\n* @MrGKanev made their first contribution in https://github.com/Open-WP-Club/WP-eu-vat/pull/1\r\n\r\n**Full Changelog**: https://github.com/Open-WP-Club/WP-eu-vat/commits/1.0.0\n\n---\n\n### 📦 Plugin Download\n- **WordPress Plugin**: [`WP-eu-vat.zip`](https://github.com/Open-WP-Club/WP-eu-vat/releases/download/1.0.0/WP-eu-vat.zip)\n- **Installation**: Download and upload through WordPress Admin → Plugins → Add New → Upload Plugin\n\n*Built automatically from tag 1.0.0*",
+    "category": "plugin"
+  },
+  {
+    "repo": "inventory-alerts-woo",
+    "name": "1.1.2",
+    "version": "1.1.2",
+    "publishedAt": "2025-12-17T12:59:59Z",
+    "url": "https://github.com/Open-WP-Club/inventory-alerts-woo/releases/tag/1.1.2",
+    "notes": "## What's Changed\r\n* Fix inconsistent stock status display in orders by @MrGKanev in https://github.com/Open-WP-Club/inventory-alerts-woo/pull/5\r\n\r\n\r\n**Full Changelog**: https://github.com/Open-WP-Club/inventory-alerts-woo/compare/1.1.1...1.1.2\n\n---\n\n### 📦 Plugin Download\n- **WordPress Plugin**: [`inventory-alerts-woo.zip`](https://github.com/Open-WP-Club/inventory-alerts-woo/releases/download/1.1.2/inventory-alerts-woo.zip)\n- **Installation**: Download and upload through WordPress Admin → Plugins → Add New → Upload Plugin\n\n*Built automatically from tag 1.1.2*",
+    "category": "plugin"
+  },
+  {
+    "repo": "inventory-insights-woocommerce",
+    "name": "1.2.5",
+    "version": "1.2.5",
+    "publishedAt": "2025-11-19T12:36:15Z",
+    "url": "https://github.com/Open-WP-Club/inventory-insights-woocommerce/releases/tag/1.2.5",
+    "notes": "## What's Changed\r\n* Fix search results number mismatch and style export button by @MrGKanev in https://github.com/Open-WP-Club/woocommerce-inventory-insights/pull/3\r\n\r\n\r\n**Full Changelog**: https://github.com/Open-WP-Club/woocommerce-inventory-insights/compare/1.2.3...1.2.5\n\n---\n\n### 📦 Plugin Download\n- **WordPress Plugin**: [`woocommerce-inventory-insights.zip`](https://github.com/Open-WP-Club/woocommerce-inventory-insights/releases/download/1.2.5/woocommerce-inventory-insights.zip)\n- **Installation**: Download and upload through WordPress Admin → Plugins → Add New → Upload Plugin\n\n*Built automatically from tag 1.2.5*",
+    "category": "plugin"
+  },
+  {
+    "repo": "smart-product-export-woo",
+    "name": "1.1.0",
+    "version": "1.1.0",
+    "publishedAt": "2025-11-04T15:10:08Z",
+    "url": "https://github.com/Open-WP-Club/smart-product-export-woo/releases/tag/1.1.0",
+    "notes": "**Full Changelog**: https://github.com/Open-WP-Club/smart-product-export/compare/1.0.0...1.1.0\n\n---\n\n### 📦 Plugin Download\n- **WordPress Plugin**: [`smart-product-export.zip`](https://github.com/Open-WP-Club/smart-product-export/releases/download/1.1.0/smart-product-export.zip)\n- **Installation**: Download and upload through WordPress Admin → Plugins → Add New → Upload Plugin\n\n*Built automatically from tag 1.1.0*",
+    "category": "plugin"
+  },
+  {
+    "repo": "order-payment-limiter-woo",
+    "name": "1.0.0",
+    "version": "1.0.0",
+    "publishedAt": "2025-08-25T17:02:20Z",
+    "url": "https://github.com/Open-WP-Club/order-payment-limiter-woo/releases/tag/1.0.0",
+    "notes": "**Full Changelog**: https://github.com/Open-WP-Club/WooCommerce-Order-Payment-Limiter/commits/1.0.0",
+    "category": "plugin"
+  },
+  {
+    "repo": "gravity-forms-shopify-integration",
+    "name": "1.0.1",
+    "version": "1.0.1",
+    "publishedAt": "2025-05-23T12:09:28Z",
+    "url": "https://github.com/Open-WP-Club/Gravity-Forms-Shopify-Integration/releases/tag/1.0.1",
+    "notes": "* Less generated logs\r\n**Full Changelog**: https://github.com/Open-WP-Club/Gravity-Forms-Shopify-Integration/compare/1.0.0...1.0.1",
+    "category": "plugin"
+  },
+  {
+    "repo": "last-user-orders-by-roles",
+    "name": "1.0.0",
+    "version": "1.0.0",
+    "publishedAt": "2025-05-19T20:12:27Z",
+    "url": "https://github.com/Open-WP-Club/Last-User-Orders-by-Roles/releases/tag/1.0.0",
+    "notes": "## What's Changed\r\n* Updating the Settings and moving it to the correct place by @MrGKanev in https://github.com/Open-WP-Club/Last-User-Orders-by-Roles/pull/1\r\n* Adding the settings page to the Plugins page by @MrGKanev in https://github.com/Open-WP-Club/Last-User-Orders-by-Roles/pull/2\r\n\r\n## New Contributors\r\n* @MrGKanev made their first contribution in https://github.com/Open-WP-Club/Last-User-Orders-by-Roles/pull/1\r\n\r\n**Full Changelog**: https://github.com/Open-WP-Club/Last-User-Orders-by-Roles/commits/1.0.0",
+    "category": "plugin"
+  },
+  {
+    "repo": "bulk-order-editor",
+    "name": "1.0.0",
+    "version": "1.0.0",
+    "publishedAt": "2025-05-19T20:12:08Z",
+    "url": "https://github.com/Open-WP-Club/Bulk-Order-Editor/releases/tag/1.0.0",
+    "notes": "## New Contributors\r\n* @MrGKanev made their first contribution in https://github.com/Open-WP-Club/Bulk-Order-Editor/pull/1\r\n\r\n**Full Changelog**: https://github.com/Open-WP-Club/Bulk-Order-Editor/commits/1.0.0",
+    "category": "plugin"
+  },
+  {
+    "repo": "wc-pre-order",
+    "name": "1.0.0",
+    "version": "1.0.0",
+    "publishedAt": "2025-05-19T20:11:23Z",
+    "url": "https://github.com/Open-WP-Club/WC-Pre-order/releases/tag/1.0.0",
+    "notes": "## What's Changed\r\n* Promo codes mismatch by @MrGKanev in https://github.com/Open-WP-Club/WC-Pre-order/pull/1\r\n* Adding a promocode after purchase of product X by @MrGKanev in https://github.com/Open-WP-Club/WC-Pre-order/pull/2\r\n\r\n## New Contributors\r\n* @MrGKanev made their first contribution in https://github.com/Open-WP-Club/WC-Pre-order/pull/1\r\n\r\n**Full Changelog**: https://github.com/Open-WP-Club/WC-Pre-order/commits/1.0.0",
+    "category": "plugin"
+  },
+  {
+    "repo": "wp-historical-preservation-mode",
+    "name": "1.0.0",
+    "version": "1.0.0",
+    "publishedAt": "2025-04-29T12:11:14Z",
+    "url": "https://github.com/Open-WP-Club/WP-Historical-Preservation-Mode/releases/tag/1.0.0",
+    "notes": "## What's Changed\r\n* V1.0.0 by @MrGKanev in https://github.com/Open-WP-Club/WP-Historical-Preservation-Mode/pull/1\r\n\r\n## New Contributors\r\n* @MrGKanev made their first contribution in https://github.com/Open-WP-Club/WP-Historical-Preservation-Mode/pull/1\r\n\r\n**Full Changelog**: https://github.com/Open-WP-Club/WP-Historical-Preservation-Mode/commits/1.0.0",
+    "category": "plugin"
+  },
+  {
+    "repo": "better-user-search",
+    "name": "1.0.0",
+    "version": "1.0.0",
+    "publishedAt": "2025-04-29T12:04:23Z",
+    "url": "https://github.com/Open-WP-Club/better-user-search/releases/tag/1.0.0",
+    "notes": "**Full Changelog**: https://github.com/Open-WP-Club/better-user-search/commits/1.0.0",
+    "category": "plugin"
+  },
+  {
+    "repo": "wp-file-visibility-manager",
+    "name": "1.0.0",
+    "version": "1.0.0",
+    "publishedAt": "2025-04-29T12:01:18Z",
+    "url": "https://github.com/Open-WP-Club/WP-File-Visibility-Manager/releases/tag/1.0.0",
+    "notes": "## What's Changed\r\n* 1.0.0 by @MrGKanev in https://github.com/Open-WP-Club/WP-File-Visibility-Manager/pull/1\r\n\r\n## New Contributors\r\n* @MrGKanev made their first contribution in https://github.com/Open-WP-Club/WP-File-Visibility-Manager/pull/1\r\n\r\n**Full Changelog**: https://github.com/Open-WP-Club/WP-File-Visibility-Manager/commits/1.0.0",
+    "category": "plugin"
+  },
+  {
+    "repo": "wp-simple-order-history",
+    "name": "1.0.0",
+    "version": "1.0.0",
+    "publishedAt": "2025-01-13T14:49:13Z",
+    "url": "https://github.com/Open-WP-Club/wp-simple-order-history/releases/tag/1.0.0",
+    "notes": "**Full Changelog**: https://github.com/Open-WP-Club/wp-simple-order-history/commits/1.0.0",
+    "category": "plugin"
+  },
+  {
+    "repo": "wp-user-blocking",
+    "name": "1.1.0",
+    "version": "1.1.0",
+    "publishedAt": "2024-10-21T13:21:08Z",
+    "url": "https://github.com/Open-WP-Club/WP-User-Blocking/releases/tag/1.1.0",
+    "notes": "## What's Changed\r\n* 1.1.0 by @MrGKanev in https://github.com/Open-WP-Club/WP-User-Blocking/pull/2\r\n\r\n\r\n**Full Changelog**: https://github.com/Open-WP-Club/WP-User-Blocking/compare/1.0.0...1.1.0",
+    "category": "plugin"
+  },
+  {
+    "repo": "woocommerce-phone-number-validator",
+    "name": "1.1.1",
+    "version": "1.1.1",
+    "publishedAt": "2024-10-07T08:41:01Z",
+    "url": "https://github.com/Open-WP-Club/WooCommerce-Phone-Number-Validator/releases/tag/1.1.1",
+    "notes": "## What's Changed\r\n* Adding test mode and bulk validation by @MrGKanev in https://github.com/Open-WP-Club/WooCommerce-Phone-Number-Validator/pull/1\r\n\r\n## New Contributors\r\n* @MrGKanev made their first contribution in https://github.com/Open-WP-Club/WooCommerce-Phone-Number-Validator/pull/1\r\n\r\n**Full Changelog**: https://github.com/Open-WP-Club/WooCommerce-Phone-Number-Validator/compare/1.0.0...1.1.1",
+    "category": "plugin"
+  },
+  {
+    "repo": "wp-sanitize",
+    "name": "1.1.1",
+    "version": "1.1.1",
+    "publishedAt": "2024-10-04T11:56:39Z",
+    "url": "https://github.com/Open-WP-Club/wp-sanitize/releases/tag/1.1.1",
+    "notes": "**Full Changelog**: https://github.com/Open-WP-Club/wp-sanitize/compare/1.0.5...1.1.1",
+    "category": "plugin"
+  },
+  {
+    "repo": "resume-builder",
+    "name": "1.0.0",
+    "version": "1.0.0",
+    "publishedAt": "2024-09-29T15:22:45Z",
+    "url": "https://github.com/Open-WP-Club/resume-builder/releases/tag/1.0.0",
+    "notes": "## What's Changed\r\n* v0.0.1 by @MrGKanev in https://github.com/Open-WP-Club/resume-builder/pull/1\r\n\r\n## New Contributors\r\n* @MrGKanev made their first contribution in https://github.com/Open-WP-Club/resume-builder/pull/1\r\n\r\n**Full Changelog**: https://github.com/Open-WP-Club/resume-builder/commits/1.0.0",
+    "category": "plugin"
+  },
+  {
+    "repo": "wp-internal-linking",
+    "name": "1.0.0",
+    "version": "1.0.0",
+    "publishedAt": "2024-09-09T19:15:47Z",
+    "url": "https://github.com/Open-WP-Club/wp-internal-linking/releases/tag/1.0.0",
+    "notes": "1.0.0\r\n\r\n## What's Changed\r\n* v0.0.1 by @MrGKanev in https://github.com/Open-WP-Club/wp-internal-linking/pull/1\r\n* V0.0.2 by @MrGKanev in https://github.com/Open-WP-Club/wp-internal-linking/pull/2\r\n\r\n## New Contributors\r\n* @MrGKanev made their first contribution in https://github.com/Open-WP-Club/wp-internal-linking/pull/1\r\n\r\n**Full Changelog**: https://github.com/Open-WP-Club/wp-internal-linking/commits/1.0.0",
+    "category": "plugin"
+  }
+]

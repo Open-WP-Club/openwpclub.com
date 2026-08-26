@@ -6,7 +6,7 @@ import icon from 'astro-icon';
 export default defineConfig({
   site: 'https://openwpclub.com',
   trailingSlash: 'always',
-  integrations: [sitemap(), icon()],
+  integrations: [sitemap(), icon({ iconDir: 'src/components/icons' })],
   prefetch: {
     prefetchAll: true,
     defaultStrategy: 'tap',

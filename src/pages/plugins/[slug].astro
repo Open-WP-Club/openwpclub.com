@@ -5,8 +5,8 @@ import PluginCard from '../../components/PluginCard.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Sidebar from '../../components/Sidebar.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import DataFreshness from '../../components/DataFreshness.astro';
 import { getCollection } from 'astro:content';
-import { GITHUB_ORG_URL, DISCORD_URL } from '../../lib/config';
 import { readFileSync, existsSync } from 'node:fs';
 
 export async function getStaticPaths() {
@@ -19,7 +19,7 @@ export async function getStaticPaths() {
 }
 
 const { plugin, allPlugins } = Astro.props;
-const { name, description, version, githubUrl, wordpressUrl, stars, forks, openIssues, lastPush, license, language, defaultBranch, downloads } = plugin.data;
+const { name, description, version, githubUrl, wordpressUrl, stars, openIssues, lastPush, license, language, defaultBranch, downloads } = plugin.data;
 
 const downloadsNum = downloads ? parseInt(downloads, 10) : 0;
 
@@ -220,7 +220,10 @@ const softwareSchema = {
               )}
               {downloadsNum > 0 && (
                 <div class="flex justify-between">
-                  <dt class="text-gray-500 dark:text-gray-400">Downloads</dt>
+                  <dt class="text-gray-500 dark:text-gray-400">
+                    Downloads
+                    <DataFreshness class="block text-xs text-gray-400 dark:text-gray-500" />
+                  </dt>
                   <dd class="text-gray-900 dark:text-white font-medium">{downloadsNum.toLocaleString()}</dd>
                 </div>
               )}

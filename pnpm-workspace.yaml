@@ -17,3 +17,4 @@ minimumReleaseAgeExclude:
 overrides:
   "@iconify/tools": "^5.0.12"
   esbuild: "^0.28.1"
+  nanoid: "^3.3.18"

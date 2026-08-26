@@ -1,6 +1,7 @@
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
 import { GITHUB_ORG_URL, DISCORD_URL } from '../lib/config';
+import freshness from '../data/freshness.json';
 
 export const GET: APIRoute = async () => {
   const plugins = await getCollection('plugins');
@@ -32,7 +33,9 @@ export const GET: APIRoute = async () => {
     '',
     '- [llms-full.txt](https://openwpclub.com/llms-full.txt): Complete site content including all plugin READMEs and blog posts',
     '',
-    `## Plugins (${sorted.length})`,
+    `> Catalog figures are updated monthly. Data as of ${freshness.catalogUpdatedAt.slice(0, 10)}.`,
+    '',
+    `## Software (${sorted.length})`,
     '',
   ];
 
@@ -44,7 +47,8 @@ export const GET: APIRoute = async () => {
     if (d.stars > 0) meta.push(`${d.stars} stars`);
     if (d.license) meta.push(d.license);
 
-    lines.push(`- [${d.name}](https://openwpclub.com/plugins/${plugin.id}/): ${d.description}${meta.length ? ' (' + meta.join(', ') + ')' : ''}`);
+    const section = d.category === 'app' ? 'apps' : 'plugins';
+    lines.push(`- [${d.name}](https://openwpclub.com/${section}/${plugin.id}/): ${d.description}${meta.length ? ' (' + meta.join(', ') + ')' : ''}`);
   }
 
   lines.push('');

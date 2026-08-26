@@ -40,9 +40,10 @@ function timeAgo(dateStr: string): string {
     {stars}
   </span>
   {downloadsNum > 0 && (
-    <span class="inline-flex items-center gap-1">
+    <span class="inline-flex items-center gap-1" title="Download figures are updated monthly">
       <Icon name="lucide:download" class="size-4" />
       {downloadsNum.toLocaleString()}
+      <span class="text-[10px] text-gray-400 dark:text-gray-500">monthly</span>
     </span>
   )}
   {lastPush && (

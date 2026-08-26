@@ -18,6 +18,7 @@ import sanitizeHtml from 'sanitize-html';
 import { parseCSVLine } from '../src/lib/csv';
 import { rewriteImageUrls } from '../src/lib/fetchGitHubData';
 import { categorize } from '../src/lib/categorize';
+import type { ReleaseAsset } from '../src/lib/app-releases';
 
 // Resolve paths
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -25,6 +26,7 @@ const ROOT = resolve(__dirname, '..');
 const DATA_DIR = resolve(ROOT, 'src/data');
 const READMES_DIR = resolve(DATA_DIR, 'readmes');
 const CACHE_FILE = resolve(ROOT, '.fetch-cache.json');
+const APP_METADATA_FILE = resolve(DATA_DIR, 'apps.json');
 
 // Load .env file
 try {
@@ -45,6 +47,25 @@ const CSV_URL = `https://raw.githubusercontent.com/${ORG}/.github/main/plugins.c
 const TRAFFIC_URL = `https://raw.githubusercontent.com/${ORG}/.github/main/traffic-state.json`;
 const BATCH_SIZE = 10;
 const TOKEN = process.env.GITHUB_TOKEN || '';
+
+interface AppMetadata {
+  category: 'app';
+  description?: string;
+  platforms: Array<'windows' | 'macos' | 'linux' | 'android' | 'ios'>;
+  featured?: boolean;
+  icon?: string;
+  features?: string[];
+  requirements?: string[];
+  screenshots?: Array<{ src: string; alt: string; caption?: string }>;
+}
+
+function loadAppMetadata(): Partial<Record<string, AppMetadata>> {
+  try {
+    return JSON.parse(readFileSync(APP_METADATA_FILE, 'utf-8'));
+  } catch {
+    return {};
+  }
+}
 
 /** Known AI/LLM account logins - excluded from contributors unless they are sponsors. */
 const AI_LOGINS = new Set(['claude', 'copilot', 'github-copilot', 'devin-ai', 'coderabbitai', 'sweep-ai']);
@@ -110,22 +131,66 @@ async function cachedFetch(url: string): Promise<{ data: unknown; status: number
   const cached = etagCache[url];
   if (cached?.etag) h['If-None-Match'] = cached.etag;
 
-  const res = await fetch(url, { headers: h, signal: AbortSignal.timeout(15000) });
+  try {
+    const res = await fetch(url, { headers: h, signal: AbortSignal.timeout(15000) });
 
-  if (res.status === 304 && cached) {
-    cacheHits++;
-    return { data: cached.data, status: 304 };
+    if (res.status === 304 && cached) {
+      cacheHits++;
+      return { data: cached.data, status: 304 };
+    }
+
+    if (!res.ok) {
+      if (cached) {
+        cacheHits++;
+        console.warn(`  GitHub returned HTTP ${res.status}; using cached data for ${url}`);
+        return { data: cached.data, status: res.status };
+      }
+      return null;
+    }
+
+    cacheMisses++;
+    const data = await res.json();
+    const etag = res.headers.get('etag');
+    if (etag) etagCache[url] = { etag, data };
+    return { data, status: res.status };
+  } catch (error) {
+    if (cached) {
+      cacheHits++;
+      console.warn(`  GitHub request failed; using cached data for ${url}: ${(error as Error).message}`);
+      return { data: cached.data, status: 0 };
+    }
+    console.warn(`  GitHub request failed with no cached fallback for ${url}: ${(error as Error).message}`);
+    return null;
   }
+}
 
-  if (!res.ok) return null;
-
-  cacheMisses++;
-  const data = await res.json();
-  const etag = res.headers.get('etag');
-  if (etag) {
-    etagCache[url] = { etag, data };
+async function cachedFetchText(url: string): Promise<string | null> {
+  const h = headers();
+  const cached = etagCache[url];
+  if (cached?.etag) h['If-None-Match'] = cached.etag;
+  try {
+    const res = await fetch(url, { headers: h, signal: AbortSignal.timeout(15000) });
+    if (res.status === 304 && cached && typeof cached.data === 'string') {
+      cacheHits++;
+      return cached.data;
+    }
+    if (!res.ok) {
+      if (typeof cached?.data === 'string') return cached.data;
+      return null;
+    }
+    cacheMisses++;
+    const data = await res.text();
+    const etag = res.headers.get('etag');
+    if (etag) etagCache[url] = { etag, data };
+    return data;
+  } catch (error) {
+    if (typeof cached?.data === 'string') {
+      cacheHits++;
+      console.warn(`  Source request failed; using cached data for ${url}: ${(error as Error).message}`);
+      return cached.data;
+    }
+    return null;
   }
-  return { data, status: res.status };
 }
 
 
@@ -147,6 +212,58 @@ async function fetchRepoStats(repoName: string) {
     license: (d.license as Record<string, string>)?.spdx_id ?? null,
     language: (d.language as string) ?? null,
     defaultBranch: (d.default_branch as string) ?? 'main',
+  };
+}
+
+interface GitHubReleaseAsset {
+  name: string;
+  browser_download_url: string;
+  size: number;
+  download_count: number;
+  content_type: string;
+}
+
+interface LatestGitHubRelease {
+  tag_name: string;
+  name: string;
+  body: string;
+  html_url: string;
+  published_at: string;
+  draft: boolean;
+  prerelease: boolean;
+  assets: GitHubReleaseAsset[];
+}
+
+async function fetchLatestRelease(repoName: string): Promise<{
+  version: string;
+  publishedAt: string;
+  assets: ReleaseAsset[];
+  downloads: number;
+  name: string;
+  notes: string;
+  url: string;
+} | null> {
+  const result = await cachedFetch(`https://api.github.com/repos/${ORG}/${repoName}/releases/latest`);
+  if (!result) return null;
+
+  const release = result.data as LatestGitHubRelease;
+  if (release.draft || release.prerelease) return null;
+  const assets = (release.assets || []).map((asset) => ({
+    name: asset.name,
+    url: asset.browser_download_url,
+    size: asset.size,
+    downloadCount: asset.download_count,
+    contentType: asset.content_type,
+  }));
+
+  return {
+    version: (release.tag_name || '').replace(/^v/i, ''),
+    publishedAt: release.published_at || '',
+    assets,
+    downloads: assets.reduce((total, asset) => total + asset.downloadCount, 0),
+    name: release.name || release.tag_name,
+    notes: release.body || '',
+    url: release.html_url || `https://github.com/${ORG}/${repoName}/releases/tag/${release.tag_name}`,
   };
 }
 
@@ -208,9 +325,8 @@ async function main() {
 
   // Fetch CSV
   console.log('Fetching plugin list from CSV...');
-  const csvRes = await fetch(CSV_URL, { signal: AbortSignal.timeout(15000) });
-  if (!csvRes.ok) { console.error(`  FAILED: HTTP ${csvRes.status}`); process.exit(1); }
-  const text = await csvRes.text();
+  const text = await cachedFetchText(CSV_URL);
+  if (!text) { console.error('  FAILED: no CSV response or cached fallback'); process.exit(1); }
   const lines = text.trim().split(/\r?\n/);
   const csvHeaders = lines[0].split(',').map((h) => h.replace(/^"|"$/g, '').trim().toLowerCase());
 
@@ -243,29 +359,43 @@ async function main() {
   console.log('Fetching GitHub data (stats + README)...');
   let totalStars = 0, totalForks = 0, failedCount = 0;
 
+  const appMetadata = loadAppMetadata();
   const pluginData: Array<Record<string, unknown>> = [];
+  const repositoryReleases: Array<{
+    repo: string;
+    name: string;
+    version: string;
+    publishedAt: string;
+    url: string;
+    notes: string;
+    category: string;
+  }> = [];
 
   for (let i = 0; i < csvPlugins.length; i += BATCH_SIZE) {
     const batch = csvPlugins.slice(i, i + BATCH_SIZE);
     const results = await Promise.allSettled(
       batch.map(async (p) => {
         const stats = await fetchRepoStats(p.slug);
-        const readmeHtml = await fetchReadme(p.slug, stats.defaultBranch);
-        return { csv: p, stats, readmeHtml };
+        const metadata = appMetadata[p.slug];
+        const category = metadata?.category || categorize(stats.topics, stats.language, p.slug);
+        const [readmeHtml, latestRelease] = await Promise.all([
+          fetchReadme(p.slug, stats.defaultBranch),
+          category !== 'website' ? fetchLatestRelease(p.slug) : Promise.resolve(null),
+        ]);
+        return { csv: p, stats, category, metadata, readmeHtml, latestRelease };
       })
     );
     for (const r of results) {
       if (r.status === 'fulfilled') {
-        const { csv, stats, readmeHtml } = r.value;
+        const { csv, stats, category, metadata, readmeHtml, latestRelease } = r.value;
         totalStars += stats.stars;
         totalForks += stats.forks;
         if (stats.stars === 0 && stats.lastPush === '') failedCount++;
-        const category = categorize(stats.topics, stats.language, csv.slug);
         pluginData.push({
           id: csv.slug,
           name: csv.name,
-          description: csv.description,
-          version: csv.version,
+          description: metadata?.description || csv.description,
+          version: latestRelease?.version || csv.version,
           downloads: csv.downloads,
           rating: csv.rating,
           githubUrl: csv.github_url || `https://github.com/${ORG}/${csv.slug}`,
@@ -280,8 +410,31 @@ async function main() {
           language: stats.language,
           defaultBranch: stats.defaultBranch,
           category,
+          releasePublishedAt: latestRelease?.publishedAt || '',
+          releaseUrl: latestRelease?.url || '',
+          ...(category === 'app' && {
+            releaseDownloads: latestRelease?.downloads || 0,
+            releaseAssets: latestRelease?.assets || [],
+            platforms: metadata?.platforms || [],
+            featured: metadata?.featured || false,
+            icon: metadata?.icon || '',
+            features: metadata?.features || [],
+            requirements: metadata?.requirements || [],
+            screenshots: metadata?.screenshots || [],
+          }),
           _readmeHtml: readmeHtml,
         });
+        if (latestRelease?.publishedAt) {
+          repositoryReleases.push({
+            repo: csv.slug,
+            name: latestRelease.name,
+            version: latestRelease.version,
+            publishedAt: latestRelease.publishedAt,
+            url: latestRelease.url,
+            notes: latestRelease.notes,
+            category,
+          });
+        }
       }
     }
     process.stdout.write(`  ${Math.min(i + BATCH_SIZE, csvPlugins.length)}/${csvPlugins.length} repos done\r`);
@@ -290,6 +443,10 @@ async function main() {
   console.log(`  Stars: ${totalStars} | Forks: ${totalForks}`);
   if (failedCount > 0) console.warn(`  Failed: ${failedCount} repos`);
   console.log();
+
+  repositoryReleases.sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
+  writeFileSync(resolve(DATA_DIR, 'releases.json'), JSON.stringify(repositoryReleases, null, 2));
+  console.log(`  Saved ${repositoryReleases.length} latest repository releases\n`);
 
   // Fetch contributors
   console.log('Fetching contributors...');
@@ -410,10 +567,19 @@ async function main() {
 
   // Fetch org-wide traffic stats
   console.log('Fetching traffic stats...');
+  let trafficUpdatedAt = '';
+  try {
+    const existingTraffic = JSON.parse(readFileSync(resolve(DATA_DIR, 'traffic.json'), 'utf-8'));
+    trafficUpdatedAt = existingTraffic.updatedAt || '';
+  } catch { /* no existing traffic data */ }
   try {
     const trafficRes = await fetch(TRAFFIC_URL, { signal: AbortSignal.timeout(15000) });
     if (trafficRes.ok) {
-      writeFileSync(resolve(DATA_DIR, 'traffic.json'), await trafficRes.text());
+      const trafficText = await trafficRes.text();
+      writeFileSync(resolve(DATA_DIR, 'traffic.json'), trafficText);
+      try {
+        trafficUpdatedAt = JSON.parse(trafficText).updatedAt || trafficUpdatedAt;
+      } catch { /* keep the previous timestamp */ }
       console.log('  Saved traffic.json\n');
     } else {
       console.warn(`  Failed: HTTP ${trafficRes.status} - keeping existing traffic.json\n`);
@@ -436,6 +602,10 @@ async function main() {
   const cleanData = pluginData.map(({ _readmeHtml, ...rest }) => rest);
   writeFileSync(resolve(DATA_DIR, 'plugins.json'), JSON.stringify(cleanData, null, 2));
   writeFileSync(resolve(DATA_DIR, 'contributors.json'), JSON.stringify(contributors, null, 2));
+  writeFileSync(resolve(DATA_DIR, 'freshness.json'), JSON.stringify({
+    catalogUpdatedAt: new Date().toISOString(),
+    trafficUpdatedAt: trafficUpdatedAt || new Date().toISOString(),
+  }, null, 2));
 
   // Save per-repo contributor data
   const repoContribData = Object.fromEntries(perRepoContributors);

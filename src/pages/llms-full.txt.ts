@@ -1,8 +1,9 @@
 import type { APIRoute } from 'astro';
-import { getCollection, render } from 'astro:content';
+import { getCollection } from 'astro:content';
 import { readFileSync, existsSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { GITHUB_ORG_URL, DISCORD_URL } from '../lib/config';
+import freshness from '../data/freshness.json';
 
 const READMES_DIR = resolve(process.cwd(), 'src/data/readmes');
 
@@ -29,6 +30,9 @@ export const GET: APIRoute = async () => {
   const sortedPlugins = plugins
     .filter((p) => p.data.category === 'plugin')
     .sort((a, b) => (b.data.stars ?? 0) - (a.data.stars ?? 0));
+  const sortedApps = plugins
+    .filter((p) => p.data.category === 'app')
+    .sort((a, b) => (b.data.lastPush || '').localeCompare(a.data.lastPush || ''));
 
   const sortedPosts = posts.sort(
     (a, b) => b.data.date.getTime() - a.data.date.getTime()
@@ -39,6 +43,7 @@ export const GET: APIRoute = async () => {
     '',
     '> An open community building free WordPress plugins. No paywalls, no premium tiers.',
     `> Website: https://openwpclub.com | GitHub: ${GITHUB_ORG_URL} | Discord: ${DISCORD_URL}`,
+    `> Catalog figures are updated monthly. Data as of ${freshness.catalogUpdatedAt.slice(0, 10)}.`,
     '',
     '---',
     '',
@@ -74,6 +79,22 @@ export const GET: APIRoute = async () => {
       }
     }
 
+    lines.push('');
+    lines.push('---');
+    lines.push('');
+  }
+
+  lines.push(`# Apps (${sortedApps.length})`);
+  lines.push('');
+  for (const app of sortedApps) {
+    const d = app.data;
+    lines.push(`## ${d.name}`);
+    lines.push(`URL: https://openwpclub.com/apps/${app.id}/`);
+    lines.push(`GitHub: ${d.githubUrl}`);
+    lines.push(`Description: ${d.description}`);
+    if (d.version) lines.push(`Version: ${d.version}`);
+    if (d.platforms.length) lines.push(`Platforms: ${d.platforms.join(', ')}`);
+    if (d.features.length) lines.push(`Features: ${d.features.join('; ')}`);
     lines.push('');
     lines.push('---');
     lines.push('');

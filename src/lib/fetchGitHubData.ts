@@ -78,11 +78,20 @@ export async function fetchReadme(repoName: string, defaultBranch: string = 'mai
 }
 
 export function rewriteImageUrls(html: string, repo: string, branch: string): string {
-  return html.replace(
+  const withImages = html.replace(
     /(<img\s[^>]*src=")(?!https?:\/\/)([^"]+)(")/gi,
     (_, prefix, src, suffix) => {
       const cleanSrc = src.replace(/^\.\//, '');
       return `${prefix}https://raw.githubusercontent.com/${ORG}/${repo}/${branch}/${cleanSrc}${suffix}`;
+    }
+  );
+
+  return withImages.replace(
+    /(<a\s[^>]*href=")(?!https?:\/\/|mailto:|#)([^"]+)(")/gi,
+    (_, prefix, href, suffix) => {
+      if (href === '/issues' || href === 'issues') return `${prefix}https://github.com/${ORG}/${repo}/issues${suffix}`;
+      const cleanHref = href.replace(/^\.\//, '').replace(/^\//, '');
+      return `${prefix}https://github.com/${ORG}/${repo}/blob/${branch}/${cleanHref}${suffix}`;
     }
   );
 }

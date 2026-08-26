@@ -6,6 +6,7 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import { getCollection } from 'astro:content';
 import { pluginCategoryMap } from '../../lib/categories';
 import { getPluginBadgeThresholds, pluginIsNew, pluginIsPopular } from '../../lib/plugin-utils';
+import DataFreshness from '../../components/DataFreshness.astro';
 
 const allItems = await getCollection('plugins');
 const sorted = allItems
@@ -40,6 +41,7 @@ const { thirtyDaysAgo, starThreshold } = getPluginBadgeThresholds(sorted);
     <div class="mb-8">
       <h1 class="text-3xl font-bold text-gray-900 dark:text-white tracking-tight">Plugins</h1>
       <p class="mt-1 text-gray-500 dark:text-gray-400">{sorted.length} free, open-source WordPress plugins</p>
+      <p class="mt-2 text-xs text-gray-400 dark:text-gray-500"><DataFreshness /></p>
     </div>
 
     <div class="flex gap-8 items-start">
@@ -199,7 +201,7 @@ const { thirtyDaysAgo, starThreshold } = getPluginBadgeThresholds(sorted);
   </div>
 </BaseLayout>
 
-<script define:vars={{ categoryKeywordsJson }}>
+<script is:inline define:vars={{ categoryKeywordsJson }}>
   window.__categoryKeywords = categoryKeywordsJson;
 </script>
 

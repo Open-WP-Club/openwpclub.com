@@ -3,10 +3,16 @@ import { Icon } from 'astro-icon/components';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import { getCollection } from 'astro:content';
+import { getAppFacets } from '../../lib/app-releases';
+import DataFreshness from '../../components/DataFreshness.astro';
 
 const allApps = (await getCollection('plugins'))
   .filter((p) => p.data.category === 'app')
   .sort((a, b) => new Date(b.data.lastPush).getTime() - new Date(a.data.lastPush).getTime());
+const appEntries = allApps.map((app) => ({
+  app,
+  facets: getAppFacets(app.data.topics, app.data.releaseAssets, app.data.platforms),
+}));
 
 const categoryMap: Record<string, { label: string; icon: string; keywords: string[] }> = {
   woocommerce: {
@@ -48,8 +54,8 @@ const categoryMap: Record<string, { label: string; icon: string; keywords: strin
 
 const categoryCounts: Record<string, number> = {};
 for (const [key, cat] of Object.entries(categoryMap)) {
-  categoryCounts[key] = allApps.filter((p) =>
-    p.data.topics.some((t) => cat.keywords.includes(t.toLowerCase()))
+  categoryCounts[key] = appEntries.filter(({ facets }) =>
+    facets.some((facet) => cat.keywords.includes(facet))
   ).length;
 }
 
@@ -66,6 +72,7 @@ const categoryKeywordsJson = Object.fromEntries(
     <div class="mb-8">
       <h1 class="text-3xl font-bold text-gray-900 dark:text-white tracking-tight">Apps</h1>
       <p class="mt-1 text-gray-500 dark:text-gray-400">{allApps.length} app{allApps.length !== 1 ? 's' : ''} built by Open WP Club</p>
+      <p class="mt-2 text-xs text-gray-400 dark:text-gray-500"><DataFreshness /></p>
     </div>
 
     <div class="flex gap-8 items-start">
@@ -163,10 +170,10 @@ const categoryKeywordsJson = Object.fromEntries(
         </div>
 
         <div id="app-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {allApps.map((app) => (
+          {appEntries.map(({ app, facets }) => (
             <div
               class="app-item"
-              data-topics={app.data.topics.join(' ').toLowerCase()}
+              data-topics={facets.join(' ')}
               data-name={app.data.name.toLowerCase()}
               data-description={app.data.description.toLowerCase()}
               data-stars={app.data.stars}
@@ -179,10 +186,17 @@ const categoryKeywordsJson = Object.fromEntries(
                 <div class="flex items-start justify-between gap-4">
                   <div class="flex items-start gap-4">
                     <div class="shrink-0 size-12 flex items-center justify-center rounded-xl bg-blue-100 dark:bg-blue-900/40">
-                      <Icon name="lucide:smartphone" class="size-6 text-blue-500" />
+                      {app.data.icon ? (
+                        <img src={app.data.icon} alt="" width="40" height="40" loading="lazy" class="size-10 rounded-lg object-contain" />
+                      ) : (
+                        <Icon name={facets.includes('desktop') ? 'lucide:monitor' : 'lucide:smartphone'} class="size-6 text-blue-500" />
+                      )}
                     </div>
                     <div>
-                      <h2 class="text-base font-semibold text-gray-900 dark:text-white">{app.data.name}</h2>
+                      <h2 class="text-base font-semibold text-gray-900 dark:text-white">
+                        {app.data.name}
+                        {app.data.featured && <span class="ml-1.5 text-[10px] uppercase tracking-wide text-blue-500">Featured</span>}
+                      </h2>
                       {app.data.language && (
                         <span class="inline-flex items-center mt-1 px-2 py-0.5 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300">
                           {app.data.language}
@@ -225,7 +239,7 @@ const categoryKeywordsJson = Object.fromEntries(
   </div>
 </BaseLayout>
 
-<script define:vars={{ categoryKeywordsJson }}>
+<script is:inline define:vars={{ categoryKeywordsJson }}>
   window.__appCategoryKeywords = categoryKeywordsJson;
 </script>
 
@@ -233,7 +247,7 @@ const categoryKeywordsJson = Object.fromEntries(
   import { debounce } from '../../lib/debounce';
   import { filterItems, sortItems, updateFilterButtons } from '../../lib/catalog-filter';
 
-  document.addEventListener('astro:page-load', () => {
+  function initializeAppCatalog() {
     const search = document.getElementById('app-search') as HTMLInputElement | null;
     const searchMobile = document.getElementById('app-search-mobile') as HTMLInputElement | null;
     const sort = document.getElementById('app-sort') as HTMLSelectElement | null;
@@ -243,7 +257,8 @@ const categoryKeywordsJson = Object.fromEntries(
     const countEl = document.getElementById('app-count');
     const noResults = document.getElementById('no-results');
     const categoryKeywords = (window as any).__appCategoryKeywords as Record<string, string[]>;
-    if (!grid || !countEl || !noResults) return;
+    if (!grid || !countEl || !noResults || grid.dataset.initialized === 'true') return;
+    grid.dataset.initialized = 'true';
 
     const items = [...grid.querySelectorAll('.app-item')] as HTMLElement[];
     let active = 'all';
@@ -281,5 +296,8 @@ const categoryKeywordsJson = Object.fromEntries(
     sort?.addEventListener('change', update);
 
     update();
-  });
+  }
+
+  document.addEventListener('astro:page-load', initializeAppCatalog);
+  initializeAppCatalog();
 </script>

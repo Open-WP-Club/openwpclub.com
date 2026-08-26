@@ -11,3 +11,8 @@ dist/
 
 # Fetch cache (ETag-based, local only)
 .fetch-cache.json
+
+# Browser test artifacts
+test-results/
+playwright-report/
+blob-report/
