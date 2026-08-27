@@ -9,7 +9,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: monthly-data-refresh
+  group: website-data-refresh
   cancel-in-progress: false
 
 jobs:

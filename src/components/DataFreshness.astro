@@ -2,12 +2,21 @@
 import freshness from '../data/freshness.json';
 
 interface Props {
-  kind?: 'catalog' | 'traffic';
+  kind?: 'catalog' | 'traffic' | 'releases';
   class?: string;
 }
 
 const { kind = 'catalog', class: className = '' } = Astro.props;
-const sourceDate = kind === 'traffic' ? freshness.trafficUpdatedAt : freshness.catalogUpdatedAt;
+const sourceDate = kind === 'traffic'
+  ? freshness.trafficUpdatedAt
+  : kind === 'releases'
+    ? freshness.releasesUpdatedAt
+    : freshness.catalogUpdatedAt;
+const cadence = kind === 'releases'
+  ? 'Updated weekly'
+  : kind === 'traffic'
+    ? 'Updated weekly'
+    : 'Updated monthly';
 const formattedDate = new Date(sourceDate).toLocaleDateString('en-US', {
   year: 'numeric',
   month: 'long',
@@ -15,4 +24,4 @@ const formattedDate = new Date(sourceDate).toLocaleDateString('en-US', {
 });
 ---
 
-<span class={className}>Updated monthly · Data as of {formattedDate}</span>
+<span class={className}>{cadence} · Data as of {formattedDate}</span>

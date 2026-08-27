@@ -605,6 +605,7 @@ async function main() {
   writeFileSync(resolve(DATA_DIR, 'freshness.json'), JSON.stringify({
     catalogUpdatedAt: new Date().toISOString(),
     trafficUpdatedAt: trafficUpdatedAt || new Date().toISOString(),
+    releasesUpdatedAt: new Date().toISOString(),
   }, null, 2));
 
   // Save per-repo contributor data
