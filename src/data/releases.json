@@ -1,5 +1,23 @@
 [
   {
+    "repo": "priority-processing-woocommerce",
+    "name": "1.7.1",
+    "version": "1.7.1",
+    "publishedAt": "2026-08-29T17:25:52Z",
+    "url": "https://github.com/Open-WP-Club/Priority-Processing-WooCommerce/releases/tag/1.7.1",
+    "notes": "**Full Changelog**: https://github.com/Open-WP-Club/Priority-Processing-WooCommerce/compare/1.7.0...1.7.1\n\n---\n\n### 📦 Plugin Download\n- **WordPress Plugin**: [`Priority-Processing-WooCommerce.zip`](https://github.com/Open-WP-Club/Priority-Processing-WooCommerce/releases/download/1.7.1/Priority-Processing-WooCommerce.zip)\n- **Installation**: Download and upload via WordPress Admin → Plugins → Add New → Upload Plugin\n\n*Built automatically from tag 1.7.1*",
+    "category": "plugin"
+  },
+  {
+    "repo": "plugin-hub",
+    "name": "1.4.1",
+    "version": "1.4.1",
+    "publishedAt": "2026-08-29T07:38:22Z",
+    "url": "https://github.com/Open-WP-Club/plugin-hub/releases/tag/1.4.1",
+    "notes": "**Full Changelog**: https://github.com/Open-WP-Club/plugin-hub/compare/1.4.0...1.4.1",
+    "category": "plugin"
+  },
+  {
     "repo": "local-pickup-woocommerce",
     "name": "1.0.0",
     "version": "1.0.0",
@@ -51,15 +69,6 @@
     "publishedAt": "2026-07-15T06:41:13Z",
     "url": "https://github.com/Open-WP-Club/User-Self-Delete/releases/tag/2.1.0",
     "notes": "**Full Changelog**: https://github.com/Open-WP-Club/User-Self-Delete/compare/2.0.0...2.1.0\n\n---\n\n### 📦 Plugin Download\n- **WordPress Plugin**: [`User-Self-Delete.zip`](https://github.com/Open-WP-Club/User-Self-Delete/releases/download/2.1.0/User-Self-Delete.zip)\n- **Installation**: Download and upload through WordPress Admin → Plugins → Add New → Upload Plugin\n\n*Built automatically from tag 2.1.0*",
-    "category": "plugin"
-  },
-  {
-    "repo": "priority-processing-woocommerce",
-    "name": "1.7.0",
-    "version": "1.7.0",
-    "publishedAt": "2026-07-14T14:06:05Z",
-    "url": "https://github.com/Open-WP-Club/Priority-Processing-WooCommerce/releases/tag/1.7.0",
-    "notes": "**Full Changelog**: https://github.com/Open-WP-Club/Priority-Processing-WooCommerce/compare/1.6.0...1.7.0\n\n---\n\n### 📦 Plugin Download\n- **WordPress Plugin**: [`Priority-Processing-WooCommerce.zip`](https://github.com/Open-WP-Club/Priority-Processing-WooCommerce/releases/download/1.7.0/Priority-Processing-WooCommerce.zip)\n- **Installation**: Download and upload via WordPress Admin → Plugins → Add New → Upload Plugin\n\n*Built automatically from tag 1.7.0*",
     "category": "plugin"
   },
   {
@@ -159,15 +168,6 @@
     "publishedAt": "2026-01-10T07:01:27Z",
     "url": "https://github.com/Open-WP-Club/StageGuard/releases/tag/1.1.1",
     "notes": "**Full Changelog**: https://github.com/Open-WP-Club/StageGuard/compare/1.1.0...1.1.1",
-    "category": "plugin"
-  },
-  {
-    "repo": "plugin-hub",
-    "name": "1.1.0",
-    "version": "1.1.0",
-    "publishedAt": "2026-01-01T23:03:59Z",
-    "url": "https://github.com/Open-WP-Club/plugin-hub/releases/tag/1.1.0",
-    "notes": "**Full Changelog**: https://github.com/Open-WP-Club/plugin-hub/compare/1.0.1...1.1.0\n\n---\n\n### 📦 Plugin Download\n- **WordPress Plugin**: [`plugin-hub.zip`](https://github.com/Open-WP-Club/plugin-hub/releases/download/1.1.0/plugin-hub.zip)\n- **Installation**: Download and upload through WordPress Admin → Plugins → Add New → Upload Plugin\n\n*Built automatically from tag 1.1.0*",
     "category": "plugin"
   },
   {
