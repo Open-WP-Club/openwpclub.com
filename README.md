@@ -6,7 +6,7 @@ The community website for [Open WP Club](https://openwpclub.com) - free, open-so
 
 ### Prerequisites
 
-- Node.js 22.12 or higher
+- Node.js 24 or higher
 - pnpm
 
 ### Installation
