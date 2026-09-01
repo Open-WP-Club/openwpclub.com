@@ -16,16 +16,16 @@ const stats = [
 ];
 ---
 
-<section class="py-12 bg-white border-y border-gray-100">
+<section class="py-12 bg-white dark:bg-gray-900 border-y border-gray-100 dark:border-gray-800">
   <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-2 sm:grid-cols-4 gap-8 text-center">
       {stats.map((stat) => (
         <div>
-          <p class="text-3xl sm:text-4xl font-bold text-blue-500 tracking-tight">{stat.value}</p>
-          <p class="mt-1 text-sm text-gray-500">{stat.label}</p>
+          <p class="text-3xl sm:text-4xl font-bold text-blue-500 dark:text-blue-400 tracking-tight">{stat.value}</p>
+          <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">{stat.label}</p>
         </div>
       ))}
     </div>
-    <p class="mt-6 text-center text-xs text-gray-400"><DataFreshness kind="traffic" /></p>
+    <p class="mt-6 text-center text-xs text-gray-400 dark:text-gray-500"><DataFreshness kind="traffic" /></p>
   </div>
 </section>
