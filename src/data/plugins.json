@@ -220,7 +220,7 @@
     "id": "plugin-hub",
     "name": "plugin-hub",
     "description": "Plugin Hub is Open WP Club official way of installing/updating plugins from their official repos.",
-    "version": "1.1.0",
+    "version": "1.4.2",
     "downloads": "",
     "rating": "",
     "githubUrl": "https://github.com/Open-WP-Club/plugin-hub",
@@ -228,15 +228,15 @@
     "stars": 0,
     "forks": 0,
     "openIssues": 0,
-    "lastPush": "2026-06-01T13:16:43Z",
+    "lastPush": "2026-08-31T18:08:20Z",
     "createdAt": "2024-09-09T15:14:57Z",
     "topics": [],
     "license": null,
     "language": "PHP",
     "defaultBranch": "main",
     "category": "plugin",
-    "releasePublishedAt": "2026-01-01T23:03:59Z",
-    "releaseUrl": "https://github.com/Open-WP-Club/plugin-hub/releases/tag/1.1.0"
+    "releasePublishedAt": "2026-08-31T18:06:05Z",
+    "releaseUrl": "https://github.com/Open-WP-Club/plugin-hub/releases/tag/1.4.2"
   },
   {
     "id": "wp-sanitize",
@@ -576,28 +576,6 @@
     "releaseUrl": "https://github.com/Open-WP-Club/sku-auto-woocommerce/releases/tag/2.2.2"
   },
   {
-    "id": "openwpclub.com",
-    "name": "openwpclub.com",
-    "description": "No description available",
-    "version": "N/A",
-    "downloads": "",
-    "rating": "",
-    "githubUrl": "https://github.com/Open-WP-Club/openwpclub.com",
-    "wordpressUrl": "",
-    "stars": 0,
-    "forks": 0,
-    "openIssues": 0,
-    "lastPush": "2026-08-26T07:23:36Z",
-    "createdAt": "2025-05-19T19:01:14Z",
-    "topics": [],
-    "license": "MIT",
-    "language": "Astro",
-    "defaultBranch": "main",
-    "category": "website",
-    "releasePublishedAt": "",
-    "releaseUrl": ""
-  },
-  {
     "id": "user-self-delete",
     "name": "User-Self-Delete",
     "description": "GDPR-compliant WordPress plugin for user self-deletion with country-based data retention periods for legal and tax compliance.",
@@ -697,7 +675,7 @@
     "id": "priority-processing-woocommerce",
     "name": "Priority-Processing-WooCommerce",
     "description": "A WordPress plugin that adds a priority processing and express shipping option to WooCommerce checkout, allowing customers to pay an additional fee for faster order handling.",
-    "version": "1.7.0",
+    "version": "1.7.1",
     "downloads": "",
     "rating": "",
     "githubUrl": "https://github.com/Open-WP-Club/priority-processing-woocommerce",
@@ -705,15 +683,15 @@
     "stars": 0,
     "forks": 0,
     "openIssues": 0,
-    "lastPush": "2026-08-14T13:24:14Z",
+    "lastPush": "2026-08-29T19:43:54Z",
     "createdAt": "2025-08-05T17:00:16Z",
     "topics": [],
     "license": "Apache-2.0",
     "language": "PHP",
     "defaultBranch": "main",
     "category": "plugin",
-    "releasePublishedAt": "2026-07-14T14:06:05Z",
-    "releaseUrl": "https://github.com/Open-WP-Club/Priority-Processing-WooCommerce/releases/tag/1.7.0"
+    "releasePublishedAt": "2026-08-29T17:25:52Z",
+    "releaseUrl": "https://github.com/Open-WP-Club/Priority-Processing-WooCommerce/releases/tag/1.7.1"
   },
   {
     "id": "inventory-insights-woocommerce",
@@ -934,55 +912,6 @@
     "releaseUrl": ""
   },
   {
-    "id": "fulfill-for-woocommerce",
-    "name": "FulFill-for-WooCommerce",
-    "description": "A mobile warehouse app for WooCommerce order fulfillment, barcode scanning, pick-and-pack workflows, and offline work.",
-    "version": "0.1.0",
-    "downloads": "",
-    "rating": "",
-    "githubUrl": "https://github.com/Open-WP-Club/fulfill-for-woocommerce",
-    "wordpressUrl": "",
-    "stars": 0,
-    "forks": 0,
-    "openIssues": 0,
-    "lastPush": "2026-07-15T19:33:37Z",
-    "createdAt": "2026-03-11T22:41:56Z",
-    "topics": [],
-    "license": null,
-    "language": "TypeScript",
-    "defaultBranch": "main",
-    "category": "app",
-    "releasePublishedAt": "2026-03-16T21:40:57Z",
-    "releaseUrl": "https://github.com/Open-WP-Club/FulFill-for-WooCommerce/releases/tag/0.1.0",
-    "releaseDownloads": 1,
-    "releaseAssets": [
-      {
-        "name": "FulFill-0.1.0.apk",
-        "url": "https://github.com/Open-WP-Club/FulFill-for-WooCommerce/releases/download/0.1.0/FulFill-0.1.0.apk",
-        "size": 41190234,
-        "downloadCount": 1,
-        "contentType": "application/vnd.android.package-archive"
-      }
-    ],
-    "platforms": [
-      "android"
-    ],
-    "featured": true,
-    "icon": "https://raw.githubusercontent.com/Open-WP-Club/FulFill-for-WooCommerce/main/assets/logo.svg",
-    "features": [
-      "Browse, filter, and update WooCommerce orders",
-      "Scan product barcodes",
-      "Run pick-and-pack and wave-picking workflows",
-      "Continue working offline and sync later"
-    ],
-    "requirements": [
-      "An Android device",
-      "A WooCommerce store served over HTTPS",
-      "WooCommerce REST API keys with Read/Write access"
-    ],
-    "screenshots": []
-  },
-  {
     "id": "product-health-check-woocommerce",
     "name": "product-health-check-woocommerce",
     "description": "A WordPress plugin that scans your WooCommerce products for common data issues and displays them in a clean admin dashboard.",
@@ -1055,113 +984,6 @@
     "releaseUrl": "https://github.com/Open-WP-Club/taxonomy-showcase-WooCommerce/releases/tag/1.2.3"
   },
   {
-    "id": "storeos",
-    "name": "StoreOS",
-    "description": "A desktop application for managing WooCommerce orders, products, inventory, and multiple stores from one place.",
-    "version": "1.0.3",
-    "downloads": "",
-    "rating": "",
-    "githubUrl": "https://github.com/Open-WP-Club/storeos",
-    "wordpressUrl": "",
-    "stars": 0,
-    "forks": 0,
-    "openIssues": 0,
-    "lastPush": "2026-08-03T14:59:20Z",
-    "createdAt": "2026-08-03T12:59:31Z",
-    "topics": [],
-    "license": "MIT",
-    "language": "TypeScript",
-    "defaultBranch": "main",
-    "category": "app",
-    "releasePublishedAt": "2026-08-03T14:39:16Z",
-    "releaseUrl": "https://github.com/Open-WP-Club/StoreOS/releases/tag/1.0.3",
-    "releaseDownloads": 18,
-    "releaseAssets": [
-      {
-        "name": "storeos-1.0.3.x86_64.rpm",
-        "url": "https://github.com/Open-WP-Club/StoreOS/releases/download/1.0.3/storeos-1.0.3.x86_64.rpm",
-        "size": 92584153,
-        "downloadCount": 2,
-        "contentType": "application/x-redhat-package-manager"
-      },
-      {
-        "name": "StoreOS.-.Built.for.WooCommerce-1.0.3-arm64-mac.zip",
-        "url": "https://github.com/Open-WP-Club/StoreOS/releases/download/1.0.3/StoreOS.-.Built.for.WooCommerce-1.0.3-arm64-mac.zip",
-        "size": 133427511,
-        "downloadCount": 2,
-        "contentType": "application/zip"
-      },
-      {
-        "name": "StoreOS.-.Built.for.WooCommerce-1.0.3-arm64.dmg",
-        "url": "https://github.com/Open-WP-Club/StoreOS/releases/download/1.0.3/StoreOS.-.Built.for.WooCommerce-1.0.3-arm64.dmg",
-        "size": 133206747,
-        "downloadCount": 2,
-        "contentType": "application/x-apple-diskimage"
-      },
-      {
-        "name": "StoreOS.-.Built.for.WooCommerce-1.0.3-mac.zip",
-        "url": "https://github.com/Open-WP-Club/StoreOS/releases/download/1.0.3/StoreOS.-.Built.for.WooCommerce-1.0.3-mac.zip",
-        "size": 135268330,
-        "downloadCount": 2,
-        "contentType": "application/zip"
-      },
-      {
-        "name": "StoreOS.-.Built.for.WooCommerce-1.0.3.AppImage",
-        "url": "https://github.com/Open-WP-Club/StoreOS/releases/download/1.0.3/StoreOS.-.Built.for.WooCommerce-1.0.3.AppImage",
-        "size": 141137568,
-        "downloadCount": 2,
-        "contentType": "application/octet-stream"
-      },
-      {
-        "name": "StoreOS.-.Built.for.WooCommerce-1.0.3.dmg",
-        "url": "https://github.com/Open-WP-Club/StoreOS/releases/download/1.0.3/StoreOS.-.Built.for.WooCommerce-1.0.3.dmg",
-        "size": 135020457,
-        "downloadCount": 2,
-        "contentType": "application/x-apple-diskimage"
-      },
-      {
-        "name": "StoreOS.-.Built.for.WooCommerce.1.0.3.exe",
-        "url": "https://github.com/Open-WP-Club/StoreOS/releases/download/1.0.3/StoreOS.-.Built.for.WooCommerce.1.0.3.exe",
-        "size": 108474932,
-        "downloadCount": 2,
-        "contentType": "application/x-msdos-program"
-      },
-      {
-        "name": "StoreOS.-.Built.for.WooCommerce.Setup.1.0.3.exe",
-        "url": "https://github.com/Open-WP-Club/StoreOS/releases/download/1.0.3/StoreOS.-.Built.for.WooCommerce.Setup.1.0.3.exe",
-        "size": 206384923,
-        "downloadCount": 2,
-        "contentType": "application/x-msdos-program"
-      },
-      {
-        "name": "storeos_1.0.3_amd64.deb",
-        "url": "https://github.com/Open-WP-Club/StoreOS/releases/download/1.0.3/storeos_1.0.3_amd64.deb",
-        "size": 107236304,
-        "downloadCount": 2,
-        "contentType": "application/x-debian-package"
-      }
-    ],
-    "platforms": [
-      "windows",
-      "macos",
-      "linux"
-    ],
-    "featured": true,
-    "icon": "https://raw.githubusercontent.com/Open-WP-Club/StoreOS/main/assets/icon.png",
-    "features": [
-      "Manage multiple WooCommerce stores",
-      "Process orders and update statuses",
-      "Edit products and monitor inventory",
-      "Work faster with local caching and manual sync"
-    ],
-    "requirements": [
-      "Windows, macOS, or Linux",
-      "A WooCommerce store served over HTTPS",
-      "WooCommerce REST API keys with Read/Write access"
-    ],
-    "screenshots": []
-  },
-  {
     "id": "payment-method-highlighter-for-woocommerce",
     "name": "payment-method-highlighter-for-wooCommerce",
     "description": "A modern WooCommerce plugin that shows a colour-coded payment-method badge when an administrator opens an order. It does not create or process payments—it works with your existing payment gateways.",
@@ -1192,7 +1014,7 @@
     "id": "multi-store-sync-for-woocommerce",
     "name": "multi-store-sync-for-woocommerce",
     "description": "Automatically synchronize products, stock levels, and inventory from your main WooCommerce store to multiple remote WooCommerce stores. Built from the ground up as a standalone solution with enterprise-grade features.",
-    "version": "4.0.1",
+    "version": "4.1.2",
     "downloads": "",
     "rating": "",
     "githubUrl": "https://github.com/Open-WP-Club/multi-store-sync-for-woocommerce",
@@ -1200,7 +1022,7 @@
     "stars": 0,
     "forks": 0,
     "openIssues": 0,
-    "lastPush": "2026-08-13T09:41:25Z",
+    "lastPush": "2026-08-31T17:14:32Z",
     "createdAt": "2026-08-06T13:37:42Z",
     "topics": [
       "automation",
@@ -1215,7 +1037,213 @@
     "language": "PHP",
     "defaultBranch": "main",
     "category": "plugin",
-    "releasePublishedAt": "2026-08-07T06:22:52Z",
-    "releaseUrl": "https://github.com/Open-WP-Club/multi-store-sync-for-woocommerce/releases/tag/4.0.1"
+    "releasePublishedAt": "2026-08-31T17:14:54Z",
+    "releaseUrl": "https://github.com/Open-WP-Club/multi-store-sync-for-woocommerce/releases/tag/4.1.2"
+  },
+  {
+    "id": "local-pickup-woocommerce",
+    "name": "local-pickup-woocommerce",
+    "description": "A WooCommerce extension for zone-aware store pickup locations with individual prices. It is built specifically for the modern Cart and Checkout Blocks.",
+    "version": "1.0.0",
+    "downloads": "",
+    "rating": "",
+    "githubUrl": "https://github.com/Open-WP-Club/local-pickup-woocommerce",
+    "wordpressUrl": "",
+    "stars": 0,
+    "forks": 0,
+    "openIssues": 0,
+    "lastPush": "2026-08-26T09:40:56Z",
+    "createdAt": "2026-08-25T20:43:23Z",
+    "topics": [
+      "free",
+      "local-pickup",
+      "store-pickup",
+      "woocommerce-plugin",
+      "wordpress"
+    ],
+    "license": "Apache-2.0",
+    "language": "PHP",
+    "defaultBranch": "main",
+    "category": "plugin",
+    "releasePublishedAt": "2026-08-26T09:40:57Z",
+    "releaseUrl": "https://github.com/Open-WP-Club/local-pickup-woocommerce/releases/tag/1.0.0"
+  },
+  {
+    "id": "fulfill-for-woocommerce",
+    "name": "FulFill-for-WooCommerce",
+    "description": "A mobile warehouse app for WooCommerce order fulfillment, barcode scanning, pick-and-pack workflows, and offline work.",
+    "version": "0.1.0",
+    "downloads": "",
+    "rating": "",
+    "githubUrl": "https://github.com/Open-WP-Club/fulfill-for-woocommerce",
+    "wordpressUrl": "",
+    "stars": 0,
+    "forks": 0,
+    "openIssues": 0,
+    "lastPush": "2026-07-15T19:33:37Z",
+    "createdAt": "2026-03-11T22:41:56Z",
+    "topics": [],
+    "license": null,
+    "language": "TypeScript",
+    "defaultBranch": "main",
+    "category": "app",
+    "releasePublishedAt": "2026-03-16T21:40:57Z",
+    "releaseUrl": "https://github.com/Open-WP-Club/FulFill-for-WooCommerce/releases/tag/0.1.0",
+    "releaseDownloads": 4,
+    "releaseAssets": [
+      {
+        "name": "FulFill-0.1.0.apk",
+        "url": "https://github.com/Open-WP-Club/FulFill-for-WooCommerce/releases/download/0.1.0/FulFill-0.1.0.apk",
+        "size": 41190234,
+        "downloadCount": 4,
+        "contentType": "application/vnd.android.package-archive"
+      }
+    ],
+    "platforms": [
+      "android"
+    ],
+    "featured": true,
+    "icon": "https://raw.githubusercontent.com/Open-WP-Club/FulFill-for-WooCommerce/main/assets/logo.svg",
+    "features": [
+      "Browse, filter, and update WooCommerce orders",
+      "Scan product barcodes",
+      "Run pick-and-pack and wave-picking workflows",
+      "Continue working offline and sync later"
+    ],
+    "requirements": [
+      "An Android device",
+      "A WooCommerce store served over HTTPS",
+      "WooCommerce REST API keys with Read/Write access"
+    ],
+    "screenshots": []
+  },
+  {
+    "id": "openwpclub.com",
+    "name": "openwpclub.com",
+    "description": "No description available",
+    "version": "N/A",
+    "downloads": "",
+    "rating": "",
+    "githubUrl": "https://github.com/Open-WP-Club/openwpclub.com",
+    "wordpressUrl": "",
+    "stars": 0,
+    "forks": 0,
+    "openIssues": 0,
+    "lastPush": "2026-09-01T15:54:18Z",
+    "createdAt": "2025-05-19T19:01:14Z",
+    "topics": [],
+    "license": "MIT",
+    "language": "Astro",
+    "defaultBranch": "main",
+    "category": "website",
+    "releasePublishedAt": "",
+    "releaseUrl": ""
+  },
+  {
+    "id": "storeos",
+    "name": "StoreOS",
+    "description": "A desktop application for managing WooCommerce orders, products, inventory, and multiple stores from one place.",
+    "version": "1.0.3",
+    "downloads": "",
+    "rating": "",
+    "githubUrl": "https://github.com/Open-WP-Club/storeos",
+    "wordpressUrl": "",
+    "stars": 0,
+    "forks": 0,
+    "openIssues": 0,
+    "lastPush": "2026-08-03T14:59:20Z",
+    "createdAt": "2026-08-03T12:59:31Z",
+    "topics": [],
+    "license": "MIT",
+    "language": "TypeScript",
+    "defaultBranch": "main",
+    "category": "app",
+    "releasePublishedAt": "2026-08-03T14:39:16Z",
+    "releaseUrl": "https://github.com/Open-WP-Club/StoreOS/releases/tag/1.0.3",
+    "releaseDownloads": 45,
+    "releaseAssets": [
+      {
+        "name": "storeos-1.0.3.x86_64.rpm",
+        "url": "https://github.com/Open-WP-Club/StoreOS/releases/download/1.0.3/storeos-1.0.3.x86_64.rpm",
+        "size": 92584153,
+        "downloadCount": 5,
+        "contentType": "application/x-redhat-package-manager"
+      },
+      {
+        "name": "StoreOS.-.Built.for.WooCommerce-1.0.3-arm64-mac.zip",
+        "url": "https://github.com/Open-WP-Club/StoreOS/releases/download/1.0.3/StoreOS.-.Built.for.WooCommerce-1.0.3-arm64-mac.zip",
+        "size": 133427511,
+        "downloadCount": 5,
+        "contentType": "application/zip"
+      },
+      {
+        "name": "StoreOS.-.Built.for.WooCommerce-1.0.3-arm64.dmg",
+        "url": "https://github.com/Open-WP-Club/StoreOS/releases/download/1.0.3/StoreOS.-.Built.for.WooCommerce-1.0.3-arm64.dmg",
+        "size": 133206747,
+        "downloadCount": 5,
+        "contentType": "application/x-apple-diskimage"
+      },
+      {
+        "name": "StoreOS.-.Built.for.WooCommerce-1.0.3-mac.zip",
+        "url": "https://github.com/Open-WP-Club/StoreOS/releases/download/1.0.3/StoreOS.-.Built.for.WooCommerce-1.0.3-mac.zip",
+        "size": 135268330,
+        "downloadCount": 5,
+        "contentType": "application/zip"
+      },
+      {
+        "name": "StoreOS.-.Built.for.WooCommerce-1.0.3.AppImage",
+        "url": "https://github.com/Open-WP-Club/StoreOS/releases/download/1.0.3/StoreOS.-.Built.for.WooCommerce-1.0.3.AppImage",
+        "size": 141137568,
+        "downloadCount": 5,
+        "contentType": "application/octet-stream"
+      },
+      {
+        "name": "StoreOS.-.Built.for.WooCommerce-1.0.3.dmg",
+        "url": "https://github.com/Open-WP-Club/StoreOS/releases/download/1.0.3/StoreOS.-.Built.for.WooCommerce-1.0.3.dmg",
+        "size": 135020457,
+        "downloadCount": 5,
+        "contentType": "application/x-apple-diskimage"
+      },
+      {
+        "name": "StoreOS.-.Built.for.WooCommerce.1.0.3.exe",
+        "url": "https://github.com/Open-WP-Club/StoreOS/releases/download/1.0.3/StoreOS.-.Built.for.WooCommerce.1.0.3.exe",
+        "size": 108474932,
+        "downloadCount": 5,
+        "contentType": "application/x-msdos-program"
+      },
+      {
+        "name": "StoreOS.-.Built.for.WooCommerce.Setup.1.0.3.exe",
+        "url": "https://github.com/Open-WP-Club/StoreOS/releases/download/1.0.3/StoreOS.-.Built.for.WooCommerce.Setup.1.0.3.exe",
+        "size": 206384923,
+        "downloadCount": 5,
+        "contentType": "application/x-msdos-program"
+      },
+      {
+        "name": "storeos_1.0.3_amd64.deb",
+        "url": "https://github.com/Open-WP-Club/StoreOS/releases/download/1.0.3/storeos_1.0.3_amd64.deb",
+        "size": 107236304,
+        "downloadCount": 5,
+        "contentType": "application/x-debian-package"
+      }
+    ],
+    "platforms": [
+      "windows",
+      "macos",
+      "linux"
+    ],
+    "featured": true,
+    "icon": "https://raw.githubusercontent.com/Open-WP-Club/StoreOS/main/assets/icon.png",
+    "features": [
+      "Manage multiple WooCommerce stores",
+      "Process orders and update statuses",
+      "Edit products and monitor inventory",
+      "Work faster with local caching and manual sync"
+    ],
+    "requirements": [
+      "Windows, macOS, or Linux",
+      "A WooCommerce store served over HTTPS",
+      "WooCommerce REST API keys with Read/Write access"
+    ],
+    "screenshots": []
   }
 ]

@@ -1,20 +1,29 @@
 [
   {
+    "repo": "plugin-hub",
+    "name": "1.4.2",
+    "version": "1.4.2",
+    "publishedAt": "2026-08-31T18:06:05Z",
+    "url": "https://github.com/Open-WP-Club/plugin-hub/releases/tag/1.4.2",
+    "notes": "**Full Changelog**: https://github.com/Open-WP-Club/plugin-hub/compare/1.4.1...1.4.2",
+    "category": "plugin"
+  },
+  {
+    "repo": "multi-store-sync-for-woocommerce",
+    "name": "4.1.2",
+    "version": "4.1.2",
+    "publishedAt": "2026-08-31T17:14:54Z",
+    "url": "https://github.com/Open-WP-Club/multi-store-sync-for-woocommerce/releases/tag/4.1.2",
+    "notes": "## WooCommerce Multi-Store Sync 4.1.2\n\n- Update wc-multi-store-sync.php\n- Fix plugin init ordering so WooCommerce classes are always loaded first\n\n### Installation\nDownload `wc-multi-store-sync-4.1.2.zip` and upload via **Plugins → Add New → Upload Plugin**.\n",
+    "category": "plugin"
+  },
+  {
     "repo": "priority-processing-woocommerce",
     "name": "1.7.1",
     "version": "1.7.1",
     "publishedAt": "2026-08-29T17:25:52Z",
     "url": "https://github.com/Open-WP-Club/Priority-Processing-WooCommerce/releases/tag/1.7.1",
     "notes": "**Full Changelog**: https://github.com/Open-WP-Club/Priority-Processing-WooCommerce/compare/1.7.0...1.7.1\n\n---\n\n### 📦 Plugin Download\n- **WordPress Plugin**: [`Priority-Processing-WooCommerce.zip`](https://github.com/Open-WP-Club/Priority-Processing-WooCommerce/releases/download/1.7.1/Priority-Processing-WooCommerce.zip)\n- **Installation**: Download and upload via WordPress Admin → Plugins → Add New → Upload Plugin\n\n*Built automatically from tag 1.7.1*",
-    "category": "plugin"
-  },
-  {
-    "repo": "plugin-hub",
-    "name": "1.4.1",
-    "version": "1.4.1",
-    "publishedAt": "2026-08-29T07:38:22Z",
-    "url": "https://github.com/Open-WP-Club/plugin-hub/releases/tag/1.4.1",
-    "notes": "**Full Changelog**: https://github.com/Open-WP-Club/plugin-hub/compare/1.4.0...1.4.1",
     "category": "plugin"
   },
   {
@@ -33,15 +42,6 @@
     "publishedAt": "2026-08-10T09:03:15Z",
     "url": "https://github.com/Open-WP-Club/google-scholar-wp/releases/tag/1.6.0",
     "notes": "**Full Changelog**: https://github.com/Open-WP-Club/google-scholar-wp/compare/1.5.0...1.6.0\n\n---\n\n### 📦 Plugin Download\n- **WordPress Plugin**: [`google-scholar-wp.zip`](https://github.com/Open-WP-Club/google-scholar-wp/releases/download/1.6.0/google-scholar-wp.zip)\n- **Installation**: Download and upload through WordPress Admin → Plugins → Add New → Upload Plugin\n\n*Built automatically from tag 1.6.0*",
-    "category": "plugin"
-  },
-  {
-    "repo": "multi-store-sync-for-woocommerce",
-    "name": "v4.0.1",
-    "version": "4.0.1",
-    "publishedAt": "2026-08-07T06:22:52Z",
-    "url": "https://github.com/Open-WP-Club/multi-store-sync-for-woocommerce/releases/tag/4.0.1",
-    "notes": "## WooCommerce Multi-Store Sync v4.0.1\n\n- Update wc-multi-store-sync.php\n- Migrate feature toggles to central settings\n- Archive cleanup records before DB deletion\n- wip\n- Readme updates\n- Fixing readme\n\n### Installation\nDownload `wc-multi-store-sync-4.0.1.zip` and upload via **Plugins → Add New → Upload Plugin**.\n",
     "category": "plugin"
   },
   {

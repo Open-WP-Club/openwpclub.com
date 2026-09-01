@@ -68,7 +68,7 @@
       "login": "MrGKanev",
       "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
       "profileUrl": "https://github.com/MrGKanev",
-      "contributions": 23
+      "contributions": 27
     }
   ],
   "wp-sanitize": [
@@ -175,14 +175,6 @@
       "contributions": 35
     }
   ],
-  "openwpclub.com": [
-    {
-      "login": "MrGKanev",
-      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
-      "profileUrl": "https://github.com/MrGKanev",
-      "contributions": 59
-    }
-  ],
   "user-self-delete": [
     {
       "login": "MrGKanev",
@@ -220,7 +212,7 @@
       "login": "MrGKanev",
       "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
       "profileUrl": "https://github.com/MrGKanev",
-      "contributions": 65
+      "contributions": 67
     }
   ],
   "inventory-insights-woocommerce": [
@@ -295,14 +287,6 @@
       "contributions": 18
     }
   ],
-  "fulfill-for-woocommerce": [
-    {
-      "login": "MrGKanev",
-      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
-      "profileUrl": "https://github.com/MrGKanev",
-      "contributions": 23
-    }
-  ],
   "product-health-check-woocommerce": [
     {
       "login": "MrGKanev",
@@ -327,14 +311,6 @@
       "contributions": 16
     }
   ],
-  "storeos": [
-    {
-      "login": "MrGKanev",
-      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
-      "profileUrl": "https://github.com/MrGKanev",
-      "contributions": 6
-    }
-  ],
   "payment-method-highlighter-for-woocommerce": [
     {
       "login": "MrGKanev",
@@ -348,7 +324,39 @@
       "login": "MrGKanev",
       "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
       "profileUrl": "https://github.com/MrGKanev",
-      "contributions": 59
+      "contributions": 65
+    }
+  ],
+  "local-pickup-woocommerce": [
+    {
+      "login": "MrGKanev",
+      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
+      "profileUrl": "https://github.com/MrGKanev",
+      "contributions": 3
+    }
+  ],
+  "fulfill-for-woocommerce": [
+    {
+      "login": "MrGKanev",
+      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
+      "profileUrl": "https://github.com/MrGKanev",
+      "contributions": 23
+    }
+  ],
+  "openwpclub.com": [
+    {
+      "login": "MrGKanev",
+      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
+      "profileUrl": "https://github.com/MrGKanev",
+      "contributions": 64
+    }
+  ],
+  "storeos": [
+    {
+      "login": "MrGKanev",
+      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
+      "profileUrl": "https://github.com/MrGKanev",
+      "contributions": 6
     }
   ]
 }

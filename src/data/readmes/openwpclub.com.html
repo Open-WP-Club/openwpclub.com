@@ -3,7 +3,7 @@
 <h2>Quick Start</h2>
 <h3>Prerequisites</h3>
 <ul>
-<li>Node.js 22.12 or higher</li>
+<li>Node.js 24 or higher</li>
 <li>pnpm</li>
 </ul>
 <h3>Installation</h3>
@@ -33,7 +33,11 @@ pnpm preview   # preview the production build locally
 </tr>
 <tr>
 <td><code>pnpm build</code></td>
-<td>Build for production (fetches latest data from GitHub)</td>
+<td>Build from the committed catalog data</td>
+</tr>
+<tr>
+<td><code>pnpm build:fresh</code></td>
+<td>Refresh GitHub data, then build for production</td>
 </tr>
 <tr>
 <td><code>pnpm preview</code></td>
@@ -61,16 +65,17 @@ pnpm preview   # preview the production build locally
 </tr>
 </tbody></table>
 <h3>Updating plugin data</h3>
-<p><code>pnpm build</code> fetches the latest data from GitHub automatically before building.
-The monthly GitHub Actions workflow refreshes and commits the catalog on the
-first day of each month. App descriptions, platforms, requirements, icons, and
-screenshots are maintained in <code>src/data/apps.json</code>; repository versions and
-release assets continue to come from GitHub.</p>
+<p><code>pnpm build</code> uses the committed catalog so builds stay reproducible and do not
+depend on GitHub API availability. Use <code>pnpm build:fresh</code> when you intentionally
+want to refresh first. The monthly GitHub Actions workflow refreshes and commits
+the catalog on the first day of each month. App descriptions, platforms,
+requirements, icons, and screenshots are maintained in <code>src/data/apps.json</code>;
+repository versions and release assets continue to come from GitHub.</p>
 <p>To check the data first without building:</p>
 <pre><code class="language-bash">pnpm fetch-data
 </code></pre>
 <p>For higher GitHub API rate limits (60/hr without, 5000/hr with):</p>
-<pre><code class="language-bash">GITHUB_TOKEN=ghp_xxx pnpm build
+<pre><code class="language-bash">GITHUB_TOKEN=ghp_xxx pnpm build:fresh
 </code></pre>
 <p>Install Chromium once before running the browser tests locally:</p>
 <pre><code class="language-bash">pnpm exec playwright install chromium

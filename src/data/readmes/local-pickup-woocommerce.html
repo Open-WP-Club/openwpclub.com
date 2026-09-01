@@ -1,0 +1,42 @@
+<h1>Local Pickup Stores for WooCommerce</h1>
+<p>A WooCommerce extension for zone-aware store pickup locations with individual prices. It is built specifically for the modern Cart and Checkout Blocks.</p>
+<h2>Features</h2>
+<ul>
+<li>Manage pickup locations under <strong>WooCommerce → Pickup locations</strong>.</li>
+<li>Set an address, phone, opening hours, price, tax status, and active status per location.</li>
+<li>Add <strong>Store pickup</strong> to any WooCommerce shipping zone.</li>
+<li>Limit each shipping-zone instance to selected locations, or leave it empty to use all active locations.</li>
+<li>Choose a default pickup location for each shipping-zone instance.</li>
+<li>Present the matching pickup rates as a single dropdown in the Checkout Block.</li>
+<li>Use WooCommerce-native shipping rates so free/paid pickup, taxes, and checkout totals remain accurate.</li>
+<li>Validate the selected location server-side before the order is placed.</li>
+<li>Show a snapshot of the selected location in order admin, emails, My Account, and the thank-you page.</li>
+<li>Open the selected pickup address directly in Google Maps.</li>
+<li>English source strings and a bundled Bulgarian (<code>bg_BG</code>) translation.</li>
+<li>Compatible with WooCommerce HPOS.</li>
+<li>Keeps WooCommerce's Checkout Block pickup UI enabled while the plugin is active.</li>
+</ul>
+<h2>Installation</h2>
+<ol>
+<li>Copy this directory to <code>wp-content/plugins/local-pickup-stores</code> or upload it as a ZIP from WordPress admin.</li>
+<li>Activate <strong>Local Pickup Stores for WooCommerce</strong>.</li>
+<li>Add and publish at least one location at <strong>WooCommerce → Pickup locations</strong>.</li>
+<li>Go to <strong>WooCommerce → Settings → Shipping → Shipping zones</strong>.</li>
+<li>Edit a zone, add <strong>Store pickup</strong>, and optionally restrict its available locations.</li>
+<li>Ensure the checkout page uses the WooCommerce Checkout Block.</li>
+</ol>
+<h2>Requirements</h2>
+<ul>
+<li>WordPress 6.5+</li>
+<li>WooCommerce 9.0+</li>
+<li>PHP 7.4+</li>
+<li>The block-based checkout (the classic checkout shortcode is intentionally not supported)</li>
+</ul>
+<h2>License</h2>
+<p><a href="https://github.com/Open-WP-Club/local-pickup-woocommerce/blob/main/LICENSE">Apache License 2.0</a></p>
+<h2>Development checks</h2>
+<pre><code class="language-sh">composer install
+composer test
+find . -name '*.php' -print0 | xargs -0 -n1 php -l
+node --check assets/js/checkout.js
+</code></pre>

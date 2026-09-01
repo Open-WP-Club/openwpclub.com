@@ -1,5 +1,6 @@
 <h1>WooCommerce Priority Processing</h1>
 <p>A WordPress plugin that adds a priority processing and express shipping option to WooCommerce checkout, allowing customers to pay an additional fee for faster order handling.</p>
+<p>Current version: <strong>1.7.1</strong></p>
 <h2>Features</h2>
 <ul>
 <li><strong>Priority Processing Option</strong>: Add a checkbox at checkout for priority processing</li>
@@ -11,6 +12,8 @@
 <li><strong>Customer Account Badge</strong>: Confirmation badge shown on the order view page in My Account for orders with priority processing</li>
 <li><strong>Modern Compatibility</strong>: Supports both classic and block-based checkout</li>
 <li><strong>HPOS Ready</strong>: Compatible with WooCommerce High-Performance Order Storage</li>
+<li><strong>Server-side Access Control</strong>: Feature status, user permissions, and minimum order amount are enforced for classic AJAX, Store API, fees, and order creation</li>
+<li><strong>Scheduled Statistics</strong>: Daily WooCommerce statistics refresh with transient caching</li>
 </ul>
 <h2>Requirements</h2>
 <ul>
@@ -73,6 +76,43 @@
 <li><strong>Compatibility</strong>: Works with popular themes and checkout customizations</li>
 <li><strong>Performance</strong>: Lightweight implementation with minimal overhead</li>
 </ul>
+<h2>Local Testing</h2>
+<h3>Unit Tests</h3>
+<p>The PHPUnit suite covers settings sanitization, permissions, checkout state,
+fees, shipping metadata, account messages, order operations, statistics, and
+REST API permissions.</p>
+<p>PHPUnit 13 requires PHP 8.4.1 or newer for development. This does not change
+the plugin's PHP 8.1 runtime requirement.</p>
+<pre><code class="language-bash">composer install
+composer test
+</code></pre>
+<h3>WordPress and WooCommerce Integration Test</h3>
+<p>Docker, Node.js 18+ and npm are required. <code>wp-env</code> creates an isolated local
+site using PHP 8.4 and installs the latest WordPress and WooCommerce releases.</p>
+<pre><code class="language-bash">npm install
+npm run env:start
+npm run test:integration
+</code></pre>
+<p>The integration smoke test verifies:</p>
+<ul>
+<li>WooCommerce and Priority Processing activation</li>
+<li>Plugin service initialization</li>
+<li>Daily statistics cron scheduling</li>
+<li>Priority fee creation in a real WooCommerce cart</li>
+<li>WooCommerce order creation and CRUD persistence</li>
+<li>Priority and express-service order metadata</li>
+<li>Priority-order queries through the WooCommerce storage API, including HPOS-compatible access</li>
+<li>Cleanup of the temporary order, session state, and modified options</li>
+</ul>
+<p>Open the local site at <code>http://localhost:8888</code> and sign in with <code>admin</code> /
+<code>password</code>.</p>
+<pre><code class="language-bash">npm run env:stop   # Stop the containers and preserve their data.
+npm run env:clean  # Reset the development database and environment.
+</code></pre>
+<p>For a complete local check, run both suites:</p>
+<pre><code class="language-bash">composer test
+npm run test:integration
+</code></pre>
 <h2>Admin Features</h2>
 <ul>
 <li><strong>Visual Indicators</strong>: Priority orders clearly marked with ⚡ symbol</li>

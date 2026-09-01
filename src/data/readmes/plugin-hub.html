@@ -1,13 +1,18 @@
 <h1>Plugin Hub</h1>
-<p>Plugin Hub is a WordPress plugin that manages and installs plugins directly from GitHub repositories, focusing on the Open-WP-Club organization.</p>
+<p>Plugin Hub installs, updates, and manages WordPress plugins published by Open WP Club and distributed through GitHub.</p>
 <h2>Features</h2>
 <ul>
-<li>List plugins from a specified GitHub organization</li>
+<li>Browse the curated Open WP Club plugin catalog</li>
 <li>Install, update, activate, and deactivate plugins directly from the WordPress admin</li>
 <li>Bulk actions for managing multiple plugins at once</li>
 <li>Cache plugin information for improved performance</li>
 <li>Display beta plugins (optional)</li>
 <li>Refresh plugin list manually</li>
+<li>Roll back to a previous published release</li>
+<li>Opt selected plugins into daily automatic updates</li>
+<li>Review an activity log of plugin-management actions</li>
+<li>Use an optional GitHub token for higher API rate limits</li>
+<li>Resolve standard versioned release ZIPs directly, without spending GitHub REST API quota</li>
 </ul>
 <h2>Installation</h2>
 <ol>
@@ -25,7 +30,10 @@
 <h2>Configuration</h2>
 <ul>
 <li>To show or hide beta plugins, use the checkbox in the sidebar of the Plugin Hub page.</li>
-<li>The plugin list is cached for 24 hours by default. You can modify this duration by changing the <code>$cache_expiration</code> value in the <code>Plugin_Hub_API</code> class.</li>
+<li>The plugin list is cached for 24 hours and falls back to the last validated catalog if GitHub is temporarily unavailable.</li>
+<li>For production, the GitHub token can be managed outside the database by defining <code>PLUGIN_HUB_GITHUB_TOKEN</code> in <code>wp-config.php</code>. The constant takes precedence over the admin setting.</li>
+<li>Daily update reports are only sent when the set of updated or available plugins changes.</li>
+<li>Requires WordPress 6.0 or later (tested through 7.1) and PHP 8.0 or later.</li>
 </ul>
 <h2>Development</h2>
 <p>To contribute to this plugin or modify it for your needs:</p>
