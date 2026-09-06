@@ -1,5 +1,50 @@
 [
   {
+    "repo": "better-viewer-fluent-forms",
+    "name": "1.1.6",
+    "version": "1.1.6",
+    "publishedAt": "2026-09-05T11:51:19Z",
+    "url": "https://github.com/Open-WP-Club/better-viewer-fluent-forms/releases/tag/1.1.6",
+    "notes": "**Full Changelog**: https://github.com/Open-WP-Club/better-viewer-fluent-forms/compare/1.1.5...1.1.6\n\n---\n\n### 📦 Plugin Download\n- **WordPress Plugin**: [`client-fluent-submissions.zip`](https://github.com/Open-WP-Club/better-viewer-fluent-forms/releases/download/1.1.6/client-fluent-submissions.zip)\n- **Installation**: Download and upload through WordPress Admin → Plugins → Add New → Upload Plugin\n\n*Built automatically from tag 1.1.6*",
+    "category": "plugin"
+  },
+  {
+    "repo": "spam-user-detective-wp",
+    "name": "1.5.7",
+    "version": "1.5.7",
+    "publishedAt": "2026-09-05T08:08:23Z",
+    "url": "https://github.com/Open-WP-Club/spam-user-detective-wp/releases/tag/1.5.7",
+    "notes": "**Full Changelog**: https://github.com/Open-WP-Club/spam-user-detective-wp/compare/1.5.5...1.5.7\n\n---\n\n### 📦 Plugin Download\n- **WordPress Plugin**: [`spam-user-detective-wp.zip`](https://github.com/Open-WP-Club/spam-user-detective-wp/releases/download/1.5.7/spam-user-detective-wp.zip)\n- **Installation**: Download and upload through WordPress Admin → Plugins → Add New → Upload Plugin\n\n*Built automatically from tag 1.5.7*",
+    "category": "plugin"
+  },
+  {
+    "repo": "inventory-alerts-woo",
+    "name": "1.2.0",
+    "version": "1.2.0",
+    "publishedAt": "2026-09-03T12:37:38Z",
+    "url": "https://github.com/Open-WP-Club/inventory-alerts-woo/releases/tag/1.2.0",
+    "notes": "**Full Changelog**: https://github.com/Open-WP-Club/inventory-alerts-woo/compare/1.1.2...1.2.0\n\n---\n\n### 📦 Plugin Download\n- **WordPress Plugin**: [`inventory-alerts-woo.zip`](https://github.com/Open-WP-Club/inventory-alerts-woo/releases/download/1.2.0/inventory-alerts-woo.zip)\n- **Installation**: Download and upload through WordPress Admin → Plugins → Add New → Upload Plugin\n\n*Built automatically from tag 1.2.0*",
+    "category": "plugin"
+  },
+  {
+    "repo": "plugins-showcase-wp",
+    "name": "1.0.0",
+    "version": "1.0.0",
+    "publishedAt": "2026-09-03T09:57:28Z",
+    "url": "https://github.com/Open-WP-Club/plugins-showcase-wp/releases/tag/1.0.0",
+    "notes": "**Full Changelog**: https://github.com/Open-WP-Club/plugins-showcase-wp/commits/1.0.0",
+    "category": "plugin"
+  },
+  {
+    "repo": "inventory-insights-woocommerce",
+    "name": "1.4.0",
+    "version": "1.4.0",
+    "publishedAt": "2026-09-03T09:55:05Z",
+    "url": "https://github.com/Open-WP-Club/inventory-insights-woocommerce/releases/tag/1.4.0",
+    "notes": "**Full Changelog**: https://github.com/Open-WP-Club/inventory-insights-woocommerce/compare/1.2.5...1.4.0\n\n---\n\n### 📦 Plugin Download\n- **WordPress Plugin**: [`inventory-insights-woocommerce.zip`](https://github.com/Open-WP-Club/inventory-insights-woocommerce/releases/download/1.4.0/inventory-insights-woocommerce.zip)\n- **Installation**: Download and upload through WordPress Admin → Plugins → Add New → Upload Plugin\n\n*Built automatically from tag 1.4.0*",
+    "category": "plugin"
+  },
+  {
     "repo": "plugin-hub",
     "name": "1.4.2",
     "version": "1.4.2",
@@ -135,15 +180,6 @@
     "category": "plugin"
   },
   {
-    "repo": "spam-user-detective-wp",
-    "name": "1.5.5",
-    "version": "1.5.5",
-    "publishedAt": "2026-01-27T21:47:40Z",
-    "url": "https://github.com/Open-WP-Club/spam-user-detective-wp/releases/tag/1.5.5",
-    "notes": "**Full Changelog**: https://github.com/Open-WP-Club/spam-user-detective-wp/compare/1.5.0...1.5.5\n\n---\n\n### 📦 Plugin Download\n- **WordPress Plugin**: [`spam-user-detective-wp.zip`](https://github.com/Open-WP-Club/spam-user-detective-wp/releases/download/1.5.5/spam-user-detective-wp.zip)\n- **Installation**: Download and upload through WordPress Admin → Plugins → Add New → Upload Plugin\n\n*Built automatically from tag 1.5.5*",
-    "category": "plugin"
-  },
-  {
     "repo": "logo-link-wp",
     "name": "1.3.0",
     "version": "1.3.0",
@@ -177,24 +213,6 @@
     "publishedAt": "2026-01-01T12:59:01Z",
     "url": "https://github.com/Open-WP-Club/eu-vat-wp/releases/tag/1.0.0",
     "notes": "## What's Changed\r\n* v0.0.1 by @MrGKanev in https://github.com/Open-WP-Club/WP-eu-vat/pull/1\r\n\r\n## New Contributors\r\n* @MrGKanev made their first contribution in https://github.com/Open-WP-Club/WP-eu-vat/pull/1\r\n\r\n**Full Changelog**: https://github.com/Open-WP-Club/WP-eu-vat/commits/1.0.0\n\n---\n\n### 📦 Plugin Download\n- **WordPress Plugin**: [`WP-eu-vat.zip`](https://github.com/Open-WP-Club/WP-eu-vat/releases/download/1.0.0/WP-eu-vat.zip)\n- **Installation**: Download and upload through WordPress Admin → Plugins → Add New → Upload Plugin\n\n*Built automatically from tag 1.0.0*",
-    "category": "plugin"
-  },
-  {
-    "repo": "inventory-alerts-woo",
-    "name": "1.1.2",
-    "version": "1.1.2",
-    "publishedAt": "2025-12-17T12:59:59Z",
-    "url": "https://github.com/Open-WP-Club/inventory-alerts-woo/releases/tag/1.1.2",
-    "notes": "## What's Changed\r\n* Fix inconsistent stock status display in orders by @MrGKanev in https://github.com/Open-WP-Club/inventory-alerts-woo/pull/5\r\n\r\n\r\n**Full Changelog**: https://github.com/Open-WP-Club/inventory-alerts-woo/compare/1.1.1...1.1.2\n\n---\n\n### 📦 Plugin Download\n- **WordPress Plugin**: [`inventory-alerts-woo.zip`](https://github.com/Open-WP-Club/inventory-alerts-woo/releases/download/1.1.2/inventory-alerts-woo.zip)\n- **Installation**: Download and upload through WordPress Admin → Plugins → Add New → Upload Plugin\n\n*Built automatically from tag 1.1.2*",
-    "category": "plugin"
-  },
-  {
-    "repo": "inventory-insights-woocommerce",
-    "name": "1.2.5",
-    "version": "1.2.5",
-    "publishedAt": "2025-11-19T12:36:15Z",
-    "url": "https://github.com/Open-WP-Club/inventory-insights-woocommerce/releases/tag/1.2.5",
-    "notes": "## What's Changed\r\n* Fix search results number mismatch and style export button by @MrGKanev in https://github.com/Open-WP-Club/woocommerce-inventory-insights/pull/3\r\n\r\n\r\n**Full Changelog**: https://github.com/Open-WP-Club/woocommerce-inventory-insights/compare/1.2.3...1.2.5\n\n---\n\n### 📦 Plugin Download\n- **WordPress Plugin**: [`woocommerce-inventory-insights.zip`](https://github.com/Open-WP-Club/woocommerce-inventory-insights/releases/download/1.2.5/woocommerce-inventory-insights.zip)\n- **Installation**: Download and upload through WordPress Admin → Plugins → Add New → Upload Plugin\n\n*Built automatically from tag 1.2.5*",
     "category": "plugin"
   },
   {
