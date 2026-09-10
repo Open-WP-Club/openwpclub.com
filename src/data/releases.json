@@ -1,11 +1,20 @@
 [
   {
     "repo": "better-viewer-fluent-forms",
-    "name": "1.1.6",
-    "version": "1.1.6",
-    "publishedAt": "2026-09-05T11:51:19Z",
-    "url": "https://github.com/Open-WP-Club/better-viewer-fluent-forms/releases/tag/1.1.6",
-    "notes": "**Full Changelog**: https://github.com/Open-WP-Club/better-viewer-fluent-forms/compare/1.1.5...1.1.6\n\n---\n\n### 📦 Plugin Download\n- **WordPress Plugin**: [`client-fluent-submissions.zip`](https://github.com/Open-WP-Club/better-viewer-fluent-forms/releases/download/1.1.6/client-fluent-submissions.zip)\n- **Installation**: Download and upload through WordPress Admin → Plugins → Add New → Upload Plugin\n\n*Built automatically from tag 1.1.6*",
+    "name": "1.1.7",
+    "version": "1.1.7",
+    "publishedAt": "2026-09-10T07:50:15Z",
+    "url": "https://github.com/Open-WP-Club/better-viewer-fluent-forms/releases/tag/1.1.7",
+    "notes": "**Full Changelog**: https://github.com/Open-WP-Club/better-viewer-fluent-forms/compare/1.1.6...1.1.7\n\n---\n\n### 📦 Plugin Download\n- **WordPress Plugin**: [`client-fluent-submissions.zip`](https://github.com/Open-WP-Club/better-viewer-fluent-forms/releases/download/1.1.7/client-fluent-submissions.zip)\n- **Installation**: Download and upload through WordPress Admin → Plugins → Add New → Upload Plugin\n\n*Built automatically from tag 1.1.7*",
+    "category": "plugin"
+  },
+  {
+    "repo": "multi-store-sync-for-woocommerce",
+    "name": "4.1.3",
+    "version": "4.1.3",
+    "publishedAt": "2026-09-10T07:49:21Z",
+    "url": "https://github.com/Open-WP-Club/multi-store-sync-for-woocommerce/releases/tag/4.1.3",
+    "notes": "## WooCommerce Multi-Store Sync 4.1.3\n\n- 4.1.3\n\n### Installation\nDownload `wc-multi-store-sync-4.1.3.zip` and upload via **Plugins → Add New → Upload Plugin**.\n",
     "category": "plugin"
   },
   {
@@ -51,15 +60,6 @@
     "publishedAt": "2026-08-31T18:06:05Z",
     "url": "https://github.com/Open-WP-Club/plugin-hub/releases/tag/1.4.2",
     "notes": "**Full Changelog**: https://github.com/Open-WP-Club/plugin-hub/compare/1.4.1...1.4.2",
-    "category": "plugin"
-  },
-  {
-    "repo": "multi-store-sync-for-woocommerce",
-    "name": "4.1.2",
-    "version": "4.1.2",
-    "publishedAt": "2026-08-31T17:14:54Z",
-    "url": "https://github.com/Open-WP-Club/multi-store-sync-for-woocommerce/releases/tag/4.1.2",
-    "notes": "## WooCommerce Multi-Store Sync 4.1.2\n\n- Update wc-multi-store-sync.php\n- Fix plugin init ordering so WooCommerce classes are always loaded first\n\n### Installation\nDownload `wc-multi-store-sync-4.1.2.zip` and upload via **Plugins → Add New → Upload Plugin**.\n",
     "category": "plugin"
   },
   {

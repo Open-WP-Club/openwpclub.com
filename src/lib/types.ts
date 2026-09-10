@@ -1,14 +1,3 @@
-export interface PluginCSVRow {
-  name: string;
-  description: string;
-  version: string;
-  downloads: string;
-  rating: string;
-  github_url: string;
-  wordpress_url: string;
-  slug: string;
-}
-
 export interface GitHubRepoStats {
   stars: number;
   forks: number;

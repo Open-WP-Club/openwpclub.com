@@ -1,0 +1,128 @@
+<h1>Better Viewer for Fluent Forms</h1>
+<p><a href="https://wordpress.org/"><img src="https://img.shields.io/badge/WordPress-6.0%2B-21759b?logo=wordpress" alt="WordPress" /></a>
+<a href="https://www.php.net/"><img src="https://img.shields.io/badge/PHP-7.4%2B-777bb4?logo=php" alt="PHP" /></a></p>
+<hr />
+<h2>Overview</h2>
+<p>Better Viewer for Fluent Forms replaces the busy Fluent Forms Entries screen with a focused area for people who simply need to review and process incoming enquiries.</p>
+<p>It uses Fluent Forms as the source of truth. Submission responses are never copied to a separate table. The only additional data is a lightweight Fluent Forms submission-meta value that stores the client workflow status.</p>
+<h2>Features</h2>
+<ul>
+<li>Clean top-level <strong>Enquiries</strong> admin menu with a responsive, readable table.</li>
+<li>Server-side pagination, search, date range filtering, and status filtering.</li>
+<li>Field-specific search, read/unread filters, and quick date periods.</li>
+<li>Native Fluent Forms read/unread tracking with an unread menu counter.</li>
+<li>CSV export of the current filtered results.</li>
+<li>Bulk read/unread and workflow status actions.</li>
+<li>Dashboard counters for total, unread, new, in-progress, and completed enquiries.</li>
+<li>One-click email, phone, and WhatsApp actions detected from submission data.</li>
+<li>Internal notes with author and timestamp.</li>
+<li>Admin email notifications for new enquiries from configured forms.</li>
+<li>Non-destructive duplicate-contact and multi-link spam warnings.</li>
+<li>Four simple workflow statuses: <strong>New</strong>, <strong>In progress</strong>, <strong>Completed</strong>, and <strong>Archived</strong>.</li>
+<li>A distraction-free submission detail screen with labelled sections.</li>
+<li>Optional inline submission details that expand below a clicked table row.</li>
+<li>All read and unread submissions are listed; only trashed entries are omitted.</li>
+<li>Clickable links for uploaded files and URL values.</li>
+<li>Support for multiple Fluent Forms, displayed as tabs.</li>
+<li>A visual field picker: choose fields, client-facing labels, list visibility, detail visibility, and sections—without writing JSON or PHP configuration.</li>
+<li>Field labels are copied from Fluent Forms automatically and remain editable.</li>
+<li>English base language and included Bulgarian (<code>bg_BG</code>) translation.</li>
+<li>Capability checks, Fluent Forms ACL checks, nonces for every AJAX request, sanitised input, and escaped output.</li>
+</ul>
+<h2>Requirements</h2>
+<ul>
+<li>WordPress 6.0 or newer recommended</li>
+<li>PHP 7.4 or newer</li>
+<li><a href="https://wordpress.org/plugins/fluentform/">Fluent Forms</a> installed and activated</li>
+</ul>
+<h2>Installation</h2>
+<h3>From GitHub</h3>
+<ol>
+<li><p>Download the latest repository ZIP, or clone the repository:</p>
+<pre><code class="language-bash">git clone https://github.com/Open-WP-Club/better-viewer-fluent-forms.git
+</code></pre>
+</li>
+<li><p>Place the repository contents in a dedicated directory under <code>wp-content/plugins/</code>, for example:</p>
+<pre><code class="language-text">wp-content/plugins/better-viewer-fluent-forms/
+</code></pre>
+</li>
+<li><p>Activate <strong>Client Fluent Submissions</strong> in <strong>Plugins → Installed Plugins</strong>.</p>
+</li>
+<li><p>Go to <strong>Enquiries → Settings</strong> and configure one or more Fluent Forms.</p>
+</li>
+</ol>
+<h2>Configure a form</h2>
+<ol>
+<li>Open <strong>Enquiries → Settings</strong>.</li>
+<li>Click <strong>Add form</strong>.</li>
+<li>Select one of the available Fluent Forms forms. Its fields load automatically.</li>
+<li>For each available field, set the client-facing label and select whether it should appear in the list and/or the detail view.</li>
+<li>Assign detail fields to sections, such as <code>Contact</code>, <code>Information</code>, or <code>Message</code>.</li>
+<li>Optionally enable inline details so clicking a submission expands it inside the list.</li>
+<li>Save the settings.</li>
+</ol>
+<p>The mapping is stored in the WordPress option <code>cfs_forms_config</code>. The screen builds the internal mapping automatically; no custom configuration file is needed.</p>
+<h2>Permissions</h2>
+<p>The plugin intentionally does not treat “administrator” as the only access rule. A user must have both the WordPress capability and the corresponding Fluent Forms permission for the selected form.</p>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>WordPress capability</th>
+<th>Fluent Forms permission</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>View enquiries</td>
+<td><code>cfs_view_submissions</code></td>
+<td><code>fluentform_entries_viewer</code></td>
+</tr>
+<tr>
+<td>Update a status</td>
+<td><code>cfs_manage_submissions</code></td>
+<td><code>fluentform_manage_entries</code></td>
+</tr>
+<tr>
+<td>Change plugin settings</td>
+<td><code>cfs_manage_submissions</code></td>
+<td>Form viewer permission when loading fields</td>
+</tr>
+</tbody></table>
+<p>On activation, administrators receive the two WordPress capabilities. You can assign them to another role or user deliberately; Fluent Forms’ own per-form access restrictions still apply.</p>
+<h2>Data and statuses</h2>
+<p>Submissions remain in Fluent Forms. When a client status is changed, the plugin stores only this meta value against that submission:</p>
+<pre><code class="language-text">_cfs_client_status = new | in_progress | completed | archived
+</code></pre>
+<p>Existing submissions without this meta value are treated as <strong>New</strong>.</p>
+<h2>Languages</h2>
+<p>The plugin’s source language is English. Bulgarian is bundled in <code>languages/client-fluent-submissions-bg_BG.mo</code> and loads automatically when the site language is Bulgarian (<code>bg_BG</code>).</p>
+<h2>Project structure</h2>
+<pre><code class="language-text">client-fluent-submissions.php  Plugin bootstrap
+includes/
+  admin-page.php               Admin pages, settings UI, AJAX endpoints
+  config.php                   Configuration validation and persistence
+  submissions.php              Fluent Forms models and status handling
+assets/
+  admin.css                    Admin styling
+  admin.js                     Field picker and status interaction
+languages/                     Translation files
+</code></pre>
+<h2>Development notes</h2>
+<ul>
+<li>The integration uses Fluent Forms’ <code>Submission</code>, <code>SubmissionMeta</code>, <code>Form</code>, and <code>FormFieldsParser</code> classes rather than a duplicated submissions table.</li>
+<li>The list uses page-sized queries plus a batch metadata lookup, avoiding an N+1 query pattern.</li>
+<li>Fluent Forms is checked before its classes are used. If it is unavailable, the plugin displays an admin notice instead of causing a fatal error.</li>
+</ul>
+<h2>Manual test checklist</h2>
+<ol>
+<li>Activate Fluent Forms and this plugin.</li>
+<li>Configure a form through <strong>Enquiries → Settings</strong>.</li>
+<li>Open <strong>Enquiries</strong> and verify the configured table columns.</li>
+<li>Test name/email/phone search, status filter, date filters, and pagination.</li>
+<li>Open a submission and confirm that labels and sections are readable.</li>
+<li>Enable inline details, click a table row, and verify that the detail opens directly below it.</li>
+<li>Confirm that row checkboxes, links, and status buttons do not toggle the inline detail.</li>
+<li>Update each status and confirm that the status persists after refresh.</li>
+<li>Test with a user that has viewer access only, then a user with manage access.</li>
+<li>Change the WordPress site language to Bulgarian and verify the translated UI.</li>
+</ol>

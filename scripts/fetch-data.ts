@@ -3,7 +3,7 @@
  * Run with: pnpm run fetch-data
  *
  * Saves:
- *   src/data/plugins.json      - CSV + GitHub stats + README for each plugin
+ *   src/data/plugins.json      - catalog.json + GitHub stats + README for each plugin
  *   src/data/contributors.json - aggregated contributors across all repos
  *
  * The Astro content collection loader reads these files at build time
@@ -15,9 +15,7 @@ import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { marked } from 'marked';
 import sanitizeHtml from 'sanitize-html';
-import { parseCSVLine } from '../src/lib/csv';
 import { rewriteImageUrls } from '../src/lib/fetchGitHubData';
-import { categorize } from '../src/lib/categorize';
 import type { ReleaseAsset } from '../src/lib/app-releases';
 
 // Resolve paths
@@ -43,19 +41,12 @@ try {
 } catch { /* .env not found - fine */ }
 
 const ORG = 'Open-WP-Club';
-const CSV_URL = `https://raw.githubusercontent.com/${ORG}/.github/main/plugins.csv`;
+const CATALOG_URL = `https://raw.githubusercontent.com/${ORG}/.github/main/catalog.json`;
 const TRAFFIC_URL = `https://raw.githubusercontent.com/${ORG}/.github/main/traffic-state.json`;
 const BATCH_SIZE = 10;
 const TOKEN = process.env.GITHUB_TOKEN || '';
 
 interface AppMetadata {
-  category: 'app';
-  description?: string;
-  platforms: Array<'windows' | 'macos' | 'linux' | 'android' | 'ios'>;
-  featured?: boolean;
-  icon?: string;
-  features?: string[];
-  requirements?: string[];
   screenshots?: Array<{ src: string; alt: string; caption?: string }>;
 }
 
@@ -323,37 +314,55 @@ async function main() {
   }
   console.log();
 
-  // Fetch CSV
-  console.log('Fetching plugin list from CSV...');
-  const text = await cachedFetchText(CSV_URL);
-  if (!text) { console.error('  FAILED: no CSV response or cached fallback'); process.exit(1); }
-  const lines = text.trim().split(/\r?\n/);
-  const csvHeaders = lines[0].split(',').map((h) => h.replace(/^"|"$/g, '').trim().toLowerCase());
+  // Fetch product catalog
+  console.log('Fetching product catalog...');
+  const text = await cachedFetchText(CATALOG_URL);
+  if (!text) { console.error('  FAILED: no catalog response or cached fallback'); process.exit(1); }
 
-  interface CSVPlugin { name: string; description: string; version: string; downloads: string; rating: string; github_url: string; wordpress_url: string; slug: string; }
-  const csvPlugins: CSVPlugin[] = [];
-
-  for (let i = 1; i < lines.length; i++) {
-    const values = parseCSVLine(lines[i]);
-    if (values.length < 2) continue;
-    const row: Record<string, string> = {};
-    csvHeaders.forEach((h, idx) => { row[h] = values[idx] || ''; });
-    const name = row.name || row.plugin_name || row.title || values[0];
-    if (!name?.trim()) continue;
-    const description = row.description || row.desc || row.short_description || values[1];
-    const slug = row.slug || row.plugin_slug || name.trim().toLowerCase().replace(/\s+/g, '-');
-    csvPlugins.push({
-      name: name.trim(),
-      description: description?.trim() || 'WordPress plugin by Open WP Club',
-      version: row.version || row.ver || '',
-      downloads: row.downloads || row.download_count || '',
-      rating: row.rating || row.stars || '',
-      github_url: row.github_url || row.github || row.repo_url || '',
-      wordpress_url: row.wordpress_url || row.wp_url || row.plugin_url || '',
-      slug,
-    });
+  interface CatalogProduct {
+    repo_name: string;
+    display_name: string;
+    type: string;
+    description: string;
+    repo_url: string;
+    version: string;
+    platforms: string[];
+    featured: boolean;
+    icon?: string;
+    features?: string[];
+    requirements?: string[];
   }
-  console.log(`  Found ${csvPlugins.length} plugins in CSV\n`);
+  interface CatalogPlugin {
+    slug: string;
+    name: string;
+    description: string;
+    version: string;
+    githubUrl: string;
+    category: string;
+    platforms: string[];
+    featured: boolean;
+    icon: string;
+    features: string[];
+    requirements: string[];
+  }
+
+  const { products }: { products: CatalogProduct[] } = JSON.parse(text);
+  const catalogPlugins: CatalogPlugin[] = products
+    .filter(({ type }) => ['app', 'plugin', 'website'].includes(type))
+    .map((product) => ({
+      slug: product.repo_name.toLowerCase(),
+      name: product.display_name,
+      description: product.description,
+      version: product.version,
+      githubUrl: product.repo_url,
+      category: product.type,
+      platforms: product.platforms,
+      featured: product.featured,
+      icon: product.icon || '',
+      features: product.features || [],
+      requirements: product.requirements || [],
+    }));
+  console.log(`  Found ${catalogPlugins.length} products in the catalog\n`);
 
   // Fetch GitHub data for each plugin
   console.log('Fetching GitHub data (stats + README)...');
@@ -371,35 +380,34 @@ async function main() {
     category: string;
   }> = [];
 
-  for (let i = 0; i < csvPlugins.length; i += BATCH_SIZE) {
-    const batch = csvPlugins.slice(i, i + BATCH_SIZE);
+  for (let i = 0; i < catalogPlugins.length; i += BATCH_SIZE) {
+    const batch = catalogPlugins.slice(i, i + BATCH_SIZE);
     const results = await Promise.allSettled(
       batch.map(async (p) => {
         const stats = await fetchRepoStats(p.slug);
         const metadata = appMetadata[p.slug];
-        const category = metadata?.category || categorize(stats.topics, stats.language, p.slug);
         const [readmeHtml, latestRelease] = await Promise.all([
           fetchReadme(p.slug, stats.defaultBranch),
-          category !== 'website' ? fetchLatestRelease(p.slug) : Promise.resolve(null),
+          p.category !== 'website' ? fetchLatestRelease(p.slug) : Promise.resolve(null),
         ]);
-        return { csv: p, stats, category, metadata, readmeHtml, latestRelease };
+        return { product: p, stats, metadata, readmeHtml, latestRelease };
       })
     );
     for (const r of results) {
       if (r.status === 'fulfilled') {
-        const { csv, stats, category, metadata, readmeHtml, latestRelease } = r.value;
+        const { product, stats, metadata, readmeHtml, latestRelease } = r.value;
         totalStars += stats.stars;
         totalForks += stats.forks;
         if (stats.stars === 0 && stats.lastPush === '') failedCount++;
         pluginData.push({
-          id: csv.slug,
-          name: csv.name,
-          description: metadata?.description || csv.description,
-          version: latestRelease?.version || csv.version,
-          downloads: csv.downloads,
-          rating: csv.rating,
-          githubUrl: csv.github_url || `https://github.com/${ORG}/${csv.slug}`,
-          wordpressUrl: csv.wordpress_url,
+          id: product.slug,
+          name: product.name,
+          description: product.description,
+          version: latestRelease?.version || product.version,
+          downloads: '',
+          rating: '',
+          githubUrl: product.githubUrl,
+          wordpressUrl: '',
           stars: stats.stars,
           forks: stats.forks,
           openIssues: stats.openIssues,
@@ -409,35 +417,35 @@ async function main() {
           license: stats.license,
           language: stats.language,
           defaultBranch: stats.defaultBranch,
-          category,
+          category: product.category,
           releasePublishedAt: latestRelease?.publishedAt || '',
           releaseUrl: latestRelease?.url || '',
-          ...(category === 'app' && {
+          ...(product.category === 'app' && {
             releaseDownloads: latestRelease?.downloads || 0,
             releaseAssets: latestRelease?.assets || [],
-            platforms: metadata?.platforms || [],
-            featured: metadata?.featured || false,
-            icon: metadata?.icon || '',
-            features: metadata?.features || [],
-            requirements: metadata?.requirements || [],
+            platforms: product.platforms,
+            featured: product.featured,
+            icon: product.icon,
+            features: product.features,
+            requirements: product.requirements,
             screenshots: metadata?.screenshots || [],
           }),
           _readmeHtml: readmeHtml,
         });
         if (latestRelease?.publishedAt) {
           repositoryReleases.push({
-            repo: csv.slug,
+            repo: product.slug,
             name: latestRelease.name,
             version: latestRelease.version,
             publishedAt: latestRelease.publishedAt,
             url: latestRelease.url,
             notes: latestRelease.notes,
-            category,
+            category: product.category,
           });
         }
       }
     }
-    process.stdout.write(`  ${Math.min(i + BATCH_SIZE, csvPlugins.length)}/${csvPlugins.length} repos done\r`);
+    process.stdout.write(`  ${Math.min(i + BATCH_SIZE, catalogPlugins.length)}/${catalogPlugins.length} repos done\r`);
   }
   console.log();
   console.log(`  Stars: ${totalStars} | Forks: ${totalForks}`);
@@ -453,8 +461,8 @@ async function main() {
   const sponsorLogins = loadSponsorLogins();
   const contributorMap = new Map<string, { login: string; contributions: number; profileUrl: string }>();
   const perRepoContributors = new Map<string, Array<{ login: string; avatar: string; profileUrl: string; contributions: number }>>();
-  for (let i = 0; i < csvPlugins.length; i += BATCH_SIZE) {
-    const batch = csvPlugins.slice(i, i + BATCH_SIZE);
+  for (let i = 0; i < catalogPlugins.length; i += BATCH_SIZE) {
+    const batch = catalogPlugins.slice(i, i + BATCH_SIZE);
     const results = await Promise.allSettled(
       batch.map(async (p) => {
         const url = `https://api.github.com/repos/${ORG}/${p.slug}/contributors?per_page=100`;

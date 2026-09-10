@@ -5,7 +5,7 @@ const ORG = 'Open-WP-Club';
 const RELEASES_FILE = fileURLToPath(new URL('../src/data/releases.json', import.meta.url));
 const FRESHNESS_FILE = fileURLToPath(new URL('../src/data/freshness.json', import.meta.url));
 const PLUGINS_FILE = fileURLToPath(new URL('../src/data/plugins.json', import.meta.url));
-const CSV_URL = `https://raw.githubusercontent.com/${ORG}/.github/main/plugins.csv`;
+const CATALOG_URL = `https://raw.githubusercontent.com/${ORG}/.github/main/catalog.json`;
 const TOKEN = process.env.GITHUB_TOKEN || '';
 const BATCH_SIZE = 10;
 
@@ -18,31 +18,14 @@ function headers() {
   };
 }
 
-function firstCsvField(line) {
-  if (!line.startsWith('"')) return line.split(',', 1)[0].trim();
-
-  let value = '';
-  for (let index = 1; index < line.length; index++) {
-    if (line[index] !== '"') {
-      value += line[index];
-      continue;
-    }
-    if (line[index + 1] === '"') {
-      value += '"';
-      index++;
-      continue;
-    }
-    break;
-  }
-  return value.trim();
-}
-
 async function fetchRepoNames() {
-  const response = await fetch(CSV_URL, { signal: AbortSignal.timeout(15_000) });
-  if (!response.ok) throw new Error(`plugins.csv returned HTTP ${response.status}`);
+  const response = await fetch(CATALOG_URL, { signal: AbortSignal.timeout(15_000) });
+  if (!response.ok) throw new Error(`catalog.json returned HTTP ${response.status}`);
 
-  const lines = (await response.text()).trim().split(/\r?\n/);
-  return [...new Set(lines.slice(1).map(firstCsvField).filter(Boolean))];
+  const { products } = await response.json();
+  return products
+    .filter(({ type }) => ['app', 'plugin', 'website'].includes(type))
+    .map(({ repo_name }) => repo_name);
 }
 
 async function fetchLatestRelease(repo) {

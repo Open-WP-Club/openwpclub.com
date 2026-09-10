@@ -1,10 +1,98 @@
 {
+  "admin-notice-remover": [
+    {
+      "login": "MrGKanev",
+      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
+      "profileUrl": "https://github.com/MrGKanev",
+      "contributions": 13
+    }
+  ],
+  "agentready-wp": [
+    {
+      "login": "MrGKanev",
+      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
+      "profileUrl": "https://github.com/MrGKanev",
+      "contributions": 2
+    }
+  ],
+  "better-user-search": [
+    {
+      "login": "MrGKanev",
+      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
+      "profileUrl": "https://github.com/MrGKanev",
+      "contributions": 7
+    }
+  ],
+  "better-viewer-fluent-forms": [
+    {
+      "login": "MrGKanev",
+      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
+      "profileUrl": "https://github.com/MrGKanev",
+      "contributions": 14
+    }
+  ],
   "bulk-order-editor": [
     {
       "login": "MrGKanev",
       "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
       "profileUrl": "https://github.com/MrGKanev",
       "contributions": 39
+    }
+  ],
+  "disable-gutenberg-for-wp": [
+    {
+      "login": "MrGKanev",
+      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
+      "profileUrl": "https://github.com/MrGKanev",
+      "contributions": 3
+    }
+  ],
+  "eu-vat-wp": [
+    {
+      "login": "MrGKanev",
+      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
+      "profileUrl": "https://github.com/MrGKanev",
+      "contributions": 5
+    }
+  ],
+  "fulfill-for-woocommerce": [
+    {
+      "login": "MrGKanev",
+      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
+      "profileUrl": "https://github.com/MrGKanev",
+      "contributions": 23
+    }
+  ],
+  "google-scholar-wp": [
+    {
+      "login": "MrGKanev",
+      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
+      "profileUrl": "https://github.com/MrGKanev",
+      "contributions": 67
+    }
+  ],
+  "gravity-forms-shopify-integration": [
+    {
+      "login": "MrGKanev",
+      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
+      "profileUrl": "https://github.com/MrGKanev",
+      "contributions": 9
+    }
+  ],
+  "inventory-alerts-woo": [
+    {
+      "login": "MrGKanev",
+      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
+      "profileUrl": "https://github.com/MrGKanev",
+      "contributions": 18
+    }
+  ],
+  "inventory-insights-woocommerce": [
+    {
+      "login": "MrGKanev",
+      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
+      "profileUrl": "https://github.com/MrGKanev",
+      "contributions": 22
     }
   ],
   "last-user-orders-by-roles": [
@@ -15,23 +103,111 @@
       "contributions": 17
     }
   ],
-  "stageguard": [
+  "llms-txt-for-wp": [
     {
       "login": "MrGKanev",
       "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
       "profileUrl": "https://github.com/MrGKanev",
-      "contributions": 35
+      "contributions": 8
     }
   ],
-  "wc-pre-order": [
+  "local-pickup-woocommerce": [
     {
       "login": "MrGKanev",
       "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
       "profileUrl": "https://github.com/MrGKanev",
-      "contributions": 31
+      "contributions": 3
     }
   ],
-  "better-user-search": [
+  "logo-link-wp": [
+    {
+      "login": "MrGKanev",
+      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
+      "profileUrl": "https://github.com/MrGKanev",
+      "contributions": 9
+    }
+  ],
+  "multi-store-sync-for-woocommerce": [
+    {
+      "login": "MrGKanev",
+      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
+      "profileUrl": "https://github.com/MrGKanev",
+      "contributions": 67
+    }
+  ],
+  "opengraph-svg-generator-wp": [
+    {
+      "login": "MrGKanev",
+      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
+      "profileUrl": "https://github.com/MrGKanev",
+      "contributions": 21
+    }
+  ],
+  "openwpclub.com": [
+    {
+      "login": "MrGKanev",
+      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
+      "profileUrl": "https://github.com/MrGKanev",
+      "contributions": 65
+    }
+  ],
+  "order-payment-limiter-woo": [
+    {
+      "login": "MrGKanev",
+      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
+      "profileUrl": "https://github.com/MrGKanev",
+      "contributions": 3
+    }
+  ],
+  "order-printing-woocommerce": [
+    {
+      "login": "MrGKanev",
+      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
+      "profileUrl": "https://github.com/MrGKanev",
+      "contributions": 15
+    }
+  ],
+  "payment-method-highlighter-for-woocommerce": [
+    {
+      "login": "MrGKanev",
+      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
+      "profileUrl": "https://github.com/MrGKanev",
+      "contributions": 4
+    }
+  ],
+  "phone-order-woo": [
+    {
+      "login": "MrGKanev",
+      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
+      "profileUrl": "https://github.com/MrGKanev",
+      "contributions": 19
+    }
+  ],
+  "plugin-hub": [
+    {
+      "login": "MrGKanev",
+      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
+      "profileUrl": "https://github.com/MrGKanev",
+      "contributions": 27
+    }
+  ],
+  "plugins-showcase-wp": [
+    {
+      "login": "MrGKanev",
+      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
+      "profileUrl": "https://github.com/MrGKanev",
+      "contributions": 6
+    }
+  ],
+  "priority-processing-woocommerce": [
+    {
+      "login": "MrGKanev",
+      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
+      "profileUrl": "https://github.com/MrGKanev",
+      "contributions": 68
+    }
+  ],
+  "product-health-check-woocommerce": [
     {
       "login": "MrGKanev",
       "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
@@ -47,14 +223,6 @@
       "contributions": 60
     }
   ],
-  "wp-internal-linking": [
-    {
-      "login": "MrGKanev",
-      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
-      "profileUrl": "https://github.com/MrGKanev",
-      "contributions": 17
-    }
-  ],
   "resume-builder": [
     {
       "login": "MrGKanev",
@@ -63,23 +231,47 @@
       "contributions": 13
     }
   ],
-  "plugin-hub": [
+  "sku-auto-woocommerce": [
     {
       "login": "MrGKanev",
       "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
       "profileUrl": "https://github.com/MrGKanev",
-      "contributions": 27
+      "contributions": 35
     }
   ],
-  "wp-sanitize": [
+  "smart-product-export-woo": [
     {
       "login": "MrGKanev",
       "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
       "profileUrl": "https://github.com/MrGKanev",
-      "contributions": 9
+      "contributions": 6
     }
   ],
-  "woocommerce-phone-number-validator": [
+  "spam-user-detective-wp": [
+    {
+      "login": "MrGKanev",
+      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
+      "profileUrl": "https://github.com/MrGKanev",
+      "contributions": 23
+    }
+  ],
+  "stageguard": [
+    {
+      "login": "MrGKanev",
+      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
+      "profileUrl": "https://github.com/MrGKanev",
+      "contributions": 35
+    }
+  ],
+  "static-export-wp": [
+    {
+      "login": "MrGKanev",
+      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
+      "profileUrl": "https://github.com/MrGKanev",
+      "contributions": 18
+    }
+  ],
+  "storeos": [
     {
       "login": "MrGKanev",
       "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
@@ -87,36 +279,12 @@
       "contributions": 8
     }
   ],
-  "eu-vat-wp": [
+  "taxonomy-showcase-woocommerce": [
     {
       "login": "MrGKanev",
       "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
       "profileUrl": "https://github.com/MrGKanev",
-      "contributions": 5
-    }
-  ],
-  "wp-user-blocking": [
-    {
-      "login": "MrGKanev",
-      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
-      "profileUrl": "https://github.com/MrGKanev",
-      "contributions": 10
-    }
-  ],
-  "phone-order-woo": [
-    {
-      "login": "MrGKanev",
-      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
-      "profileUrl": "https://github.com/MrGKanev",
-      "contributions": 19
-    }
-  ],
-  "wp-historical-preservation-mode": [
-    {
-      "login": "MrGKanev",
-      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
-      "profileUrl": "https://github.com/MrGKanev",
-      "contributions": 8
+      "contributions": 16
     }
   ],
   "team-manager-wordpress": [
@@ -127,6 +295,30 @@
       "contributions": 11
     }
   ],
+  "user-self-delete": [
+    {
+      "login": "MrGKanev",
+      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
+      "profileUrl": "https://github.com/MrGKanev",
+      "contributions": 25
+    }
+  ],
+  "wc-pre-order": [
+    {
+      "login": "MrGKanev",
+      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
+      "profileUrl": "https://github.com/MrGKanev",
+      "contributions": 31
+    }
+  ],
+  "woocommerce-phone-number-validator": [
+    {
+      "login": "MrGKanev",
+      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
+      "profileUrl": "https://github.com/MrGKanev",
+      "contributions": 8
+    }
+  ],
   "wp-file-visibility-manager": [
     {
       "login": "MrGKanev",
@@ -135,23 +327,23 @@
       "contributions": 3
     }
   ],
-  "admin-notice-remover": [
+  "wp-historical-preservation-mode": [
     {
       "login": "MrGKanev",
       "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
       "profileUrl": "https://github.com/MrGKanev",
-      "contributions": 13
+      "contributions": 8
     }
   ],
-  "google-scholar-wp": [
+  "wp-internal-linking": [
     {
       "login": "MrGKanev",
       "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
       "profileUrl": "https://github.com/MrGKanev",
-      "contributions": 67
+      "contributions": 17
     }
   ],
-  "logo-link-wp": [
+  "wp-sanitize": [
     {
       "login": "MrGKanev",
       "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
@@ -167,196 +359,12 @@
       "contributions": 2
     }
   ],
-  "sku-auto-woocommerce": [
+  "wp-user-blocking": [
     {
       "login": "MrGKanev",
       "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
       "profileUrl": "https://github.com/MrGKanev",
-      "contributions": 35
-    }
-  ],
-  "user-self-delete": [
-    {
-      "login": "MrGKanev",
-      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
-      "profileUrl": "https://github.com/MrGKanev",
-      "contributions": 25
-    }
-  ],
-  "gravity-forms-shopify-integration": [
-    {
-      "login": "MrGKanev",
-      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
-      "profileUrl": "https://github.com/MrGKanev",
-      "contributions": 9
-    }
-  ],
-  "order-payment-limiter-woo": [
-    {
-      "login": "MrGKanev",
-      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
-      "profileUrl": "https://github.com/MrGKanev",
-      "contributions": 3
-    }
-  ],
-  "opengraph-svg-generator-wp": [
-    {
-      "login": "MrGKanev",
-      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
-      "profileUrl": "https://github.com/MrGKanev",
-      "contributions": 21
-    }
-  ],
-  "priority-processing-woocommerce": [
-    {
-      "login": "MrGKanev",
-      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
-      "profileUrl": "https://github.com/MrGKanev",
-      "contributions": 67
-    }
-  ],
-  "inventory-insights-woocommerce": [
-    {
-      "login": "MrGKanev",
-      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
-      "profileUrl": "https://github.com/MrGKanev",
-      "contributions": 20
-    }
-  ],
-  "spam-user-detective-wp": [
-    {
-      "login": "MrGKanev",
-      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
-      "profileUrl": "https://github.com/MrGKanev",
-      "contributions": 22
-    }
-  ],
-  "smart-product-export-woo": [
-    {
-      "login": "MrGKanev",
-      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
-      "profileUrl": "https://github.com/MrGKanev",
-      "contributions": 6
-    }
-  ],
-  "inventory-alerts-woo": [
-    {
-      "login": "MrGKanev",
-      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
-      "profileUrl": "https://github.com/MrGKanev",
-      "contributions": 17
-    }
-  ],
-  "disable-gutenberg-for-wp": [
-    {
-      "login": "MrGKanev",
-      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
-      "profileUrl": "https://github.com/MrGKanev",
-      "contributions": 3
-    }
-  ],
-  "plugins-showcase-wp": [
-    {
-      "login": "MrGKanev",
-      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
-      "profileUrl": "https://github.com/MrGKanev",
-      "contributions": 6
-    }
-  ],
-  "llms-txt-for-wp": [
-    {
-      "login": "MrGKanev",
-      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
-      "profileUrl": "https://github.com/MrGKanev",
-      "contributions": 8
-    }
-  ],
-  "order-printing-woocommerce": [
-    {
-      "login": "MrGKanev",
-      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
-      "profileUrl": "https://github.com/MrGKanev",
-      "contributions": 15
-    }
-  ],
-  "static-export-wp": [
-    {
-      "login": "MrGKanev",
-      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
-      "profileUrl": "https://github.com/MrGKanev",
-      "contributions": 18
-    }
-  ],
-  "product-health-check-woocommerce": [
-    {
-      "login": "MrGKanev",
-      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
-      "profileUrl": "https://github.com/MrGKanev",
-      "contributions": 7
-    }
-  ],
-  "agentready-wp": [
-    {
-      "login": "MrGKanev",
-      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
-      "profileUrl": "https://github.com/MrGKanev",
-      "contributions": 2
-    }
-  ],
-  "taxonomy-showcase-woocommerce": [
-    {
-      "login": "MrGKanev",
-      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
-      "profileUrl": "https://github.com/MrGKanev",
-      "contributions": 16
-    }
-  ],
-  "payment-method-highlighter-for-woocommerce": [
-    {
-      "login": "MrGKanev",
-      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
-      "profileUrl": "https://github.com/MrGKanev",
-      "contributions": 4
-    }
-  ],
-  "multi-store-sync-for-woocommerce": [
-    {
-      "login": "MrGKanev",
-      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
-      "profileUrl": "https://github.com/MrGKanev",
-      "contributions": 65
-    }
-  ],
-  "local-pickup-woocommerce": [
-    {
-      "login": "MrGKanev",
-      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
-      "profileUrl": "https://github.com/MrGKanev",
-      "contributions": 3
-    }
-  ],
-  "fulfill-for-woocommerce": [
-    {
-      "login": "MrGKanev",
-      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
-      "profileUrl": "https://github.com/MrGKanev",
-      "contributions": 23
-    }
-  ],
-  "openwpclub.com": [
-    {
-      "login": "MrGKanev",
-      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
-      "profileUrl": "https://github.com/MrGKanev",
-      "contributions": 64
-    }
-  ],
-  "storeos": [
-    {
-      "login": "MrGKanev",
-      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
-      "profileUrl": "https://github.com/MrGKanev",
-      "contributions": 6
+      "contributions": 10
     }
   ]
 }
