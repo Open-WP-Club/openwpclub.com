@@ -1,11 +1,20 @@
 [
   {
+    "repo": "local-pickup-woocommerce",
+    "name": "1.1.2",
+    "version": "1.1.2",
+    "publishedAt": "2026-09-16T10:05:46Z",
+    "url": "https://github.com/Open-WP-Club/local-pickup-woocommerce/releases/tag/1.1.2",
+    "notes": "**Full Changelog**: https://github.com/Open-WP-Club/local-pickup-woocommerce/compare/1.1.1...1.1.2",
+    "category": "plugin"
+  },
+  {
     "repo": "multi-store-sync-for-woocommerce",
-    "name": "4.2.0",
-    "version": "4.2.0",
-    "publishedAt": "2026-09-11T19:24:58Z",
-    "url": "https://github.com/Open-WP-Club/multi-store-sync-for-woocommerce/releases/tag/4.2.0",
-    "notes": "## WooCommerce Multi-Store Sync 4.2.0\n\n- Add review and attribute sync modules\n- Update phpstan-baseline.neon\n\n### Installation\nDownload `wc-multi-store-sync-4.2.0.zip` and upload via **Plugins → Add New → Upload Plugin**.\n",
+    "name": "4.2.2",
+    "version": "4.2.2",
+    "publishedAt": "2026-09-14T06:26:23Z",
+    "url": "https://github.com/Open-WP-Club/multi-store-sync-for-woocommerce/releases/tag/4.2.2",
+    "notes": "## WooCommerce Multi-Store Sync 4.2.2\n\n- 4.2.2\n\n### Installation\nDownload `wc-multi-store-sync-4.2.2.zip` and upload via **Plugins → Add New → Upload Plugin**.\n",
     "category": "plugin"
   },
   {
@@ -69,15 +78,6 @@
     "publishedAt": "2026-08-29T17:25:52Z",
     "url": "https://github.com/Open-WP-Club/Priority-Processing-WooCommerce/releases/tag/1.7.1",
     "notes": "**Full Changelog**: https://github.com/Open-WP-Club/Priority-Processing-WooCommerce/compare/1.7.0...1.7.1\n\n---\n\n### 📦 Plugin Download\n- **WordPress Plugin**: [`Priority-Processing-WooCommerce.zip`](https://github.com/Open-WP-Club/Priority-Processing-WooCommerce/releases/download/1.7.1/Priority-Processing-WooCommerce.zip)\n- **Installation**: Download and upload via WordPress Admin → Plugins → Add New → Upload Plugin\n\n*Built automatically from tag 1.7.1*",
-    "category": "plugin"
-  },
-  {
-    "repo": "local-pickup-woocommerce",
-    "name": "1.0.0",
-    "version": "1.0.0",
-    "publishedAt": "2026-08-26T09:40:57Z",
-    "url": "https://github.com/Open-WP-Club/local-pickup-woocommerce/releases/tag/1.0.0",
-    "notes": "**Full Changelog**: https://github.com/Open-WP-Club/local-pickup-woocommerce/commits/1.0.0",
     "category": "plugin"
   },
   {
