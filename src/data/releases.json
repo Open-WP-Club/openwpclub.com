@@ -1,20 +1,29 @@
 [
   {
+    "repo": "google-scholar-wp",
+    "name": "1.7.0",
+    "version": "1.7.0",
+    "publishedAt": "2026-09-24T12:46:16Z",
+    "url": "https://github.com/Open-WP-Club/google-scholar-wp/releases/tag/1.7.0",
+    "notes": "## What's Changed\r\n* Allow additional google scholar profiles. Shortcode: [scholar_profile profile_id=\"OTHER_PROFILE_ID\"] by @Pragalbhv in https://github.com/Open-WP-Club/google-scholar-wp/pull/13\r\n* Allow additional Google Scholar profiles by @MrGKanev in https://github.com/Open-WP-Club/google-scholar-wp/pull/14\r\n\r\n## New Contributors\r\n* @Pragalbhv made their first contribution in https://github.com/Open-WP-Club/google-scholar-wp/pull/13\r\n\r\n**Full Changelog**: https://github.com/Open-WP-Club/google-scholar-wp/compare/1.6.0...1.7.0\n\n---\n\n### 📦 Plugin Download\n- **WordPress Plugin**: [`google-scholar-wp.zip`](https://github.com/Open-WP-Club/google-scholar-wp/releases/download/1.7.0/google-scholar-wp.zip)\n- **Installation**: Download and upload through WordPress Admin → Plugins → Add New → Upload Plugin\n\n*Built automatically from tag 1.7.0*",
+    "category": "plugin"
+  },
+  {
+    "repo": "multi-store-sync-for-woocommerce",
+    "name": "5.0.0",
+    "version": "5.0.0",
+    "publishedAt": "2026-09-23T20:54:04Z",
+    "url": "https://github.com/Open-WP-Club/multi-store-sync-for-woocommerce/releases/tag/5.0.0",
+    "notes": "## WooCommerce Multi-Store Sync 5.0.0\n\n- Fix PHPStan CI failures\n- Harden admin endpoint validation\n- Fix final validation issues\n- Add translators comments to CLI commands\n- Add translators comments to admin AJAX\n- Add translators comments to settings integration\n- Add translators comments to orphan cleanup\n- Add translators comment to verification scheduler\n- Add translators comment to webhook logger\n- Add translators comment to sync profiles\n- Add translators comments to sync previewer\n- Add translators comments to email notifications\n- Add translators comments to dead letter queue\n- Add translators comments to stock allocator\n- Add translators comment to shipping class sync\n- Add translators comment to coupon sync\n- Add translators comment to conflict detector\n- Add translators comment to category mapper\n- Add translators comments to attribute remapper\n- Add translators comments to remote order admin\n- Add translators comment to store form\n- Add translators comments to product edit\n- Add translators comment to dashboard widget\n- Add translators comments to bulk actions\n- Add translators comment to verification view\n- Add translators comments to stores view\n- Add translators comments to settings view\n- Add translators comments to history view\n- Add translators comment to discrepancies view\n- Add translators comment to dead letter view\n- Add translators comment to dashboard view\n- Fix escaping in store form renderer\n- Fix escaping in verification email\n- Sanitize remote verification error context\n- Document CSV output escaping exception\n- Fix escaping in remote order sync\n- Fix escaping in remote order list table\n- Fix escaping in remote order admin\n- Fix escaping in product edit metaboxes\n- Fix escaping in orphan cleanup page\n- Fix escaping in dashboard widget\n- Fix escaping in bulk action notices\n- Fix escaping in plugin bootstrap notice\n- Increase PHPCS memory limit for full scans\n- Escape output in weekly verification view\n- Escape output in settings admin view\n- Escape output in history admin view\n- Escape output in dashboard admin view\n- Escape output in stores admin view\n- Escape output in discrepancies admin view\n- Escape output in API usage view\n- Escape output in queue admin view\n- Fix plugin text domain and escape admin output\n- Requires Plugins: woocommerce\n- php 8.3\n- 5.0.0\n\n### Installation\nDownload `wc-multi-store-sync-5.0.0.zip` and upload via **Plugins → Add New → Upload Plugin**.\n",
+    "category": "plugin"
+  },
+  {
     "repo": "local-pickup-woocommerce",
     "name": "1.1.2",
     "version": "1.1.2",
     "publishedAt": "2026-09-16T10:05:46Z",
     "url": "https://github.com/Open-WP-Club/local-pickup-woocommerce/releases/tag/1.1.2",
     "notes": "**Full Changelog**: https://github.com/Open-WP-Club/local-pickup-woocommerce/compare/1.1.1...1.1.2",
-    "category": "plugin"
-  },
-  {
-    "repo": "multi-store-sync-for-woocommerce",
-    "name": "4.2.2",
-    "version": "4.2.2",
-    "publishedAt": "2026-09-14T06:26:23Z",
-    "url": "https://github.com/Open-WP-Club/multi-store-sync-for-woocommerce/releases/tag/4.2.2",
-    "notes": "## WooCommerce Multi-Store Sync 4.2.2\n\n- 4.2.2\n\n### Installation\nDownload `wc-multi-store-sync-4.2.2.zip` and upload via **Plugins → Add New → Upload Plugin**.\n",
     "category": "plugin"
   },
   {
@@ -78,15 +87,6 @@
     "publishedAt": "2026-08-29T17:25:52Z",
     "url": "https://github.com/Open-WP-Club/Priority-Processing-WooCommerce/releases/tag/1.7.1",
     "notes": "**Full Changelog**: https://github.com/Open-WP-Club/Priority-Processing-WooCommerce/compare/1.7.0...1.7.1\n\n---\n\n### 📦 Plugin Download\n- **WordPress Plugin**: [`Priority-Processing-WooCommerce.zip`](https://github.com/Open-WP-Club/Priority-Processing-WooCommerce/releases/download/1.7.1/Priority-Processing-WooCommerce.zip)\n- **Installation**: Download and upload via WordPress Admin → Plugins → Add New → Upload Plugin\n\n*Built automatically from tag 1.7.1*",
-    "category": "plugin"
-  },
-  {
-    "repo": "google-scholar-wp",
-    "name": "1.6.0",
-    "version": "1.6.0",
-    "publishedAt": "2026-08-10T09:03:15Z",
-    "url": "https://github.com/Open-WP-Club/google-scholar-wp/releases/tag/1.6.0",
-    "notes": "**Full Changelog**: https://github.com/Open-WP-Club/google-scholar-wp/compare/1.5.0...1.6.0\n\n---\n\n### 📦 Plugin Download\n- **WordPress Plugin**: [`google-scholar-wp.zip`](https://github.com/Open-WP-Club/google-scholar-wp/releases/download/1.6.0/google-scholar-wp.zip)\n- **Installation**: Download and upload through WordPress Admin → Plugins → Add New → Upload Plugin\n\n*Built automatically from tag 1.6.0*",
     "category": "plugin"
   },
   {
