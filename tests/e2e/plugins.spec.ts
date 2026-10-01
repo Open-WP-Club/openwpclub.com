@@ -7,7 +7,7 @@ test('plugin categories filter the catalog', async ({ page }) => {
   await expect(seo).toBeVisible();
   await seo.click();
 
-  await expect(page.getByRole('link', { name: /rank-math-automation-wp/i })).toBeVisible();
+  await expect(page.getByRole('link', { name: /Rank Math Automation WP/i })).toBeVisible();
   await expect(page.getByRole('link', { name: /WC-Pre-order/i })).toBeHidden();
   await expect(page.locator('#plugin-count')).toContainText('in this category');
 });

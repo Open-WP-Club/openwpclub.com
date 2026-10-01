@@ -8,7 +8,7 @@ test('apps catalog identifies desktop and mobile products', async ({ page }) => 
   await expect(page.locator('[data-name="storeos"]')).toContainText('Windows');
   await expect(page.locator('[data-name="storeos"]')).toContainText('macOS');
   await expect(page.locator('[data-name="storeos"]')).toContainText('Linux');
-  await expect(page.locator('[data-name="fulfill-for-woocommerce"]')).toContainText('Android');
+  await expect(page.locator('[data-name="fulfill for woocommerce"]')).toContainText('Android');
   await expect(page.getByText(/Updated monthly · Data as of/).first()).toBeVisible();
 });
 
