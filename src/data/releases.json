@@ -1,5 +1,14 @@
 [
   {
+    "repo": "payment-method-highlighter-for-woocommerce",
+    "name": "1.4.0",
+    "version": "1.4.0",
+    "publishedAt": "2026-09-29T17:55:47Z",
+    "url": "https://github.com/Open-WP-Club/payment-method-highlighter-for-wooCommerce/releases/tag/1.4.0",
+    "notes": "**Full Changelog**: https://github.com/Open-WP-Club/payment-method-highlighter-for-wooCommerce/compare/1.2.1...1.4.0",
+    "category": "plugin"
+  },
+  {
     "repo": "google-scholar-wp",
     "name": "1.7.0",
     "version": "1.7.0",
@@ -87,15 +96,6 @@
     "publishedAt": "2026-08-29T17:25:52Z",
     "url": "https://github.com/Open-WP-Club/Priority-Processing-WooCommerce/releases/tag/1.7.1",
     "notes": "**Full Changelog**: https://github.com/Open-WP-Club/Priority-Processing-WooCommerce/compare/1.7.0...1.7.1\n\n---\n\n### 📦 Plugin Download\n- **WordPress Plugin**: [`Priority-Processing-WooCommerce.zip`](https://github.com/Open-WP-Club/Priority-Processing-WooCommerce/releases/download/1.7.1/Priority-Processing-WooCommerce.zip)\n- **Installation**: Download and upload via WordPress Admin → Plugins → Add New → Upload Plugin\n\n*Built automatically from tag 1.7.1*",
-    "category": "plugin"
-  },
-  {
-    "repo": "payment-method-highlighter-for-woocommerce",
-    "name": "1.2.1",
-    "version": "1.2.1",
-    "publishedAt": "2026-08-06T12:19:43Z",
-    "url": "https://github.com/Open-WP-Club/payment-method-highlighter-for-wooCommerce/releases/tag/1.2.1",
-    "notes": "**Full Changelog**: https://github.com/Open-WP-Club/payment-method-highlighter-for-wooCommerce/commits/1.2.1",
     "category": "plugin"
   },
   {

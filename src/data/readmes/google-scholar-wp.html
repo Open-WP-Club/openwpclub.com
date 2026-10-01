@@ -53,6 +53,12 @@ your browser when Google Scholar blocks server-side requests.</p>
 <p>Add the shortcode to any post or page:</p>
 <pre><code>[scholar_profile]
 </code></pre>
+<p>To display a configured additional profile, pass its Profile ID:</p>
+<pre><code>[scholar_profile profile_id="OTHER_PROFILE_ID"]
+</code></pre>
+<p>Additional Profile IDs are entered one per line in the plugin settings. Each
+ID must be configured and imported/refreshed before its shortcode can display
+data.</p>
 <h3>Pagination Options</h3>
 <p>Control how many publications are displayed per page:</p>
 <pre><code>[scholar_profile per_page="10"]
@@ -99,7 +105,7 @@ your browser when Google Scholar blocks server-side requests.</p>
 </ul>
 <p><strong>URL Parameters:</strong></p>
 <ul>
-<li><code>scholar_page</code> - Current page number</li>
+<li><code>scholar_page</code> or a profile-specific <code>scholar_page_*</code> parameter - Current page number</li>
 <li><code>scholar_sort_by</code> - Current sort field</li>
 <li><code>scholar_sort_order</code> - Current sort order</li>
 </ul>
