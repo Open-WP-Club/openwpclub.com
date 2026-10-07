@@ -3,7 +3,7 @@
 export const ORG = 'Open-WP-Club';
 export const CATALOG_URL = `https://raw.githubusercontent.com/${ORG}/.github/main/catalog.json`;
 export const GITHUB_ORG_URL = `https://github.com/${ORG}`;
-export const DISCORD_URL = 'https://discord.gg/ESTDmmjj';
+export const DISCORD_URL = 'https://discord.gg/ysBW334DYR';
 export const SPONSOR_URL = 'https://github.com/sponsors/Open-WP-Club';
 export const CONTACT_EMAIL = 'contact@openwpclub.com';
 export const TWITTER_HANDLE = '@OpenWPClub';

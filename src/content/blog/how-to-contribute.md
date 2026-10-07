@@ -12,7 +12,7 @@ Contributing to open source can feel intimidating, but it doesn't have to be. He
 
 Browse our [GitHub organization](https://github.com/Open-WP-Club) and look for issues labeled `good first issue`. These are specifically picked for newcomers and come with clear descriptions of what needs to be done.
 
-Not sure where to start? Join our [Discord](https://discord.gg/ESTDmmjj) and ask. We'll help you find something that matches your skills.
+Not sure where to start? Join our [Discord](https://discord.gg/ysBW334DYR) and ask. We'll help you find something that matches your skills.
 
 ## Fork and clone
 

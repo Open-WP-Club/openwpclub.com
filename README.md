@@ -105,5 +105,5 @@ MIT - see [LICENSE](LICENSE) for details.
 ## Community
 
 - [GitHub](https://github.com/Open-WP-Club)
-- [Discord](https://discord.gg/ESTDmmjj)
+- [Discord](https://discord.gg/ysBW334DYR)
 - Email: contact@openwpclub.com

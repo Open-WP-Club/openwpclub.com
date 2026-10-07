@@ -8,7 +8,7 @@ export const GET: APIRoute = async () => {
 
   const lines = [
     `Contact: ${GITHUB_ORG_URL}/.github/security/advisories`,
-    `Contact: https://discord.gg/ESTDmmjj`,
+    `Contact: https://discord.gg/ysBW334DYR`,
     `Expires: ${expires}`,
     `Preferred-Languages: en, bg`,
     `Canonical: https://openwpclub.com/.well-known/security.txt`,

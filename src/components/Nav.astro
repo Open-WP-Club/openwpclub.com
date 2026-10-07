@@ -13,6 +13,7 @@ const links = [
     children: [
       { href: '/mission/', label: 'Our Mission' },
       { href: '/tech-stack/', label: 'Tech Stack' },
+      { href: '/services/', label: 'Services' },
       { href: '/join/', label: 'How to Join' },
     ],
   },
@@ -22,7 +23,7 @@ const links = [
   { href: '/contributors/', label: 'Contributors' },
 ];
 
-const isMissionActive = ['/mission/', '/tech-stack/', '/join/'].some((p) => pathname.startsWith(p));
+const isMissionActive = ['/mission/', '/tech-stack/', '/join/', '/services/'].some((p) => pathname.startsWith(p));
 
 // Build static search index at build time
 const [allPlugins, allPosts] = await Promise.all([

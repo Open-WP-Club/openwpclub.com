@@ -1,0 +1,153 @@
+---
+import { Icon } from 'astro-icon/components';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { DISCORD_URL } from '../lib/config';
+
+const offers = [
+  {
+    icon: 'lucide:life-buoy',
+    title: 'Agency Care',
+    price: '€249 / month',
+    description:
+      'For small WordPress agencies that already use our tools. Up to 4 hours a month of diagnosis or pre-update compatibility checks on up to two staging sites, a first reply within two working days, and a short written report.',
+    limits: 'No 24/7, no uptime guarantee, no full site maintenance. Unused hours do not roll over. Extra work is quoted separately.',
+  },
+  {
+    icon: 'lucide:wrench',
+    title: 'Setup',
+    price: 'from €390',
+    description:
+      'One tool, one staging site, one agreed task: configuration, verification and handover. Up to 8 hours. 50% upfront, 50% on acceptance.',
+    limits: 'Migrations, custom development and production changes are scoped separately.',
+  },
+  {
+    icon: 'lucide:graduation-cap',
+    title: 'Team training',
+    price: '€300 / team',
+    description: 'A 90-minute hands-on session for up to 5 people on one chosen workflow, built on public example material.',
+    limits: 'On request only. You pay for the teaching and adaptation, not for locked content.',
+  },
+  {
+    icon: 'lucide:video',
+    title: 'Honest video',
+    price: '€300 fixed',
+    description:
+      'Our own honest review or tutorial of your WordPress product, recorded after real hands-on testing. Pay a fixed €300, or, if it is a product, offer a lifetime deal (LTD) instead. You can watch the finished video before it goes live.',
+    limits:
+      'You can point out factual errors and add a short comment of your own, for example whether you are already working on an issue or when it will be fixed, and we include it in the video. You cannot approve, edit or block the video, and we do not promise a positive verdict. Every paid video is clearly labelled as sponsored.',
+  },
+];
+
+const tiers = [
+  {
+    name: 'Supporter',
+    price: '€25 / month',
+    perks: ['Your name and link on the website sponsors list', 'Our thanks in the changelog'],
+  },
+  {
+    name: 'Partner',
+    price: '€100 / month',
+    perks: ['Your logo and link on the website sponsors list', 'Your logo in the README of every Open WP Club repository'],
+    featured: true,
+  },
+  {
+    name: 'Champion',
+    price: '€300 / month',
+    perks: ['Everything in Partner', 'Top placement on the sponsors page and a thank-you post on the blog'],
+  },
+];
+
+const principles = [
+  'Every tool stays fully functional and identical for everyone. There is no Pro version, no locked feature and no paid add-on.',
+  'You pay for time and attention on your specific environment, never for code.',
+  'Sponsorship buys credit, not influence: no say over the roadmap, no early or exclusive features.',
+  'Paid videos never buy a verdict. Sponsors may see the video before publication and add their own comment, but they cannot veto it, and the sponsorship is always disclosed.',
+  'Security fixes are always published for everyone, paying or not.',
+  'Prices are pilot prices, excluding applicable taxes, and may change as we learn what the work really costs.',
+];
+---
+
+<BaseLayout
+  title="Services - Open WP Club"
+  description="Our software is free. If you want hands-on help using it, Open WP Club offers agency support, setup, training and honest videos at a fixed scope and price."
+>
+  <Breadcrumbs items={[{ label: 'Services' }]} />
+
+  <section class="pt-8 pb-16 bg-gradient-to-br from-blue-50 to-white dark:from-gray-900 dark:to-gray-950">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white leading-tight tracking-tight">
+        Free software, <span class="text-blue-500">paid help</span>
+      </h1>
+      <p class="mt-6 text-lg sm:text-xl text-gray-600 dark:text-gray-400 leading-relaxed max-w-3xl mx-auto">
+        Everything we build stays free and open source. If you would rather have someone set it up, check it against your stack, or teach your team, that is the part you can pay for.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-12 bg-gray-50 dark:bg-gray-950">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+      <div class="space-y-4">
+        {offers.map((o) => (
+          <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6 sm:p-8">
+            <div class="flex items-center justify-between gap-4 flex-wrap">
+              <div class="flex items-center gap-3">
+                <Icon name={o.icon} class="size-6 text-blue-500 shrink-0" />
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white tracking-tight">{o.title}</h2>
+              </div>
+              <span class="text-lg font-semibold text-blue-500">{o.price}</span>
+            </div>
+            <p class="mt-4 text-gray-600 dark:text-gray-400 leading-relaxed">{o.description}</p>
+            <p class="mt-3 text-sm text-gray-500 dark:text-gray-500 leading-relaxed">{o.limits}</p>
+            <a
+              href={DISCORD_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-4 inline-flex items-center text-sm font-medium text-blue-500 hover:text-blue-600 transition-colors"
+            >
+              Message us on Discord about {o.title}
+              <Icon name="lucide:arrow-right" class="ml-1 size-4" />
+            </a>
+          </div>
+        ))}
+      </div>
+
+      <div>
+        <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white tracking-tight">Just want to sponsor?</h2>
+        <p class="mt-2 text-gray-600 dark:text-gray-400 leading-relaxed">
+          Sponsor the project with no strings attached. Sponsors are credited on this website and in every repository.
+        </p>
+        <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+          {tiers.map((t) => (
+            <div class={`bg-white dark:bg-gray-800 rounded-xl shadow-sm border p-6 flex flex-col ${t.featured ? 'border-blue-500' : 'border-gray-200 dark:border-gray-700'}`}>
+              <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{t.name}</h3>
+              <p class="mt-1 text-xl font-semibold text-blue-500">{t.price}</p>
+              <ul class="mt-4 space-y-2 text-sm text-gray-600 dark:text-gray-400 leading-relaxed list-disc pl-5 flex-1">
+                {t.perks.map((perk) => <li>{perk}</li>)}
+              </ul>
+              <a
+                href={DISCORD_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="mt-4 inline-flex items-center text-sm font-medium text-blue-500 hover:text-blue-600 transition-colors"
+              >
+                Message us on Discord
+                <Icon name="lucide:arrow-right" class="ml-1 size-4" />
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6 sm:p-8">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white tracking-tight">Ground rules</h2>
+        <ul class="mt-4 space-y-3 text-gray-600 dark:text-gray-400 leading-relaxed list-disc pl-5">
+          {principles.map((p) => <li>{p}</li>)}
+        </ul>
+        <p class="mt-6 text-sm text-gray-500 dark:text-gray-500 leading-relaxed">
+          This is an early pilot run by a small team. We take on a limited number of clients so we can keep our commitments, and we would rather tell you a service is not a fit than sell you one that is.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
