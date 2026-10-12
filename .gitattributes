@@ -1,0 +1,3 @@
+# Unified diff files contain intentional context prefixes and blank context lines.
+integrations/sponsorship/*.patch -whitespace
+integrations/sponsorship/readmes/*.patch -whitespace
