@@ -19,3 +19,9 @@
 
 /blog/*
   Cache-Control: public, max-age=3600, must-revalidate
+
+/sponsorship.json
+  Cache-Control: public, max-age=300, must-revalidate
+
+/sponsorship/*
+  Cache-Control: public, max-age=300, must-revalidate

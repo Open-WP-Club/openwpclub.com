@@ -1,0 +1,24 @@
+--- a/README.md
++++ b/README.md
+@@ -35,6 +35,21 @@
+ - **Order edit screen:** Use the "Print Order" meta box and click "Download PDF"
+ - **Orders list:** Select "Print PDF" from the row actions or bulk actions
+ 
++<!-- OPENWPCLUB_SPONSORS_START -->
++## Open-source supporters
++
++These companies help keep Open WP Club plugins free and maintained.
++
++[![Open WP Club supporters](https://openwpclub.com/sponsorship/supporters.png)](https://openwpclub.com/sponsors/)
++
++## Sponsored placements
++
++Clearly labelled promotional campaigns, separate from our supporters.
++
++[![Open WP Club sponsored placements](https://openwpclub.com/sponsorship/repos/order-printing-woocommerce/campaigns.png)](https://openwpclub.com/advertise/)
++
++[Support our work](https://openwpclub.com/sponsors/) · [Discuss a campaign](https://openwpclub.com/advertise/)
++<!-- OPENWPCLUB_SPONSORS_END -->
+ 
+ ## License
+ 

@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "supporters": [
+    {
+      "id": "mgknet",
+      "name": "MGKNeT",
+      "url": "https://mgknet.com/",
+      "logo": "/images/sponsors/mgknet.png",
+      "description": "WordPress, WooCommerce and business automation.",
+      "tier": "partner",
+      "active": true,
+      "priority": 10,
+      "startsAt": "2026-10-12T00:00:00Z",
+      "endsAt": null
+    }
+  ],
+  "campaigns": []
+}

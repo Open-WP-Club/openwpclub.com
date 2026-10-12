@@ -1,0 +1,145 @@
+diff --git a/.github/FUNDING.yml b/.github/FUNDING.yml
+index f792b1f..886a76f 100644
+--- a/.github/FUNDING.yml
++++ b/.github/FUNDING.yml
+@@ -1,3 +1,3 @@
+ github: Open-WP-Club
+ custom:
+-  - https://openwpclub.com
++  - https://openwpclub.com/sponsors/
+diff --git a/.github/workflows/update-catalog.yml b/.github/workflows/update-catalog.yml
+index 8bcbb15..dfb701d 100644
+--- a/.github/workflows/update-catalog.yml
++++ b/.github/workflows/update-catalog.yml
+@@ -1,6 +1,8 @@
+ name: Update product catalog and profile
+ 
+ on:
++  schedule:
++    - cron: '31 5 * * *'
+   workflow_dispatch:
+ 
+ permissions:
+diff --git a/catalog.json b/catalog.json
+index ab4f91d..4894f0c 100644
+--- a/catalog.json
++++ b/catalog.json
+@@ -943,5 +943,23 @@
+       "forks": 1,
+       "featured": false
+     }
+-  ]
++  ],
++  "sponsorship": {
++    "schemaVersion": 1,
++    "maxPositions": 3,
++    "supporters": [
++      {
++        "id": "mgknet",
++        "name": "MGKNeT",
++        "url": "https://mgknet.com/",
++        "description": "WordPress, WooCommerce and business automation.",
++        "logoData": "data:image/png;base64,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",
++        "active": true,
++        "priority": 10,
++        "startsAt": "2026-10-12T00:00:00Z",
++        "endsAt": null
++      }
++    ],
++    "campaigns": []
++  }
+ }
+diff --git a/scripts/update-catalog.mjs b/scripts/update-catalog.mjs
+index 0dc4f94..4fe092c 100644
+--- a/scripts/update-catalog.mjs
++++ b/scripts/update-catalog.mjs
+@@ -1,6 +1,7 @@
+ import { readFile, writeFile } from 'node:fs/promises';
+ import { githubGraphqlRequest } from './github-api.mjs';
+ import { buildProductCatalog } from './product-catalog.mjs';
++import { refreshSponsorship } from './sponsorship-feed.mjs';
+ import { renderProfileReadme } from './profile-readme.mjs';
+ 
+ const token = process.env.GITHUB_TOKEN;
+@@ -48,6 +49,10 @@ do {
+ const overrides = JSON.parse(await readFile('data/product-overrides.json', 'utf8'));
+ const catalog = buildProductCatalog(repositories, overrides);
+ 
++let previousSponsorship;
++try { previousSponsorship = JSON.parse(await readFile('catalog.json', 'utf8')).sponsorship; } catch { /* First catalog generation. */ }
++catalog.sponsorship = await refreshSponsorship(previousSponsorship);
++
+ await writeFile('catalog.json', `${JSON.stringify(catalog, null, 2)}\n`, 'utf8');
+ 
+ const profileReadme = await readFile('profile/README.md', 'utf8');
+diff --git a/scripts/sponsorship-feed.mjs b/scripts/sponsorship-feed.mjs
+new file mode 100644
+index 0000000..19cedb8
+--- /dev/null
++++ b/scripts/sponsorship-feed.mjs
+@@ -0,0 +1,42 @@
++export const SPONSORSHIP_FEED_URL = 'https://openwpclub.com/sponsorship.json';
++
++export function validateSponsorshipFeed(data) {
++  if (!data || data.schemaVersion !== 1 || data.maxPositions !== 3) throw new Error('Unsupported sponsorship feed');
++  const result = { schemaVersion: 1, maxPositions: 3, supporters: [], campaigns: [] };
++  const ids = new Set();
++  for (const group of ['supporters', 'campaigns']) {
++    if (!Array.isArray(data[group]) || data[group].length > 100) throw new Error('Invalid sponsorship list');
++    for (const entry of data[group]) {
++      if (!entry || !/^[a-z0-9-]+$/.test(entry.id) || ids.has(entry.id)) throw new Error('Invalid sponsorship identity');
++      ids.add(entry.id);
++      if (typeof entry.name !== 'string' || !entry.name.trim() || entry.name.length > 240 || /[<>\r\n]/.test(entry.name)) throw new Error('Invalid sponsor name');
++      if (typeof entry.description !== 'string' || entry.description.length > 240 || /[<>\r\n]/.test(entry.description)) throw new Error('Invalid sponsor description');
++      const url = new URL(entry.url);
++      if (url.protocol !== 'https:' || url.username || url.password) throw new Error('Invalid sponsor URL');
++      if (typeof entry.active !== 'boolean' || !Number.isFinite(entry.priority)) throw new Error('Invalid sponsor status');
++      for (const date of [entry.startsAt, entry.endsAt]) {
++        if (date !== null && (typeof date !== 'string' || !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$/.test(date) || !Number.isFinite(Date.parse(date)) || new Date(date).toISOString().replace('.000', '') !== date)) throw new Error('Invalid sponsor period');
++      }
++      if (!entry.startsAt || (entry.endsAt && Date.parse(entry.endsAt) <= Date.parse(entry.startsAt))) throw new Error('Invalid sponsor period');
++      if (typeof entry.logoData !== 'string' || entry.logoData.length > 65536 || !/^data:image\/png;base64,[A-Za-z0-9+/=]+$/.test(entry.logoData)) throw new Error('Invalid embedded logo');
++      const png = Buffer.from(entry.logoData.slice(22), 'base64');
++      if (png.subarray(0, 8).toString('hex') !== '89504e470d0a1a0a') throw new Error('Not a PNG logo');
++      result[group].push({ id: entry.id, name: entry.name, url: url.href, description: entry.description, logoData: entry.logoData, active: entry.active, priority: entry.priority, startsAt: entry.startsAt, endsAt: entry.endsAt });
++    }
++  }
++  return result;
++}
++
++/** An unavailable sponsor feed must never stop plugin catalog maintenance. */
++export async function refreshSponsorship(previous, request = fetch) {
++  try {
++    const response = await request(SPONSORSHIP_FEED_URL, { signal: AbortSignal.timeout(10000), redirect: 'error' });
++    if (!response.ok) throw new Error(`HTTP ${response.status}`);
++    const text = await response.text();
++    if (Buffer.byteLength(text) > 262144) throw new Error('Sponsorship feed too large');
++    return validateSponsorshipFeed(JSON.parse(text));
++  } catch (error) {
++    console.warn(`Sponsorship refresh failed; preserving last validated data: ${error.message}`);
++    try { return validateSponsorshipFeed(previous); } catch { return { schemaVersion: 1, maxPositions: 3, supporters: [], campaigns: [] }; }
++  }
++}
+diff --git a/test/sponsorship-feed.test.mjs b/test/sponsorship-feed.test.mjs
+new file mode 100644
+index 0000000..356ef1a
+--- /dev/null
++++ b/test/sponsorship-feed.test.mjs
+@@ -0,0 +1,17 @@
++import { test } from 'node:test';
++import assert from 'node:assert/strict';
++import { refreshSponsorship, validateSponsorshipFeed } from '../scripts/sponsorship-feed.mjs';
++const empty = { schemaVersion: 1, maxPositions: 3, supporters: [], campaigns: [] };
++test('successful empty feed removes previous supporters', async () => {
++  assert.deepEqual(await refreshSponsorship({ invalid: true }, async () => new Response(JSON.stringify(empty))), empty);
++});
++test('network/schema failures preserve the last valid dataset', async () => {
++  assert.deepEqual(await refreshSponsorship(empty, async () => { throw new Error('offline'); }), empty);
++  assert.deepEqual(await refreshSponsorship(empty, async () => new Response('{"schemaVersion":2}')), empty);
++});
++test('unsafe advertiser URLs and non-PNG assets cannot enter the catalog', () => {
++  const entry = { id: 'test', name: 'Test', description: 'Test', url: 'javascript:alert(1)', active: true, priority: 1, startsAt: '2026-10-12T00:00:00Z', endsAt: null, logoData: 'data:image/png;base64,aQ==' };
++  assert.throws(() => validateSponsorshipFeed({ ...empty, supporters: [entry] }));
++  entry.url = 'https://example.com/';
++  assert.throws(() => validateSponsorshipFeed({ ...empty, supporters: [entry] }));
++});

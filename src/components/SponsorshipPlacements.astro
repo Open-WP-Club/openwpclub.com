@@ -1,0 +1,33 @@
+---
+import { sponsorship, campaignsForRepository } from '../lib/sponsorship';
+interface Props { compact?: boolean; showEmpty?: boolean; group?: 'supporters' | 'campaigns' | 'both'; repository?: string; }
+const { compact = false, showEmpty = false, group = 'both', repository } = Astro.props;
+const placements = { supporters: sponsorship.supporters, campaigns: campaignsForRepository(sponsorship.campaigns, repository) };
+const sections = [
+  { key: 'supporters' as const, title: 'Open-source supporters', intro: 'These companies help keep our plugins free and maintained.', href: '/sponsors/' },
+  { key: 'campaigns' as const, title: 'Sponsored placements', intro: 'Paid promotions, separate from our open-source supporters.', href: '/advertise/' },
+].filter((section) => group === 'both' || group === section.key);
+---
+<div class="space-y-6" data-sponsorship-placements>
+  {sections.map((section) => (placements[section.key].length > 0 || showEmpty) && (
+    <section aria-label={section.title} class="text-left">
+      <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{section.title}</h3>
+      <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">{section.intro}</p>
+      <div class:list={['mt-4 grid gap-3', compact ? 'grid-cols-1' : 'grid-cols-1 sm:grid-cols-3']}>
+        {placements[section.key].map((entry) => (
+          <a href={entry.url} target="_blank" rel="sponsored noopener noreferrer" data-sponsor-id={entry.id}
+            class="flex items-center gap-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-4 hover:border-blue-400 transition-colors">
+            <img src={entry.logo} alt={`${entry.name} logo`} width="56" height="56" loading="lazy" decoding="async" class="size-14 shrink-0 rounded-lg bg-white object-contain" />
+            <div class="min-w-0">
+              <span class="block font-semibold text-gray-900 dark:text-white">{entry.name}</span>
+              <span class="block text-xs text-gray-500 dark:text-gray-400">{section.key === 'campaigns' ? 'Sponsored' : 'Open-source supporter'}</span>
+              <span class="mt-1 block text-sm text-gray-600 dark:text-gray-400">{entry.description}</span>
+            </div>
+          </a>
+        ))}
+      </div>
+      {placements[section.key].length === 0 && <p class="mt-3 text-sm text-gray-500 dark:text-gray-400">No active {section.key === 'campaigns' ? 'campaigns' : 'supporters'} yet.</p>}
+      <a href={section.href} class="mt-4 inline-block text-sm font-medium text-blue-500 hover:text-blue-600">{section.key === 'supporters' ? 'Meet our supporters →' : 'Book a sponsored placement →'}</a>
+    </section>
+  ))}
+</div>

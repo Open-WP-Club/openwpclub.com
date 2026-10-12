@@ -16,3 +16,6 @@ dist/
 test-results/
 playwright-report/
 blob-report/
+
+# Approved sponsor logos are source assets
+!public/images/sponsors/*.png

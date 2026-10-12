@@ -1,3 +1,4 @@
+import { stripSponsorshipBlock } from '../src/lib/sponsorship';
 /**
  * Fetches plugin + contributor data from GitHub and saves to src/data/.
  * Run with: pnpm run fetch-data
@@ -70,6 +71,7 @@ interface SponsorNode {
 }
 
 interface SponsorsGqlResponse {
+  errors?: unknown[];
   data?: {
     organization?: {
       sponsorshipsAsMaintainer?: {
@@ -265,14 +267,14 @@ async function fetchReadme(repoName: string, defaultBranch: string): Promise<str
   if (result) {
     const data = result.data as Record<string, string>;
     const content = Buffer.from(data.content, 'base64').toString('utf-8');
-    let html = await marked.parse(content);
+    let html = await marked.parse(stripSponsorshipBlock(content));
     return rewriteImageUrls(html, repoName, defaultBranch);
   }
   // Fallback: raw file (not rate-limited)
   const rawRes = await fetch(`https://raw.githubusercontent.com/${ORG}/${repoName}/${defaultBranch}/README.md`, { signal: AbortSignal.timeout(15000) });
   if (rawRes.ok) {
     const content = await rawRes.text();
-    let html = await marked.parse(content);
+    let html = await marked.parse(stripSponsorshipBlock(content));
     return rewriteImageUrls(html, repoName, defaultBranch);
   }
   return '<p class="text-gray-500 italic">No README available for this plugin.</p>';
@@ -544,7 +546,7 @@ async function main() {
     if (gqlRes.ok) {
       const gqlData = await gqlRes.json() as SponsorsGqlResponse;
       const nodes = gqlData.data?.organization?.sponsorshipsAsMaintainer?.nodes ?? [];
-      if (nodes.length > 0) {
+      if (!gqlData.errors) {
         const sponsors: Sponsor[] = nodes
           .filter((n) => n.sponsorEntity)
           .map((n) => {
@@ -564,7 +566,7 @@ async function main() {
         writeFileSync(resolve(DATA_DIR, 'sponsors.json'), JSON.stringify(sponsors, null, 2));
         console.log(`  Saved ${sponsors.length} sponsors to sponsors.json\n`);
       } else {
-        console.log('  No active sponsors found\n');
+        console.warn('  GitHub Sponsors GraphQL errors; preserving previous import\n');
       }
     } else {
       console.warn(`  GitHub Sponsors API failed: ${gqlRes.status}\n`);

@@ -1,0 +1,260 @@
+[
+  {
+    "repository": "Open-WP-Club/admin-notice-remover",
+    "checkout": "../openwpclub-plugins/admin-notice-remover",
+    "readme": "readme.md",
+    "patch": "integrations/sponsorship/readmes/admin-notice-remover.patch"
+  },
+  {
+    "repository": "Open-WP-Club/agentready-wp",
+    "checkout": "../openwpclub-plugins/agentready-wp",
+    "readme": "README.md",
+    "patch": "integrations/sponsorship/readmes/agentready-wp.patch"
+  },
+  {
+    "repository": "Open-WP-Club/better-user-search",
+    "checkout": "../openwpclub-plugins/better-user-search",
+    "readme": "README.md",
+    "patch": "integrations/sponsorship/readmes/better-user-search.patch"
+  },
+  {
+    "repository": "Open-WP-Club/better-viewer-fluent-forms",
+    "checkout": "../openwpclub-plugins/better-viewer-fluent-forms",
+    "readme": "README.md",
+    "patch": "integrations/sponsorship/readmes/better-viewer-fluent-forms.patch"
+  },
+  {
+    "repository": "Open-WP-Club/Bulk-Order-Editor",
+    "checkout": "../openwpclub-plugins/Bulk-Order-Editor",
+    "readme": "README.MD",
+    "patch": "integrations/sponsorship/readmes/Bulk-Order-Editor.patch"
+  },
+  {
+    "repository": "Open-WP-Club/disable-gutenberg-for-wp",
+    "checkout": "../openwpclub-plugins/disable-gutenberg-for-wp",
+    "readme": "README.md",
+    "patch": "integrations/sponsorship/readmes/disable-gutenberg-for-wp.patch"
+  },
+  {
+    "repository": "Open-WP-Club/eu-vat-wp",
+    "checkout": "../openwpclub-plugins/eu-vat-wp",
+    "readme": "README.md",
+    "patch": "integrations/sponsorship/readmes/eu-vat-wp.patch"
+  },
+  {
+    "repository": "Open-WP-Club/google-scholar-wp",
+    "checkout": "../openwpclub-plugins/google-scholar-wp",
+    "readme": "README.md",
+    "patch": "integrations/sponsorship/readmes/google-scholar-wp.patch"
+  },
+  {
+    "repository": "Open-WP-Club/Gravity-Forms-Shopify-Integration",
+    "checkout": "../openwpclub-plugins/Gravity-Forms-Shopify-Integration",
+    "readme": "README.md",
+    "patch": "integrations/sponsorship/readmes/Gravity-Forms-Shopify-Integration.patch"
+  },
+  {
+    "repository": "Open-WP-Club/inventory-alerts-woo",
+    "checkout": "../openwpclub-plugins/inventory-alerts-woo",
+    "readme": "README.md",
+    "patch": "integrations/sponsorship/readmes/inventory-alerts-woo.patch"
+  },
+  {
+    "repository": "Open-WP-Club/inventory-insights-woocommerce",
+    "checkout": "../openwpclub-plugins/inventory-insights-woocommerce",
+    "readme": "README.md",
+    "patch": "integrations/sponsorship/readmes/inventory-insights-woocommerce.patch"
+  },
+  {
+    "repository": "Open-WP-Club/Last-User-Orders-by-Roles",
+    "checkout": "../openwpclub-plugins/Last-User-Orders-by-Roles",
+    "readme": "readme.md",
+    "patch": "integrations/sponsorship/readmes/Last-User-Orders-by-Roles.patch"
+  },
+  {
+    "repository": "Open-WP-Club/llms-txt-for-wp",
+    "checkout": "../openwpclub-plugins/llms-txt-for-wp",
+    "readme": "README.md",
+    "patch": "integrations/sponsorship/readmes/llms-txt-for-wp.patch"
+  },
+  {
+    "repository": "Open-WP-Club/local-pickup-woocommerce",
+    "checkout": "../local-pickup-woocommerce",
+    "readme": "README.md",
+    "patch": "integrations/sponsorship/readmes/local-pickup-woocommerce.patch"
+  },
+  {
+    "repository": "Open-WP-Club/logo-link-wp",
+    "checkout": "../openwpclub-plugins/logo-link-wp",
+    "readme": "README.MD",
+    "patch": "integrations/sponsorship/readmes/logo-link-wp.patch"
+  },
+  {
+    "repository": "Open-WP-Club/multi-store-sync-for-woocommerce",
+    "checkout": "../multi-store-sync-for-woocommerce",
+    "readme": "README.md",
+    "patch": "integrations/sponsorship/readmes/multi-store-sync-for-woocommerce.patch"
+  },
+  {
+    "repository": "Open-WP-Club/opengraph-svg-generator-wp",
+    "checkout": "../openwpclub-plugins/opengraph-svg-generator-wp",
+    "readme": "readme.md",
+    "patch": "integrations/sponsorship/readmes/opengraph-svg-generator-wp.patch"
+  },
+  {
+    "repository": "Open-WP-Club/order-payment-limiter-woo",
+    "checkout": "../openwpclub-plugins/order-payment-limiter-woo",
+    "readme": "README.MD",
+    "patch": "integrations/sponsorship/readmes/order-payment-limiter-woo.patch"
+  },
+  {
+    "repository": "Open-WP-Club/order-printing-woocommerce",
+    "checkout": "../openwpclub-plugins/order-printing-woocommerce",
+    "readme": "README.md",
+    "patch": "integrations/sponsorship/readmes/order-printing-woocommerce.patch"
+  },
+  {
+    "repository": "Open-WP-Club/payment-method-highlighter-for-wooCommerce",
+    "checkout": "../payment-method-highlighter-for-wooCommerce",
+    "readme": "README.md",
+    "patch": "integrations/sponsorship/readmes/payment-method-highlighter-for-wooCommerce.patch"
+  },
+  {
+    "repository": "Open-WP-Club/phone-order-woo",
+    "checkout": "../openwpclub-plugins/phone-order-woo",
+    "readme": "readme.md",
+    "patch": "integrations/sponsorship/readmes/phone-order-woo.patch"
+  },
+  {
+    "repository": "Open-WP-Club/plugin-hub",
+    "checkout": "../plugin-hub",
+    "readme": "readme.md",
+    "patch": "integrations/sponsorship/readmes/plugin-hub.patch"
+  },
+  {
+    "repository": "Open-WP-Club/plugins-showcase-wp",
+    "checkout": "../openwpclub-plugins/plugins-showcase-wp",
+    "readme": "README.md",
+    "patch": "integrations/sponsorship/readmes/plugins-showcase-wp.patch"
+  },
+  {
+    "repository": "Open-WP-Club/Priority-Processing-WooCommerce",
+    "checkout": "../Priority-Processing-WooCommerce",
+    "readme": "README.md",
+    "patch": "integrations/sponsorship/readmes/Priority-Processing-WooCommerce.patch"
+  },
+  {
+    "repository": "Open-WP-Club/product-health-check-woocommerce",
+    "checkout": "../openwpclub-plugins/product-health-check-woocommerce",
+    "readme": "README.md",
+    "patch": "integrations/sponsorship/readmes/product-health-check-woocommerce.patch"
+  },
+  {
+    "repository": "Open-WP-Club/rank-math-automation-wp",
+    "checkout": "../openwpclub-plugins/rank-math-automation-wp",
+    "readme": "README.md",
+    "patch": "integrations/sponsorship/readmes/rank-math-automation-wp.patch"
+  },
+  {
+    "repository": "Open-WP-Club/resume-builder",
+    "checkout": "../openwpclub-plugins/resume-builder",
+    "readme": "readme.md",
+    "patch": "integrations/sponsorship/readmes/resume-builder.patch"
+  },
+  {
+    "repository": "Open-WP-Club/sku-auto-woocommerce",
+    "checkout": "../openwpclub-plugins/sku-auto-woocommerce",
+    "readme": "README.md",
+    "patch": "integrations/sponsorship/readmes/sku-auto-woocommerce.patch"
+  },
+  {
+    "repository": "Open-WP-Club/smart-product-export-woo",
+    "checkout": "../openwpclub-plugins/smart-product-export-woo",
+    "readme": "README.md",
+    "patch": "integrations/sponsorship/readmes/smart-product-export-woo.patch"
+  },
+  {
+    "repository": "Open-WP-Club/spam-user-detective-wp",
+    "checkout": "../openwpclub-plugins/spam-user-detective-wp",
+    "readme": "README.md",
+    "patch": "integrations/sponsorship/readmes/spam-user-detective-wp.patch"
+  },
+  {
+    "repository": "Open-WP-Club/StageGuard",
+    "checkout": "../openwpclub-plugins/StageGuard",
+    "readme": "readme.md",
+    "patch": "integrations/sponsorship/readmes/StageGuard.patch"
+  },
+  {
+    "repository": "Open-WP-Club/static-export-wp",
+    "checkout": "../openwpclub-plugins/static-export-wp",
+    "readme": "README.md",
+    "patch": "integrations/sponsorship/readmes/static-export-wp.patch"
+  },
+  {
+    "repository": "Open-WP-Club/taxonomy-showcase-WooCommerce",
+    "checkout": "../openwpclub-plugins/taxonomy-showcase-WooCommerce",
+    "readme": "README.md",
+    "patch": "integrations/sponsorship/readmes/taxonomy-showcase-WooCommerce.patch"
+  },
+  {
+    "repository": "Open-WP-Club/team-manager-wordPress",
+    "checkout": "../openwpclub-plugins/team-manager-wordPress",
+    "readme": "readme.md",
+    "patch": "integrations/sponsorship/readmes/team-manager-wordPress.patch"
+  },
+  {
+    "repository": "Open-WP-Club/User-Self-Delete",
+    "checkout": "../openwpclub-plugins/User-Self-Delete",
+    "readme": "README.md",
+    "patch": "integrations/sponsorship/readmes/User-Self-Delete.patch"
+  },
+  {
+    "repository": "Open-WP-Club/WC-Pre-order",
+    "checkout": "../openwpclub-plugins/WC-Pre-order",
+    "readme": "README.md",
+    "patch": "integrations/sponsorship/readmes/WC-Pre-order.patch"
+  },
+  {
+    "repository": "Open-WP-Club/WooCommerce-Phone-Number-Validator",
+    "checkout": "../openwpclub-plugins/WooCommerce-Phone-Number-Validator",
+    "readme": "readme.md",
+    "patch": "integrations/sponsorship/readmes/WooCommerce-Phone-Number-Validator.patch"
+  },
+  {
+    "repository": "Open-WP-Club/WP-File-Visibility-Manager",
+    "checkout": "../openwpclub-plugins/WP-File-Visibility-Manager",
+    "readme": "README.md",
+    "patch": "integrations/sponsorship/readmes/WP-File-Visibility-Manager.patch"
+  },
+  {
+    "repository": "Open-WP-Club/WP-Historical-Preservation-Mode",
+    "checkout": "../openwpclub-plugins/WP-Historical-Preservation-Mode",
+    "readme": "readme.md",
+    "patch": "integrations/sponsorship/readmes/WP-Historical-Preservation-Mode.patch"
+  },
+  {
+    "repository": "Open-WP-Club/wp-internal-linking",
+    "checkout": "../openwpclub-plugins/wp-internal-linking",
+    "readme": "readme.md",
+    "patch": "integrations/sponsorship/readmes/wp-internal-linking.patch"
+  },
+  {
+    "repository": "Open-WP-Club/wp-sanitize",
+    "checkout": "../openwpclub-plugins/wp-sanitize",
+    "readme": "readme.md",
+    "patch": "integrations/sponsorship/readmes/wp-sanitize.patch"
+  },
+  {
+    "repository": "Open-WP-Club/wp-simple-order-history",
+    "checkout": "../openwpclub-plugins/wp-simple-order-history",
+    "readme": "README.MD",
+    "patch": "integrations/sponsorship/readmes/wp-simple-order-history.patch"
+  },
+  {
+    "repository": "Open-WP-Club/WP-User-Blocking",
+    "checkout": "../openwpclub-plugins/WP-User-Blocking",
+    "readme": "README.md",
+    "patch": "integrations/sponsorship/readmes/WP-User-Blocking.patch"
+  }
+]

@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import SponsorshipPlacements from '../components/SponsorshipPlacements.astro';
+import { CONTACT_EMAIL } from '../lib/config';
+const offers = [
+  { name: 'Plugin README campaign', price: '€100–€200 / 30 days', text: 'A shared, labelled placement in 3–5 agreed plugin repositories. Up to three advertisers per placement; we confirm the exact repositories and dates.' },
+  { name: 'Website campaign', price: '€100–€200 / 30 days', text: 'A shared sponsored placement on the homepage and agreed plugin pages. Up to three advertisers, with a direct link and a short approved description.' },
+  { name: 'Honest product video', price: '€300 fixed, or a product LTD', text: 'One hands-on review or tutorial of one WordPress product and workflow. You can correct factual errors, but cannot buy a positive verdict or veto publication. Cash and product compensation are disclosed.' },
+  { name: 'Video integration', price: 'Quoted to scope', text: 'A clearly labelled promotional segment in a planned video. We agree the length, language, channel and publication date before payment.' },
+];
+---
+<BaseLayout title="Advertise - Open WP Club" description="Reach the WordPress community with clearly labelled plugin README campaigns, website placements and honest product videos.">
+  <Breadcrumbs items={[{ label: 'Advertise' }]} />
+  <section class="py-12 bg-gray-50 dark:bg-gray-950">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 space-y-10">
+      <div class="max-w-3xl"><p class="text-sm font-semibold uppercase tracking-wider text-blue-500">Relevant products. Clear labels.</p><h1 class="mt-3 text-4xl font-bold text-gray-900 dark:text-white">Reach people building with WordPress.</h1><p class="mt-5 text-lg text-gray-600 dark:text-gray-400">Introduce your company through a focused campaign or a practical video. Advertising has its own shared positions, separate from thanks to our open-source supporters.</p></div>
+      <SponsorshipPlacements group="campaigns" showEmpty />
+      <div class="grid gap-5 md:grid-cols-2">{offers.map((offer) => <article class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-6"><h2 class="text-xl font-semibold text-gray-900 dark:text-white">{offer.name}</h2><p class="mt-2 font-semibold text-blue-500">{offer.price}</p><p class="mt-4 text-gray-600 dark:text-gray-400">{offer.text}</p><a class="mt-5 inline-block font-medium text-blue-500" href={`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(offer.name)}`}>Discuss a campaign →</a></article>)}</div>
+      <div class="rounded-xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 p-6 text-gray-600 dark:text-gray-400 space-y-4"><h2 class="text-2xl font-bold text-gray-900 dark:text-white">What we agree before publishing</h2><p>The placement, dates, destination link, creative, scope and price. Video work also specifies duration, language, distribution and reuse rights, with one round of factual corrections.</p><p>We share delivered positions and dates, with available repository traffic as context. We do not guarantee impressions, leads or sales, sell SEO backlinks or track users in WordPress admin. Promotional campaigns are shown on the website and in README blocks; Plugin Hub is reserved for supporter thanks.</p><p>These are pilot prices, excluding applicable taxes. We accept relevant WordPress, WooCommerce and developer products after review. Want to fund the project instead? <a class="text-blue-500" href="/sponsors/">Become an open-source supporter →</a></p></div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,4 +1,5 @@
 ---
+import SponsorshipPlacements from './SponsorshipPlacements.astro';
 import { Icon } from 'astro-icon/components';
 import GitHubIcon from './icons/GitHubIcon.astro';
 import DiscordIcon from './icons/DiscordIcon.astro';
@@ -11,11 +12,14 @@ interface Props {
   showWriteForUs?: boolean;
 }
 const { showWriteForUs = false } = Astro.props;
+const repository = /^\/plugins\/([^/]+)\//.exec(Astro.url.pathname)?.[1];
 ---
 
 <div class="space-y-6">
   <!-- Plugin of the Month -->
   <PluginSpotlight />
+
+  <div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-6"><SponsorshipPlacements compact repository={repository} /></div>
 
   <!-- Sponsor CTA -->
   <div class="bg-gradient-to-br from-amber-50 via-white to-amber-50 dark:from-amber-950/20 dark:via-gray-800 dark:to-amber-950/20 rounded-xl shadow-sm border border-amber-200 dark:border-amber-800/50 p-6">
@@ -25,7 +29,7 @@ const { showWriteForUs = false } = Astro.props;
     </p>
     {SPONSOR_URL && (
       <a
-        href={SPONSOR_URL}
+        href="/sponsors/"
         target="_blank"
         rel="noopener noreferrer"
         class="inline-flex items-center justify-center w-full gap-2 px-4 py-2.5 text-sm font-medium text-white bg-amber-500 hover:bg-amber-600 rounded-lg transition-colors mb-2"

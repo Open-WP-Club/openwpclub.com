@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import SponsorshipPlacements from '../components/SponsorshipPlacements.astro';
+import { sponsorshipTiers } from '../lib/sponsorship';
+import { CONTACT_EMAIL, SPONSOR_URL } from '../lib/config';
+---
+<BaseLayout title="Sponsors - Open WP Club" description="Support free WordPress software. Meet our supporters and sponsor our website, plugin READMEs and Plugin Hub.">
+  <Breadcrumbs items={[{ label: 'Sponsors' }]} />
+  <section class="py-12 bg-gray-50 dark:bg-gray-950">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 space-y-12">
+      <div class="max-w-3xl">
+        <p class="text-sm font-semibold uppercase tracking-wider text-blue-500">Built together. Free for everyone.</p>
+        <h1 class="mt-3 text-4xl font-bold text-gray-900 dark:text-white">Support the tools you rely on.</h1>
+        <p class="mt-5 text-lg text-gray-600 dark:text-gray-400">Your sponsorship funds maintenance, bug fixes and new WordPress tools. Every feature stays free. Sponsors receive recognition on our website, in plugin READMEs and in Plugin Hub.</p>
+      </div>
+      <SponsorshipPlacements group="supporters" showEmpty />
+      <div>
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Choose your support</h2>
+        <p class="mt-3 text-gray-600 dark:text-gray-400">Up to three active company supporters share the logo placement. We confirm availability and the included repositories before you start.</p>
+        <div class="mt-6 grid gap-4 md:grid-cols-3">
+          {sponsorshipTiers.map((tier) => <article class:list={['rounded-xl bg-white dark:bg-gray-900 p-6 border', tier.featured ? 'border-blue-500' : 'border-gray-200 dark:border-gray-700']}>
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">{tier.name}</h3>
+            <p class="mt-2 font-semibold text-blue-500">{tier.price}</p>
+            <ul class="mt-5 list-disc pl-5 space-y-3 text-sm text-gray-600 dark:text-gray-400">{tier.perks.map((perk) => <li>{perk}</li>)}</ul>
+            <a class="mt-6 inline-block font-medium text-blue-500" href={`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(`${tier.name} sponsorship`)}`}>Discuss sponsorship →</a>
+          </article>)}
+        </div>
+      </div>
+      <div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-6 space-y-4 text-gray-600 dark:text-gray-400">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Recognition with clear boundaries</h2>
+        <p>Shared supporter placements run for the agreed monthly period in active, maintained Open WP Club plugin repositories. Archived repositories and forks are excluded. We confirm the repository list, start date and assets before payment.</p>
+        <p>Plugin Hub shows a small, dismissible thank-you on its own page. Its catalog refreshes daily, so changes are cached and may take time to appear. We do not count admin impressions or promise visibility to every installation.</p>
+        <p>Sponsorship buys recognition, with no control over our roadmap or reviews. Promotional campaigns have their own three positions and are clearly labelled.</p>
+        <p>Pilot prices exclude applicable taxes. Existing agreements keep their agreed terms.</p>
+        <div class="flex flex-wrap gap-5"><a class="text-blue-500" href={SPONSOR_URL}>Support us on GitHub →</a><a class="text-blue-500" href="/advertise/">Explore advertising →</a><a class="text-blue-500" href="/services/">Paid help and honest videos →</a></div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

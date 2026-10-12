@@ -1,0 +1,24 @@
+--- a/readme.md
++++ b/readme.md
+@@ -74,6 +74,21 @@
+ 
+ Set the display order via the "Order" field in the Page Attributes box when editing a team member. Lower numbers appear first.
+ 
++<!-- OPENWPCLUB_SPONSORS_START -->
++## Open-source supporters
++
++These companies help keep Open WP Club plugins free and maintained.
++
++[![Open WP Club supporters](https://openwpclub.com/sponsorship/supporters.png)](https://openwpclub.com/sponsors/)
++
++## Sponsored placements
++
++Clearly labelled promotional campaigns, separate from our supporters.
++
++[![Open WP Club sponsored placements](https://openwpclub.com/sponsorship/repos/team-manager-wordpress/campaigns.png)](https://openwpclub.com/advertise/)
++
++[Support our work](https://openwpclub.com/sponsors/) · [Discuss a campaign](https://openwpclub.com/advertise/)
++<!-- OPENWPCLUB_SPONSORS_END -->
+ 
+ ## License
+ 

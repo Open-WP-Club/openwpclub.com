@@ -74,6 +74,28 @@ pnpm exec playwright install chromium
 pnpm test:e2e
 ```
 
+## Central sponsorship
+
+Edit `src/data/sponsorship.json` to manage supporters and campaigns. MGKNeT is
+registered as a supporter. Each group has up to three active entries; dates use
+UTC and `endsAt: null` means an ongoing sponsorship. Put approved PNG logos in
+`public/images/sponsors/`.
+
+`pnpm build` publishes `/sponsorship.json`, the shared README banners and scoped
+campaign banners. The site, READMEs and Plugin Hub all derive their recognition
+from that registry. GitHub Sponsors imports in `src/data/sponsors.json` are a
+separate funding snapshot and never automatically grant advertising rights.
+
+Run `node scripts/sync-sponsorship-readmes.mjs --write /path/to/plugin-repo` once
+to install the shared block in a repository. Later sponsor changes only require
+updating this central site. Campaign entries can use `repositories: ["plugin-hub"]`
+to restrict the repository placement; omit it or use `["*"]` for all plugins.
+
+The organization catalog refresh imports this feed daily; Plugin Hub then
+receives supporter thanks in its normal cached catalog request. Deploy this site
+before publishing the catalog consumer and README blocks. The repository
+inventory and integration patches are in `integrations/sponsorship/`.
+
 ## Project Structure
 
 ```
@@ -97,6 +119,22 @@ public/          # Static assets (favicon, OG image)
 - View Transitions (SPA-style navigation)
 - Dark mode with system preference detection
 - Deployed to Cloudflare Workers ($0/month)
+
+<!-- OPENWPCLUB_SPONSORS_START -->
+## Open-source supporters
+
+These companies help keep Open WP Club plugins free and maintained.
+
+[![Open WP Club supporters](https://openwpclub.com/sponsorship/supporters.png)](https://openwpclub.com/sponsors/)
+
+## Sponsored placements
+
+Clearly labelled promotional campaigns, separate from our supporters.
+
+[![Open WP Club sponsored placements](https://openwpclub.com/sponsorship/campaigns.png)](https://openwpclub.com/advertise/)
+
+[Support our work](https://openwpclub.com/sponsors/) · [Discuss a campaign](https://openwpclub.com/advertise/)
+<!-- OPENWPCLUB_SPONSORS_END -->
 
 ## License
 

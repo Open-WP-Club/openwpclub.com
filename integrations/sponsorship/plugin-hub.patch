@@ -1,0 +1,542 @@
+diff --git a/.github/FUNDING.yml b/.github/FUNDING.yml
+index 2c011e1..a5b6af2 100644
+--- a/.github/FUNDING.yml
++++ b/.github/FUNDING.yml
+@@ -1,3 +1,3 @@
+ # Funding options for Plugin Hub
+ github: [Open-WP-Club]
+-custom: ['https://github.com/Open-WP-Club/plugin-hub']
++custom: ['https://openwpclub.com/sponsors/']
+diff --git a/assets/css/style.css b/assets/css/style.css
+index 51c0a07..53f0093 100644
+--- a/assets/css/style.css
++++ b/assets/css/style.css
+@@ -422,3 +422,17 @@
+     min-width: 660px;
+   }
+ }
++
++/* Supporter recognition stays inside Plugin Hub and never blocks plugin actions. */
++.plugin-hub-supporter {
++	display: flex;
++	align-items: center;
++	gap: 12px;
++	margin: 12px 0;
++	padding: 10px;
++	border: 1px solid #dcdcde;
++	border-radius: 6px;
++	text-decoration: none;
++}
++.plugin-hub-supporter img { object-fit: contain; background: #fff; border-radius: 4px; flex-shrink: 0; }
++.plugin-hub-supporter small { display: block; margin-top: 4px; color: #646970; }
+diff --git a/includes/admin-display.php b/includes/admin-display.php
+index b727006..901b1f8 100644
+--- a/includes/admin-display.php
++++ b/includes/admin-display.php
+@@ -350,6 +350,8 @@ if ( ! defined( 'ABSPATH' ) ) {
+ 				</div>
+ 			</div>
+ 
++			<?php require PLUGIN_HUB_PLUGIN_DIR . 'includes/sponsorship-display.php'; ?>
++
+ 			<div class="postbox plugin-hub-danger-zone">
+ 				<div class="inside">
+ 					<strong><?php esc_html_e( 'Activity history', 'plugin-hub' ); ?></strong>
+diff --git a/includes/admin-pagination.php b/includes/admin-pagination.php
+index 4ddd313..d83c7aa 100644
+--- a/includes/admin-pagination.php
++++ b/includes/admin-pagination.php
+@@ -3,7 +3,7 @@
+  * Pagination controls for the plugin list table.
+  *
+  * Expects $filter, $search, $paged, $total_pages and $total_items to be set
+- * by the including template.
++ * by the including template. Invalid or missing context is not rendered.
+  *
+  * @package    PluginHub
+  * @subpackage PluginHub/includes
+@@ -15,6 +15,14 @@ if ( ! defined( 'ABSPATH' ) ) {
+ 	exit;
+ }
+ 
++// Validate the include context rather than relying on undefined variables.
++if ( ! isset( $filter, $search, $paged, $total_pages, $total_items )
++	|| ! is_string( $filter ) || ! is_string( $search )
++	|| ! is_int( $paged ) || ! is_int( $total_pages ) || ! is_int( $total_items )
++	|| $total_pages < 1 || $paged < 1 || $paged > $total_pages || $total_items < 0 ) {
++	return;
++}
++
+ $pagination_base = admin_url( 'plugins.php?page=plugin-hub&filter=' . $filter );
+ if ( '' !== $search ) {
+ 	$pagination_base = add_query_arg( 's', rawurlencode( $search ), $pagination_base );
+diff --git a/includes/admin.php b/includes/admin.php
+index e2b20c3..a581685 100644
+--- a/includes/admin.php
++++ b/includes/admin.php
+@@ -180,6 +180,12 @@ class Admin {
+ 			);
+ 		}
+ 
++		if ( isset( $_POST['plugin_hub_supporters_visibility'] ) && is_string( $_POST['plugin_hub_supporters_visibility'] ) ) {
++			check_admin_referer( 'plugin_hub_supporters_visibility' );
++			$hidden = 'hide' === sanitize_key( wp_unslash( $_POST['plugin_hub_supporters_visibility'] ) );
++			update_user_meta( get_current_user_id(), 'plugin_hub_hide_supporters', $hidden ? '1' : '0' );
++		}
++
+ 		$api   = $this->api;
+ 		$repos = $api->get_org_repos();
+ 
+@@ -208,6 +214,10 @@ class Admin {
+ 		$github_token_from_config = is_github_token_managed_by_config();
+ 		$has_github_token         = '' !== get_github_token();
+ 
++		$supporters_feed = array( 'schemaVersion' => 1, 'maxPositions' => 3, 'supporters' => get_option( 'plugin_hub_supporters', array() ) );
++		$supporters = Sponsorship::active( Sponsorship::validate( $supporters_feed ) ?? array(), time() );
++		$hide_supporters = '1' === get_user_meta( get_current_user_id(), 'plugin_hub_hide_supporters', true ) || ( defined( 'PLUGIN_HUB_HIDE_SUPPORTERS' ) && PLUGIN_HUB_HIDE_SUPPORTERS );
++
+ 		include PLUGIN_HUB_PLUGIN_DIR . 'includes/admin-display.php';
+ 	}
+ 
+diff --git a/includes/api.php b/includes/api.php
+index e8b25a5..e4a3de0 100644
+--- a/includes/api.php
++++ b/includes/api.php
+@@ -22,6 +22,8 @@ if ( ! defined( 'ABSPATH' ) ) {
+  *
+  * @since 1.0.0
+  */
++require_once __DIR__ . '/sponsorship.php';
++
+ class API {
+ 
+ 	/**
+@@ -276,6 +278,12 @@ class API {
+ 			return $this->get_last_known_repos();
+ 		}
+ 
++		$catalog = json_decode( $catalog_content, true );
++		$supporters = Sponsorship::validate( $catalog['sponsorship'] ?? null );
++		if ( null !== $supporters ) {
++			update_option( 'plugin_hub_supporters', $supporters, false );
++		}
++
+ 		set_transient( $this->cache_key, $repos, $this->cache_expiration );
+ 		update_option( 'plugin_hub_last_known_repos', $repos, false );
+ 
+diff --git a/package.json b/package.json
+index 84d44e9..cf08c89 100644
+--- a/package.json
++++ b/package.json
+@@ -1,6 +1,6 @@
+ {
+   "name": "plugin-hub",
+-  "version": "1.4.0",
++  "version": "1.5.0",
+   "description": "WordPress plugin for managing GitHub-hosted plugins",
+   "main": "assets/js/script.js",
+   "scripts": {
+diff --git a/plugin-hub.php b/plugin-hub.php
+index c182a8f..779c362 100644
+--- a/plugin-hub.php
++++ b/plugin-hub.php
+@@ -3,7 +3,7 @@
+  * Plugin Name:             Plugin Hub
+  * Plugin URI:              https://github.com/Open-WP-Club/plugin-hub
+  * Description:             Installs, updates, and manages plugins published by Open WP Club through GitHub.
+- * Version:                 1.4.3
++ * Version:                 1.5.0
+  * Author:                  Open WP Club
+  * Author URI:              https://openwpclub.com
+  * License:                 GPL-2.0+
+@@ -25,7 +25,7 @@ if ( ! defined( 'WPINC' ) ) {
+ 	die;
+ }
+ 
+-define( 'PLUGIN_HUB_VERSION', '1.4.3' );
++define( 'PLUGIN_HUB_VERSION', '1.5.0' );
+ define( 'PLUGIN_HUB_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+ define( 'PLUGIN_HUB_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+ define( 'PLUGIN_HUB_ORGANIZATION', 'Open-WP-Club' );
+diff --git a/readme.md b/readme.md
+index 95dd9fd..0df5db1 100644
+--- a/readme.md
++++ b/readme.md
+@@ -37,6 +37,22 @@ Plugin Hub installs, updates, and manages WordPress plugins published by Open WP
+ - Daily update reports are only sent when the set of updated or available plugins changes.
+ - Requires WordPress 6.0 or later (tested through 7.1) and PHP 8.0 or later.
+ 
++<!-- OPENWPCLUB_SPONSORS_START -->
++## Open-source supporters
++
++These companies help keep Open WP Club plugins free and maintained.
++
++[![Open WP Club supporters](https://openwpclub.com/sponsorship/supporters.png)](https://openwpclub.com/sponsors/)
++
++## Sponsored placements
++
++Clearly labelled promotional campaigns, separate from our supporters.
++
++[![Open WP Club sponsored placements](https://openwpclub.com/sponsorship/repos/plugin-hub/campaigns.png)](https://openwpclub.com/advertise/)
++
++[Support our work](https://openwpclub.com/sponsors/) · [Discuss a campaign](https://openwpclub.com/advertise/)
++<!-- OPENWPCLUB_SPONSORS_END -->
++
+ ## Development
+ 
+ To contribute to this plugin or modify it for your needs:
+@@ -53,3 +69,18 @@ This project is licensed under the GPL2 License.
+ ## Support
+ 
+ For support or feature requests, please open an issue on the GitHub repository.
++
++### Supporter recognition and privacy
++
++Plugin Hub receives up to three open-source supporter credits inside its existing
++Open WP Club catalog request to GitHub. The authoritative registry is maintained
++at https://openwpclub.com/sponsorship.json. Credits are cached locally and refresh
++with the catalog (normally daily). Embedded PNG logos do not contact advertisers
++or external image servers, and there are no impression counters, tracking pixels,
++referral parameters or additional sponsorship HTTP requests from WordPress.
++
++Thanks appear only on the Plugin Hub page. Use **Hide supporter thanks** to save
++your preference across updates, or define `PLUGIN_HUB_HIDE_SUPPORTERS` as `true`
++in `wp-config.php` to hide them for the entire site. Scheduled campaigns are not
++shown in the WordPress admin; they have separate positions in READMEs and on the
++website. Sponsor data never controls installation, updates or access to features.
+diff --git a/readme.txt b/readme.txt
+index c472d0c..423fb3e 100644
+--- a/readme.txt
++++ b/readme.txt
+@@ -4,7 +4,7 @@ Tags: plugins, github, installer, plugin-manager, open-wp-club
+ Requires at least: 6.0
+ Tested up to: 7.1
+ Requires PHP: 8.0
+-Stable tag: 1.4.3
++Stable tag: 1.5.0
+ License: GPLv2 or later
+ License URI: http://www.gnu.org/licenses/gpl-2.0.html
+ 
+@@ -76,7 +76,13 @@ Beta plugins are those with version numbers less than 1.0.0. You can toggle thei
+ 
+ == Changelog ==
+ 
+-= 1.4.3 =
++= 1.5.0 =
++* Add up to three open-source supporter credits from the existing first-party catalog.
++* Embed logos locally without advertiser requests or impression tracking.
++* Allow users to persistently hide thanks, or disable them site-wide with PLUGIN_HUB_HIDE_SUPPORTERS.
++
++
++= 1.5.0 =
+ * Switched the catalog source from plugins.csv to catalog.json
+ * Catalog entries are now filtered to type "plugin", so apps and websites in the catalog can no longer appear as installable plugins
+ 
+diff --git a/uninstall.php b/uninstall.php
+index 30d1df6..8f54a8b 100644
+--- a/uninstall.php
++++ b/uninstall.php
+@@ -23,6 +23,8 @@ delete_option( 'plugin_hub_github_token' );
+ delete_option( 'plugin_hub_activity_log' );
+ delete_option( 'plugin_hub_autoupdate_plugins' );
+ delete_option( 'plugin_hub_last_known_repos' );
++delete_option( 'plugin_hub_supporters' );
++delete_metadata( 'user', 0, 'plugin_hub_hide_supporters', '', true );
+ delete_option( 'plugin_hub_last_notification_hash' );
+ 
+ /**
+diff --git a/includes/sponsorship-display.php b/includes/sponsorship-display.php
+new file mode 100644
+index 0000000..37bcae3
+--- /dev/null
++++ b/includes/sponsorship-display.php
+@@ -0,0 +1,38 @@
++<?php
++/**
++ * Dismissible supporter thanks, limited to the Plugin Hub page.
++ *
++ * @package PluginHub
++ */
++
++if ( ! defined( 'ABSPATH' ) ) {
++	exit;
++}
++if ( defined( 'PLUGIN_HUB_HIDE_SUPPORTERS' ) && PLUGIN_HUB_HIDE_SUPPORTERS ) {
++	return;
++}
++
++$supporters      = $supporters ?? array();
++$hide_supporters = $hide_supporters ?? true;
++?>
++<div class="postbox plugin-hub-supporters">
++	<div class="inside">
++		<?php if ( ! $hide_supporters ) : ?>
++			<h2><?php esc_html_e( 'Open-source supporters', 'plugin-hub' ); ?></h2>
++			<p class="description"><?php esc_html_e( 'Their support helps keep our plugins free and maintained.', 'plugin-hub' ); ?></p>
++			<?php foreach ( $supporters as $supporter ) : ?>
++				<a class="plugin-hub-supporter" href="<?php echo esc_url( $supporter['url'] ); ?>" target="_blank" rel="sponsored noopener noreferrer">
++					<img src="<?php echo esc_attr( $supporter['logoData'] ); ?>" alt="" width="48" height="48">
++					<span><strong><?php echo esc_html( $supporter['name'] ); ?></strong><small><?php echo esc_html( $supporter['description'] ); ?></small></span>
++				</a>
++			<?php endforeach; ?>
++			<p><a href="https://openwpclub.com/sponsors/" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'All supporters and sponsorship options', 'plugin-hub' ); ?></a></p>
++		<?php endif; ?>
++		<?php if ( ! defined( 'PLUGIN_HUB_HIDE_SUPPORTERS' ) || ! PLUGIN_HUB_HIDE_SUPPORTERS ) : ?>
++			<form method="post" action="<?php echo esc_url( admin_url( 'plugins.php?page=plugin-hub' ) ); ?>">
++				<?php wp_nonce_field( 'plugin_hub_supporters_visibility' ); ?>
++				<button type="submit" class="button button-link" name="plugin_hub_supporters_visibility" value="<?php echo $hide_supporters ? 'show' : 'hide'; ?>"><?php echo $hide_supporters ? esc_html__( 'Show supporter thanks', 'plugin-hub' ) : esc_html__( 'Hide supporter thanks', 'plugin-hub' ); ?></button>
++			</form>
++		<?php endif; ?>
++	</div>
++</div>
+diff --git a/includes/sponsorship.php b/includes/sponsorship.php
+new file mode 100644
+index 0000000..6bd2210
+--- /dev/null
++++ b/includes/sponsorship.php
+@@ -0,0 +1,96 @@
++<?php
++/**
++ * Validated supporter recognition from the existing first-party catalog.
++ *
++ * @package PluginHub
++ */
++
++namespace PluginHub;
++
++if ( ! defined( 'ABSPATH' ) ) {
++	exit;
++}
++
++/** Validates and selects public supporter credits without network requests. */
++class Sponsorship {
++	/**
++	 * Accept only plain text, HTTPS links and embedded PNG logos.
++	 *
++	 * @param mixed $feed Catalog sponsorship data.
++	 * @return array|null Null means invalid; an empty array means no supporters.
++	 */
++	public static function validate( $feed ) {
++		if ( ! is_array( $feed ) || 1 !== ( $feed['schemaVersion'] ?? null ) || 3 !== ( $feed['maxPositions'] ?? null ) || ! isset( $feed['supporters'] ) || ! is_array( $feed['supporters'] ) || count( $feed['supporters'] ) > 100 ) {
++			return null;
++		}
++		$entries = array();
++		$ids     = array();
++		foreach ( $feed['supporters'] as $entry ) {
++			if ( ! is_array( $entry ) ) {
++				return null;
++			}
++			foreach ( array( 'id', 'name', 'url', 'description', 'logoData', 'startsAt' ) as $key ) {
++				if ( ! isset( $entry[ $key ] ) || ! is_string( $entry[ $key ] ) ) {
++					return null;
++				}
++			}
++			if ( ! preg_match( '/^[a-z0-9-]+$/D', $entry['id'] ) || isset( $ids[ $entry['id'] ] ) || '' === trim( $entry['name'] ) ) {
++				return null;
++			}
++			$ids[ $entry['id'] ] = true;
++			foreach ( array( 'name', 'description' ) as $key ) {
++				if ( strlen( $entry[ $key ] ) > 960 || preg_match( '/[<>\r\n]/', $entry[ $key ] ) ) {
++					return null;
++				}
++			}
++			$url = wp_parse_url( $entry['url'] );
++			if ( ! filter_var( $entry['url'], FILTER_VALIDATE_URL ) || ! is_array( $url ) || 'https' !== ( $url['scheme'] ?? '' ) || empty( $url['host'] ) || isset( $url['user'] ) || isset( $url['pass'] ) ) {
++				return null;
++			}
++			if ( ! isset( $entry['active'], $entry['priority'] ) || ! is_bool( $entry['active'] ) || ! is_numeric( $entry['priority'] ) || ! is_finite( (float) $entry['priority'] ) || ! array_key_exists( 'endsAt', $entry ) ) {
++				return null;
++			}
++			foreach ( array( $entry['startsAt'], $entry['endsAt'] ) as $date ) {
++				if ( null !== $date && ( ! is_string( $date ) || ! preg_match( '/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$/D', $date ) || false === strtotime( $date ) || gmdate( 'Y-m-d\TH:i:s\Z', strtotime( $date ) ) !== $date ) ) {
++					return null;
++				}
++			}
++			if ( '' === $entry['startsAt'] || ( null !== $entry['endsAt'] && strtotime( $entry['endsAt'] ) <= strtotime( $entry['startsAt'] ) ) ) {
++				return null;
++			}
++			if ( strlen( $entry['logoData'] ) > 65536 || ! preg_match( '#^data:image/png;base64,[A-Za-z0-9+/=]+$#D', $entry['logoData'] ) ) {
++				return null;
++			}
++			$png = base64_decode( substr( $entry['logoData'], 22 ), true ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_decode -- Decode an embedded PNG, never executable content.
++			if ( false === $png || substr( $png, 0, 8 ) !== "\x89PNG\r\n\x1a\n" ) {
++				return null;
++			}
++			$entries[] = array_intersect_key( $entry, array_flip( array( 'id', 'name', 'url', 'description', 'logoData', 'active', 'priority', 'startsAt', 'endsAt' ) ) );
++		}
++		return $entries;
++	}
++
++	/**
++	 * Expiration is checked locally, even when the catalog is offline.
++	 *
++	 * @param array $entries Validated supporters.
++	 * @param int   $now UTC timestamp.
++	 * @return array
++	 */
++	public static function active( $entries, $now ) {
++		$entries = array_filter(
++			$entries,
++			static function ( $entry ) use ( $now ) {
++				return $entry['active'] && strtotime( $entry['startsAt'] ) <= $now && ( null === $entry['endsAt'] || strtotime( $entry['endsAt'] ) > $now );
++			}
++		);
++		usort(
++			$entries,
++			static function ( $a, $b ) {
++				$order = $b['priority'] <=> $a['priority'];
++				return 0 !== $order ? $order : strcmp( $a['id'], $b['id'] );
++			}
++		);
++		return array_slice( $entries, 0, 3 );
++	}
++}
+diff --git a/tests/CatalogSponsorshipTest.php b/tests/CatalogSponsorshipTest.php
+new file mode 100644
+index 0000000..57041c6
+--- /dev/null
++++ b/tests/CatalogSponsorshipTest.php
+@@ -0,0 +1,62 @@
++<?php
++/** Tests the catalog-to-supporter boundary without adding an HTTP client. @package PluginHub */
++namespace PluginHub {
++	function get_option( $key, $default = false ) { return $GLOBALS['hub_test_options'][ $key ] ?? $default; }
++	function update_option( $key, $value, $autoload = null ) { $GLOBALS['hub_test_options'][ $key ] = $value; return true; }
++	function get_transient( $key ) { return $GLOBALS['hub_test_transients'][ $key ] ?? false; }
++	function set_transient( $key, $value, $expiration = 0 ) { $GLOBALS['hub_test_transients'][ $key ] = $value; return true; }
++	function wp_safe_remote_get( $url, $args ) { $GLOBALS['hub_test_requests'][] = $url; return $GLOBALS['hub_test_response']; }
++	function wp_remote_retrieve_response_code( $response ) { return $response['status']; }
++	function wp_remote_retrieve_body( $response ) { return $response['body']; }
++	function sanitize_text_field( $value ) { return trim( strip_tags( $value ) ); }
++	function sanitize_textarea_field( $value ) { return trim( strip_tags( $value ) ); }
++	function esc_url_raw( $value, $protocols = null ) { return $value; }
++}
++
++namespace PluginHub\Tests {
++	use PHPUnit\Framework\TestCase;
++	use PluginHub\API;
++
++	final class CatalogSponsorshipTest extends TestCase {
++		protected function setUp(): void {
++			$GLOBALS['hub_test_options'] = array();
++			$GLOBALS['hub_test_transients'] = array();
++			$GLOBALS['hub_test_requests'] = array();
++		}
++		protected function tearDown(): void {
++			unset( $GLOBALS['hub_test_options'], $GLOBALS['hub_test_transients'], $GLOBALS['hub_test_requests'], $GLOBALS['hub_test_response'] );
++		}
++		private function response( $feed ) {
++			$GLOBALS['hub_test_response'] = array( 'status' => 200, 'body' => json_encode( array(
++				'products' => array( array( 'type' => 'plugin', 'repo_name' => 'plugin-hub', 'repo_url' => 'https://github.com/Open-WP-Club/plugin-hub', 'version' => '1.4.3' ) ),
++				'sponsorship' => $feed,
++			) ) );
++		}
++		private function empty_feed() {
++			return array( 'schemaVersion' => 1, 'maxPositions' => 3, 'supporters' => array(), 'campaigns' => array() );
++		}
++		public function test_empty_feed_removes_old_supporters_with_the_existing_catalog_request() {
++			$GLOBALS['hub_test_options']['plugin_hub_supporters'] = array( 'old' );
++			$this->response( $this->empty_feed() );
++			$api = new API();
++			$this->assertCount( 1, $api->get_org_repos() );
++			$this->assertSame( array(), $GLOBALS['hub_test_options']['plugin_hub_supporters'] );
++			$this->assertSame( array( 'https://raw.githubusercontent.com/Open-WP-Club/.github/main/catalog.json' ), $GLOBALS['hub_test_requests'] );
++			$api->get_org_repos();
++			$this->assertCount( 1, $GLOBALS['hub_test_requests'], 'Cached display must not make another HTTP request' );
++		}
++		public function test_invalid_sponsor_feed_never_blocks_catalog_updates_or_replaces_good_data() {
++			$GLOBALS['hub_test_options']['plugin_hub_supporters'] = array( 'last validated supporter' );
++			$this->response( array( 'schemaVersion' => 2 ) );
++			$this->assertCount( 1, ( new API() )->get_org_repos() );
++			$this->assertSame( array( 'last validated supporter' ), $GLOBALS['hub_test_options']['plugin_hub_supporters'] );
++		}
++		public function test_catalog_failure_preserves_last_known_repositories_and_supporters() {
++			$GLOBALS['hub_test_options']['plugin_hub_supporters'] = array( 'last validated supporter' );
++			$GLOBALS['hub_test_options']['plugin_hub_last_known_repos'] = array( array( 'name' => 'plugin-hub' ) );
++			$GLOBALS['hub_test_response'] = array( 'status' => 503, 'body' => '' );
++			$this->assertSame( array( array( 'name' => 'plugin-hub' ) ), ( new API() )->get_org_repos() );
++			$this->assertSame( array( 'last validated supporter' ), $GLOBALS['hub_test_options']['plugin_hub_supporters'] );
++		}
++	}
++}
+diff --git a/tests/PaginationContextTest.php b/tests/PaginationContextTest.php
+new file mode 100644
+index 0000000..8ad6384
+--- /dev/null
++++ b/tests/PaginationContextTest.php
+@@ -0,0 +1,26 @@
++<?php
++/** @package PluginHub */
++namespace PluginHub\Tests;
++
++use PHPUnit\Framework\TestCase;
++
++final class PaginationContextTest extends TestCase {
++	private function render( array $context ): string {
++		extract( $context, EXTR_SKIP );
++		ob_start();
++		require dirname( __DIR__ ) . '/includes/admin-pagination.php';
++		return ob_get_clean();
++	}
++
++	public function test_missing_include_context_produces_no_markup_or_undefined_variable_warnings(): void {
++		$this->assertSame( '', $this->render( array() ) );
++		$this->assertSame( '', $this->render( array( 'filter' => 'all' ) ) );
++	}
++
++	public function test_malformed_pagination_context_is_not_rendered(): void {
++		$context = array( 'filter' => 'all', 'search' => '', 'paged' => 1, 'total_pages' => 2, 'total_items' => 30 );
++		foreach ( array( array( 'paged', 0 ), array( 'paged', 3 ), array( 'total_pages', 0 ), array( 'total_items', -1 ), array( 'search', array() ) ) as $invalid ) {
++			$this->assertSame( '', $this->render( array_replace( $context, array( $invalid[0] => $invalid[1] ) ) ) );
++		}
++	}
++}
+diff --git a/tests/SponsorshipTest.php b/tests/SponsorshipTest.php
+new file mode 100644
+index 0000000..bb5e3ce
+--- /dev/null
++++ b/tests/SponsorshipTest.php
+@@ -0,0 +1,43 @@
++<?php
++/** @package PluginHub */
++namespace PluginHub\Tests;
++
++use PHPUnit\Framework\TestCase;
++use PluginHub\Sponsorship;
++
++final class SponsorshipTest extends TestCase {
++	private function entry( $id = 'test' ) {
++		return array(
++			'id' => $id, 'name' => 'Test', 'url' => 'https://example.com/',
++			'description' => 'Open-source supporter', 'active' => true, 'priority' => 10,
++			'logoData' => 'data:image/png;base64,' . base64_encode( "\x89PNG\r\n\x1a\n" ),
++			'startsAt' => '2026-10-01T00:00:00Z', 'endsAt' => null,
++		);
++	}
++	private function feed( $entries ) {
++		return array( 'schemaVersion' => 1, 'maxPositions' => 3, 'supporters' => $entries );
++	}
++	public function test_successful_empty_feed_clears_supporters() {
++		$this->assertSame( array(), Sponsorship::validate( $this->feed( array() ) ) );
++		$this->assertNull( Sponsorship::validate( array( 'schemaVersion' => 2 ) ) );
++	}
++	public function test_expired_and_future_supporters_are_removed_locally() {
++		$expired = $this->entry( 'expired' ); $expired['endsAt'] = '2026-10-10T00:00:00Z';
++		$future = $this->entry( 'future' ); $future['startsAt'] = '2026-11-01T00:00:00Z';
++		$valid = Sponsorship::validate( $this->feed( array( $expired, $future, $this->entry( 'current' ) ) ) );
++		$this->assertSame( 'current', Sponsorship::active( $valid, strtotime( '2026-10-15T00:00:00Z' ) )[0]['id'] );
++		$this->assertCount( 1, Sponsorship::active( $valid, strtotime( '2026-10-15T00:00:00Z' ) ) );
++	}
++	public function test_no_external_image_or_unsafe_link_can_enter_ui() {
++		foreach ( array( array( 'url', 'javascript:alert(1)' ), array( 'url', 'https://user:secret@example.com/' ), array( 'name', '<script>' ), array( 'logoData', 'https://tracker.example/pixel.png' ), array( 'logoData', 'data:image/svg+xml;base64,PHN2Zz4=' ), array( 'startsAt', '2026-02-31T00:00:00Z' ) ) as $change ) {
++			$entry = $this->entry(); $entry[ $change[0] ] = $change[1];
++			$this->assertNull( Sponsorship::validate( $this->feed( array( $entry ) ) ) );
++		}
++	}
++	public function test_caps_positions_and_never_shows_campaigns() {
++		$feed = $this->feed( array_map( fn( $i ) => $this->entry( 'test-' . $i ), range( 1, 4 ) ) );
++		$feed['campaigns'] = array( $this->entry( 'advertiser' ) );
++		$this->assertCount( 3, Sponsorship::active( Sponsorship::validate( $feed ), strtotime( '2026-10-15T00:00:00Z' ) ) );
++		$this->assertNotContains( 'advertiser', array_column( Sponsorship::validate( $feed ), 'id' ) );
++	}
++}

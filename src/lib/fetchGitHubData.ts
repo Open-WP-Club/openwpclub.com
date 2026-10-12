@@ -1,3 +1,4 @@
+import { stripSponsorshipBlock } from './sponsorship';
 import { marked } from 'marked';
 import type { GitHubRepoStats } from './types';
 import { ORG, BATCH_SIZE, AI_LOGINS } from './config';
@@ -58,7 +59,7 @@ export async function fetchReadme(repoName: string, defaultBranch: string = 'mai
   if (res.ok) {
     const data = await res.json();
     const content = Buffer.from(data.content, 'base64').toString('utf-8');
-    let html = await marked.parse(content);
+    let html = await marked.parse(stripSponsorshipBlock(content));
     html = rewriteImageUrls(html, repoName, defaultBranch);
     return html;
   }
@@ -69,7 +70,7 @@ export async function fetchReadme(repoName: string, defaultBranch: string = 'mai
 
   if (rawRes.ok) {
     const content = await rawRes.text();
-    let html = await marked.parse(content);
+    let html = await marked.parse(stripSponsorshipBlock(content));
     html = rewriteImageUrls(html, repoName, defaultBranch);
     return html;
   }

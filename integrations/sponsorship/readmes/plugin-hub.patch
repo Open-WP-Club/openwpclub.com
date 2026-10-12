@@ -1,0 +1,24 @@
+--- a/readme.md
++++ b/readme.md
+@@ -37,6 +37,21 @@
+ - Daily update reports are only sent when the set of updated or available plugins changes.
+ - Requires WordPress 6.0 or later (tested through 7.1) and PHP 8.0 or later.
+ 
++<!-- OPENWPCLUB_SPONSORS_START -->
++## Open-source supporters
++
++These companies help keep Open WP Club plugins free and maintained.
++
++[![Open WP Club supporters](https://openwpclub.com/sponsorship/supporters.png)](https://openwpclub.com/sponsors/)
++
++## Sponsored placements
++
++Clearly labelled promotional campaigns, separate from our supporters.
++
++[![Open WP Club sponsored placements](https://openwpclub.com/sponsorship/repos/plugin-hub/campaigns.png)](https://openwpclub.com/advertise/)
++
++[Support our work](https://openwpclub.com/sponsors/) · [Discuss a campaign](https://openwpclub.com/advertise/)
++<!-- OPENWPCLUB_SPONSORS_END -->
+ 
+ ## Development
+ 
