@@ -1,6 +1,8 @@
+diff --git a/README.md b/README.md
+index e867491..d146c37 100644
 --- a/README.md
 +++ b/README.md
-@@ -112,6 +112,21 @@
+@@ -112,6 +112,22 @@ assets/
  languages/                     Translation files
  ```
  
@@ -19,6 +21,7 @@
 +
 +[Support our work](https://openwpclub.com/sponsors/) · [Discuss a campaign](https://openwpclub.com/advertise/)
 +<!-- OPENWPCLUB_SPONSORS_END -->
- 
++
  ## Development notes
  
+ - The integration uses Fluent Forms’ `Submission`, `SubmissionMeta`, `Form`, and `FormFieldsParser` classes rather than a duplicated submissions table.

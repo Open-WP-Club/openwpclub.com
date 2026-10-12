@@ -1,9 +1,12 @@
+diff --git a/README.md b/README.md
+index 9845376..a40475d 100644
 --- a/README.md
 +++ b/README.md
-@@ -226,3 +226,18 @@
+@@ -225,3 +225,19 @@ The plugin uses CSS custom properties for easy theming:
+ 2. **Update Frequency**: Use weekly or monthly updates for large profiles
  3. **Publication Limits**: Consider limiting max publications in settings for very large profiles
  4. **Caching**:
- 
++
 +<!-- OPENWPCLUB_SPONSORS_START -->
 +## Open-source supporters
 +

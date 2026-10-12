@@ -1,6 +1,8 @@
+diff --git a/readme.md b/readme.md
+index 74aced0..53f2f4f 100644
 --- a/readme.md
 +++ b/readme.md
-@@ -53,6 +53,21 @@
+@@ -53,6 +53,22 @@ After activation, you can find the Internal Linking menu under the Tools section
  - WordPress 6.0 or higher
  - PHP 7.4 or higher
  
@@ -19,6 +21,7 @@
 +
 +[Support our work](https://openwpclub.com/sponsors/) · [Discuss a campaign](https://openwpclub.com/advertise/)
 +<!-- OPENWPCLUB_SPONSORS_END -->
- 
++
  ## Support
  
+ For support, feature requests, or bug reports, please open an issue on the [GitHub repository](https://github.com/Open-WP-Club/wp-internal-linking).

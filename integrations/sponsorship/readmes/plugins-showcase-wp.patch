@@ -1,6 +1,8 @@
+diff --git a/README.md b/README.md
+index f67f954..3f0481e 100644
 --- a/README.md
 +++ b/README.md
-@@ -157,6 +157,21 @@
+@@ -157,6 +157,21 @@ Add custom CSS in your theme or use the CSS classes:
  - `.plugins-showcase-single` - single page
  - `.plugins-showcase-readme` - README content
  

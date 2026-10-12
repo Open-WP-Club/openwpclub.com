@@ -1,6 +1,8 @@
+diff --git a/README.md b/README.md
+index 544c419..cc0f134 100644
 --- a/README.md
 +++ b/README.md
-@@ -95,6 +95,21 @@
+@@ -95,6 +95,22 @@ A: If you block your own email or IP, you may lose access to your site. Always k
  **Q: How do I unblock a user?**
  A: You can unblock a user by removing their email from the Blocked Emails list in the plugin settings, or by using the "Unblock User" action on the Users page.
  
@@ -19,6 +21,7 @@
 +
 +[Support our work](https://openwpclub.com/sponsors/) · [Discuss a campaign](https://openwpclub.com/advertise/)
 +<!-- OPENWPCLUB_SPONSORS_END -->
- 
++
  ## Contributing
  
+ We welcome contributions to the WP User Blocking plugin. Please fork the repository and submit a pull request with your changes.

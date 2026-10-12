@@ -1,6 +1,8 @@
+diff --git a/README.MD b/README.MD
+index a0fb0c5..ecce28d 100644
 --- a/README.MD
 +++ b/README.MD
-@@ -59,6 +59,21 @@
+@@ -59,6 +59,22 @@ A: Yes, you can modify the columns by filtering the template in your theme or ch
  **Q: Is this plugin compatible with my theme?**
  A: The plugin should work with any WooCommerce-compatible theme.
  
@@ -19,6 +21,7 @@
 +
 +[Support our work](https://openwpclub.com/sponsors/) · [Discuss a campaign](https://openwpclub.com/advertise/)
 +<!-- OPENWPCLUB_SPONSORS_END -->
- 
++
  ## Support
  
+ For support, please create an issue in the [GitHub repository](https://github.com/Open-WP-Club/wp-simple-order-history/issues).

@@ -1,6 +1,8 @@
+diff --git a/README.md b/README.md
+index 95ad6f5..4f77168 100644
 --- a/README.md
 +++ b/README.md
-@@ -43,6 +43,21 @@
+@@ -43,6 +43,22 @@ This plugin enhances WooCommerce with pre-order functionality, allowing for spec
  - Promo codes are case-insensitive.
  - The checkout button will be hidden if a required promo code is not applied to the cart containing pre-order products.
  
@@ -19,6 +21,7 @@
 +
 +[Support our work](https://openwpclub.com/sponsors/) · [Discuss a campaign](https://openwpclub.com/advertise/)
 +<!-- OPENWPCLUB_SPONSORS_END -->
- 
++
  ## License
  
+ This plugin is licensed under the GPL-2.0 license.

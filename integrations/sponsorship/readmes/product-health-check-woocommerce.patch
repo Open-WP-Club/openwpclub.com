@@ -1,6 +1,8 @@
+diff --git a/README.md b/README.md
+index c7c1506..83b8919 100644
 --- a/README.md
 +++ b/README.md
-@@ -105,6 +105,21 @@
+@@ -105,6 +105,22 @@ wp product-health scan --format=count
    run: wp product-health scan --format=count --severity=critical
  ```
  
@@ -19,6 +21,7 @@
 +
 +[Support our work](https://openwpclub.com/sponsors/) · [Discuss a campaign](https://openwpclub.com/advertise/)
 +<!-- OPENWPCLUB_SPONSORS_END -->
- 
++
  ## License
  
+ [GPL-2.0-or-later](https://www.gnu.org/licenses/gpl-2.0.html)

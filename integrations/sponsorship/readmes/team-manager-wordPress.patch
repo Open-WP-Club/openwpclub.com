@@ -1,6 +1,8 @@
+diff --git a/readme.md b/readme.md
+index 7a62c34..d70b59a 100644
 --- a/readme.md
 +++ b/readme.md
-@@ -74,6 +74,21 @@
+@@ -74,6 +74,22 @@ Use the shortcode in any post, page, or widget:
  
  Set the display order via the "Order" field in the Page Attributes box when editing a team member. Lower numbers appear first.
  
@@ -19,6 +21,7 @@
 +
 +[Support our work](https://openwpclub.com/sponsors/) · [Discuss a campaign](https://openwpclub.com/advertise/)
 +<!-- OPENWPCLUB_SPONSORS_END -->
- 
++
  ## License
  
+ GPL v2 or later

@@ -1,6 +1,8 @@
+diff --git a/README.md b/README.md
+index cb2980d..1c98d34 100644
 --- a/README.md
 +++ b/README.md
-@@ -86,6 +86,21 @@
+@@ -86,6 +86,22 @@ Yes, the plugin will protect all files with the specified extensions, including
  
  Yes, but you may need to configure your CDN to pass through WordPress authentication.
  
@@ -19,6 +21,7 @@
 +
 +[Support our work](https://openwpclub.com/sponsors/) · [Discuss a campaign](https://openwpclub.com/advertise/)
 +<!-- OPENWPCLUB_SPONSORS_END -->
- 
++
  ## Support
  
+ For support, feature requests, or bug reports, please [create an issue](/issues) on our GitHub repository.

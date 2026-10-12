@@ -1,6 +1,8 @@
+diff --git a/README.md b/README.md
+index 4767d34..d797be1 100644
 --- a/README.md
 +++ b/README.md
-@@ -72,6 +72,21 @@
+@@ -72,6 +72,22 @@ All endpoints require `manage_options` capability. Namespace: `sewp/v1`
  | POST | `/export/clean` | Delete output files |
  | GET | `/export/discover-urls` | Preview URL list |
  
@@ -19,6 +21,7 @@
 +
 +[Support our work](https://openwpclub.com/sponsors/) · [Discuss a campaign](https://openwpclub.com/advertise/)
 +<!-- OPENWPCLUB_SPONSORS_END -->
- 
++
  ## Development
  
+ ```bash

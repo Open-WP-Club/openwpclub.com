@@ -1,6 +1,8 @@
+diff --git a/README.md b/README.md
+index c4deaec..6bae232 100644
 --- a/README.md
 +++ b/README.md
-@@ -49,6 +49,21 @@
+@@ -49,6 +49,22 @@ php tests/stock-alerts-test.php
  php tests/order-screen-test.php
  ```
  
@@ -19,6 +21,7 @@
 +
 +[Support our work](https://openwpclub.com/sponsors/) · [Discuss a campaign](https://openwpclub.com/advertise/)
 +<!-- OPENWPCLUB_SPONSORS_END -->
- 
++
  ## License
  
+ Apache License 2.0 - see [LICENSE](LICENSE) for details.

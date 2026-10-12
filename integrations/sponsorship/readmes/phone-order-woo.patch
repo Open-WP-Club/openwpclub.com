@@ -1,6 +1,8 @@
+diff --git a/readme.md b/readme.md
+index e3f9c50..ef442fb 100644
 --- a/readme.md
 +++ b/readme.md
-@@ -184,6 +184,21 @@
+@@ -184,6 +184,22 @@ WordPress Interactivity API is a modern framework for building reactive, dynamic
  
  - Initial release
  
@@ -19,6 +21,7 @@
 +
 +[Support our work](https://openwpclub.com/sponsors/) · [Discuss a campaign](https://openwpclub.com/advertise/)
 +<!-- OPENWPCLUB_SPONSORS_END -->
- 
++
  ## License
  
+ GPL v2 or later

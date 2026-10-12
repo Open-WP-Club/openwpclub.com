@@ -1,6 +1,8 @@
+diff --git a/README.md b/README.md
+index 2569ac6..4f39f1a 100644
 --- a/README.md
 +++ b/README.md
-@@ -92,6 +92,21 @@
+@@ -92,6 +92,22 @@ Yes, the plugin works on multisite installations. It needs to be activated per s
  - Compatible with popular page builders
  - Translation ready
  
@@ -19,6 +21,7 @@
 +
 +[Support our work](https://openwpclub.com/sponsors/) · [Discuss a campaign](https://openwpclub.com/advertise/)
 +<!-- OPENWPCLUB_SPONSORS_END -->
- 
++
  ## Contributing
  
+ Contributions are welcome! Please feel free to submit a Pull Request.

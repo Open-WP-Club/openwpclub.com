@@ -1,6 +1,8 @@
+diff --git a/README.md b/README.md
+index d4d58a3..542bd57 100644
 --- a/README.md
 +++ b/README.md
-@@ -159,6 +159,21 @@
+@@ -159,6 +159,22 @@ Results are stored in a transient for one hour. Forced re-scans delete the trans
  
  The plugin hooks into WordPress's built-in `robots_txt` filter at priority 20. This means it appends after WordPress core and after any SEO plugin that also hooks into `robots_txt`. Your existing rules are never modified.
  
@@ -19,6 +21,7 @@
 +
 +[Support our work](https://openwpclub.com/sponsors/) · [Discuss a campaign](https://openwpclub.com/advertise/)
 +<!-- OPENWPCLUB_SPONSORS_END -->
- 
++
  ## Development
  
+ ### Local Setup

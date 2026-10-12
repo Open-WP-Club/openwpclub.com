@@ -1,6 +1,8 @@
+diff --git a/README.md b/README.md
+index ee02ac8..03217c3 100644
 --- a/README.md
 +++ b/README.md
-@@ -75,6 +75,21 @@
+@@ -75,6 +75,22 @@ You can combine filters for precise inventory monitoring:
  - **Load Last Search**: One-click to reload and re-execute your most recent search
  - **Search History**: Access up to 10 previous searches with full filter restoration
  
@@ -19,6 +21,7 @@
 +
 +[Support our work](https://openwpclub.com/sponsors/) · [Discuss a campaign](https://openwpclub.com/advertise/)
 +<!-- OPENWPCLUB_SPONSORS_END -->
- 
++
  ## Contributing
  
+ Contributions are welcome! Please feel free to submit a Pull Request.

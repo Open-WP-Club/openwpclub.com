@@ -1,6 +1,8 @@
+diff --git a/README.md b/README.md
+index e9c94ea..2daf0fd 100644
 --- a/README.md
 +++ b/README.md
-@@ -114,6 +114,21 @@
+@@ -114,6 +114,22 @@ SHIRT-002 | Red Polo Shirt | $34.99 | 23
  - Product query results: 5-minute cache
  - Cache keys: Automatically generated based on filter criteria
  
@@ -19,6 +21,7 @@
 +
 +[Support our work](https://openwpclub.com/sponsors/) · [Discuss a campaign](https://openwpclub.com/advertise/)
 +<!-- OPENWPCLUB_SPONSORS_END -->
- 
++
  ## Support
  
+ For support, bug reports, or feature requests:

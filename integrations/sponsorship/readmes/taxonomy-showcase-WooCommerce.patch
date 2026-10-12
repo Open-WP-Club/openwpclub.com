@@ -1,6 +1,8 @@
+diff --git a/README.md b/README.md
+index 4e43075..88162fe 100644
 --- a/README.md
 +++ b/README.md
-@@ -84,6 +84,21 @@
+@@ -84,6 +84,22 @@ Both blocks expose CSS custom properties on the wrapper element, making it easy
  }
  ```
  
@@ -19,6 +21,7 @@
 +
 +[Support our work](https://openwpclub.com/sponsors/) · [Discuss a campaign](https://openwpclub.com/advertise/)
 +<!-- OPENWPCLUB_SPONSORS_END -->
- 
++
  ## Development
  
+ ```bash

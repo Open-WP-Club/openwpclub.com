@@ -1,6 +1,8 @@
+diff --git a/README.md b/README.md
+index 4c4d6e8..7821a39 100644
 --- a/README.md
 +++ b/README.md
-@@ -33,6 +33,21 @@
+@@ -33,6 +33,21 @@ Full product, price, stock, image, category/tag, and variation sync, plus catego
  - [Developer Guide](documentation/DEVELOPER.md)
  - [Changelog](CHANGELOG.md)
  

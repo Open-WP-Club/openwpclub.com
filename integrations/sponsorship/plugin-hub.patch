@@ -124,127 +124,6 @@ index e8b25a5..e4a3de0 100644
  		set_transient( $this->cache_key, $repos, $this->cache_expiration );
  		update_option( 'plugin_hub_last_known_repos', $repos, false );
  
-diff --git a/package.json b/package.json
-index 84d44e9..cf08c89 100644
---- a/package.json
-+++ b/package.json
-@@ -1,6 +1,6 @@
- {
-   "name": "plugin-hub",
--  "version": "1.4.0",
-+  "version": "1.5.0",
-   "description": "WordPress plugin for managing GitHub-hosted plugins",
-   "main": "assets/js/script.js",
-   "scripts": {
-diff --git a/plugin-hub.php b/plugin-hub.php
-index c182a8f..779c362 100644
---- a/plugin-hub.php
-+++ b/plugin-hub.php
-@@ -3,7 +3,7 @@
-  * Plugin Name:             Plugin Hub
-  * Plugin URI:              https://github.com/Open-WP-Club/plugin-hub
-  * Description:             Installs, updates, and manages plugins published by Open WP Club through GitHub.
-- * Version:                 1.4.3
-+ * Version:                 1.5.0
-  * Author:                  Open WP Club
-  * Author URI:              https://openwpclub.com
-  * License:                 GPL-2.0+
-@@ -25,7 +25,7 @@ if ( ! defined( 'WPINC' ) ) {
- 	die;
- }
- 
--define( 'PLUGIN_HUB_VERSION', '1.4.3' );
-+define( 'PLUGIN_HUB_VERSION', '1.5.0' );
- define( 'PLUGIN_HUB_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
- define( 'PLUGIN_HUB_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
- define( 'PLUGIN_HUB_ORGANIZATION', 'Open-WP-Club' );
-diff --git a/readme.md b/readme.md
-index 95dd9fd..0df5db1 100644
---- a/readme.md
-+++ b/readme.md
-@@ -37,6 +37,22 @@ Plugin Hub installs, updates, and manages WordPress plugins published by Open WP
- - Daily update reports are only sent when the set of updated or available plugins changes.
- - Requires WordPress 6.0 or later (tested through 7.1) and PHP 8.0 or later.
- 
-+<!-- OPENWPCLUB_SPONSORS_START -->
-+## Open-source supporters
-+
-+These companies help keep Open WP Club plugins free and maintained.
-+
-+[![Open WP Club supporters](https://openwpclub.com/sponsorship/supporters.png)](https://openwpclub.com/sponsors/)
-+
-+## Sponsored placements
-+
-+Clearly labelled promotional campaigns, separate from our supporters.
-+
-+[![Open WP Club sponsored placements](https://openwpclub.com/sponsorship/repos/plugin-hub/campaigns.png)](https://openwpclub.com/advertise/)
-+
-+[Support our work](https://openwpclub.com/sponsors/) · [Discuss a campaign](https://openwpclub.com/advertise/)
-+<!-- OPENWPCLUB_SPONSORS_END -->
-+
- ## Development
- 
- To contribute to this plugin or modify it for your needs:
-@@ -53,3 +69,18 @@ This project is licensed under the GPL2 License.
- ## Support
- 
- For support or feature requests, please open an issue on the GitHub repository.
-+
-+### Supporter recognition and privacy
-+
-+Plugin Hub receives up to three open-source supporter credits inside its existing
-+Open WP Club catalog request to GitHub. The authoritative registry is maintained
-+at https://openwpclub.com/sponsorship.json. Credits are cached locally and refresh
-+with the catalog (normally daily). Embedded PNG logos do not contact advertisers
-+or external image servers, and there are no impression counters, tracking pixels,
-+referral parameters or additional sponsorship HTTP requests from WordPress.
-+
-+Thanks appear only on the Plugin Hub page. Use **Hide supporter thanks** to save
-+your preference across updates, or define `PLUGIN_HUB_HIDE_SUPPORTERS` as `true`
-+in `wp-config.php` to hide them for the entire site. Scheduled campaigns are not
-+shown in the WordPress admin; they have separate positions in READMEs and on the
-+website. Sponsor data never controls installation, updates or access to features.
-diff --git a/readme.txt b/readme.txt
-index c472d0c..423fb3e 100644
---- a/readme.txt
-+++ b/readme.txt
-@@ -4,7 +4,7 @@ Tags: plugins, github, installer, plugin-manager, open-wp-club
- Requires at least: 6.0
- Tested up to: 7.1
- Requires PHP: 8.0
--Stable tag: 1.4.3
-+Stable tag: 1.5.0
- License: GPLv2 or later
- License URI: http://www.gnu.org/licenses/gpl-2.0.html
- 
-@@ -76,7 +76,13 @@ Beta plugins are those with version numbers less than 1.0.0. You can toggle thei
- 
- == Changelog ==
- 
--= 1.4.3 =
-+= 1.5.0 =
-+* Add up to three open-source supporter credits from the existing first-party catalog.
-+* Embed logos locally without advertiser requests or impression tracking.
-+* Allow users to persistently hide thanks, or disable them site-wide with PLUGIN_HUB_HIDE_SUPPORTERS.
-+
-+
-+= 1.5.0 =
- * Switched the catalog source from plugins.csv to catalog.json
- * Catalog entries are now filtered to type "plugin", so apps and websites in the catalog can no longer appear as installable plugins
- 
-diff --git a/uninstall.php b/uninstall.php
-index 30d1df6..8f54a8b 100644
---- a/uninstall.php
-+++ b/uninstall.php
-@@ -23,6 +23,8 @@ delete_option( 'plugin_hub_github_token' );
- delete_option( 'plugin_hub_activity_log' );
- delete_option( 'plugin_hub_autoupdate_plugins' );
- delete_option( 'plugin_hub_last_known_repos' );
-+delete_option( 'plugin_hub_supporters' );
-+delete_metadata( 'user', 0, 'plugin_hub_hide_supporters', '', true );
- delete_option( 'plugin_hub_last_notification_hash' );
- 
- /**
 diff --git a/includes/sponsorship-display.php b/includes/sponsorship-display.php
 new file mode 100644
 index 0000000..37bcae3
@@ -391,6 +270,114 @@ index 0000000..6bd2210
 +		return array_slice( $entries, 0, 3 );
 +	}
 +}
+diff --git a/package.json b/package.json
+index 84d44e9..cf08c89 100644
+--- a/package.json
++++ b/package.json
+@@ -1,6 +1,6 @@
+ {
+   "name": "plugin-hub",
+-  "version": "1.4.0",
++  "version": "1.5.0",
+   "description": "WordPress plugin for managing GitHub-hosted plugins",
+   "main": "assets/js/script.js",
+   "scripts": {
+diff --git a/plugin-hub.php b/plugin-hub.php
+index c182a8f..779c362 100644
+--- a/plugin-hub.php
++++ b/plugin-hub.php
+@@ -3,7 +3,7 @@
+  * Plugin Name:             Plugin Hub
+  * Plugin URI:              https://github.com/Open-WP-Club/plugin-hub
+  * Description:             Installs, updates, and manages plugins published by Open WP Club through GitHub.
+- * Version:                 1.4.3
++ * Version:                 1.5.0
+  * Author:                  Open WP Club
+  * Author URI:              https://openwpclub.com
+  * License:                 GPL-2.0+
+@@ -25,7 +25,7 @@ if ( ! defined( 'WPINC' ) ) {
+ 	die;
+ }
+ 
+-define( 'PLUGIN_HUB_VERSION', '1.4.3' );
++define( 'PLUGIN_HUB_VERSION', '1.5.0' );
+ define( 'PLUGIN_HUB_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+ define( 'PLUGIN_HUB_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+ define( 'PLUGIN_HUB_ORGANIZATION', 'Open-WP-Club' );
+diff --git a/readme.md b/readme.md
+index 95dd9fd..0df5db1 100644
+--- a/readme.md
++++ b/readme.md
+@@ -37,6 +37,22 @@ Plugin Hub installs, updates, and manages WordPress plugins published by Open WP
+ - Daily update reports are only sent when the set of updated or available plugins changes.
+ - Requires WordPress 6.0 or later (tested through 7.1) and PHP 8.0 or later.
+ 
++<!-- OPENWPCLUB_SPONSORS_START -->
++## Open-source supporters
++
++These companies help keep Open WP Club plugins free and maintained.
++
++[![Open WP Club supporters](https://openwpclub.com/sponsorship/supporters.png)](https://openwpclub.com/sponsors/)
++
++## Sponsored placements
++
++Clearly labelled promotional campaigns, separate from our supporters.
++
++[![Open WP Club sponsored placements](https://openwpclub.com/sponsorship/repos/plugin-hub/campaigns.png)](https://openwpclub.com/advertise/)
++
++[Support our work](https://openwpclub.com/sponsors/) · [Discuss a campaign](https://openwpclub.com/advertise/)
++<!-- OPENWPCLUB_SPONSORS_END -->
++
+ ## Development
+ 
+ To contribute to this plugin or modify it for your needs:
+@@ -53,3 +69,18 @@ This project is licensed under the GPL2 License.
+ ## Support
+ 
+ For support or feature requests, please open an issue on the GitHub repository.
++
++### Supporter recognition and privacy
++
++Plugin Hub receives up to three open-source supporter credits inside its existing
++Open WP Club catalog request to GitHub. The authoritative registry is maintained
++at https://openwpclub.com/sponsorship.json. Credits are cached locally and refresh
++with the catalog (normally daily). Embedded PNG logos do not contact advertisers
++or external image servers, and there are no impression counters, tracking pixels,
++referral parameters or additional sponsorship HTTP requests from WordPress.
++
++Thanks appear only on the Plugin Hub page. Use **Hide supporter thanks** to save
++your preference across updates, or define `PLUGIN_HUB_HIDE_SUPPORTERS` as `true`
++in `wp-config.php` to hide them for the entire site. Scheduled campaigns are not
++shown in the WordPress admin; they have separate positions in READMEs and on the
++website. Sponsor data never controls installation, updates or access to features.
+diff --git a/readme.txt b/readme.txt
+index c472d0c..423fb3e 100644
+--- a/readme.txt
++++ b/readme.txt
+@@ -4,7 +4,7 @@ Tags: plugins, github, installer, plugin-manager, open-wp-club
+ Requires at least: 6.0
+ Tested up to: 7.1
+ Requires PHP: 8.0
+-Stable tag: 1.4.3
++Stable tag: 1.5.0
+ License: GPLv2 or later
+ License URI: http://www.gnu.org/licenses/gpl-2.0.html
+ 
+@@ -76,7 +76,13 @@ Beta plugins are those with version numbers less than 1.0.0. You can toggle thei
+ 
+ == Changelog ==
+ 
+-= 1.4.3 =
++= 1.5.0 =
++* Add up to three open-source supporter credits from the existing first-party catalog.
++* Embed logos locally without advertiser requests or impression tracking.
++* Allow users to persistently hide thanks, or disable them site-wide with PLUGIN_HUB_HIDE_SUPPORTERS.
++
++
++= 1.5.0 =
+ * Switched the catalog source from plugins.csv to catalog.json
+ * Catalog entries are now filtered to type "plugin", so apps and websites in the catalog can no longer appear as installable plugins
+ 
 diff --git a/tests/CatalogSponsorshipTest.php b/tests/CatalogSponsorshipTest.php
 new file mode 100644
 index 0000000..57041c6
@@ -540,3 +527,16 @@ index 0000000..bb5e3ce
 +		$this->assertNotContains( 'advertiser', array_column( Sponsorship::validate( $feed ), 'id' ) );
 +	}
 +}
+diff --git a/uninstall.php b/uninstall.php
+index 30d1df6..8f54a8b 100644
+--- a/uninstall.php
++++ b/uninstall.php
+@@ -23,6 +23,8 @@ delete_option( 'plugin_hub_github_token' );
+ delete_option( 'plugin_hub_activity_log' );
+ delete_option( 'plugin_hub_autoupdate_plugins' );
+ delete_option( 'plugin_hub_last_known_repos' );
++delete_option( 'plugin_hub_supporters' );
++delete_metadata( 'user', 0, 'plugin_hub_hide_supporters', '', true );
+ delete_option( 'plugin_hub_last_notification_hash' );
+ 
+ /**

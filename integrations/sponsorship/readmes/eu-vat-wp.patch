@@ -1,6 +1,8 @@
+diff --git a/README.md b/README.md
+index 2b7506d..dc1d064 100644
 --- a/README.md
 +++ b/README.md
-@@ -90,6 +90,21 @@
+@@ -90,6 +90,22 @@ A: The plugin considers products of type 'digital', 'downloadable', or 'virtual'
  **Q: Does this plugin handle VAT MOSS (Mini One Stop Shop) reporting?**
  A: The current version does not include VAT MOSS reporting features. This may be added in future updates.
  
@@ -19,6 +21,7 @@
 +
 +[Support our work](https://openwpclub.com/sponsors/) · [Discuss a campaign](https://openwpclub.com/advertise/)
 +<!-- OPENWPCLUB_SPONSORS_END -->
- 
++
  ## Support
  
+ For support, feature requests, or bug reports, please open an issue on the plugin's GitHub repository.

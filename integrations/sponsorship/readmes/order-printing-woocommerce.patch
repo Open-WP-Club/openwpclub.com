@@ -1,6 +1,8 @@
+diff --git a/README.md b/README.md
+index 675f9a4..64a1cfe 100644
 --- a/README.md
 +++ b/README.md
-@@ -35,6 +35,21 @@
+@@ -35,6 +35,22 @@ composer install --no-dev
  - **Order edit screen:** Use the "Print Order" meta box and click "Download PDF"
  - **Orders list:** Select "Print PDF" from the row actions or bulk actions
  
@@ -19,6 +21,7 @@
 +
 +[Support our work](https://openwpclub.com/sponsors/) · [Discuss a campaign](https://openwpclub.com/advertise/)
 +<!-- OPENWPCLUB_SPONSORS_END -->
- 
++
  ## License
  
+ GPL-2.0-or-later

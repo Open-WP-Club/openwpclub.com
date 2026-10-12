@@ -1,6 +1,8 @@
+diff --git a/README.md b/README.md
+index a03283f..ee479cd 100644
 --- a/README.md
 +++ b/README.md
-@@ -38,6 +38,21 @@
+@@ -38,6 +38,22 @@ In summary, the plugin checks:
  - PHP 7.4 or higher
  - RankMath SEO plugin
  
@@ -19,6 +21,7 @@
 +
 +[Support our work](https://openwpclub.com/sponsors/) · [Discuss a campaign](https://openwpclub.com/advertise/)
 +<!-- OPENWPCLUB_SPONSORS_END -->
- 
++
  ## License
  
+ This plugin is licensed under the GNU v2 License. See the [LICENSE](LICENSE) file for more information.

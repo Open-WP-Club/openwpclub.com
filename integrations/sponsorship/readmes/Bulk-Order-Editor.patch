@@ -1,6 +1,8 @@
+diff --git a/README.MD b/README.MD
+index a62a088..9c177d8 100644
 --- a/README.MD
 +++ b/README.MD
-@@ -48,6 +48,21 @@
+@@ -48,6 +48,22 @@ The Bulk Order Editor plugin is a powerful tool for WooCommerce store administra
  - PHP 7.4 or higher
  - WooCommerce 6.0 or higher
  
@@ -19,6 +21,7 @@
 +
 +[Support our work](https://openwpclub.com/sponsors/) · [Discuss a campaign](https://openwpclub.com/advertise/)
 +<!-- OPENWPCLUB_SPONSORS_END -->
- 
++
  ## Contributing
  
+ Contributions to the Bulk Order Editor plugin are welcome! Please feel free to submit pull requests or create issues for bugs and feature requests.

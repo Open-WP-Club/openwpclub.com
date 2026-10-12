@@ -1,6 +1,8 @@
+diff --git a/README.MD b/README.MD
+index b0c5f26..fd945d8 100644
 --- a/README.MD
 +++ b/README.MD
-@@ -43,6 +43,21 @@
+@@ -43,6 +43,22 @@ git clone https://github.com/Open-WP-Club/wp-logo-link.git
  - PHP 8.2+
  - Theme with standard WordPress logo classes (`.custom-logo-link`, `.site-logo`, etc.)
  
@@ -19,6 +21,7 @@
 +
 +[Support our work](https://openwpclub.com/sponsors/) · [Discuss a campaign](https://openwpclub.com/advertise/)
 +<!-- OPENWPCLUB_SPONSORS_END -->
- 
++
  ## License
  
+ GPL v2 - see [LICENSE](LICENSE) for details.

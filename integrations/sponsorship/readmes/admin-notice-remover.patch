@@ -1,6 +1,8 @@
+diff --git a/readme.md b/readme.md
+index bf47871..de4bdc6 100644
 --- a/readme.md
 +++ b/readme.md
-@@ -70,6 +70,21 @@
+@@ -70,6 +70,22 @@ If a notice isn't being removed:
  3. Try adding some unique text from the notice as a `content_partial`
  4. Clear the cache by deactivating and reactivating the plugin
  
@@ -19,6 +21,7 @@
 +
 +[Support our work](https://openwpclub.com/sponsors/) · [Discuss a campaign](https://openwpclub.com/advertise/)
 +<!-- OPENWPCLUB_SPONSORS_END -->
- 
++
  ## Contributing
  
+ Feel free to submit issues and enhancement requests on our repository.

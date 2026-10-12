@@ -1,6 +1,8 @@
+diff --git a/README.md b/README.md
+index 7da4c71..67ac662 100644
 --- a/README.md
 +++ b/README.md
-@@ -132,6 +132,21 @@
+@@ -132,6 +132,22 @@ When WooCommerce is active:
  - Progressive loading for large datasets
  - Optimized database queries with proper indexing
  
@@ -19,6 +21,7 @@
 +
 +[Support our work](https://openwpclub.com/sponsors/) · [Discuss a campaign](https://openwpclub.com/advertise/)
 +<!-- OPENWPCLUB_SPONSORS_END -->
- 
++
  ## Development
  
+ ### Local Development Setup

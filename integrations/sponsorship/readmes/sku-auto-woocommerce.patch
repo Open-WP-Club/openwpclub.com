@@ -1,6 +1,8 @@
+diff --git a/README.md b/README.md
+index 93fa424..29904a4 100644
 --- a/README.md
 +++ b/README.md
-@@ -227,6 +227,21 @@
+@@ -227,6 +227,22 @@ Use the built-in debug functions to diagnose issues:
  - PHP: 8.2 or higher
  - MySQL: 5.6 or higher
  
@@ -19,6 +21,7 @@
 +
 +[Support our work](https://openwpclub.com/sponsors/) · [Discuss a campaign](https://openwpclub.com/advertise/)
 +<!-- OPENWPCLUB_SPONSORS_END -->
- 
++
  ## License
  
+ This plugin is licensed under the Apache License 2.0. See the LICENSE file for complete terms.

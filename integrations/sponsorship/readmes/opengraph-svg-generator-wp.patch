@@ -1,6 +1,8 @@
+diff --git a/readme.md b/readme.md
+index e70049a..f62cb3f 100644
 --- a/readme.md
 +++ b/readme.md
-@@ -152,6 +152,21 @@
+@@ -152,6 +152,22 @@ wp og-svg cleanup
  - Pretty permalinks enabled (recommended)
  - Writable uploads directory
  
@@ -19,6 +21,7 @@
 +
 +[Support our work](https://openwpclub.com/sponsors/) · [Discuss a campaign](https://openwpclub.com/advertise/)
 +<!-- OPENWPCLUB_SPONSORS_END -->
- 
++
  ## License
  
+ GPL v2 or later

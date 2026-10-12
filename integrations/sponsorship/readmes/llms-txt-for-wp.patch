@@ -1,6 +1,8 @@
+diff --git a/README.md b/README.md
+index 7091f85..16371af 100644
 --- a/README.md
 +++ b/README.md
-@@ -197,6 +197,21 @@
+@@ -197,6 +197,22 @@ Website: https://yoursite.com
  - [Category Name](https://yoursite.com/category/slug.md): Category description
  ```
  
@@ -19,6 +21,7 @@
 +
 +[Support our work](https://openwpclub.com/sponsors/) · [Discuss a campaign](https://openwpclub.com/advertise/)
 +<!-- OPENWPCLUB_SPONSORS_END -->
- 
++
  ## License
  
+ GPL v2 or later

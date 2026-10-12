@@ -1,6 +1,8 @@
+diff --git a/README.md b/README.md
+index 2dc0d01..7d9edaa 100644
 --- a/README.md
 +++ b/README.md
-@@ -24,6 +24,21 @@
+@@ -24,6 +24,22 @@ A modern WooCommerce plugin that shows a colour-coded payment-method badge when
  - PHP 7.4+
  - WooCommerce 8.3+ (tested through 10.9)
  
@@ -19,6 +21,7 @@
 +
 +[Support our work](https://openwpclub.com/sponsors/) · [Discuss a campaign](https://openwpclub.com/advertise/)
 +<!-- OPENWPCLUB_SPONSORS_END -->
- 
++
  ## Development
  
+ The plugin has no build step and adds no npm or PHP dependencies. Before a release, run:

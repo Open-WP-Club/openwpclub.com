@@ -1,6 +1,8 @@
+diff --git a/README.md b/README.md
+index f1dbe6c..ad464a6 100644
 --- a/README.md
 +++ b/README.md
-@@ -87,6 +87,21 @@
+@@ -87,6 +87,22 @@ Check **Settings → GF Shopify** for configuration status and recent activity l
  
  **API permissions**: Verify your Shopify app has customer read/write permissions
  
@@ -19,6 +21,7 @@
 +
 +[Support our work](https://openwpclub.com/sponsors/) · [Discuss a campaign](https://openwpclub.com/advertise/)
 +<!-- OPENWPCLUB_SPONSORS_END -->
- 
++
  ## Support
  
+ For issues and questions:

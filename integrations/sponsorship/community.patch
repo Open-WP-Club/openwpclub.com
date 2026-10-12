@@ -49,29 +49,6 @@ index ab4f91d..4894f0c 100644
 +    "campaigns": []
 +  }
  }
-diff --git a/scripts/update-catalog.mjs b/scripts/update-catalog.mjs
-index 0dc4f94..4fe092c 100644
---- a/scripts/update-catalog.mjs
-+++ b/scripts/update-catalog.mjs
-@@ -1,6 +1,7 @@
- import { readFile, writeFile } from 'node:fs/promises';
- import { githubGraphqlRequest } from './github-api.mjs';
- import { buildProductCatalog } from './product-catalog.mjs';
-+import { refreshSponsorship } from './sponsorship-feed.mjs';
- import { renderProfileReadme } from './profile-readme.mjs';
- 
- const token = process.env.GITHUB_TOKEN;
-@@ -48,6 +49,10 @@ do {
- const overrides = JSON.parse(await readFile('data/product-overrides.json', 'utf8'));
- const catalog = buildProductCatalog(repositories, overrides);
- 
-+let previousSponsorship;
-+try { previousSponsorship = JSON.parse(await readFile('catalog.json', 'utf8')).sponsorship; } catch { /* First catalog generation. */ }
-+catalog.sponsorship = await refreshSponsorship(previousSponsorship);
-+
- await writeFile('catalog.json', `${JSON.stringify(catalog, null, 2)}\n`, 'utf8');
- 
- const profileReadme = await readFile('profile/README.md', 'utf8');
 diff --git a/scripts/sponsorship-feed.mjs b/scripts/sponsorship-feed.mjs
 new file mode 100644
 index 0000000..19cedb8
@@ -120,6 +97,29 @@ index 0000000..19cedb8
 +    try { return validateSponsorshipFeed(previous); } catch { return { schemaVersion: 1, maxPositions: 3, supporters: [], campaigns: [] }; }
 +  }
 +}
+diff --git a/scripts/update-catalog.mjs b/scripts/update-catalog.mjs
+index 0dc4f94..4fe092c 100644
+--- a/scripts/update-catalog.mjs
++++ b/scripts/update-catalog.mjs
+@@ -1,6 +1,7 @@
+ import { readFile, writeFile } from 'node:fs/promises';
+ import { githubGraphqlRequest } from './github-api.mjs';
+ import { buildProductCatalog } from './product-catalog.mjs';
++import { refreshSponsorship } from './sponsorship-feed.mjs';
+ import { renderProfileReadme } from './profile-readme.mjs';
+ 
+ const token = process.env.GITHUB_TOKEN;
+@@ -48,6 +49,10 @@ do {
+ const overrides = JSON.parse(await readFile('data/product-overrides.json', 'utf8'));
+ const catalog = buildProductCatalog(repositories, overrides);
+ 
++let previousSponsorship;
++try { previousSponsorship = JSON.parse(await readFile('catalog.json', 'utf8')).sponsorship; } catch { /* First catalog generation. */ }
++catalog.sponsorship = await refreshSponsorship(previousSponsorship);
++
+ await writeFile('catalog.json', `${JSON.stringify(catalog, null, 2)}\n`, 'utf8');
+ 
+ const profileReadme = await readFile('profile/README.md', 'utf8');
 diff --git a/test/sponsorship-feed.test.mjs b/test/sponsorship-feed.test.mjs
 new file mode 100644
 index 0000000..356ef1a

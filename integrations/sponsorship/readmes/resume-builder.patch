@@ -1,9 +1,12 @@
+diff --git a/readme.md b/readme.md
+index 71b9bd2..f9f1bef 100644
 --- a/readme.md
 +++ b/readme.md
-@@ -27,3 +27,18 @@
+@@ -26,3 +26,19 @@ Simply insert this shortcode into the content area of any page or post where you
+ The `[wp_resume]` shortcode will be replaced with your full resume content when the page is viewed.
  
  Remember to configure your resume details in the WP Resume Builder settings page in your WordPress admin area before using the shortcode.
- 
++
 +<!-- OPENWPCLUB_SPONSORS_START -->
 +## Open-source supporters
 +

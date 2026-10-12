@@ -1,6 +1,8 @@
+diff --git a/README.md b/README.md
+index 92e1800..522c435 100644
 --- a/README.md
 +++ b/README.md
-@@ -184,6 +184,21 @@
+@@ -184,6 +184,22 @@ pnpm run test:integration
  - Update wp-env, PHPUnit and transitive dependencies; pin patched same-major overrides for dependencies pinned upstream.
  - Verified on WordPress 7.1.2 and WooCommerce 11.1.2.
  
@@ -19,6 +21,7 @@
 +
 +[Support our work](https://openwpclub.com/sponsors/) · [Discuss a campaign](https://openwpclub.com/advertise/)
 +<!-- OPENWPCLUB_SPONSORS_END -->
- 
++
  ## License
  
+ Licensed under the Apache License 2.0. See [LICENSE](LICENSE) for details.

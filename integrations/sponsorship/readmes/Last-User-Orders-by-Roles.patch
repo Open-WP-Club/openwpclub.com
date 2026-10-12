@@ -1,6 +1,8 @@
+diff --git a/readme.md b/readme.md
+index 8a8cbfa..2441abd 100644
 --- a/readme.md
 +++ b/readme.md
-@@ -42,6 +42,21 @@
+@@ -42,6 +42,22 @@ To configure the plugin, go to the WooCommerce settings page, find the 'User Ord
  - **Default Role**: Role to assign to users who haven't ordered within the specified time.
  - **Users Per Page**: Number of users to display per administration page.
  
@@ -19,6 +21,7 @@
 +
 +[Support our work](https://openwpclub.com/sponsors/) · [Discuss a campaign](https://openwpclub.com/advertise/)
 +<!-- OPENWPCLUB_SPONSORS_END -->
- 
++
  ## Contributing
  
+ Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.

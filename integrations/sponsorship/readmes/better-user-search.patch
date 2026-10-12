@@ -1,9 +1,12 @@
+diff --git a/README.md b/README.md
+index ef9a449..62af8f1 100644
 --- a/README.md
 +++ b/README.md
-@@ -25,3 +25,18 @@
+@@ -24,3 +24,19 @@ Include the word `or` (case-insensitive) in your query to match users that meet
+ 
  Want to find all WooCommerce customers in Texas or Florida?  
  First, ensure `billing_state` and `shipping_state` are added in the Better User Search settings. Then go to the **Users** page and type:
- 
++
 +<!-- OPENWPCLUB_SPONSORS_START -->
 +## Open-source supporters
 +

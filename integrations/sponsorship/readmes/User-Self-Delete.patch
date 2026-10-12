@@ -1,6 +1,8 @@
+diff --git a/README.md b/README.md
+index 4dd915b..2a0aba0 100644
 --- a/README.md
 +++ b/README.md
-@@ -277,6 +277,21 @@
+@@ -277,6 +277,22 @@ Plugin automatically migrates existing soft-deleted users to archive table on ac
  
  This plugin helps meet GDPR and data retention requirements but does not guarantee full legal compliance. Consult legal counsel for your specific jurisdiction and business requirements.
  
@@ -19,6 +21,7 @@
 +
 +[Support our work](https://openwpclub.com/sponsors/) · [Discuss a campaign](https://openwpclub.com/advertise/)
 +<!-- OPENWPCLUB_SPONSORS_END -->
- 
++
  ## Support
  
+ For issues, feature requests, or contributions:

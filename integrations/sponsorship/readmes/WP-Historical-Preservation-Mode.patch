@@ -1,6 +1,8 @@
+diff --git a/readme.md b/readme.md
+index 50b7c0f..c480dcf 100644
 --- a/readme.md
 +++ b/readme.md
-@@ -65,6 +65,21 @@
+@@ -65,6 +65,22 @@ Currently, the preservation mode applies globally when enabled. Future versions
  - Form submission prevention
  - Button and input field disabling
  
@@ -19,6 +21,7 @@
 +
 +[Support our work](https://openwpclub.com/sponsors/) · [Discuss a campaign](https://openwpclub.com/advertise/)
 +<!-- OPENWPCLUB_SPONSORS_END -->
- 
++
  ## License
  
+ GPL v2 or later
