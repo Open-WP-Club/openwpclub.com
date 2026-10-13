@@ -761,7 +761,7 @@
     "id": "plugin-hub",
     "name": "Plugin Hub",
     "description": "Plugin Hub is Open WP Club official way of installing/updating plugins from their official repos.",
-    "version": "1.5.0",
+    "version": "1.5.1",
     "downloads": "",
     "rating": "",
     "githubUrl": "https://github.com/Open-WP-Club/plugin-hub",
@@ -776,18 +776,18 @@
     "language": "PHP",
     "defaultBranch": "main",
     "category": "plugin",
-    "releasePublishedAt": "2026-10-13T07:08:15Z",
-    "releaseUrl": "https://github.com/Open-WP-Club/plugin-hub/releases/tag/1.5.0",
+    "releasePublishedAt": "2026-10-13T08:43:02Z",
+    "releaseUrl": "https://github.com/Open-WP-Club/plugin-hub/releases/tag/1.5.1",
     "releaseAssets": [
       {
         "name": "plugin-hub.zip",
-        "url": "https://github.com/Open-WP-Club/plugin-hub/releases/download/1.5.0/plugin-hub.zip",
-        "size": 51087,
-        "downloadCount": 2,
+        "url": "https://github.com/Open-WP-Club/plugin-hub/releases/download/1.5.1/plugin-hub.zip",
+        "size": 51293,
+        "downloadCount": 0,
         "contentType": "application/zip"
       }
     ],
-    "releaseDownloads": 2
+    "releaseDownloads": 0
   },
   {
     "id": "plugins-showcase-wp",
@@ -1177,18 +1177,18 @@
         "name": "StoreOS.-.Built.for.WooCommerce.Setup.1.0.3.exe",
         "url": "https://github.com/Open-WP-Club/StoreOS/releases/download/1.0.3/StoreOS.-.Built.for.WooCommerce.Setup.1.0.3.exe",
         "size": 206384923,
-        "downloadCount": 14,
+        "downloadCount": 15,
         "contentType": "application/x-msdos-program"
       },
       {
         "name": "storeos_1.0.3_amd64.deb",
         "url": "https://github.com/Open-WP-Club/StoreOS/releases/download/1.0.3/storeos_1.0.3_amd64.deb",
         "size": 107236304,
-        "downloadCount": 12,
+        "downloadCount": 13,
         "contentType": "application/x-debian-package"
       }
     ],
-    "releaseDownloads": 122,
+    "releaseDownloads": 124,
     "platforms": [
       "windows",
       "macos",
@@ -1235,11 +1235,11 @@
         "name": "taxonomy-showcase-woocommerce-1.2.3.zip",
         "url": "https://github.com/Open-WP-Club/taxonomy-showcase-WooCommerce/releases/download/1.2.3/taxonomy-showcase-woocommerce-1.2.3.zip",
         "size": 23067,
-        "downloadCount": 3,
+        "downloadCount": 4,
         "contentType": "application/zip"
       }
     ],
-    "releaseDownloads": 3
+    "releaseDownloads": 4
   },
   {
     "id": "team-manager-wordpress",
@@ -1291,11 +1291,11 @@
         "name": "User-Self-Delete.zip",
         "url": "https://github.com/Open-WP-Club/User-Self-Delete/releases/download/2.1.0/User-Self-Delete.zip",
         "size": 36446,
-        "downloadCount": 0,
+        "downloadCount": 1,
         "contentType": "application/zip"
       }
     ],
-    "releaseDownloads": 0
+    "releaseDownloads": 1
   },
   {
     "id": "wc-pre-order",
