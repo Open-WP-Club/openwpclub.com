@@ -21,9 +21,20 @@ index 8bcbb15..dfb701d 100644
  
  permissions:
 diff --git a/catalog.json b/catalog.json
-index ab4f91d..82efd70 100644
+index ab4f91d..6e05477 100644
 --- a/catalog.json
 +++ b/catalog.json
+@@ -482,8 +482,8 @@
+       "type": "plugin",
+       "description": "Plugin Hub is Open WP Club official way of installing/updating plugins from their official repos.",
+       "repo_url": "https://github.com/Open-WP-Club/plugin-hub",
+-      "version": "1.4.3",
+-      "release_url": "https://github.com/Open-WP-Club/plugin-hub/releases/tag/1.4.3",
++      "version": "1.5.0",
++      "release_url": "https://github.com/Open-WP-Club/plugin-hub/releases/tag/1.5.0",
+       "platforms": [],
+       "language": "PHP",
+       "topics": [],
 @@ -943,5 +943,24 @@
        "forks": 1,
        "featured": false

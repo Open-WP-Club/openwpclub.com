@@ -13,8 +13,17 @@ minimumReleaseAgeExclude:
   - astro@7.2.0
   - vitest@4.1.9
   - tsx@4.23.10
+  # Allow verified security updates without waiting for the release-age window.
+  - source-map-js@1.2.2
+  - http-cache-semantics@4.3.0
+  - postcss-selector-parser@7.1.6
 
 overrides:
   "@iconify/tools": "^5.0.14"
   esbuild: "^0.28.2"
   nanoid: "^3.3.19"
+  # Security floors for transitive dependencies; keep application versions stable.
+  source-map-js: "^1.2.2"
+  http-cache-semantics: "^4.3.0"
+  postcss-selector-parser: "^7.1.6"
+  "fflate@<0.7.5": "0.7.5"
