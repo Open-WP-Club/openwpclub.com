@@ -59,3 +59,8 @@ your preference across updates, or define <code>PLUGIN_HUB_HIDE_SUPPORTERS</code
 in <code>wp-config.php</code> to hide them for the entire site. Scheduled campaigns are not
 shown in the WordPress admin; they have separate positions in READMEs and on the
 website. Sponsor data never controls installation, updates or access to features.</p>
+<h3>Catalog outage handling</h3>
+<p>When GitHub is unavailable or the catalog is invalid, Plugin Hub uses the last
+validated catalog and pauses automatic retries for five minutes. Use <strong>Refresh
+Open WP Club catalog</strong> to retry immediately. Uninstall removes both the current
+catalog cache and the short retry backoff.</p>
