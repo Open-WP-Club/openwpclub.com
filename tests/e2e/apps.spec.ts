@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, test } from './fixtures';
 
 test('apps catalog identifies desktop and mobile products', async ({ page }) => {
   await page.goto('/apps/');

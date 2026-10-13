@@ -7,7 +7,7 @@
 <li>Add <strong>Store pickup</strong> to any WooCommerce shipping zone.</li>
 <li>Limit each shipping-zone instance to selected locations, or leave it empty to use all active locations.</li>
 <li>Choose a default pickup location for each shipping-zone instance.</li>
-<li>Present the matching pickup rates as a single dropdown in the Checkout Block.</li>
+<li>Show a Store pickup option with a store dropdown underneath when selected; hide the dropdown when another method is selected.</li>
 <li>Use WooCommerce-native shipping rates so free/paid pickup, taxes, and checkout totals remain accurate.</li>
 <li>Validate the selected location server-side before the order is placed.</li>
 <li>Show a snapshot of the selected location in order admin, emails, My Account, and the thank-you page.</li>
@@ -18,7 +18,7 @@
 </ul>
 <h2>Installation</h2>
 <ol>
-<li>Copy this directory to <code>wp-content/plugins/local-pickup-stores</code> or upload it as a ZIP from WordPress admin.</li>
+<li>Copy this directory to <code>wp-content/plugins/local-pickup-woocommerce</code> or upload it as a ZIP from WordPress admin.</li>
 <li>Activate <strong>Local Pickup Stores for WooCommerce</strong>.</li>
 <li>Add and publish at least one location at <strong>WooCommerce → Pickup locations</strong>.</li>
 <li>Go to <strong>WooCommerce → Settings → Shipping → Shipping zones</strong>.</li>
@@ -37,6 +37,21 @@
 <h2>Development checks</h2>
 <pre><code class="language-sh">composer install
 composer test
-find . -name '*.php' -print0 | xargs -0 -n1 php -l
+composer lint:php
+npm ci
+npm test
+find . -path ./vendor -prune -o -name '*.php' -print0 | xargs -0 -n1 php -l
 node --check assets/js/checkout.js
 </code></pre>
+<p>PHP tests exercise the real plugin classes with small WordPress/WooCommerce doubles:
+location filtering and saving, permissions and nonces, address validation, duplication,
+reordering, shipping rates and availability, order validation and snapshots, tax addresses,
+emails, output escaping, checkout assets, and version consistency. JavaScript tests use
+jsdom to check method switching, store selection, localization, and checkout DOM refreshes.
+These tests do not replace a checkout test in a running WordPress/WooCommerce store.</p>
+<h2>Releases</h2>
+<p>Update only <code>Version:</code> in the header of <code>local-pickup-stores.php</code>. The runtime
+<code>LPS_VERSION</code> constant and asset cache versions are read from that header automatically.
+The private npm test tooling has no separate version to maintain.</p>
+<p>Create the GitHub release with the same version as its tag (an optional <code>v</code> prefix is
+accepted). The release workflow verifies that the tag matches the plugin header.</p>

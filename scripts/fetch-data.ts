@@ -1,3 +1,4 @@
+import { fetchReadmeMarkdown } from '../src/lib/github-readme';
 import { stripSponsorshipBlock } from '../src/lib/sponsorship';
 /**
  * Fetches plugin + contributor data from GitHub and saves to src/data/.
@@ -22,10 +23,15 @@ import type { ReleaseAsset } from '../src/lib/app-releases';
 // Resolve paths
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
-const DATA_DIR = resolve(ROOT, 'src/data');
+const DATA_DIR = process.env.OPENWP_DATA_DIR ? resolve(process.env.OPENWP_DATA_DIR) : resolve(ROOT, 'src/data');
 const READMES_DIR = resolve(DATA_DIR, 'readmes');
-const CACHE_FILE = resolve(ROOT, '.fetch-cache.json');
+const CACHE_FILE = process.env.OPENWP_DATA_DIR ? resolve(DATA_DIR, '.fetch-cache.json') : resolve(ROOT, '.fetch-cache.json');
 const APP_METADATA_FILE = resolve(DATA_DIR, 'apps.json');
+// Stage changes until all required sources have succeeded.
+const pendingWrites = new Map<string, string>();
+const saveSnapshot = (path: string, content: string) => pendingWrites.set(path, content);
+const previousFreshness = existsSync(resolve(DATA_DIR, 'freshness.json')) ? JSON.parse(readFileSync(resolve(DATA_DIR, 'freshness.json'), 'utf8')) : {};
+
 
 // Load .env file
 try {
@@ -52,11 +58,10 @@ interface AppMetadata {
 }
 
 function loadAppMetadata(): Partial<Record<string, AppMetadata>> {
-  try {
-    return JSON.parse(readFileSync(APP_METADATA_FILE, 'utf-8'));
-  } catch {
-    return {};
-  }
+  if (!existsSync(APP_METADATA_FILE)) return {};
+  const data = JSON.parse(readFileSync(APP_METADATA_FILE, 'utf8'));
+  if (!data || typeof data !== 'object' || Array.isArray(data)) throw new Error('Invalid local app metadata; preserving existing snapshots');
+  return data;
 }
 
 /** Known AI/LLM account logins - excluded from contributors unless they are sponsors. */
@@ -68,6 +73,7 @@ interface SponsorNode {
   sponsorEntity: { login: string; name: string; avatarUrl: string; url: string } | null;
   tier: { monthlyPriceInDollars: number; name: string } | null;
   createdAt: string;
+  privacyLevel?: 'PUBLIC' | 'PRIVATE';
 }
 
 interface SponsorsGqlResponse {
@@ -138,9 +144,10 @@ async function cachedFetch(url: string): Promise<{ data: unknown; status: number
         console.warn(`  GitHub returned HTTP ${res.status}; using cached data for ${url}`);
         return { data: cached.data, status: res.status };
       }
-      return null;
+      return { data: null, status: res.status };
     }
 
+    if (res.status === 204) return { data: [], status: 204 };
     cacheMisses++;
     const data = await res.json();
     const etag = res.headers.get('etag');
@@ -168,7 +175,6 @@ async function cachedFetchText(url: string): Promise<string | null> {
       return cached.data;
     }
     if (!res.ok) {
-      if (typeof cached?.data === 'string') return cached.data;
       return null;
     }
     cacheMisses++;
@@ -179,8 +185,8 @@ async function cachedFetchText(url: string): Promise<string | null> {
   } catch (error) {
     if (typeof cached?.data === 'string') {
       cacheHits++;
-      console.warn(`  Source request failed; using cached data for ${url}: ${(error as Error).message}`);
-      return cached.data;
+      console.warn(`  Source request failed; retaining published snapshots for ${url}: ${(error as Error).message}`);
+      return null;
     }
     return null;
   }
@@ -190,11 +196,11 @@ async function cachedFetchText(url: string): Promise<string | null> {
 async function fetchRepoStats(repoName: string) {
   const url = `https://api.github.com/repos/${ORG}/${repoName}`;
   const result = await cachedFetch(url);
-  if (!result) {
-    console.warn(`  Failed: ${repoName}`);
-    return { stars: 0, forks: 0, openIssues: 0, lastPush: '', createdAt: '', topics: [] as string[], license: null as string | null, language: null as string | null, defaultBranch: 'main' };
+  if (!result || ![200, 304].includes(result.status)) {
+    throw new Error(`Repository refresh failed for ${repoName}; preserving existing data`);
   }
   const d = result.data as Record<string, unknown>;
+  if (!d || typeof d.default_branch !== 'string' || !Number.isInteger(d.stargazers_count) || !Number.isInteger(d.forks_count)) throw new Error(`Invalid repository response for ${repoName}`);
   return {
     stars: (d.stargazers_count as number) ?? 0,
     forks: (d.forks_count as number) ?? 0,
@@ -237,9 +243,11 @@ async function fetchLatestRelease(repoName: string): Promise<{
   url: string;
 } | null> {
   const result = await cachedFetch(`https://api.github.com/repos/${ORG}/${repoName}/releases/latest`);
-  if (!result) return null;
+  if (result?.status === 404) return null;
+  if (!result || ![200, 304].includes(result.status)) throw new Error(`Release refresh failed for ${repoName}`);
 
   const release = result.data as LatestGitHubRelease;
+  if (!release || typeof release.tag_name !== 'string' || !release.published_at || !Array.isArray(release.assets)) throw new Error(`Invalid release response for ${repoName}`);
   if (release.draft || release.prerelease) return null;
   const assets = (release.assets || []).map((asset) => ({
     name: asset.name,
@@ -261,23 +269,10 @@ async function fetchLatestRelease(repoName: string): Promise<{
 }
 
 async function fetchReadme(repoName: string, defaultBranch: string): Promise<string> {
-  // Try API first (with ETag cache)
-  const url = `https://api.github.com/repos/${ORG}/${repoName}/readme`;
-  const result = await cachedFetch(url);
-  if (result) {
-    const data = result.data as Record<string, string>;
-    const content = Buffer.from(data.content, 'base64').toString('utf-8');
-    let html = await marked.parse(stripSponsorshipBlock(content));
-    return rewriteImageUrls(html, repoName, defaultBranch);
-  }
-  // Fallback: raw file (not rate-limited)
-  const rawRes = await fetch(`https://raw.githubusercontent.com/${ORG}/${repoName}/${defaultBranch}/README.md`, { signal: AbortSignal.timeout(15000) });
-  if (rawRes.ok) {
-    const content = await rawRes.text();
-    let html = await marked.parse(stripSponsorshipBlock(content));
-    return rewriteImageUrls(html, repoName, defaultBranch);
-  }
-  return '<p class="text-gray-500 italic">No README available for this plugin.</p>';
+  const result = await cachedFetch(`https://api.github.com/repos/${ORG}/${repoName}/readme`);
+  const content = await fetchReadmeMarkdown(repoName, defaultBranch, { apiResult: result, org: ORG });
+  if (content === null) return '<p class="text-gray-500 italic">No README available for this plugin.</p>';
+  return rewriteImageUrls(await marked.parse(stripSponsorshipBlock(content)), repoName, defaultBranch);
 }
 
 function sanitizeReadme(html: string): string {
@@ -319,7 +314,7 @@ async function main() {
   // Fetch product catalog
   console.log('Fetching product catalog...');
   const text = await cachedFetchText(CATALOG_URL);
-  if (!text) { console.error('  FAILED: no catalog response or cached fallback'); process.exit(1); }
+  if (!text) throw new Error('Catalog source unavailable; preserving existing snapshots');
 
   interface CatalogProduct {
     repo_name: string;
@@ -349,6 +344,7 @@ async function main() {
   }
 
   const { products }: { products: CatalogProduct[] } = JSON.parse(text);
+  if (!Array.isArray(products) || products.length === 0) throw new Error('Invalid or empty catalog; preserving existing snapshots');
   const catalogPlugins: CatalogPlugin[] = products
     .filter(({ type }) => ['app', 'plugin', 'website'].includes(type))
     .map((product) => ({
@@ -364,6 +360,11 @@ async function main() {
       features: product.features || [],
       requirements: product.requirements || [],
     }));
+  const seen = new Set<string>();
+  for (const product of catalogPlugins) {
+    if (!/^[a-z0-9][a-z0-9._-]*$/.test(product.slug) || seen.has(product.slug) || typeof product.name !== 'string' || typeof product.version !== 'string' || typeof product.githubUrl !== 'string' || !product.githubUrl.startsWith(`https://github.com/${ORG}/`)) throw new Error('Invalid or duplicate catalog entry');
+    seen.add(product.slug);
+  }
   console.log(`  Found ${catalogPlugins.length} products in the catalog\n`);
 
   // Fetch GitHub data for each plugin
@@ -396,6 +397,7 @@ async function main() {
       })
     );
     for (const r of results) {
+      if (r.status === 'rejected') throw r.reason;
       if (r.status === 'fulfilled') {
         const { product, stats, metadata, readmeHtml, latestRelease } = r.value;
         totalStars += stats.stars;
@@ -422,9 +424,9 @@ async function main() {
           category: product.category,
           releasePublishedAt: latestRelease?.publishedAt || '',
           releaseUrl: latestRelease?.url || '',
+          releaseAssets: latestRelease?.assets || [],
+          releaseDownloads: latestRelease?.downloads || 0,
           ...(product.category === 'app' && {
-            releaseDownloads: latestRelease?.downloads || 0,
-            releaseAssets: latestRelease?.assets || [],
             platforms: product.platforms,
             featured: product.featured,
             icon: product.icon,
@@ -455,7 +457,7 @@ async function main() {
   console.log();
 
   repositoryReleases.sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
-  writeFileSync(resolve(DATA_DIR, 'releases.json'), JSON.stringify(repositoryReleases, null, 2));
+  saveSnapshot(resolve(DATA_DIR, 'releases.json'), JSON.stringify(repositoryReleases, null, 2));
   console.log(`  Saved ${repositoryReleases.length} latest repository releases\n`);
 
   // Fetch contributors
@@ -469,12 +471,14 @@ async function main() {
       batch.map(async (p) => {
         const url = `https://api.github.com/repos/${ORG}/${p.slug}/contributors?per_page=100`;
         const result = await cachedFetch(url);
+        if (!result || ![200, 204, 304].includes(result.status)) throw new Error(`Contributors refresh failed for ${p.slug}`);
         const data = result ? result.data as Array<{ login: string; contributions: number; html_url: string; avatar_url: string; type: string }> : [];
+        if (!Array.isArray(data)) throw new Error(`Invalid contributors response for ${p.slug}`);
         return { slug: p.slug, data };
       })
     );
     for (const r of results) {
-      if (r.status !== 'fulfilled') continue;
+      if (r.status !== 'fulfilled') throw r.reason;
       const { slug, data } = r.value;
       const repoContribs: Array<{ login: string; avatar: string; profileUrl: string; contributions: number }> = [];
       for (const c of data) {
@@ -514,7 +518,7 @@ async function main() {
         .filter(Boolean);
       return { date, title: r.name || r.tag_name, items: items.length > 0 ? items : [`Release ${r.tag_name}`] };
     });
-    writeFileSync(resolve(DATA_DIR, 'changelog.json'), JSON.stringify(changelog, null, 2));
+    saveSnapshot(resolve(DATA_DIR, 'changelog.json'), JSON.stringify(changelog, null, 2));
     console.log(`  Saved ${changelog.length} releases to changelog.json\n`);
   } else {
     console.log('  No releases found - keeping existing changelog.json\n');
@@ -533,6 +537,7 @@ async function main() {
             }
             tier { monthlyPriceInDollars name }
             createdAt
+            privacyLevel
           }
         }
       }
@@ -546,9 +551,9 @@ async function main() {
     if (gqlRes.ok) {
       const gqlData = await gqlRes.json() as SponsorsGqlResponse;
       const nodes = gqlData.data?.organization?.sponsorshipsAsMaintainer?.nodes ?? [];
-      if (!gqlData.errors) {
+      if (!gqlData.errors && Array.isArray(gqlData.data?.organization?.sponsorshipsAsMaintainer?.nodes)) {
         const sponsors: Sponsor[] = nodes
-          .filter((n) => n.sponsorEntity)
+          .filter((n) => n.sponsorEntity && n.privacyLevel === 'PUBLIC')
           .map((n) => {
             const entity = n.sponsorEntity!;
             const price = n.tier?.monthlyPriceInDollars ?? 0;
@@ -563,7 +568,7 @@ async function main() {
               since: n.createdAt,
             };
           });
-        writeFileSync(resolve(DATA_DIR, 'sponsors.json'), JSON.stringify(sponsors, null, 2));
+        saveSnapshot(resolve(DATA_DIR, 'sponsors.json'), JSON.stringify(sponsors, null, 2));
         console.log(`  Saved ${sponsors.length} sponsors to sponsors.json\n`);
       } else {
         console.warn('  GitHub Sponsors GraphQL errors; preserving previous import\n');
@@ -586,10 +591,10 @@ async function main() {
     const trafficRes = await fetch(TRAFFIC_URL, { signal: AbortSignal.timeout(15000) });
     if (trafficRes.ok) {
       const trafficText = await trafficRes.text();
-      writeFileSync(resolve(DATA_DIR, 'traffic.json'), trafficText);
-      try {
-        trafficUpdatedAt = JSON.parse(trafficText).updatedAt || trafficUpdatedAt;
-      } catch { /* keep the previous timestamp */ }
+      const trafficData = JSON.parse(trafficText);
+      if (!trafficData || typeof trafficData !== 'object' || Array.isArray(trafficData)) throw new Error('Invalid traffic response');
+      saveSnapshot(resolve(DATA_DIR, 'traffic.json'), JSON.stringify(trafficData, null, 2));
+      trafficUpdatedAt = trafficData.updatedAt || trafficUpdatedAt;
       console.log('  Saved traffic.json\n');
     } else {
       console.warn(`  Failed: HTTP ${trafficRes.status} - keeping existing traffic.json\n`);
@@ -605,23 +610,25 @@ async function main() {
   // Write per-plugin sanitized README HTML files
   for (const p of pluginData) {
     const html = sanitizeReadme(p._readmeHtml as string);
-    writeFileSync(resolve(READMES_DIR, `${p.id}.html`), html);
+    saveSnapshot(resolve(READMES_DIR, `${p.id}.html`), html);
   }
 
   // Strip internal _readmeHtml field before writing plugins.json
   const cleanData = pluginData.map(({ _readmeHtml, ...rest }) => rest);
-  writeFileSync(resolve(DATA_DIR, 'plugins.json'), JSON.stringify(cleanData, null, 2));
-  writeFileSync(resolve(DATA_DIR, 'contributors.json'), JSON.stringify(contributors, null, 2));
-  writeFileSync(resolve(DATA_DIR, 'freshness.json'), JSON.stringify({
+  saveSnapshot(resolve(DATA_DIR, 'plugins.json'), JSON.stringify(cleanData, null, 2));
+  saveSnapshot(resolve(DATA_DIR, 'contributors.json'), JSON.stringify(contributors, null, 2));
+  saveSnapshot(resolve(DATA_DIR, 'freshness.json'), JSON.stringify({
     catalogUpdatedAt: new Date().toISOString(),
-    trafficUpdatedAt: trafficUpdatedAt || new Date().toISOString(),
+    trafficUpdatedAt: trafficUpdatedAt || previousFreshness.trafficUpdatedAt || '',
     releasesUpdatedAt: new Date().toISOString(),
   }, null, 2));
 
   // Save per-repo contributor data
   const repoContribData = Object.fromEntries(perRepoContributors);
-  writeFileSync(resolve(DATA_DIR, 'repo-contributors.json'), JSON.stringify(repoContribData, null, 2));
+  saveSnapshot(resolve(DATA_DIR, 'repo-contributors.json'), JSON.stringify(repoContribData, null, 2));
 
+  // All required reads succeeded. Only now replace the published snapshots.
+  for (const [path, content] of pendingWrites) writeFileSync(path, content);
   // Save ETag cache for next run
   saveCache();
 

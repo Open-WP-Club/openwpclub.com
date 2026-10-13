@@ -51,7 +51,13 @@ pnpm preview   # preview the production build locally
 `pnpm build` uses the committed catalog so builds stay reproducible and do not
 depend on GitHub API availability. Use `pnpm build:fresh` when you intentionally
 want to refresh first. The monthly GitHub Actions workflow refreshes and commits
-the catalog on the first day of each month. App descriptions, platforms,
+the catalog on the first day of each month. Monthly and weekly refreshes invoke
+publishing explicitly after their bot commits. The weekly check also updates
+plugin/app versions and installer assets, not just the changelog.
+
+Required-source failures leave the last successful snapshots untouched. README
+fallback supports `README.md`, `readme.md`, and `README.MD`. Failed optional
+traffic reads retain both the old data and its source date. App descriptions, platforms,
 requirements, icons, and screenshots are maintained in `src/data/apps.json`;
 repository versions and release assets continue to come from GitHub.
 

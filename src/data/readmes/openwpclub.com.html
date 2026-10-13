@@ -1,5 +1,5 @@
 <h1>Open WP Club Website</h1>
-<p>The community website for <a href="https://openwpclub.com">Open WP Club</a> - free, open-source WordPress plugins built by the community. Powered by <a href="https://astro.build">Astro</a>, Tailwind CSS v4, and deployed on Cloudflare Workers.</p>
+<p>The community website for <a href="https://openwpclub.com">Open WP Club</a> - free, open-source WordPress plugins built by the community. Powered by <a href="https://astro.build">Astro</a>, Tailwind CSS v4, and published on GitHub Pages behind Cloudflare.</p>
 <h2>Quick Start</h2>
 <h3>Prerequisites</h3>
 <ul>
@@ -81,6 +81,34 @@ repository versions and release assets continue to come from GitHub.</p>
 <pre><code class="language-bash">pnpm exec playwright install chromium
 pnpm test:e2e
 </code></pre>
+<h2>Central sponsorship</h2>
+<p>Edit <code>src/data/sponsorship.json</code> to manage supporters and campaigns. MGKNeT is
+registered as a supporter. Each group has up to three active entries; dates use
+UTC and <code>endsAt: null</code> means an ongoing sponsorship. Put approved PNG logos in
+<code>public/images/sponsors/</code>.</p>
+<p><code>pnpm build</code> publishes <code>/sponsorship.json</code>, the shared README transparent light/dark banners and scoped
+campaign banners. The site, READMEs and Plugin Hub all derive their recognition
+from that registry. GitHub Sponsors imports in <code>src/data/sponsors.json</code> are a
+separate funding snapshot and never automatically grant advertising rights.</p>
+<p>Run <code>node scripts/sync-sponsorship-readmes.mjs --write /path/to/plugin-repo</code> once
+to install the shared block in a repository. Later sponsor changes only require
+updating this central site. Campaign entries can use <code>repositories: ["plugin-hub"]</code>
+to restrict the repository placement; omit it or use <code>["*"]</code> for all plugins.</p>
+<p>The organization catalog refresh imports this feed daily; Plugin Hub then
+receives supporter thanks in its normal cached catalog request. Deploy this site
+before publishing the catalog consumer and README blocks. The repository
+inventory and integration patches are in <code>integrations/sponsorship/</code>.</p>
+<h3>Scheduled sponsorship dates</h3>
+<p>The <code>Refresh sponsorship transitions</code> workflow checks dates every 15 minutes.
+It commits a generated transition marker only when the active positions or the
+registry change, then explicitly calls the Pages publishing workflow. This also
+works for bot commits, which do not trigger ordinary push workflows. The
+publishing workflow builds from committed data and requires no GitHub API access.
+GitHub scheduling, deployment and image/CDN caches can delay public visibility.</p>
+<p><code>Supporter</code> has a name/link on the sponsors page. Only <code>Partner</code> and <code>Champion</code>
+have website logos, README banners and Plugin Hub recognition. Champion sorts
+before Partner. Logos are normalized to bounded PNGs before publication; long
+banner names use two lines and an ellipsis. Source logos are limited to 5 MiB.</p>
 <h2>Project Structure</h2>
 <pre><code>src/
   components/    # Reusable Astro components (Nav, Footer, Sidebar, etc.)
@@ -100,7 +128,7 @@ public/          # Static assets (favicon, OG image)
 <li>SEO: sitemap, structured data, Open Graph, Twitter Cards</li>
 <li>View Transitions (SPA-style navigation)</li>
 <li>Dark mode with system preference detection</li>
-<li>Deployed to Cloudflare Workers ($0/month)</li>
+<li>Published on GitHub Pages behind Cloudflare</li>
 </ul>
 <h2>License</h2>
 <p>MIT - see <a href="https://github.com/Open-WP-Club/openwpclub.com/blob/main/LICENSE">LICENSE</a> for details.</p>

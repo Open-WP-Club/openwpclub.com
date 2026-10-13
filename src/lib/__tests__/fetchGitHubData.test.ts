@@ -132,6 +132,7 @@ describe('fetchReadme', () => {
 
     vi.stubGlobal('fetch', vi.fn().mockResolvedValue({
       ok: true,
+      status: 200,
       json: () => Promise.resolve({ content: base64 }),
     }));
 

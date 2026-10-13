@@ -99,30 +99,83 @@ index e2b20c3..a581685 100644
  	}
  
 diff --git a/includes/api.php b/includes/api.php
-index e8b25a5..e4a3de0 100644
+index e8b25a5..4671ca8 100644
 --- a/includes/api.php
 +++ b/includes/api.php
-@@ -22,6 +22,8 @@ if ( ! defined( 'ABSPATH' ) ) {
-  *
-  * @since 1.0.0
-  */
+@@ -14,6 +14,8 @@ if ( ! defined( 'ABSPATH' ) ) {
+ 	exit;
+ }
+ 
 +require_once __DIR__ . '/sponsorship.php';
 +
- class API {
+ /**
+  * API class.
+  *
+@@ -68,6 +70,13 @@ class API {
+ 	 */
+ 	private $cache_key = 'plugin_hub_catalog_cache_v1';
  
++	/**
++	 * Short backoff after an unavailable or invalid catalog.
++	 *
++	 * @var string
++	 */
++	private $catalog_retry_key = 'plugin_hub_catalog_retry_v1';
++
  	/**
-@@ -276,6 +278,12 @@ class API {
+ 	 * Cache expiration time in seconds.
+ 	 *
+@@ -249,6 +258,10 @@ class API {
+ 			return $cached_data;
+ 		}
+ 
++		if ( false !== get_transient( $this->catalog_retry_key ) ) {
++			return $this->get_last_known_repos();
++		}
++
+ 		$response = wp_safe_remote_get(
+ 			$this->catalog_url,
+ 			array(
+@@ -259,12 +272,14 @@ class API {
+ 		);
+ 		if ( is_wp_error( $response ) ) {
+ 			$this->log( 'Error fetching catalog file: ' . $response->get_error_message() );
++			set_transient( $this->catalog_retry_key, true, 5 * MINUTE_IN_SECONDS );
  			return $this->get_last_known_repos();
  		}
  
-+		$catalog = json_decode( $catalog_content, true );
+ 		$status_code = wp_remote_retrieve_response_code( $response );
+ 		if ( 200 !== $status_code ) {
+ 			$this->log( 'Unexpected HTTP status ' . $status_code . ' fetching plugin catalog.' );
++			set_transient( $this->catalog_retry_key, true, 5 * MINUTE_IN_SECONDS );
+ 			return $this->get_last_known_repos();
+ 		}
+ 
+@@ -273,9 +288,17 @@ class API {
+ 
+ 		if ( empty( $repos ) ) {
+ 			$this->log( 'The plugin catalog was empty or invalid; using the last known catalog.' );
++			set_transient( $this->catalog_retry_key, true, 5 * MINUTE_IN_SECONDS );
+ 			return $this->get_last_known_repos();
+ 		}
+ 
++		$catalog    = json_decode( $catalog_content, true );
 +		$supporters = Sponsorship::validate( $catalog['sponsorship'] ?? null );
 +		if ( null !== $supporters ) {
 +			update_option( 'plugin_hub_supporters', $supporters, false );
 +		}
 +
++		delete_transient( $this->catalog_retry_key );
  		set_transient( $this->cache_key, $repos, $this->cache_expiration );
  		update_option( 'plugin_hub_last_known_repos', $repos, false );
+ 
+@@ -379,6 +402,7 @@ class API {
+ 	 */
+ 	public function refresh_csv_cache() {
+ 		delete_transient( $this->cache_key );
++		delete_transient( $this->catalog_retry_key );
+ 		return $this->get_org_repos();
+ 	}
  
 diff --git a/includes/sponsorship-display.php b/includes/sponsorship-display.php
 new file mode 100644
@@ -285,19 +338,19 @@ index 0000000..70cbad1
 +	}
 +}
 diff --git a/package.json b/package.json
-index 84d44e9..cf08c89 100644
+index 84d44e9..691ee0e 100644
 --- a/package.json
 +++ b/package.json
 @@ -1,6 +1,6 @@
  {
    "name": "plugin-hub",
 -  "version": "1.4.0",
-+  "version": "1.5.0",
++  "version": "1.5.1",
    "description": "WordPress plugin for managing GitHub-hosted plugins",
    "main": "assets/js/script.js",
    "scripts": {
 diff --git a/plugin-hub.php b/plugin-hub.php
-index c182a8f..779c362 100644
+index c182a8f..e41f857 100644
 --- a/plugin-hub.php
 +++ b/plugin-hub.php
 @@ -3,7 +3,7 @@
@@ -305,7 +358,7 @@ index c182a8f..779c362 100644
   * Plugin URI:              https://github.com/Open-WP-Club/plugin-hub
   * Description:             Installs, updates, and manages plugins published by Open WP Club through GitHub.
 - * Version:                 1.4.3
-+ * Version:                 1.5.0
++ * Version:                 1.5.1
   * Author:                  Open WP Club
   * Author URI:              https://openwpclub.com
   * License:                 GPL-2.0+
@@ -314,12 +367,12 @@ index c182a8f..779c362 100644
  }
  
 -define( 'PLUGIN_HUB_VERSION', '1.4.3' );
-+define( 'PLUGIN_HUB_VERSION', '1.5.0' );
++define( 'PLUGIN_HUB_VERSION', '1.5.1' );
  define( 'PLUGIN_HUB_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
  define( 'PLUGIN_HUB_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
  define( 'PLUGIN_HUB_ORGANIZATION', 'Open-WP-Club' );
 diff --git a/readme.md b/readme.md
-index 95dd9fd..46415fe 100644
+index 95dd9fd..32d6004 100644
 --- a/readme.md
 +++ b/readme.md
 @@ -37,6 +37,22 @@ Plugin Hub installs, updates, and manages WordPress plugins published by Open WP
@@ -345,7 +398,7 @@ index 95dd9fd..46415fe 100644
  ## Development
  
  To contribute to this plugin or modify it for your needs:
-@@ -53,3 +69,18 @@ This project is licensed under the GPL2 License.
+@@ -53,3 +69,25 @@ This project is licensed under the GPL2 License.
  ## Support
  
  For support or feature requests, please open an issue on the GitHub repository.
@@ -364,8 +417,15 @@ index 95dd9fd..46415fe 100644
 +in `wp-config.php` to hide them for the entire site. Scheduled campaigns are not
 +shown in the WordPress admin; they have separate positions in READMEs and on the
 +website. Sponsor data never controls installation, updates or access to features.
++
++### Catalog outage handling
++
++When GitHub is unavailable or the catalog is invalid, Plugin Hub uses the last
++validated catalog and pauses automatic retries for five minutes. Use **Refresh
++Open WP Club catalog** to retry immediately. Uninstall removes both the current
++catalog cache and the short retry backoff.
 diff --git a/readme.txt b/readme.txt
-index c472d0c..d305ae7 100644
+index c472d0c..cfb844a 100644
 --- a/readme.txt
 +++ b/readme.txt
 @@ -4,7 +4,7 @@ Tags: plugins, github, installer, plugin-manager, open-wp-club
@@ -373,15 +433,20 @@ index c472d0c..d305ae7 100644
  Tested up to: 7.1
  Requires PHP: 8.0
 -Stable tag: 1.4.3
-+Stable tag: 1.5.0
++Stable tag: 1.5.1
  License: GPLv2 or later
  License URI: http://www.gnu.org/licenses/gpl-2.0.html
  
-@@ -76,7 +76,14 @@ Beta plugins are those with version numbers less than 1.0.0. You can toggle thei
+@@ -76,7 +76,19 @@ Beta plugins are those with version numbers less than 1.0.0. You can toggle thei
  
  == Changelog ==
  
 -= 1.4.3 =
++= 1.5.1 =
++* Back off for five minutes when the catalog is unavailable, preserving the last known catalog.
++* Let explicit Refresh retry immediately and clear failure backoff after recovery.
++* Remove current catalog and retry transients during uninstall.
++
 += 1.5.0 =
 +* Add up to three Partner/Champion supporter credits from the existing first-party catalog.
 +* Enforce package placement rights and prioritize Champion recognition.
@@ -389,11 +454,11 @@ index c472d0c..d305ae7 100644
 +* Allow users to persistently hide thanks, or disable them site-wide with PLUGIN_HUB_HIDE_SUPPORTERS.
 +
 +
-+= 1.5.0 =
++= 1.5.1 =
  * Switched the catalog source from plugins.csv to catalog.json
  * Catalog entries are now filtered to type "plugin", so apps and websites in the catalog can no longer appear as installable plugins
  
-@@ -131,4 +138,4 @@ Repository: https://github.com/Open-WP-Club/plugin-hub
+@@ -131,4 +143,4 @@ Repository: https://github.com/Open-WP-Club/plugin-hub
  
  == Privacy Policy ==
  
@@ -401,16 +466,17 @@ index c472d0c..d305ae7 100644
 +Plugin Hub contacts GitHub for the published Open WP Club catalog and plugin management. The catalog includes Partner/Champion supporter credits with bounded embedded PNG logos. Displaying credits does not contact advertisers, track impressions or send referral identifiers. Hide/show is stored locally as a user preference. Plugin management records local user IDs in its local activity log. No advertising telemetry is sent to Open WP Club or advertisers.
 diff --git a/tests/CatalogSponsorshipTest.php b/tests/CatalogSponsorshipTest.php
 new file mode 100644
-index 0000000..57041c6
+index 0000000..1f01433
 --- /dev/null
 +++ b/tests/CatalogSponsorshipTest.php
-@@ -0,0 +1,62 @@
+@@ -0,0 +1,85 @@
 +<?php
 +/** Tests the catalog-to-supporter boundary without adding an HTTP client. @package PluginHub */
 +namespace PluginHub {
 +	function get_option( $key, $default = false ) { return $GLOBALS['hub_test_options'][ $key ] ?? $default; }
 +	function update_option( $key, $value, $autoload = null ) { $GLOBALS['hub_test_options'][ $key ] = $value; return true; }
 +	function get_transient( $key ) { return $GLOBALS['hub_test_transients'][ $key ] ?? false; }
++	function delete_transient( $key ) { unset( $GLOBALS['hub_test_transients'][ $key ] ); return true; }
 +	function set_transient( $key, $value, $expiration = 0 ) { $GLOBALS['hub_test_transients'][ $key ] = $value; return true; }
 +	function wp_safe_remote_get( $url, $args ) { $GLOBALS['hub_test_requests'][] = $url; return $GLOBALS['hub_test_response']; }
 +	function wp_remote_retrieve_response_code( $response ) { return $response['status']; }
@@ -465,6 +531,28 @@ index 0000000..57041c6
 +			$this->assertSame( array( array( 'name' => 'plugin-hub' ) ), ( new API() )->get_org_repos() );
 +			$this->assertSame( array( 'last validated supporter' ), $GLOBALS['hub_test_options']['plugin_hub_supporters'] );
 +		}
++		public function test_failed_catalog_is_not_requested_on_every_page_or_operation() {
++			$GLOBALS['hub_test_options']['plugin_hub_last_known_repos'] = array( array( 'name' => 'plugin-hub' ) );
++			$GLOBALS['hub_test_response'] = array( 'status' => 503, 'body' => '' );
++			$api = new API();
++			$api->get_org_repos();
++			( new API() )->get_org_repos();
++			$this->assertCount( 1, $GLOBALS['hub_test_requests'] );
++			$this->assertTrue( $GLOBALS['hub_test_transients']['plugin_hub_catalog_retry_v1'] );
++			// Simulate expiry without sleeping. The next visit retries normally.
++			unset( $GLOBALS['hub_test_transients']['plugin_hub_catalog_retry_v1'] );
++			$api->get_org_repos();
++			$this->assertCount( 2, $GLOBALS['hub_test_requests'] );
++		}
++		public function test_manual_refresh_bypasses_failure_backoff_and_recovers() {
++			$GLOBALS['hub_test_response'] = array( 'status' => 503, 'body' => '' );
++			$api = new API(); $api->get_org_repos();
++			$this->response( $this->empty_feed() );
++			$this->assertCount( 1, $api->refresh_csv_cache() );
++			$this->assertArrayNotHasKey( 'plugin_hub_catalog_retry_v1', $GLOBALS['hub_test_transients'] );
++			$this->assertCount( 2, $GLOBALS['hub_test_requests'] );
++		}
++
 +	}
 +}
 diff --git a/tests/PaginationContextTest.php b/tests/PaginationContextTest.php
@@ -557,11 +645,25 @@ index 0000000..a9178dc
 +	}
 +
 +}
+diff --git a/tests/bootstrap.php b/tests/bootstrap.php
+index 3452d63..81bee43 100644
+--- a/tests/bootstrap.php
++++ b/tests/bootstrap.php
+@@ -13,6 +13,9 @@ namespace {
+ 	if ( ! defined( 'ABSPATH' ) ) {
+ 		define( 'ABSPATH', __DIR__ . '/' );
+ 	}
++	if ( ! defined( 'MINUTE_IN_SECONDS' ) ) {
++		define( 'MINUTE_IN_SECONDS', 60 );
++	}
+ 	if ( ! defined( 'DAY_IN_SECONDS' ) ) {
+ 		define( 'DAY_IN_SECONDS', 86400 );
+ 	}
 diff --git a/uninstall.php b/uninstall.php
-index 30d1df6..8f54a8b 100644
+index 30d1df6..7539e48 100644
 --- a/uninstall.php
 +++ b/uninstall.php
-@@ -23,6 +23,8 @@ delete_option( 'plugin_hub_github_token' );
+@@ -23,11 +23,15 @@ delete_option( 'plugin_hub_github_token' );
  delete_option( 'plugin_hub_activity_log' );
  delete_option( 'plugin_hub_autoupdate_plugins' );
  delete_option( 'plugin_hub_last_known_repos' );
@@ -570,3 +672,10 @@ index 30d1df6..8f54a8b 100644
  delete_option( 'plugin_hub_last_notification_hash' );
  
  /**
+  * Delete plugin transients.
+  */
++delete_transient( 'plugin_hub_catalog_cache_v1' );
++delete_transient( 'plugin_hub_catalog_retry_v1' );
+ delete_transient( 'plugin_hub_csv_cache' );
+ delete_transient( 'plugin_hub_csv_cache_v2' );
+ delete_transient( 'plugin_hub_rate_limit' );

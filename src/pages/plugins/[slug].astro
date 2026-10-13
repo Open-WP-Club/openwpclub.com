@@ -1,4 +1,5 @@
 ---
+import { pluginDownloadUrl } from '../../lib/plugin-download';
 import { Icon } from 'astro-icon/components';
 import GitHubIcon from '../../components/icons/GitHubIcon.astro';
 import PluginCard from '../../components/PluginCard.astro';
@@ -19,7 +20,7 @@ export async function getStaticPaths() {
 }
 
 const { plugin, allPlugins } = Astro.props;
-const { name, description, version, githubUrl, wordpressUrl, stars, openIssues, lastPush, license, language, defaultBranch, downloads } = plugin.data;
+const { name, description, version, githubUrl, wordpressUrl, stars, openIssues, lastPush, license, language, downloads } = plugin.data;
 
 const downloadsNum = downloads ? parseInt(downloads, 10) : 0;
 
@@ -32,7 +33,7 @@ if (existsSync(readmePath)) {
     console.warn(`[plugins/${plugin.id}] Failed to read README: ${(e as Error).message}`);
   }
 }
-const downloadUrl = `${githubUrl}/archive/refs/heads/${defaultBranch}.zip`;
+const downloadUrl = pluginDownloadUrl(plugin.data);
 const wpCliCommand = `wp plugin install ${downloadUrl} --activate`;
 const playgroundBlueprint = JSON.stringify({ steps: [{ step: 'installPlugin', pluginZipFile: { resource: 'url', url: downloadUrl }, options: { activate: true } }] });
 const playgroundUrl = `https://playground.wordpress.net/#${playgroundBlueprint}`;

@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, test } from './fixtures';
 
 test('central supporter appears across the site with safe links and working assets', async ({ page, request }) => {
   const feed = await request.get('/sponsorship.json');

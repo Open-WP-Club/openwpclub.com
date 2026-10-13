@@ -11,7 +11,7 @@
     "stars": 0,
     "forks": 0,
     "openIssues": 0,
-    "lastPush": "2026-09-13T16:22:23Z",
+    "lastPush": "2026-10-13T07:07:24Z",
     "createdAt": "2024-11-27T18:11:00Z",
     "topics": [
       "admin",
@@ -39,7 +39,7 @@
     "stars": 0,
     "forks": 0,
     "openIssues": 0,
-    "lastPush": "2026-09-13T16:21:51Z",
+    "lastPush": "2026-10-13T07:07:24Z",
     "createdAt": "2026-06-02T08:40:24Z",
     "topics": [],
     "license": null,
@@ -61,7 +61,7 @@
     "stars": 0,
     "forks": 0,
     "openIssues": 0,
-    "lastPush": "2026-09-13T16:22:20Z",
+    "lastPush": "2026-10-13T07:07:24Z",
     "createdAt": "2024-07-19T09:40:15Z",
     "topics": [
       "admin",
@@ -81,7 +81,9 @@
     "defaultBranch": "master",
     "category": "plugin",
     "releasePublishedAt": "2025-04-29T12:04:23Z",
-    "releaseUrl": "https://github.com/Open-WP-Club/better-user-search/releases/tag/1.0.0"
+    "releaseUrl": "https://github.com/Open-WP-Club/better-user-search/releases/tag/1.0.0",
+    "releaseAssets": [],
+    "releaseDownloads": 0
   },
   {
     "id": "better-viewer-fluent-forms",
@@ -95,7 +97,7 @@
     "stars": 0,
     "forks": 0,
     "openIssues": 0,
-    "lastPush": "2026-09-13T16:21:33Z",
+    "lastPush": "2026-10-13T07:07:24Z",
     "createdAt": "2026-09-03T13:17:08Z",
     "topics": [],
     "license": null,
@@ -103,7 +105,17 @@
     "defaultBranch": "main",
     "category": "plugin",
     "releasePublishedAt": "2026-09-10T07:50:15Z",
-    "releaseUrl": "https://github.com/Open-WP-Club/better-viewer-fluent-forms/releases/tag/1.1.7"
+    "releaseUrl": "https://github.com/Open-WP-Club/better-viewer-fluent-forms/releases/tag/1.1.7",
+    "releaseAssets": [
+      {
+        "name": "client-fluent-submissions.zip",
+        "url": "https://github.com/Open-WP-Club/better-viewer-fluent-forms/releases/download/1.1.7/client-fluent-submissions.zip",
+        "size": 26754,
+        "downloadCount": 3,
+        "contentType": "application/zip"
+      }
+    ],
+    "releaseDownloads": 3
   },
   {
     "id": "bulk-order-editor",
@@ -117,7 +129,7 @@
     "stars": 0,
     "forks": 0,
     "openIssues": 0,
-    "lastPush": "2026-09-13T16:22:16Z",
+    "lastPush": "2026-10-13T07:07:26Z",
     "createdAt": "2024-07-05T10:59:01Z",
     "topics": [
       "bulk-editing",
@@ -134,7 +146,9 @@
     "defaultBranch": "master",
     "category": "plugin",
     "releasePublishedAt": "2025-05-19T20:12:08Z",
-    "releaseUrl": "https://github.com/Open-WP-Club/Bulk-Order-Editor/releases/tag/1.0.0"
+    "releaseUrl": "https://github.com/Open-WP-Club/Bulk-Order-Editor/releases/tag/1.0.0",
+    "releaseAssets": [],
+    "releaseDownloads": 0
   },
   {
     "id": "disable-gutenberg-for-wp",
@@ -148,7 +162,7 @@
     "stars": 0,
     "forks": 0,
     "openIssues": 0,
-    "lastPush": "2026-09-13T16:22:09Z",
+    "lastPush": "2026-10-13T07:07:26Z",
     "createdAt": "2025-12-05T15:45:30Z",
     "topics": [],
     "license": null,
@@ -170,7 +184,7 @@
     "stars": 0,
     "forks": 0,
     "openIssues": 0,
-    "lastPush": "2026-09-13T16:22:07Z",
+    "lastPush": "2026-10-13T07:07:26Z",
     "createdAt": "2024-10-07T12:22:32Z",
     "topics": [],
     "license": "Apache-2.0",
@@ -178,7 +192,17 @@
     "defaultBranch": "main",
     "category": "plugin",
     "releasePublishedAt": "2026-01-01T12:59:01Z",
-    "releaseUrl": "https://github.com/Open-WP-Club/eu-vat-wp/releases/tag/1.0.0"
+    "releaseUrl": "https://github.com/Open-WP-Club/eu-vat-wp/releases/tag/1.0.0",
+    "releaseAssets": [
+      {
+        "name": "WP-eu-vat.zip",
+        "url": "https://github.com/Open-WP-Club/eu-vat-wp/releases/download/1.0.0/WP-eu-vat.zip",
+        "size": 11461,
+        "downloadCount": 1,
+        "contentType": "application/zip"
+      }
+    ],
+    "releaseDownloads": 1
   },
   {
     "id": "fulfill-for-woocommerce",
@@ -201,13 +225,13 @@
     "category": "app",
     "releasePublishedAt": "2026-03-16T21:40:57Z",
     "releaseUrl": "https://github.com/Open-WP-Club/FulFill-for-WooCommerce/releases/tag/0.1.0",
-    "releaseDownloads": 7,
+    "releaseDownloads": 11,
     "releaseAssets": [
       {
         "name": "FulFill-0.1.0.apk",
         "url": "https://github.com/Open-WP-Club/FulFill-for-WooCommerce/releases/download/0.1.0/FulFill-0.1.0.apk",
         "size": 41190234,
-        "downloadCount": 7,
+        "downloadCount": 11,
         "contentType": "application/vnd.android.package-archive"
       }
     ],
@@ -241,7 +265,7 @@
     "stars": 5,
     "forks": 1,
     "openIssues": 0,
-    "lastPush": "2026-09-24T12:46:24Z",
+    "lastPush": "2026-10-13T07:07:26Z",
     "createdAt": "2024-12-10T10:53:54Z",
     "topics": [
       "google-scholar",
@@ -254,7 +278,17 @@
     "defaultBranch": "main",
     "category": "plugin",
     "releasePublishedAt": "2026-09-24T12:46:16Z",
-    "releaseUrl": "https://github.com/Open-WP-Club/google-scholar-wp/releases/tag/1.7.0"
+    "releaseUrl": "https://github.com/Open-WP-Club/google-scholar-wp/releases/tag/1.7.0",
+    "releaseAssets": [
+      {
+        "name": "google-scholar-wp.zip",
+        "url": "https://github.com/Open-WP-Club/google-scholar-wp/releases/download/1.7.0/google-scholar-wp.zip",
+        "size": 84127,
+        "downloadCount": 2,
+        "contentType": "application/zip"
+      }
+    ],
+    "releaseDownloads": 2
   },
   {
     "id": "gravity-forms-shopify-integration",
@@ -268,7 +302,7 @@
     "stars": 0,
     "forks": 0,
     "openIssues": 0,
-    "lastPush": "2026-09-13T16:22:13Z",
+    "lastPush": "2026-10-13T07:07:28Z",
     "createdAt": "2025-05-23T08:59:46Z",
     "topics": [
       "forms",
@@ -284,7 +318,9 @@
     "defaultBranch": "main",
     "category": "plugin",
     "releasePublishedAt": "2025-05-23T12:09:28Z",
-    "releaseUrl": "https://github.com/Open-WP-Club/Gravity-Forms-Shopify-Integration/releases/tag/1.0.1"
+    "releaseUrl": "https://github.com/Open-WP-Club/Gravity-Forms-Shopify-Integration/releases/tag/1.0.1",
+    "releaseAssets": [],
+    "releaseDownloads": 0
   },
   {
     "id": "inventory-alerts-woo",
@@ -298,7 +334,7 @@
     "stars": 0,
     "forks": 0,
     "openIssues": 0,
-    "lastPush": "2026-09-13T16:21:36Z",
+    "lastPush": "2026-10-13T07:07:29Z",
     "createdAt": "2025-11-23T07:21:02Z",
     "topics": [
       "stock-management",
@@ -309,7 +345,17 @@
     "defaultBranch": "main",
     "category": "plugin",
     "releasePublishedAt": "2026-09-03T12:37:38Z",
-    "releaseUrl": "https://github.com/Open-WP-Club/inventory-alerts-woo/releases/tag/1.2.0"
+    "releaseUrl": "https://github.com/Open-WP-Club/inventory-alerts-woo/releases/tag/1.2.0",
+    "releaseAssets": [
+      {
+        "name": "inventory-alerts-woo.zip",
+        "url": "https://github.com/Open-WP-Club/inventory-alerts-woo/releases/download/1.2.0/inventory-alerts-woo.zip",
+        "size": 13217,
+        "downloadCount": 7,
+        "contentType": "application/zip"
+      }
+    ],
+    "releaseDownloads": 7
   },
   {
     "id": "inventory-insights-woocommerce",
@@ -323,7 +369,7 @@
     "stars": 0,
     "forks": 0,
     "openIssues": 0,
-    "lastPush": "2026-09-13T16:21:38Z",
+    "lastPush": "2026-10-13T07:07:29Z",
     "createdAt": "2025-08-19T05:54:09Z",
     "topics": [
       "bulk-operation",
@@ -338,7 +384,17 @@
     "defaultBranch": "main",
     "category": "plugin",
     "releasePublishedAt": "2026-09-03T09:55:05Z",
-    "releaseUrl": "https://github.com/Open-WP-Club/inventory-insights-woocommerce/releases/tag/1.4.0"
+    "releaseUrl": "https://github.com/Open-WP-Club/inventory-insights-woocommerce/releases/tag/1.4.0",
+    "releaseAssets": [
+      {
+        "name": "inventory-insights-woocommerce.zip",
+        "url": "https://github.com/Open-WP-Club/inventory-insights-woocommerce/releases/download/1.4.0/inventory-insights-woocommerce.zip",
+        "size": 26097,
+        "downloadCount": 3,
+        "contentType": "application/zip"
+      }
+    ],
+    "releaseDownloads": 3
   },
   {
     "id": "last-user-orders-by-roles",
@@ -352,7 +408,7 @@
     "stars": 0,
     "forks": 0,
     "openIssues": 0,
-    "lastPush": "2026-09-13T16:22:14Z",
+    "lastPush": "2026-10-13T07:07:29Z",
     "createdAt": "2024-07-08T09:51:13Z",
     "topics": [
       "customers",
@@ -365,7 +421,9 @@
     "defaultBranch": "master",
     "category": "plugin",
     "releasePublishedAt": "2025-05-19T20:12:27Z",
-    "releaseUrl": "https://github.com/Open-WP-Club/Last-User-Orders-by-Roles/releases/tag/1.0.0"
+    "releaseUrl": "https://github.com/Open-WP-Club/Last-User-Orders-by-Roles/releases/tag/1.0.0",
+    "releaseAssets": [],
+    "releaseDownloads": 0
   },
   {
     "id": "llms-txt-for-wp",
@@ -379,7 +437,7 @@
     "stars": 1,
     "forks": 0,
     "openIssues": 0,
-    "lastPush": "2026-09-13T16:21:53Z",
+    "lastPush": "2026-10-13T07:07:31Z",
     "createdAt": "2026-01-27T13:29:08Z",
     "topics": [
       "html-to-markdown",
@@ -393,13 +451,23 @@
     "defaultBranch": "main",
     "category": "plugin",
     "releasePublishedAt": "2026-01-27T21:51:13Z",
-    "releaseUrl": "https://github.com/Open-WP-Club/llms-txt-for-wp/releases/tag/1.1.0"
+    "releaseUrl": "https://github.com/Open-WP-Club/llms-txt-for-wp/releases/tag/1.1.0",
+    "releaseAssets": [
+      {
+        "name": "llms-txt-for-wp.zip",
+        "url": "https://github.com/Open-WP-Club/llms-txt-for-wp/releases/download/1.1.0/llms-txt-for-wp.zip",
+        "size": 91807,
+        "downloadCount": 12,
+        "contentType": "application/zip"
+      }
+    ],
+    "releaseDownloads": 12
   },
   {
     "id": "local-pickup-woocommerce",
     "name": "Local Pickup WooCommerce",
     "description": "A WooCommerce extension for zone-aware store pickup locations with individual prices. It is built specifically for the modern Cart and Checkout Blocks.",
-    "version": "1.1.2",
+    "version": "1.2.0",
     "downloads": "",
     "rating": "",
     "githubUrl": "https://github.com/Open-WP-Club/local-pickup-woocommerce",
@@ -407,7 +475,7 @@
     "stars": 0,
     "forks": 0,
     "openIssues": 0,
-    "lastPush": "2026-09-16T10:05:46Z",
+    "lastPush": "2026-10-13T07:07:31Z",
     "createdAt": "2026-08-25T20:43:23Z",
     "topics": [
       "free",
@@ -420,8 +488,18 @@
     "language": "PHP",
     "defaultBranch": "main",
     "category": "plugin",
-    "releasePublishedAt": "2026-09-16T10:05:46Z",
-    "releaseUrl": "https://github.com/Open-WP-Club/local-pickup-woocommerce/releases/tag/1.1.2"
+    "releasePublishedAt": "2026-10-05T13:06:28Z",
+    "releaseUrl": "https://github.com/Open-WP-Club/local-pickup-woocommerce/releases/tag/1.2.0",
+    "releaseAssets": [
+      {
+        "name": "local-pickup-woocommerce.zip",
+        "url": "https://github.com/Open-WP-Club/local-pickup-woocommerce/releases/download/1.2.0/local-pickup-woocommerce.zip",
+        "size": 23575,
+        "downloadCount": 1,
+        "contentType": "application/zip"
+      }
+    ],
+    "releaseDownloads": 1
   },
   {
     "id": "logo-link-wp",
@@ -435,7 +513,7 @@
     "stars": 1,
     "forks": 0,
     "openIssues": 0,
-    "lastPush": "2026-09-13T16:22:01Z",
+    "lastPush": "2026-10-13T07:07:31Z",
     "createdAt": "2025-01-13T13:52:57Z",
     "topics": [
       "logo-design",
@@ -448,7 +526,17 @@
     "defaultBranch": "main",
     "category": "plugin",
     "releasePublishedAt": "2026-01-19T13:04:36Z",
-    "releaseUrl": "https://github.com/Open-WP-Club/logo-link-wp/releases/tag/1.3.0"
+    "releaseUrl": "https://github.com/Open-WP-Club/logo-link-wp/releases/tag/1.3.0",
+    "releaseAssets": [
+      {
+        "name": "logo-link-wp.zip",
+        "url": "https://github.com/Open-WP-Club/logo-link-wp/releases/download/1.3.0/logo-link-wp.zip",
+        "size": 18916,
+        "downloadCount": 11,
+        "contentType": "application/zip"
+      }
+    ],
+    "releaseDownloads": 11
   },
   {
     "id": "multi-store-sync-for-woocommerce",
@@ -462,7 +550,7 @@
     "stars": 0,
     "forks": 0,
     "openIssues": 0,
-    "lastPush": "2026-09-23T20:53:44Z",
+    "lastPush": "2026-10-13T07:07:31Z",
     "createdAt": "2026-08-06T13:37:42Z",
     "topics": [
       "automation",
@@ -478,7 +566,17 @@
     "defaultBranch": "main",
     "category": "plugin",
     "releasePublishedAt": "2026-09-23T20:54:04Z",
-    "releaseUrl": "https://github.com/Open-WP-Club/multi-store-sync-for-woocommerce/releases/tag/5.0.0"
+    "releaseUrl": "https://github.com/Open-WP-Club/multi-store-sync-for-woocommerce/releases/tag/5.0.0",
+    "releaseAssets": [
+      {
+        "name": "wc-multi-store-sync-5.0.0.zip",
+        "url": "https://github.com/Open-WP-Club/multi-store-sync-for-woocommerce/releases/download/5.0.0/wc-multi-store-sync-5.0.0.zip",
+        "size": 528434,
+        "downloadCount": 3,
+        "contentType": "application/zip"
+      }
+    ],
+    "releaseDownloads": 3
   },
   {
     "id": "opengraph-svg-generator-wp",
@@ -492,7 +590,7 @@
     "stars": 0,
     "forks": 0,
     "openIssues": 0,
-    "lastPush": "2026-09-13T16:21:56Z",
+    "lastPush": "2026-10-13T07:07:33Z",
     "createdAt": "2025-06-13T14:24:24Z",
     "topics": [],
     "license": "Apache-2.0",
@@ -514,7 +612,7 @@
     "stars": 0,
     "forks": 0,
     "openIssues": 0,
-    "lastPush": "2026-10-01T13:38:13Z",
+    "lastPush": "2026-10-13T07:15:49Z",
     "createdAt": "2025-05-19T19:01:14Z",
     "topics": [],
     "license": "MIT",
@@ -536,7 +634,7 @@
     "stars": 0,
     "forks": 0,
     "openIssues": 0,
-    "lastPush": "2026-09-13T16:22:11Z",
+    "lastPush": "2026-10-13T07:07:33Z",
     "createdAt": "2025-06-08T18:33:12Z",
     "topics": [],
     "license": "Apache-2.0",
@@ -544,7 +642,9 @@
     "defaultBranch": "main",
     "category": "plugin",
     "releasePublishedAt": "2025-08-25T17:02:20Z",
-    "releaseUrl": "https://github.com/Open-WP-Club/order-payment-limiter-woo/releases/tag/1.0.0"
+    "releaseUrl": "https://github.com/Open-WP-Club/order-payment-limiter-woo/releases/tag/1.0.0",
+    "releaseAssets": [],
+    "releaseDownloads": 0
   },
   {
     "id": "order-printing-woocommerce",
@@ -558,7 +658,7 @@
     "stars": 0,
     "forks": 0,
     "openIssues": 0,
-    "lastPush": "2026-09-13T16:21:49Z",
+    "lastPush": "2026-10-13T07:07:33Z",
     "createdAt": "2026-02-11T10:37:06Z",
     "topics": [],
     "license": "Apache-2.0",
@@ -566,7 +666,17 @@
     "defaultBranch": "main",
     "category": "plugin",
     "releasePublishedAt": "2026-07-14T13:40:15Z",
-    "releaseUrl": "https://github.com/Open-WP-Club/order-printing-woocommerce/releases/tag/1.3.0"
+    "releaseUrl": "https://github.com/Open-WP-Club/order-printing-woocommerce/releases/tag/1.3.0",
+    "releaseAssets": [
+      {
+        "name": "order-printing-woocommerce-1.3.0.zip",
+        "url": "https://github.com/Open-WP-Club/order-printing-woocommerce/releases/download/1.3.0/order-printing-woocommerce-1.3.0.zip",
+        "size": 4543910,
+        "downloadCount": 4,
+        "contentType": "application/zip"
+      }
+    ],
+    "releaseDownloads": 4
   },
   {
     "id": "payment-method-highlighter-for-woocommerce",
@@ -580,7 +690,7 @@
     "stars": 0,
     "forks": 0,
     "openIssues": 0,
-    "lastPush": "2026-09-29T17:55:47Z",
+    "lastPush": "2026-10-13T07:07:33Z",
     "createdAt": "2026-08-06T09:38:02Z",
     "topics": [
       "payment-processing",
@@ -593,7 +703,17 @@
     "defaultBranch": "main",
     "category": "plugin",
     "releasePublishedAt": "2026-09-29T17:55:47Z",
-    "releaseUrl": "https://github.com/Open-WP-Club/payment-method-highlighter-for-wooCommerce/releases/tag/1.4.0"
+    "releaseUrl": "https://github.com/Open-WP-Club/payment-method-highlighter-for-wooCommerce/releases/tag/1.4.0",
+    "releaseAssets": [
+      {
+        "name": "payment-method-highlighter-for-woocommerce.zip",
+        "url": "https://github.com/Open-WP-Club/payment-method-highlighter-for-wooCommerce/releases/download/1.4.0/payment-method-highlighter-for-woocommerce.zip",
+        "size": 26762,
+        "downloadCount": 3,
+        "contentType": "application/zip"
+      }
+    ],
+    "releaseDownloads": 3
   },
   {
     "id": "phone-order-woo",
@@ -607,7 +727,7 @@
     "stars": 0,
     "forks": 0,
     "openIssues": 0,
-    "lastPush": "2026-09-13T16:22:04Z",
+    "lastPush": "2026-10-13T07:07:36Z",
     "createdAt": "2024-10-10T20:32:46Z",
     "topics": [],
     "license": "Apache-2.0",
@@ -615,13 +735,23 @@
     "defaultBranch": "main",
     "category": "plugin",
     "releasePublishedAt": "2026-01-13T12:04:18Z",
-    "releaseUrl": "https://github.com/Open-WP-Club/phone-order-woo/releases/tag/2.0.0"
+    "releaseUrl": "https://github.com/Open-WP-Club/phone-order-woo/releases/tag/2.0.0",
+    "releaseAssets": [
+      {
+        "name": "phone-order-woo.zip",
+        "url": "https://github.com/Open-WP-Club/phone-order-woo/releases/download/2.0.0/phone-order-woo.zip",
+        "size": 23093,
+        "downloadCount": 3,
+        "contentType": "application/zip"
+      }
+    ],
+    "releaseDownloads": 3
   },
   {
     "id": "plugin-hub",
     "name": "Plugin Hub",
     "description": "Plugin Hub is Open WP Club official way of installing/updating plugins from their official repos.",
-    "version": "1.4.3",
+    "version": "1.5.0",
     "downloads": "",
     "rating": "",
     "githubUrl": "https://github.com/Open-WP-Club/plugin-hub",
@@ -629,15 +759,25 @@
     "stars": 0,
     "forks": 0,
     "openIssues": 0,
-    "lastPush": "2026-09-13T16:21:32Z",
+    "lastPush": "2026-10-13T07:08:15Z",
     "createdAt": "2024-09-09T15:14:57Z",
     "topics": [],
     "license": null,
     "language": "PHP",
     "defaultBranch": "main",
     "category": "plugin",
-    "releasePublishedAt": "2026-09-10T10:21:48Z",
-    "releaseUrl": "https://github.com/Open-WP-Club/plugin-hub/releases/tag/1.4.3"
+    "releasePublishedAt": "2026-10-13T07:08:15Z",
+    "releaseUrl": "https://github.com/Open-WP-Club/plugin-hub/releases/tag/1.5.0",
+    "releaseAssets": [
+      {
+        "name": "plugin-hub.zip",
+        "url": "https://github.com/Open-WP-Club/plugin-hub/releases/download/1.5.0/plugin-hub.zip",
+        "size": 51087,
+        "downloadCount": 1,
+        "contentType": "application/zip"
+      }
+    ],
+    "releaseDownloads": 1
   },
   {
     "id": "plugins-showcase-wp",
@@ -651,7 +791,7 @@
     "stars": 0,
     "forks": 0,
     "openIssues": 0,
-    "lastPush": "2026-09-13T16:21:37Z",
+    "lastPush": "2026-10-13T07:07:36Z",
     "createdAt": "2026-01-14T09:05:56Z",
     "topics": [
       "showcase",
@@ -664,13 +804,15 @@
     "defaultBranch": "main",
     "category": "plugin",
     "releasePublishedAt": "2026-09-03T09:57:28Z",
-    "releaseUrl": "https://github.com/Open-WP-Club/plugins-showcase-wp/releases/tag/1.0.0"
+    "releaseUrl": "https://github.com/Open-WP-Club/plugins-showcase-wp/releases/tag/1.0.0",
+    "releaseAssets": [],
+    "releaseDownloads": 0
   },
   {
     "id": "priority-processing-woocommerce",
     "name": "Priority Processing WooCommerce",
     "description": "A WordPress plugin that adds a priority processing and express shipping option to WooCommerce checkout, allowing customers to pay an additional fee for faster order handling.",
-    "version": "1.7.1",
+    "version": "1.8.1",
     "downloads": "",
     "rating": "",
     "githubUrl": "https://github.com/Open-WP-Club/Priority-Processing-WooCommerce",
@@ -678,15 +820,25 @@
     "stars": 0,
     "forks": 0,
     "openIssues": 0,
-    "lastPush": "2026-09-13T16:21:40Z",
+    "lastPush": "2026-10-13T07:07:36Z",
     "createdAt": "2025-08-05T17:00:16Z",
     "topics": [],
     "license": "Apache-2.0",
     "language": "PHP",
     "defaultBranch": "main",
     "category": "plugin",
-    "releasePublishedAt": "2026-08-29T17:25:52Z",
-    "releaseUrl": "https://github.com/Open-WP-Club/Priority-Processing-WooCommerce/releases/tag/1.7.1"
+    "releasePublishedAt": "2026-10-05T09:16:51Z",
+    "releaseUrl": "https://github.com/Open-WP-Club/Priority-Processing-WooCommerce/releases/tag/1.8.1",
+    "releaseAssets": [
+      {
+        "name": "Priority-Processing-WooCommerce.zip",
+        "url": "https://github.com/Open-WP-Club/Priority-Processing-WooCommerce/releases/download/1.8.1/Priority-Processing-WooCommerce.zip",
+        "size": 67500,
+        "downloadCount": 4,
+        "contentType": "application/zip"
+      }
+    ],
+    "releaseDownloads": 4
   },
   {
     "id": "product-health-check-woocommerce",
@@ -700,7 +852,7 @@
     "stars": 0,
     "forks": 0,
     "openIssues": 0,
-    "lastPush": "2026-09-13T16:21:54Z",
+    "lastPush": "2026-10-13T07:07:36Z",
     "createdAt": "2026-05-01T10:56:55Z",
     "topics": [
       "product",
@@ -714,7 +866,17 @@
     "defaultBranch": "main",
     "category": "plugin",
     "releasePublishedAt": "2026-05-01T12:01:27Z",
-    "releaseUrl": "https://github.com/Open-WP-Club/product-health-check-woocommerce/releases/tag/1.1.1"
+    "releaseUrl": "https://github.com/Open-WP-Club/product-health-check-woocommerce/releases/tag/1.1.1",
+    "releaseAssets": [
+      {
+        "name": "product-health-check-woocommerce-1.1.1.zip",
+        "url": "https://github.com/Open-WP-Club/product-health-check-woocommerce/releases/download/1.1.1/product-health-check-woocommerce-1.1.1.zip",
+        "size": 18272,
+        "downloadCount": 3,
+        "contentType": "application/zip"
+      }
+    ],
+    "releaseDownloads": 3
   },
   {
     "id": "rank-math-automation-wp",
@@ -728,7 +890,7 @@
     "stars": 1,
     "forks": 0,
     "openIssues": 2,
-    "lastPush": "2026-09-13T16:22:02Z",
+    "lastPush": "2026-10-13T07:07:38Z",
     "createdAt": "2024-07-24T12:28:10Z",
     "topics": [
       "rank-math",
@@ -756,7 +918,7 @@
     "stars": 0,
     "forks": 0,
     "openIssues": 0,
-    "lastPush": "2026-09-13T16:22:31Z",
+    "lastPush": "2026-10-13T07:07:38Z",
     "createdAt": "2024-08-28T12:54:16Z",
     "topics": [],
     "license": "Apache-2.0",
@@ -764,7 +926,9 @@
     "defaultBranch": "main",
     "category": "plugin",
     "releasePublishedAt": "2024-09-29T15:22:45Z",
-    "releaseUrl": "https://github.com/Open-WP-Club/resume-builder/releases/tag/1.0.0"
+    "releaseUrl": "https://github.com/Open-WP-Club/resume-builder/releases/tag/1.0.0",
+    "releaseAssets": [],
+    "releaseDownloads": 0
   },
   {
     "id": "sku-auto-woocommerce",
@@ -778,7 +942,7 @@
     "stars": 1,
     "forks": 0,
     "openIssues": 0,
-    "lastPush": "2026-09-13T16:22:00Z",
+    "lastPush": "2026-10-13T07:07:38Z",
     "createdAt": "2025-01-28T10:41:13Z",
     "topics": [
       "bulk-operation",
@@ -793,7 +957,17 @@
     "defaultBranch": "main",
     "category": "plugin",
     "releasePublishedAt": "2026-02-09T13:29:32Z",
-    "releaseUrl": "https://github.com/Open-WP-Club/sku-auto-woocommerce/releases/tag/2.2.2"
+    "releaseUrl": "https://github.com/Open-WP-Club/sku-auto-woocommerce/releases/tag/2.2.2",
+    "releaseAssets": [
+      {
+        "name": "woocommerce-sku-auto-2.2.2.zip",
+        "url": "https://github.com/Open-WP-Club/sku-auto-woocommerce/releases/download/2.2.2/woocommerce-sku-auto-2.2.2.zip",
+        "size": 43285,
+        "downloadCount": 9,
+        "contentType": "application/zip"
+      }
+    ],
+    "releaseDownloads": 9
   },
   {
     "id": "smart-product-export-woo",
@@ -807,7 +981,7 @@
     "stars": 0,
     "forks": 0,
     "openIssues": 0,
-    "lastPush": "2026-09-13T16:22:10Z",
+    "lastPush": "2026-10-13T07:07:38Z",
     "createdAt": "2025-11-04T10:21:53Z",
     "topics": [],
     "license": "Apache-2.0",
@@ -815,7 +989,17 @@
     "defaultBranch": "main",
     "category": "plugin",
     "releasePublishedAt": "2025-11-04T15:10:08Z",
-    "releaseUrl": "https://github.com/Open-WP-Club/smart-product-export-woo/releases/tag/1.1.0"
+    "releaseUrl": "https://github.com/Open-WP-Club/smart-product-export-woo/releases/tag/1.1.0",
+    "releaseAssets": [
+      {
+        "name": "smart-product-export.zip",
+        "url": "https://github.com/Open-WP-Club/smart-product-export-woo/releases/download/1.1.0/smart-product-export.zip",
+        "size": 19728,
+        "downloadCount": 8,
+        "contentType": "application/zip"
+      }
+    ],
+    "releaseDownloads": 8
   },
   {
     "id": "spam-user-detective-wp",
@@ -829,7 +1013,7 @@
     "stars": 1,
     "forks": 0,
     "openIssues": 0,
-    "lastPush": "2026-09-13T16:21:34Z",
+    "lastPush": "2026-10-13T07:07:40Z",
     "createdAt": "2025-08-25T11:30:12Z",
     "topics": [],
     "license": "Apache-2.0",
@@ -837,7 +1021,17 @@
     "defaultBranch": "main",
     "category": "plugin",
     "releasePublishedAt": "2026-09-05T08:08:23Z",
-    "releaseUrl": "https://github.com/Open-WP-Club/spam-user-detective-wp/releases/tag/1.5.7"
+    "releaseUrl": "https://github.com/Open-WP-Club/spam-user-detective-wp/releases/tag/1.5.7",
+    "releaseAssets": [
+      {
+        "name": "spam-user-detective-wp.zip",
+        "url": "https://github.com/Open-WP-Club/spam-user-detective-wp/releases/download/1.5.7/spam-user-detective-wp.zip",
+        "size": 59306,
+        "downloadCount": 10,
+        "contentType": "application/zip"
+      }
+    ],
+    "releaseDownloads": 10
   },
   {
     "id": "stageguard",
@@ -851,7 +1045,7 @@
     "stars": 0,
     "forks": 0,
     "openIssues": 0,
-    "lastPush": "2026-09-13T16:22:05Z",
+    "lastPush": "2026-10-13T07:07:40Z",
     "createdAt": "2024-07-17T08:29:30Z",
     "topics": [
       "automatic-control",
@@ -864,7 +1058,9 @@
     "defaultBranch": "master",
     "category": "plugin",
     "releasePublishedAt": "2026-01-10T07:01:27Z",
-    "releaseUrl": "https://github.com/Open-WP-Club/StageGuard/releases/tag/1.1.1"
+    "releaseUrl": "https://github.com/Open-WP-Club/StageGuard/releases/tag/1.1.1",
+    "releaseAssets": [],
+    "releaseDownloads": 0
   },
   {
     "id": "static-export-wp",
@@ -878,7 +1074,7 @@
     "stars": 1,
     "forks": 0,
     "openIssues": 0,
-    "lastPush": "2026-09-13T16:21:43Z",
+    "lastPush": "2026-10-13T07:07:40Z",
     "createdAt": "2026-02-21T19:09:21Z",
     "topics": [
       "exporting-data",
@@ -901,7 +1097,7 @@
     "rating": "",
     "githubUrl": "https://github.com/Open-WP-Club/StoreOS",
     "wordpressUrl": "",
-    "stars": 0,
+    "stars": 1,
     "forks": 0,
     "openIssues": 0,
     "lastPush": "2026-09-02T09:59:50Z",
@@ -913,69 +1109,69 @@
     "category": "app",
     "releasePublishedAt": "2026-08-03T14:39:16Z",
     "releaseUrl": "https://github.com/Open-WP-Club/StoreOS/releases/tag/1.0.3",
-    "releaseDownloads": 72,
+    "releaseDownloads": 115,
     "releaseAssets": [
       {
         "name": "storeos-1.0.3.x86_64.rpm",
         "url": "https://github.com/Open-WP-Club/StoreOS/releases/download/1.0.3/storeos-1.0.3.x86_64.rpm",
         "size": 92584153,
-        "downloadCount": 8,
+        "downloadCount": 12,
         "contentType": "application/x-redhat-package-manager"
       },
       {
         "name": "StoreOS.-.Built.for.WooCommerce-1.0.3-arm64-mac.zip",
         "url": "https://github.com/Open-WP-Club/StoreOS/releases/download/1.0.3/StoreOS.-.Built.for.WooCommerce-1.0.3-arm64-mac.zip",
         "size": 133427511,
-        "downloadCount": 8,
+        "downloadCount": 13,
         "contentType": "application/zip"
       },
       {
         "name": "StoreOS.-.Built.for.WooCommerce-1.0.3-arm64.dmg",
         "url": "https://github.com/Open-WP-Club/StoreOS/releases/download/1.0.3/StoreOS.-.Built.for.WooCommerce-1.0.3-arm64.dmg",
         "size": 133206747,
-        "downloadCount": 8,
+        "downloadCount": 13,
         "contentType": "application/x-apple-diskimage"
       },
       {
         "name": "StoreOS.-.Built.for.WooCommerce-1.0.3-mac.zip",
         "url": "https://github.com/Open-WP-Club/StoreOS/releases/download/1.0.3/StoreOS.-.Built.for.WooCommerce-1.0.3-mac.zip",
         "size": 135268330,
-        "downloadCount": 8,
+        "downloadCount": 12,
         "contentType": "application/zip"
       },
       {
         "name": "StoreOS.-.Built.for.WooCommerce-1.0.3.AppImage",
         "url": "https://github.com/Open-WP-Club/StoreOS/releases/download/1.0.3/StoreOS.-.Built.for.WooCommerce-1.0.3.AppImage",
         "size": 141137568,
-        "downloadCount": 8,
+        "downloadCount": 12,
         "contentType": "application/octet-stream"
       },
       {
         "name": "StoreOS.-.Built.for.WooCommerce-1.0.3.dmg",
         "url": "https://github.com/Open-WP-Club/StoreOS/releases/download/1.0.3/StoreOS.-.Built.for.WooCommerce-1.0.3.dmg",
         "size": 135020457,
-        "downloadCount": 8,
+        "downloadCount": 13,
         "contentType": "application/x-apple-diskimage"
       },
       {
         "name": "StoreOS.-.Built.for.WooCommerce.1.0.3.exe",
         "url": "https://github.com/Open-WP-Club/StoreOS/releases/download/1.0.3/StoreOS.-.Built.for.WooCommerce.1.0.3.exe",
         "size": 108474932,
-        "downloadCount": 8,
+        "downloadCount": 14,
         "contentType": "application/x-msdos-program"
       },
       {
         "name": "StoreOS.-.Built.for.WooCommerce.Setup.1.0.3.exe",
         "url": "https://github.com/Open-WP-Club/StoreOS/releases/download/1.0.3/StoreOS.-.Built.for.WooCommerce.Setup.1.0.3.exe",
         "size": 206384923,
-        "downloadCount": 8,
+        "downloadCount": 14,
         "contentType": "application/x-msdos-program"
       },
       {
         "name": "storeos_1.0.3_amd64.deb",
         "url": "https://github.com/Open-WP-Club/StoreOS/releases/download/1.0.3/storeos_1.0.3_amd64.deb",
         "size": 107236304,
-        "downloadCount": 8,
+        "downloadCount": 12,
         "contentType": "application/x-debian-package"
       }
     ],
@@ -1011,7 +1207,7 @@
     "stars": 0,
     "forks": 0,
     "openIssues": 0,
-    "lastPush": "2026-09-13T16:21:50Z",
+    "lastPush": "2026-10-13T07:07:40Z",
     "createdAt": "2026-06-04T17:47:58Z",
     "topics": [],
     "license": null,
@@ -1019,7 +1215,17 @@
     "defaultBranch": "main",
     "category": "plugin",
     "releasePublishedAt": "2026-06-04T20:22:32Z",
-    "releaseUrl": "https://github.com/Open-WP-Club/taxonomy-showcase-WooCommerce/releases/tag/1.2.3"
+    "releaseUrl": "https://github.com/Open-WP-Club/taxonomy-showcase-WooCommerce/releases/tag/1.2.3",
+    "releaseAssets": [
+      {
+        "name": "taxonomy-showcase-woocommerce-1.2.3.zip",
+        "url": "https://github.com/Open-WP-Club/taxonomy-showcase-WooCommerce/releases/download/1.2.3/taxonomy-showcase-woocommerce-1.2.3.zip",
+        "size": 23067,
+        "downloadCount": 3,
+        "contentType": "application/zip"
+      }
+    ],
+    "releaseDownloads": 3
   },
   {
     "id": "team-manager-wordpress",
@@ -1033,7 +1239,7 @@
     "stars": 0,
     "forks": 0,
     "openIssues": 0,
-    "lastPush": "2026-09-13T16:21:58Z",
+    "lastPush": "2026-10-13T07:07:43Z",
     "createdAt": "2024-10-23T19:18:19Z",
     "topics": [],
     "license": "Apache-2.0",
@@ -1041,7 +1247,9 @@
     "defaultBranch": "main",
     "category": "plugin",
     "releasePublishedAt": "2026-02-14T18:39:19Z",
-    "releaseUrl": "https://github.com/Open-WP-Club/team-manager-wordPress/releases/tag/3.0.0"
+    "releaseUrl": "https://github.com/Open-WP-Club/team-manager-wordPress/releases/tag/3.0.0",
+    "releaseAssets": [],
+    "releaseDownloads": 0
   },
   {
     "id": "user-self-delete",
@@ -1055,7 +1263,7 @@
     "stars": 0,
     "forks": 0,
     "openIssues": 0,
-    "lastPush": "2026-09-13T16:21:47Z",
+    "lastPush": "2026-10-13T07:07:43Z",
     "createdAt": "2025-05-20T14:38:14Z",
     "topics": [],
     "license": "Apache-2.0",
@@ -1063,7 +1271,17 @@
     "defaultBranch": "main",
     "category": "plugin",
     "releasePublishedAt": "2026-07-15T06:41:13Z",
-    "releaseUrl": "https://github.com/Open-WP-Club/User-Self-Delete/releases/tag/2.1.0"
+    "releaseUrl": "https://github.com/Open-WP-Club/User-Self-Delete/releases/tag/2.1.0",
+    "releaseAssets": [
+      {
+        "name": "User-Self-Delete.zip",
+        "url": "https://github.com/Open-WP-Club/User-Self-Delete/releases/download/2.1.0/User-Self-Delete.zip",
+        "size": 36446,
+        "downloadCount": 0,
+        "contentType": "application/zip"
+      }
+    ],
+    "releaseDownloads": 0
   },
   {
     "id": "wc-pre-order",
@@ -1077,7 +1295,7 @@
     "stars": 0,
     "forks": 0,
     "openIssues": 0,
-    "lastPush": "2026-09-13T16:22:17Z",
+    "lastPush": "2026-10-13T07:07:43Z",
     "createdAt": "2024-07-17T12:28:23Z",
     "topics": [
       "pre-order",
@@ -1089,7 +1307,9 @@
     "defaultBranch": "master",
     "category": "plugin",
     "releasePublishedAt": "2025-05-19T20:11:23Z",
-    "releaseUrl": "https://github.com/Open-WP-Club/WC-Pre-order/releases/tag/1.0.0"
+    "releaseUrl": "https://github.com/Open-WP-Club/WC-Pre-order/releases/tag/1.0.0",
+    "releaseAssets": [],
+    "releaseDownloads": 0
   },
   {
     "id": "woocommerce-phone-number-validator",
@@ -1103,7 +1323,7 @@
     "stars": 0,
     "forks": 0,
     "openIssues": 0,
-    "lastPush": "2026-09-13T16:22:28Z",
+    "lastPush": "2026-10-13T07:07:43Z",
     "createdAt": "2024-10-02T12:58:33Z",
     "topics": [],
     "license": "Apache-2.0",
@@ -1111,7 +1331,9 @@
     "defaultBranch": "main",
     "category": "plugin",
     "releasePublishedAt": "2024-10-07T08:41:01Z",
-    "releaseUrl": "https://github.com/Open-WP-Club/WooCommerce-Phone-Number-Validator/releases/tag/1.1.1"
+    "releaseUrl": "https://github.com/Open-WP-Club/WooCommerce-Phone-Number-Validator/releases/tag/1.1.1",
+    "releaseAssets": [],
+    "releaseDownloads": 0
   },
   {
     "id": "wp-file-visibility-manager",
@@ -1125,7 +1347,7 @@
     "stars": 0,
     "forks": 0,
     "openIssues": 0,
-    "lastPush": "2026-09-13T16:22:22Z",
+    "lastPush": "2026-10-13T07:07:45Z",
     "createdAt": "2024-11-26T09:44:06Z",
     "topics": [
       "file-sharing",
@@ -1139,7 +1361,9 @@
     "defaultBranch": "main",
     "category": "plugin",
     "releasePublishedAt": "2025-04-29T12:01:18Z",
-    "releaseUrl": "https://github.com/Open-WP-Club/WP-File-Visibility-Manager/releases/tag/1.0.0"
+    "releaseUrl": "https://github.com/Open-WP-Club/WP-File-Visibility-Manager/releases/tag/1.0.0",
+    "releaseAssets": [],
+    "releaseDownloads": 0
   },
   {
     "id": "wp-historical-preservation-mode",
@@ -1153,7 +1377,7 @@
     "stars": 0,
     "forks": 0,
     "openIssues": 0,
-    "lastPush": "2026-09-13T16:22:19Z",
+    "lastPush": "2026-10-13T07:07:45Z",
     "createdAt": "2024-10-23T13:08:54Z",
     "topics": [
       "historical-preserve",
@@ -1166,7 +1390,9 @@
     "defaultBranch": "main",
     "category": "plugin",
     "releasePublishedAt": "2025-04-29T12:11:14Z",
-    "releaseUrl": "https://github.com/Open-WP-Club/WP-Historical-Preservation-Mode/releases/tag/1.0.0"
+    "releaseUrl": "https://github.com/Open-WP-Club/WP-Historical-Preservation-Mode/releases/tag/1.0.0",
+    "releaseAssets": [],
+    "releaseDownloads": 0
   },
   {
     "id": "wp-internal-linking",
@@ -1180,7 +1406,7 @@
     "stars": 1,
     "forks": 0,
     "openIssues": 0,
-    "lastPush": "2026-09-13T16:22:32Z",
+    "lastPush": "2026-10-13T07:07:45Z",
     "createdAt": "2024-08-23T12:11:13Z",
     "topics": [],
     "license": "Apache-2.0",
@@ -1188,7 +1414,9 @@
     "defaultBranch": "main",
     "category": "plugin",
     "releasePublishedAt": "2024-09-09T19:15:47Z",
-    "releaseUrl": "https://github.com/Open-WP-Club/wp-internal-linking/releases/tag/1.0.0"
+    "releaseUrl": "https://github.com/Open-WP-Club/wp-internal-linking/releases/tag/1.0.0",
+    "releaseAssets": [],
+    "releaseDownloads": 0
   },
   {
     "id": "wp-sanitize",
@@ -1202,7 +1430,7 @@
     "stars": 0,
     "forks": 0,
     "openIssues": 0,
-    "lastPush": "2026-09-13T16:22:29Z",
+    "lastPush": "2026-10-13T07:07:45Z",
     "createdAt": "2024-09-14T11:54:36Z",
     "topics": [
       "gdpr",
@@ -1215,7 +1443,9 @@
     "defaultBranch": "main",
     "category": "plugin",
     "releasePublishedAt": "2024-10-04T11:56:39Z",
-    "releaseUrl": "https://github.com/Open-WP-Club/wp-sanitize/releases/tag/1.1.1"
+    "releaseUrl": "https://github.com/Open-WP-Club/wp-sanitize/releases/tag/1.1.1",
+    "releaseAssets": [],
+    "releaseDownloads": 0
   },
   {
     "id": "wp-simple-order-history",
@@ -1229,7 +1459,7 @@
     "stars": 0,
     "forks": 0,
     "openIssues": 0,
-    "lastPush": "2026-09-13T16:22:25Z",
+    "lastPush": "2026-10-13T07:07:48Z",
     "createdAt": "2025-01-13T14:22:37Z",
     "topics": [
       "order-history",
@@ -1242,7 +1472,9 @@
     "defaultBranch": "main",
     "category": "plugin",
     "releasePublishedAt": "2025-01-13T14:49:13Z",
-    "releaseUrl": "https://github.com/Open-WP-Club/wp-simple-order-history/releases/tag/1.0.0"
+    "releaseUrl": "https://github.com/Open-WP-Club/wp-simple-order-history/releases/tag/1.0.0",
+    "releaseAssets": [],
+    "releaseDownloads": 0
   },
   {
     "id": "wp-user-blocking",
@@ -1256,7 +1488,7 @@
     "stars": 0,
     "forks": 0,
     "openIssues": 0,
-    "lastPush": "2026-09-13T16:22:26Z",
+    "lastPush": "2026-10-13T07:07:48Z",
     "createdAt": "2024-10-09T12:51:23Z",
     "topics": [
       "blocking",
@@ -1271,6 +1503,8 @@
     "defaultBranch": "main",
     "category": "plugin",
     "releasePublishedAt": "2024-10-21T13:21:08Z",
-    "releaseUrl": "https://github.com/Open-WP-Club/WP-User-Blocking/releases/tag/1.1.0"
+    "releaseUrl": "https://github.com/Open-WP-Club/WP-User-Blocking/releases/tag/1.1.0",
+    "releaseAssets": [],
+    "releaseDownloads": 0
   }
 ]

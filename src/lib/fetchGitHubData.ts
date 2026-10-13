@@ -1,3 +1,4 @@
+import { fetchReadmeMarkdown } from './github-readme';
 import { stripSponsorshipBlock } from './sponsorship';
 import { marked } from 'marked';
 import type { GitHubRepoStats } from './types';
@@ -52,30 +53,9 @@ export async function fetchRepoStats(repoName: string): Promise<GitHubRepoStats>
 }
 
 export async function fetchReadme(repoName: string, defaultBranch: string = 'main'): Promise<string> {
-  // Try the GitHub API first
-  const url = `https://api.github.com/repos/${ORG}/${repoName}/readme`;
-  const res = await fetch(url, { headers: githubHeaders(), signal: AbortSignal.timeout(15000) });
-
-  if (res.ok) {
-    const data = await res.json();
-    const content = Buffer.from(data.content, 'base64').toString('utf-8');
-    let html = await marked.parse(stripSponsorshipBlock(content));
-    html = rewriteImageUrls(html, repoName, defaultBranch);
-    return html;
-  }
-
-  // Fallback: fetch raw README directly (not rate-limited like the API)
-  const rawUrl = `https://raw.githubusercontent.com/${ORG}/${repoName}/${defaultBranch}/README.md`;
-  const rawRes = await fetch(rawUrl, { signal: AbortSignal.timeout(15000) });
-
-  if (rawRes.ok) {
-    const content = await rawRes.text();
-    let html = await marked.parse(stripSponsorshipBlock(content));
-    html = rewriteImageUrls(html, repoName, defaultBranch);
-    return html;
-  }
-
-  return '<p class="text-gray-500 italic">No README available for this plugin.</p>';
+  const content = await fetchReadmeMarkdown(repoName, defaultBranch, { headers: githubHeaders(), org: ORG });
+  if (content === null) return '<p class="text-gray-500 italic">No README available for this plugin.</p>';
+  return rewriteImageUrls(await marked.parse(stripSponsorshipBlock(content)), repoName, defaultBranch);
 }
 
 export function rewriteImageUrls(html: string, repo: string, branch: string): string {
