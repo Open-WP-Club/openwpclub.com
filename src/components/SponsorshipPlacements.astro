@@ -1,8 +1,8 @@
 ---
-import { sponsorship, campaignsForRepository } from '../lib/sponsorship';
-interface Props { compact?: boolean; showEmpty?: boolean; group?: 'supporters' | 'campaigns' | 'both'; repository?: string; }
-const { compact = false, showEmpty = false, group = 'both', repository } = Astro.props;
-const placements = { supporters: sponsorship.supporters, campaigns: campaignsForRepository(sponsorship.campaigns, repository) };
+import { sponsorship, campaignsForRepository, hasLogoRecognition } from '../lib/sponsorship';
+interface Props { compact?: boolean; showEmpty?: boolean; group?: 'supporters' | 'campaigns' | 'both'; repository?: string; listing?: boolean; }
+const { compact = false, showEmpty = false, group = 'both', repository, listing = false } = Astro.props;
+const placements = { supporters: sponsorship.supporters.filter((entry) => listing || hasLogoRecognition(entry)), campaigns: campaignsForRepository(sponsorship.campaigns, repository) };
 const sections = [
   { key: 'supporters' as const, title: 'Open-source supporters', intro: 'These companies help keep our plugins free and maintained.', href: '/sponsors/' },
   { key: 'campaigns' as const, title: 'Sponsored placements', intro: 'Paid promotions, separate from our open-source supporters.', href: '/advertise/' },
@@ -17,8 +17,8 @@ const sections = [
         {placements[section.key].map((entry) => (
           <a href={entry.url} target="_blank" rel="sponsored noopener noreferrer" data-sponsor-id={entry.id}
             class="flex items-center gap-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-4 hover:border-blue-400 transition-colors">
-            <img src={entry.logo} alt={`${entry.name} logo`} width="56" height="56" loading="lazy" decoding="async" class="size-14 shrink-0 rounded-lg bg-white object-contain" />
-            <div class="min-w-0">
+            {(section.key === 'campaigns' || hasLogoRecognition(entry)) && <img src={`/sponsorship/logos/${entry.id}.png`} alt={`${entry.name} logo`} width="56" height="56" loading="lazy" decoding="async" class="size-14 shrink-0 rounded-lg bg-white object-contain" />}
+            <div class="min-w-0 break-words">
               <span class="block font-semibold text-gray-900 dark:text-white">{entry.name}</span>
               <span class="block text-xs text-gray-500 dark:text-gray-400">{section.key === 'campaigns' ? 'Sponsored' : 'Open-source supporter'}</span>
               <span class="mt-1 block text-sm text-gray-600 dark:text-gray-400">{entry.description}</span>

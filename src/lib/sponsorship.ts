@@ -1,3 +1,5 @@
+import { selectEntries, hasLogoRecognition, assertSponsorshipCapacity } from './sponsorship-policy.mjs';
+export { hasLogoRecognition } from './sponsorship-policy.mjs';
 import registry from '../data/sponsorship.json';
 
 export const SPONSORSHIP_LIMIT = 3;
@@ -6,7 +8,7 @@ export interface SponsorshipEntry {
   id: string;
   name: string;
   url: string;
-  logo: string;
+  logo?: string;
   description: string;
   tier: 'supporter' | 'partner' | 'champion';
   active: boolean;
@@ -40,7 +42,7 @@ export function validateSponsorship(value: unknown): SponsorshipRegistry {
       if (entry.repositories !== undefined && (!Array.isArray(entry.repositories) || entry.repositories.length === 0 || entry.repositories.some((repo) => typeof repo !== 'string' || !/^(?:\*|[a-z0-9_-]+)$/.test(repo)))) throw new Error('Invalid campaign repository scope');
       const url = new URL(entry.url);
       if (url.protocol !== 'https:' || url.username || url.password) throw new Error('Sponsor URL must be HTTPS');
-      if (typeof entry.logo !== 'string' || !/^\/images\/sponsors\/[a-z0-9-]+\.png$/.test(entry.logo)) throw new Error('Sponsor logos must be local PNG files');
+      if ((group === 'campaigns' || hasLogoRecognition(entry) || entry.logo !== undefined) && (typeof entry.logo !== 'string' || !/^\/images\/sponsors\/[a-z0-9-]+\.png$/.test(entry.logo))) throw new Error('Sponsor logos must be local PNG files');
       if (!['supporter', 'partner', 'champion'].includes(entry.tier) || typeof entry.active !== 'boolean' || !Number.isFinite(entry.priority)) throw new Error('Invalid sponsor status');
       for (const date of [entry.startsAt, entry.endsAt]) {
         if (date !== null && (typeof date !== 'string' || !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$/.test(date) || !Number.isFinite(Date.parse(date)) || new Date(date).toISOString().replace('.000', '') !== date)) throw new Error('Dates must be valid UTC timestamps');
@@ -48,17 +50,17 @@ export function validateSponsorship(value: unknown): SponsorshipRegistry {
       if (!entry.startsAt || (entry.endsAt && Date.parse(entry.endsAt) <= Date.parse(entry.startsAt))) throw new Error('Invalid sponsorship period');
     }
   }
+  assertSponsorshipCapacity(data);
   return data as unknown as SponsorshipRegistry;
 }
 
 export function getActiveSponsorships(data: SponsorshipRegistry, now = Date.now()) {
-  const select = (entries: SponsorshipEntry[]) => {
-    const active = entries.filter((entry) => entry.active && Date.parse(entry.startsAt) <= now && (!entry.endsAt || Date.parse(entry.endsAt) > now))
-      .sort((a, b) => b.priority - a.priority || a.id.localeCompare(b.id));
+  const select = (entries: SponsorshipEntry[], rankTiers = false) => {
+    const active = selectEntries(entries, now, rankTiers);
     if (active.length > SPONSORSHIP_LIMIT) throw new Error(`Only ${SPONSORSHIP_LIMIT} active positions per sponsorship group are available`);
     return active;
   };
-  return { schemaVersion: 1 as const, supporters: select(data.supporters), campaigns: select(data.campaigns) };
+  return { schemaVersion: 1 as const, supporters: select(data.supporters, true), campaigns: select(data.campaigns) };
 }
 
 export const sponsorship = getActiveSponsorships(validateSponsorship(registry));

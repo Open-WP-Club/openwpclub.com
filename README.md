@@ -1,6 +1,6 @@
 # Open WP Club Website
 
-The community website for [Open WP Club](https://openwpclub.com) - free, open-source WordPress plugins built by the community. Powered by [Astro](https://astro.build), Tailwind CSS v4, and deployed on Cloudflare Workers.
+The community website for [Open WP Club](https://openwpclub.com) - free, open-source WordPress plugins built by the community. Powered by [Astro](https://astro.build), Tailwind CSS v4, and published on GitHub Pages behind Cloudflare.
 
 ## Quick Start
 
@@ -81,7 +81,7 @@ registered as a supporter. Each group has up to three active entries; dates use
 UTC and `endsAt: null` means an ongoing sponsorship. Put approved PNG logos in
 `public/images/sponsors/`.
 
-`pnpm build` publishes `/sponsorship.json`, the shared README banners and scoped
+`pnpm build` publishes `/sponsorship.json`, the shared README transparent light/dark banners and scoped
 campaign banners. The site, READMEs and Plugin Hub all derive their recognition
 from that registry. GitHub Sponsors imports in `src/data/sponsors.json` are a
 separate funding snapshot and never automatically grant advertising rights.
@@ -95,6 +95,20 @@ The organization catalog refresh imports this feed daily; Plugin Hub then
 receives supporter thanks in its normal cached catalog request. Deploy this site
 before publishing the catalog consumer and README blocks. The repository
 inventory and integration patches are in `integrations/sponsorship/`.
+
+### Scheduled sponsorship dates
+
+The `Refresh sponsorship transitions` workflow checks dates every 15 minutes.
+It commits a generated transition marker only when the active positions or the
+registry change, then explicitly calls the Pages publishing workflow. This also
+works for bot commits, which do not trigger ordinary push workflows. The
+publishing workflow builds from committed data and requires no GitHub API access.
+GitHub scheduling, deployment and image/CDN caches can delay public visibility.
+
+`Supporter` has a name/link on the sponsors page. Only `Partner` and `Champion`
+have website logos, README banners and Plugin Hub recognition. Champion sorts
+before Partner. Logos are normalized to bounded PNGs before publication; long
+banner names use two lines and an ellipsis. Source logos are limited to 5 MiB.
 
 ## Project Structure
 
@@ -118,20 +132,20 @@ public/          # Static assets (favicon, OG image)
 - SEO: sitemap, structured data, Open Graph, Twitter Cards
 - View Transitions (SPA-style navigation)
 - Dark mode with system preference detection
-- Deployed to Cloudflare Workers ($0/month)
+- Published on GitHub Pages behind Cloudflare
 
 <!-- OPENWPCLUB_SPONSORS_START -->
 ## Open-source supporters
 
 These companies help keep Open WP Club plugins free and maintained.
 
-[![Open WP Club supporters](https://openwpclub.com/sponsorship/supporters.png)](https://openwpclub.com/sponsors/)
+<a href="https://openwpclub.com/sponsors/"><picture><source media="(prefers-color-scheme: dark)" srcset="https://openwpclub.com/sponsorship/supporters-dark.png"><img src="https://openwpclub.com/sponsorship/supporters.png" alt="Open WP Club supporters" width="960"></picture></a>
 
 ## Sponsored placements
 
 Clearly labelled promotional campaigns, separate from our supporters.
 
-[![Open WP Club sponsored placements](https://openwpclub.com/sponsorship/campaigns.png)](https://openwpclub.com/advertise/)
+<a href="https://openwpclub.com/advertise/"><picture><source media="(prefers-color-scheme: dark)" srcset="https://openwpclub.com/sponsorship/campaigns-dark.png"><img src="https://openwpclub.com/sponsorship/campaigns.png" alt="Open WP Club sponsored placements" width="960"></picture></a>
 
 [Support our work](https://openwpclub.com/sponsors/) · [Discuss a campaign](https://openwpclub.com/advertise/)
 <!-- OPENWPCLUB_SPONSORS_END -->

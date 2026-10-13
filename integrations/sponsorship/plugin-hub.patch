@@ -170,10 +170,10 @@ index 0000000..37bcae3
 +</div>
 diff --git a/includes/sponsorship.php b/includes/sponsorship.php
 new file mode 100644
-index 0000000..6bd2210
+index 0000000..70cbad1
 --- /dev/null
 +++ b/includes/sponsorship.php
-@@ -0,0 +1,96 @@
+@@ -0,0 +1,110 @@
 +<?php
 +/**
 + * Validated supporter recognition from the existing first-party catalog.
@@ -219,6 +219,11 @@ index 0000000..6bd2210
 +					return null;
 +				}
 +			}
++			// Legacy catalogs without a tier cannot grant company placement rights.
++			$entry['tier'] = $entry['tier'] ?? 'supporter';
++			if ( ! in_array( $entry['tier'], array( 'supporter', 'partner', 'champion' ), true ) ) {
++				return null;
++			}
 +			$url = wp_parse_url( $entry['url'] );
 +			if ( ! filter_var( $entry['url'], FILTER_VALIDATE_URL ) || ! is_array( $url ) || 'https' !== ( $url['scheme'] ?? '' ) || empty( $url['host'] ) || isset( $url['user'] ) || isset( $url['pass'] ) ) {
 +				return null;
@@ -241,7 +246,7 @@ index 0000000..6bd2210
 +			if ( false === $png || substr( $png, 0, 8 ) !== "\x89PNG\r\n\x1a\n" ) {
 +				return null;
 +			}
-+			$entries[] = array_intersect_key( $entry, array_flip( array( 'id', 'name', 'url', 'description', 'logoData', 'active', 'priority', 'startsAt', 'endsAt' ) ) );
++			$entries[] = array_intersect_key( $entry, array_flip( array( 'id', 'name', 'url', 'description', 'logoData', 'active', 'priority', 'startsAt', 'endsAt', 'tier' ) ) );
 +		}
 +		return $entries;
 +	}
@@ -257,12 +262,21 @@ index 0000000..6bd2210
 +		$entries = array_filter(
 +			$entries,
 +			static function ( $entry ) use ( $now ) {
-+				return $entry['active'] && strtotime( $entry['startsAt'] ) <= $now && ( null === $entry['endsAt'] || strtotime( $entry['endsAt'] ) > $now );
++				return in_array( $entry['tier'], array( 'partner', 'champion' ), true ) && $entry['active'] && strtotime( $entry['startsAt'] ) <= $now && ( null === $entry['endsAt'] || strtotime( $entry['endsAt'] ) > $now );
 +			}
 +		);
 +		usort(
 +			$entries,
 +			static function ( $a, $b ) {
++				$ranks      = array(
++					'supporter' => 0,
++					'partner'   => 1,
++					'champion'  => 2,
++				);
++				$tier_order = $ranks[ $b['tier'] ] <=> $ranks[ $a['tier'] ];
++				if ( 0 !== $tier_order ) {
++					return $tier_order;
++				}
 +				$order = $b['priority'] <=> $a['priority'];
 +				return 0 !== $order ? $order : strcmp( $a['id'], $b['id'] );
 +			}
@@ -305,7 +319,7 @@ index c182a8f..779c362 100644
  define( 'PLUGIN_HUB_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
  define( 'PLUGIN_HUB_ORGANIZATION', 'Open-WP-Club' );
 diff --git a/readme.md b/readme.md
-index 95dd9fd..0df5db1 100644
+index 95dd9fd..46415fe 100644
 --- a/readme.md
 +++ b/readme.md
 @@ -37,6 +37,22 @@ Plugin Hub installs, updates, and manages WordPress plugins published by Open WP
@@ -317,13 +331,13 @@ index 95dd9fd..0df5db1 100644
 +
 +These companies help keep Open WP Club plugins free and maintained.
 +
-+[![Open WP Club supporters](https://openwpclub.com/sponsorship/supporters.png)](https://openwpclub.com/sponsors/)
++<a href="https://openwpclub.com/sponsors/"><picture><source media="(prefers-color-scheme: dark)" srcset="https://openwpclub.com/sponsorship/supporters-dark.png"><img src="https://openwpclub.com/sponsorship/supporters.png" alt="Open WP Club supporters" width="960"></picture></a>
 +
 +## Sponsored placements
 +
 +Clearly labelled promotional campaigns, separate from our supporters.
 +
-+[![Open WP Club sponsored placements](https://openwpclub.com/sponsorship/repos/plugin-hub/campaigns.png)](https://openwpclub.com/advertise/)
++<a href="https://openwpclub.com/advertise/"><picture><source media="(prefers-color-scheme: dark)" srcset="https://openwpclub.com/sponsorship/repos/plugin-hub/campaigns-dark.png"><img src="https://openwpclub.com/sponsorship/repos/plugin-hub/campaigns.png" alt="Open WP Club sponsored placements" width="960"></picture></a>
 +
 +[Support our work](https://openwpclub.com/sponsors/) · [Discuss a campaign](https://openwpclub.com/advertise/)
 +<!-- OPENWPCLUB_SPONSORS_END -->
@@ -338,7 +352,7 @@ index 95dd9fd..0df5db1 100644
 +
 +### Supporter recognition and privacy
 +
-+Plugin Hub receives up to three open-source supporter credits inside its existing
++Plugin Hub receives up to three Partner/Champion open-source supporter credits inside its existing
 +Open WP Club catalog request to GitHub. The authoritative registry is maintained
 +at https://openwpclub.com/sponsorship.json. Credits are cached locally and refresh
 +with the catalog (normally daily). Embedded PNG logos do not contact advertisers
@@ -351,7 +365,7 @@ index 95dd9fd..0df5db1 100644
 +shown in the WordPress admin; they have separate positions in READMEs and on the
 +website. Sponsor data never controls installation, updates or access to features.
 diff --git a/readme.txt b/readme.txt
-index c472d0c..423fb3e 100644
+index c472d0c..d305ae7 100644
 --- a/readme.txt
 +++ b/readme.txt
 @@ -4,7 +4,7 @@ Tags: plugins, github, installer, plugin-manager, open-wp-club
@@ -363,13 +377,14 @@ index c472d0c..423fb3e 100644
  License: GPLv2 or later
  License URI: http://www.gnu.org/licenses/gpl-2.0.html
  
-@@ -76,7 +76,13 @@ Beta plugins are those with version numbers less than 1.0.0. You can toggle thei
+@@ -76,7 +76,14 @@ Beta plugins are those with version numbers less than 1.0.0. You can toggle thei
  
  == Changelog ==
  
 -= 1.4.3 =
 += 1.5.0 =
-+* Add up to three open-source supporter credits from the existing first-party catalog.
++* Add up to three Partner/Champion supporter credits from the existing first-party catalog.
++* Enforce package placement rights and prioritize Champion recognition.
 +* Embed logos locally without advertiser requests or impression tracking.
 +* Allow users to persistently hide thanks, or disable them site-wide with PLUGIN_HUB_HIDE_SUPPORTERS.
 +
@@ -378,6 +393,12 @@ index c472d0c..423fb3e 100644
  * Switched the catalog source from plugins.csv to catalog.json
  * Catalog entries are now filtered to type "plugin", so apps and websites in the catalog can no longer appear as installable plugins
  
+@@ -131,4 +138,4 @@ Repository: https://github.com/Open-WP-Club/plugin-hub
+ 
+ == Privacy Policy ==
+ 
+-Plugin Hub does not collect or store any personal data. It only communicates with GitHub's public API to fetch plugin information.
++Plugin Hub contacts GitHub for the published Open WP Club catalog and plugin management. The catalog includes Partner/Champion supporter credits with bounded embedded PNG logos. Displaying credits does not contact advertisers, track impressions or send referral identifiers. Hide/show is stored locally as a user preference. Plugin management records local user IDs in its local activity log. No advertising telemetry is sent to Open WP Club or advertisers.
 diff --git a/tests/CatalogSponsorshipTest.php b/tests/CatalogSponsorshipTest.php
 new file mode 100644
 index 0000000..57041c6
@@ -480,10 +501,10 @@ index 0000000..8ad6384
 +}
 diff --git a/tests/SponsorshipTest.php b/tests/SponsorshipTest.php
 new file mode 100644
-index 0000000..bb5e3ce
+index 0000000..a9178dc
 --- /dev/null
 +++ b/tests/SponsorshipTest.php
-@@ -0,0 +1,43 @@
+@@ -0,0 +1,52 @@
 +<?php
 +/** @package PluginHub */
 +namespace PluginHub\Tests;
@@ -494,7 +515,7 @@ index 0000000..bb5e3ce
 +final class SponsorshipTest extends TestCase {
 +	private function entry( $id = 'test' ) {
 +		return array(
-+			'id' => $id, 'name' => 'Test', 'url' => 'https://example.com/',
++			'tier' => 'partner', 'id' => $id, 'name' => 'Test', 'url' => 'https://example.com/',
 +			'description' => 'Open-source supporter', 'active' => true, 'priority' => 10,
 +			'logoData' => 'data:image/png;base64,' . base64_encode( "\x89PNG\r\n\x1a\n" ),
 +			'startsAt' => '2026-10-01T00:00:00Z', 'endsAt' => null,
@@ -526,6 +547,15 @@ index 0000000..bb5e3ce
 +		$this->assertCount( 3, Sponsorship::active( Sponsorship::validate( $feed ), strtotime( '2026-10-15T00:00:00Z' ) ) );
 +		$this->assertNotContains( 'advertiser', array_column( Sponsorship::validate( $feed ), 'id' ) );
 +	}
++	public function test_supporter_and_legacy_catalogs_do_not_receive_company_placements() {
++		$basic = $this->entry( 'basic' ); $basic['tier'] = 'supporter';
++		$legacy = $this->entry( 'legacy' ); unset( $legacy['tier'] );
++		$champion = $this->entry( 'champion' ); $champion['tier'] = 'champion'; $champion['priority'] = 0;
++		$entries = Sponsorship::validate( $this->feed( array( $basic, $legacy, $this->entry( 'partner' ), $champion ) ) );
++		$active = Sponsorship::active( $entries, strtotime( '2026-10-15T00:00:00Z' ) );
++		$this->assertSame( array( 'champion', 'partner' ), array_column( $active, 'id' ) );
++	}
++
 +}
 diff --git a/uninstall.php b/uninstall.php
 index 30d1df6..8f54a8b 100644

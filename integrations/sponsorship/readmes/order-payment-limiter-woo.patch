@@ -1,5 +1,5 @@
 diff --git a/README.MD b/README.MD
-index 6405588..63f4645 100644
+index 6405588..f2f7b3d 100644
 --- a/README.MD
 +++ b/README.MD
 @@ -43,6 +43,22 @@ The plugin hooks into:
@@ -11,13 +11,13 @@ index 6405588..63f4645 100644
 +
 +These companies help keep Open WP Club plugins free and maintained.
 +
-+[![Open WP Club supporters](https://openwpclub.com/sponsorship/supporters.png)](https://openwpclub.com/sponsors/)
++<a href="https://openwpclub.com/sponsors/"><picture><source media="(prefers-color-scheme: dark)" srcset="https://openwpclub.com/sponsorship/supporters-dark.png"><img src="https://openwpclub.com/sponsorship/supporters.png" alt="Open WP Club supporters" width="960"></picture></a>
 +
 +## Sponsored placements
 +
 +Clearly labelled promotional campaigns, separate from our supporters.
 +
-+[![Open WP Club sponsored placements](https://openwpclub.com/sponsorship/repos/order-payment-limiter-woo/campaigns.png)](https://openwpclub.com/advertise/)
++<a href="https://openwpclub.com/advertise/"><picture><source media="(prefers-color-scheme: dark)" srcset="https://openwpclub.com/sponsorship/repos/order-payment-limiter-woo/campaigns-dark.png"><img src="https://openwpclub.com/sponsorship/repos/order-payment-limiter-woo/campaigns.png" alt="Open WP Club sponsored placements" width="960"></picture></a>
 +
 +[Support our work](https://openwpclub.com/sponsors/) · [Discuss a campaign](https://openwpclub.com/advertise/)
 +<!-- OPENWPCLUB_SPONSORS_END -->
