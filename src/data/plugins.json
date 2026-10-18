@@ -115,11 +115,11 @@
         "name": "client-fluent-submissions.zip",
         "url": "https://github.com/Open-WP-Club/better-viewer-fluent-forms/releases/download/1.1.7/client-fluent-submissions.zip",
         "size": 26754,
-        "downloadCount": 4,
+        "downloadCount": 5,
         "contentType": "application/zip"
       }
     ],
-    "releaseDownloads": 4
+    "releaseDownloads": 5
   },
   {
     "id": "bulk-order-editor",
@@ -204,11 +204,11 @@
         "name": "WP-eu-vat.zip",
         "url": "https://github.com/Open-WP-Club/eu-vat-wp/releases/download/1.0.0/WP-eu-vat.zip",
         "size": 11461,
-        "downloadCount": 2,
+        "downloadCount": 3,
         "contentType": "application/zip"
       }
     ],
-    "releaseDownloads": 2
+    "releaseDownloads": 3
   },
   {
     "id": "fulfill-for-woocommerce",
@@ -236,11 +236,11 @@
         "name": "FulFill-0.1.0.apk",
         "url": "https://github.com/Open-WP-Club/FulFill-for-WooCommerce/releases/download/0.1.0/FulFill-0.1.0.apk",
         "size": 41190234,
-        "downloadCount": 12,
+        "downloadCount": 13,
         "contentType": "application/vnd.android.package-archive"
       }
     ],
-    "releaseDownloads": 12,
+    "releaseDownloads": 13,
     "platforms": [
       "android"
     ],
@@ -290,11 +290,11 @@
         "name": "google-scholar-wp.zip",
         "url": "https://github.com/Open-WP-Club/google-scholar-wp/releases/download/1.7.0/google-scholar-wp.zip",
         "size": 84127,
-        "downloadCount": 3,
+        "downloadCount": 4,
         "contentType": "application/zip"
       }
     ],
-    "releaseDownloads": 3
+    "releaseDownloads": 4
   },
   {
     "id": "gravity-forms-shopify-integration",
@@ -357,11 +357,11 @@
         "name": "inventory-alerts-woo.zip",
         "url": "https://github.com/Open-WP-Club/inventory-alerts-woo/releases/download/1.2.0/inventory-alerts-woo.zip",
         "size": 13217,
-        "downloadCount": 8,
+        "downloadCount": 9,
         "contentType": "application/zip"
       }
     ],
-    "releaseDownloads": 8
+    "releaseDownloads": 9
   },
   {
     "id": "inventory-insights-woocommerce",
@@ -396,11 +396,11 @@
         "name": "inventory-insights-woocommerce.zip",
         "url": "https://github.com/Open-WP-Club/inventory-insights-woocommerce/releases/download/1.4.0/inventory-insights-woocommerce.zip",
         "size": 26097,
-        "downloadCount": 4,
+        "downloadCount": 6,
         "contentType": "application/zip"
       }
     ],
-    "releaseDownloads": 4
+    "releaseDownloads": 6
   },
   {
     "id": "last-user-orders-by-roles",
@@ -463,11 +463,11 @@
         "name": "llms-txt-for-wp.zip",
         "url": "https://github.com/Open-WP-Club/llms-txt-for-wp/releases/download/1.1.0/llms-txt-for-wp.zip",
         "size": 91807,
-        "downloadCount": 13,
+        "downloadCount": 14,
         "contentType": "application/zip"
       }
     ],
-    "releaseDownloads": 13
+    "releaseDownloads": 14
   },
   {
     "id": "local-pickup-woocommerce",
@@ -501,11 +501,11 @@
         "name": "local-pickup-woocommerce.zip",
         "url": "https://github.com/Open-WP-Club/local-pickup-woocommerce/releases/download/1.2.0/local-pickup-woocommerce.zip",
         "size": 23575,
-        "downloadCount": 2,
+        "downloadCount": 3,
         "contentType": "application/zip"
       }
     ],
-    "releaseDownloads": 2
+    "releaseDownloads": 3
   },
   {
     "id": "logo-link-wp",
@@ -538,11 +538,11 @@
         "name": "logo-link-wp.zip",
         "url": "https://github.com/Open-WP-Club/logo-link-wp/releases/download/1.3.0/logo-link-wp.zip",
         "size": 18916,
-        "downloadCount": 12,
+        "downloadCount": 13,
         "contentType": "application/zip"
       }
     ],
-    "releaseDownloads": 12
+    "releaseDownloads": 13
   },
   {
     "id": "multi-store-sync-for-woocommerce",
@@ -578,11 +578,11 @@
         "name": "wc-multi-store-sync-5.0.0.zip",
         "url": "https://github.com/Open-WP-Club/multi-store-sync-for-woocommerce/releases/download/5.0.0/wc-multi-store-sync-5.0.0.zip",
         "size": 528434,
-        "downloadCount": 4,
+        "downloadCount": 5,
         "contentType": "application/zip"
       }
     ],
-    "releaseDownloads": 4
+    "releaseDownloads": 5
   },
   {
     "id": "opengraph-svg-generator-wp",
@@ -682,11 +682,11 @@
         "name": "order-printing-woocommerce-1.3.0.zip",
         "url": "https://github.com/Open-WP-Club/order-printing-woocommerce/releases/download/1.3.0/order-printing-woocommerce-1.3.0.zip",
         "size": 4543910,
-        "downloadCount": 5,
+        "downloadCount": 6,
         "contentType": "application/zip"
       }
     ],
-    "releaseDownloads": 5
+    "releaseDownloads": 6
   },
   {
     "id": "payment-method-highlighter-for-woocommerce",
@@ -719,11 +719,11 @@
         "name": "payment-method-highlighter-for-woocommerce.zip",
         "url": "https://github.com/Open-WP-Club/payment-method-highlighter-for-wooCommerce/releases/download/1.4.0/payment-method-highlighter-for-woocommerce.zip",
         "size": 26762,
-        "downloadCount": 4,
+        "downloadCount": 5,
         "contentType": "application/zip"
       }
     ],
-    "releaseDownloads": 4
+    "releaseDownloads": 5
   },
   {
     "id": "phone-order-woo",
@@ -751,11 +751,11 @@
         "name": "phone-order-woo.zip",
         "url": "https://github.com/Open-WP-Club/phone-order-woo/releases/download/2.0.0/phone-order-woo.zip",
         "size": 23093,
-        "downloadCount": 4,
+        "downloadCount": 5,
         "contentType": "application/zip"
       }
     ],
-    "releaseDownloads": 4
+    "releaseDownloads": 5
   },
   {
     "id": "plugin-hub",
@@ -783,11 +783,11 @@
         "name": "plugin-hub.zip",
         "url": "https://github.com/Open-WP-Club/plugin-hub/releases/download/1.5.1/plugin-hub.zip",
         "size": 51293,
-        "downloadCount": 0,
+        "downloadCount": 4,
         "contentType": "application/zip"
       }
     ],
-    "releaseDownloads": 0
+    "releaseDownloads": 4
   },
   {
     "id": "plugins-showcase-wp",
@@ -844,11 +844,11 @@
         "name": "Priority-Processing-WooCommerce.zip",
         "url": "https://github.com/Open-WP-Club/Priority-Processing-WooCommerce/releases/download/1.8.1/Priority-Processing-WooCommerce.zip",
         "size": 67500,
-        "downloadCount": 5,
+        "downloadCount": 6,
         "contentType": "application/zip"
       }
     ],
-    "releaseDownloads": 5
+    "releaseDownloads": 6
   },
   {
     "id": "product-health-check-woocommerce",
@@ -882,11 +882,11 @@
         "name": "product-health-check-woocommerce-1.1.1.zip",
         "url": "https://github.com/Open-WP-Club/product-health-check-woocommerce/releases/download/1.1.1/product-health-check-woocommerce-1.1.1.zip",
         "size": 18272,
-        "downloadCount": 4,
+        "downloadCount": 5,
         "contentType": "application/zip"
       }
     ],
-    "releaseDownloads": 4
+    "releaseDownloads": 5
   },
   {
     "id": "rank-math-automation-wp",
@@ -975,11 +975,11 @@
         "name": "woocommerce-sku-auto-2.2.2.zip",
         "url": "https://github.com/Open-WP-Club/sku-auto-woocommerce/releases/download/2.2.2/woocommerce-sku-auto-2.2.2.zip",
         "size": 43285,
-        "downloadCount": 10,
+        "downloadCount": 11,
         "contentType": "application/zip"
       }
     ],
-    "releaseDownloads": 10
+    "releaseDownloads": 11
   },
   {
     "id": "smart-product-export-woo",
@@ -1007,11 +1007,11 @@
         "name": "smart-product-export.zip",
         "url": "https://github.com/Open-WP-Club/smart-product-export-woo/releases/download/1.1.0/smart-product-export.zip",
         "size": 19728,
-        "downloadCount": 9,
+        "downloadCount": 10,
         "contentType": "application/zip"
       }
     ],
-    "releaseDownloads": 9
+    "releaseDownloads": 10
   },
   {
     "id": "spam-user-detective-wp",
@@ -1039,11 +1039,11 @@
         "name": "spam-user-detective-wp.zip",
         "url": "https://github.com/Open-WP-Club/spam-user-detective-wp/releases/download/1.5.7/spam-user-detective-wp.zip",
         "size": 59306,
-        "downloadCount": 11,
+        "downloadCount": 12,
         "contentType": "application/zip"
       }
     ],
-    "releaseDownloads": 11
+    "releaseDownloads": 12
   },
   {
     "id": "stageguard",
@@ -1128,67 +1128,67 @@
         "name": "storeos-1.0.3.x86_64.rpm",
         "url": "https://github.com/Open-WP-Club/StoreOS/releases/download/1.0.3/storeos-1.0.3.x86_64.rpm",
         "size": 92584153,
-        "downloadCount": 13,
+        "downloadCount": 14,
         "contentType": "application/x-redhat-package-manager"
       },
       {
         "name": "StoreOS.-.Built.for.WooCommerce-1.0.3-arm64-mac.zip",
         "url": "https://github.com/Open-WP-Club/StoreOS/releases/download/1.0.3/StoreOS.-.Built.for.WooCommerce-1.0.3-arm64-mac.zip",
         "size": 133427511,
-        "downloadCount": 14,
+        "downloadCount": 15,
         "contentType": "application/zip"
       },
       {
         "name": "StoreOS.-.Built.for.WooCommerce-1.0.3-arm64.dmg",
         "url": "https://github.com/Open-WP-Club/StoreOS/releases/download/1.0.3/StoreOS.-.Built.for.WooCommerce-1.0.3-arm64.dmg",
         "size": 133206747,
-        "downloadCount": 14,
+        "downloadCount": 15,
         "contentType": "application/x-apple-diskimage"
       },
       {
         "name": "StoreOS.-.Built.for.WooCommerce-1.0.3-mac.zip",
         "url": "https://github.com/Open-WP-Club/StoreOS/releases/download/1.0.3/StoreOS.-.Built.for.WooCommerce-1.0.3-mac.zip",
         "size": 135268330,
-        "downloadCount": 13,
+        "downloadCount": 14,
         "contentType": "application/zip"
       },
       {
         "name": "StoreOS.-.Built.for.WooCommerce-1.0.3.AppImage",
         "url": "https://github.com/Open-WP-Club/StoreOS/releases/download/1.0.3/StoreOS.-.Built.for.WooCommerce-1.0.3.AppImage",
         "size": 141137568,
-        "downloadCount": 13,
+        "downloadCount": 14,
         "contentType": "application/octet-stream"
       },
       {
         "name": "StoreOS.-.Built.for.WooCommerce-1.0.3.dmg",
         "url": "https://github.com/Open-WP-Club/StoreOS/releases/download/1.0.3/StoreOS.-.Built.for.WooCommerce-1.0.3.dmg",
         "size": 135020457,
-        "downloadCount": 14,
+        "downloadCount": 15,
         "contentType": "application/x-apple-diskimage"
       },
       {
         "name": "StoreOS.-.Built.for.WooCommerce.1.0.3.exe",
         "url": "https://github.com/Open-WP-Club/StoreOS/releases/download/1.0.3/StoreOS.-.Built.for.WooCommerce.1.0.3.exe",
         "size": 108474932,
-        "downloadCount": 15,
+        "downloadCount": 16,
         "contentType": "application/x-msdos-program"
       },
       {
         "name": "StoreOS.-.Built.for.WooCommerce.Setup.1.0.3.exe",
         "url": "https://github.com/Open-WP-Club/StoreOS/releases/download/1.0.3/StoreOS.-.Built.for.WooCommerce.Setup.1.0.3.exe",
         "size": 206384923,
-        "downloadCount": 15,
+        "downloadCount": 16,
         "contentType": "application/x-msdos-program"
       },
       {
         "name": "storeos_1.0.3_amd64.deb",
         "url": "https://github.com/Open-WP-Club/StoreOS/releases/download/1.0.3/storeos_1.0.3_amd64.deb",
         "size": 107236304,
-        "downloadCount": 13,
+        "downloadCount": 14,
         "contentType": "application/x-debian-package"
       }
     ],
-    "releaseDownloads": 124,
+    "releaseDownloads": 133,
     "platforms": [
       "windows",
       "macos",
@@ -1235,11 +1235,11 @@
         "name": "taxonomy-showcase-woocommerce-1.2.3.zip",
         "url": "https://github.com/Open-WP-Club/taxonomy-showcase-WooCommerce/releases/download/1.2.3/taxonomy-showcase-woocommerce-1.2.3.zip",
         "size": 23067,
-        "downloadCount": 4,
+        "downloadCount": 5,
         "contentType": "application/zip"
       }
     ],
-    "releaseDownloads": 4
+    "releaseDownloads": 5
   },
   {
     "id": "team-manager-wordpress",
@@ -1291,11 +1291,11 @@
         "name": "User-Self-Delete.zip",
         "url": "https://github.com/Open-WP-Club/User-Self-Delete/releases/download/2.1.0/User-Self-Delete.zip",
         "size": 36446,
-        "downloadCount": 1,
+        "downloadCount": 2,
         "contentType": "application/zip"
       }
     ],
-    "releaseDownloads": 1
+    "releaseDownloads": 2
   },
   {
     "id": "wc-pre-order",
