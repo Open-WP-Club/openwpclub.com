@@ -236,11 +236,11 @@
         "name": "FulFill-0.1.0.apk",
         "url": "https://github.com/Open-WP-Club/FulFill-for-WooCommerce/releases/download/0.1.0/FulFill-0.1.0.apk",
         "size": 41190234,
-        "downloadCount": 13,
+        "downloadCount": 14,
         "contentType": "application/vnd.android.package-archive"
       }
     ],
-    "releaseDownloads": 13,
+    "releaseDownloads": 14,
     "platforms": [
       "android"
     ],
@@ -290,11 +290,11 @@
         "name": "google-scholar-wp.zip",
         "url": "https://github.com/Open-WP-Club/google-scholar-wp/releases/download/1.7.0/google-scholar-wp.zip",
         "size": 84127,
-        "downloadCount": 4,
+        "downloadCount": 5,
         "contentType": "application/zip"
       }
     ],
-    "releaseDownloads": 4
+    "releaseDownloads": 5
   },
   {
     "id": "gravity-forms-shopify-integration",
@@ -501,11 +501,11 @@
         "name": "local-pickup-woocommerce.zip",
         "url": "https://github.com/Open-WP-Club/local-pickup-woocommerce/releases/download/1.2.0/local-pickup-woocommerce.zip",
         "size": 23575,
-        "downloadCount": 3,
+        "downloadCount": 6,
         "contentType": "application/zip"
       }
     ],
-    "releaseDownloads": 3
+    "releaseDownloads": 6
   },
   {
     "id": "logo-link-wp",
@@ -548,7 +548,7 @@
     "id": "multi-store-sync-for-woocommerce",
     "name": "Multi Store Sync For WooCommerce",
     "description": "Automatically synchronize products, stock levels, and inventory from your main WooCommerce store to multiple remote WooCommerce stores. Built from the ground up as a standalone solution with enterprise-grade features.",
-    "version": "5.0.0",
+    "version": "5.3.0",
     "downloads": "",
     "rating": "",
     "githubUrl": "https://github.com/Open-WP-Club/multi-store-sync-for-woocommerce",
@@ -571,18 +571,18 @@
     "language": "PHP",
     "defaultBranch": "main",
     "category": "plugin",
-    "releasePublishedAt": "2026-09-23T20:54:04Z",
-    "releaseUrl": "https://github.com/Open-WP-Club/multi-store-sync-for-woocommerce/releases/tag/5.0.0",
+    "releasePublishedAt": "2026-10-23T12:38:16Z",
+    "releaseUrl": "https://github.com/Open-WP-Club/multi-store-sync-for-woocommerce/releases/tag/5.3.0",
     "releaseAssets": [
       {
-        "name": "wc-multi-store-sync-5.0.0.zip",
-        "url": "https://github.com/Open-WP-Club/multi-store-sync-for-woocommerce/releases/download/5.0.0/wc-multi-store-sync-5.0.0.zip",
-        "size": 528434,
-        "downloadCount": 5,
+        "name": "wc-multi-store-sync-5.3.0.zip",
+        "url": "https://github.com/Open-WP-Club/multi-store-sync-for-woocommerce/releases/download/5.3.0/wc-multi-store-sync-5.3.0.zip",
+        "size": 537290,
+        "downloadCount": 2,
         "contentType": "application/zip"
       }
     ],
-    "releaseDownloads": 5
+    "releaseDownloads": 2
   },
   {
     "id": "opengraph-svg-generator-wp",
@@ -1170,14 +1170,14 @@
         "name": "StoreOS.-.Built.for.WooCommerce.1.0.3.exe",
         "url": "https://github.com/Open-WP-Club/StoreOS/releases/download/1.0.3/StoreOS.-.Built.for.WooCommerce.1.0.3.exe",
         "size": 108474932,
-        "downloadCount": 16,
+        "downloadCount": 17,
         "contentType": "application/x-msdos-program"
       },
       {
         "name": "StoreOS.-.Built.for.WooCommerce.Setup.1.0.3.exe",
         "url": "https://github.com/Open-WP-Club/StoreOS/releases/download/1.0.3/StoreOS.-.Built.for.WooCommerce.Setup.1.0.3.exe",
         "size": 206384923,
-        "downloadCount": 16,
+        "downloadCount": 17,
         "contentType": "application/x-msdos-program"
       },
       {
@@ -1188,7 +1188,7 @@
         "contentType": "application/x-debian-package"
       }
     ],
-    "releaseDownloads": 133,
+    "releaseDownloads": 135,
     "platforms": [
       "windows",
       "macos",
