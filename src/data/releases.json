@@ -1,20 +1,29 @@
 [
   {
-    "repo": "multi-store-sync-for-woocommerce",
-    "name": "5.3.0",
-    "version": "5.3.0",
-    "publishedAt": "2026-10-23T12:38:16Z",
-    "url": "https://github.com/Open-WP-Club/multi-store-sync-for-woocommerce/releases/tag/5.3.0",
-    "notes": "## WooCommerce Multi-Store Sync 5.3.0\n\n- Release 5.3.0\n- Sync = log file\n- Update wc-settings-integration.php\n\n### Installation\nDownload `wc-multi-store-sync-5.3.0.zip` and upload via **Plugins → Add New → Upload Plugin**.\n",
+    "repo": "priority-processing-woocommerce",
+    "name": "1.9.1",
+    "version": "1.9.1",
+    "publishedAt": "2026-10-28T20:26:50Z",
+    "url": "https://github.com/Open-WP-Club/Priority-Processing-WooCommerce/releases/tag/1.9.1",
+    "notes": "**Full Changelog**: https://github.com/Open-WP-Club/Priority-Processing-WooCommerce/compare/1.9.0...1.9.1\n\n---\n\n### 📦 Plugin Download\n- **WordPress Plugin**: [`Priority-Processing-WooCommerce.zip`](https://github.com/Open-WP-Club/Priority-Processing-WooCommerce/releases/download/1.9.1/Priority-Processing-WooCommerce.zip)\n- **Installation**: Download and upload via WordPress Admin → Plugins → Add New → Upload Plugin\n\n*Built automatically from tag 1.9.1*",
     "category": "plugin"
   },
   {
     "repo": "plugin-hub",
-    "name": "Plugin Hub 1.5.1",
-    "version": "1.5.1",
-    "publishedAt": "2026-10-13T08:43:02Z",
-    "url": "https://github.com/Open-WP-Club/plugin-hub/releases/tag/1.5.1",
-    "notes": "This maintenance release keeps Plugin Hub responsive during catalog outages and completes cache cleanup.\n\n- Keep the last validated catalog and pause retries for five minutes after network, HTTP or invalid-catalog failures.\n- Let manual Refresh bypass the backoff and recover immediately.\n- Clear the current catalog and retry transients during uninstall, alongside legacy caches.\n\nValidation: 36 PHPUnit tests / 58 assertions, PHPStan without errors, WordPress coding standards, and a real WordPress smoke test covering outage fallback, repeat-request suppression, retry after expiry, and uninstall cleanup.\n\nThe installable plugin-hub.zip is attached by the release build workflow.\n",
+    "name": "1.8.0",
+    "version": "1.8.0",
+    "publishedAt": "2026-10-28T09:23:05Z",
+    "url": "https://github.com/Open-WP-Club/plugin-hub/releases/tag/1.8.0",
+    "notes": "* Plugin lists are now real WordPress list tables: select-all checkboxes, bulk actions, sortable columns, views, search and pagination for plugins, MU plugins, backups and the activity log.\n* Update notices: the Plugin Hub menu shows a badge with the number of pending updates and a dashboard widget summarises updates and recent activity.\n* Automatic rollback: after an update the site is checked and the previous version is restored if it fails.\n* Backups of a plugin are stored before each update, with retention by count and age and a disk-usage summary; restore from the Backups tab.\n* Changelog preview before updating, version pinning (hold, N.x, N.M.x), dependency warnings and optional SHA-256 package verification.\n* Maintenance window and release-age delay for automatic updates.\n* Notifications by e-mail recipients and Slack, Discord or generic webhooks, optionally only on failures.\n* Export and import the configuration (plugins, auto-update, pins, settings).\n* Activity log filters, CSV export, selective delete and retention settings.\n* Multisite: manage Plugin Hub in Network Admin with network activation.\n* WP-CLI: `wp plugin-hub` commands for list, install, update, rollback, backups, pins, MU plugins, export/import and settings.\nAdds backups, automatic rollback, pinning, scheduling, notifications, WP-CLI and native list tables. The update check now runs hourly inside your maintenance window.\n= 1.4.0 =\nRecommended compatibility and reliability update for WordPress 7.1.\n= 1.1.0 =\nThis version requires PHP 8.0 or higher and WordPress 6.0 or higher. Please ensure your server meets these requirements before upgrading.\n== Development ==\nDevelopment happens on GitHub. Contributions and bug reports are welcome!\nRepository: https://github.com/Open-WP-Club/plugin-hub\n== Privacy Policy ==\nPlugin Hub contacts GitHub for the published Open WP Club catalog and plugin management. The catalog includes Partner/Champion supporter credits with bounded embedded PNG logos. Displaying credits does not contact advertisers, track impressions or send referral identifiers. Hide/show is stored locally as a user preference. Plugin management records local user IDs in its local activity log. No advertising telemetry is sent to Open WP Club or advertisers.\n",
+    "category": "plugin"
+  },
+  {
+    "repo": "multi-store-sync-for-woocommerce",
+    "name": "5.4.0",
+    "version": "5.4.0",
+    "publishedAt": "2026-10-25T15:05:47Z",
+    "url": "https://github.com/Open-WP-Club/multi-store-sync-for-woocommerce/releases/tag/5.4.0",
+    "notes": "## Highlights\n\n- Strengthened authorization, webhook stock handling, remote image fetching, archive storage and CSV exports.\n- Fixed coupon deletion synchronization and background callbacks in WP-CLI.\n- Improved recovery when a remote product ID becomes stale, and made duplicate-SKU conflicts clearer in the dashboards.\n- Clarified PHP requirements: PHP 8.3+ for production and PHP 8.5+ for the development test toolchain.\n\n## Upgrade note\n\nDownloadable files now retain their original source URLs, including stores previously configured for API file transfer. Remote stores must be able to access these URLs. Files are no longer automatically copied to the remote Media Library.\n\n## Validation\n\n- 4,415 PHP tests and 164 JavaScript tests passed locally.\n- Local integration scenarios passed on PHP 8.3, 8.4 and 8.5, with and without Redis.\n- Integration coverage includes remote create/update/delete, scheduler jobs, concurrent stock deliveries, cross-process rate limits, HTTP redirects and upgrade migration.\n- Extended Docker/Redis integration scenarios remain local and do not add GitHub Actions jobs.\n\n## Installation\n\nDownload `wc-multi-store-sync-5.4.0.zip` below and upload it through **Plugins → Add New → Upload Plugin**.\n",
     "category": "plugin"
   },
   {
@@ -24,15 +33,6 @@
     "publishedAt": "2026-10-05T13:06:28Z",
     "url": "https://github.com/Open-WP-Club/local-pickup-woocommerce/releases/tag/1.2.0",
     "notes": "**Full Changelog**: https://github.com/Open-WP-Club/local-pickup-woocommerce/compare/1.1.2...1.2.0",
-    "category": "plugin"
-  },
-  {
-    "repo": "priority-processing-woocommerce",
-    "name": "1.8.1",
-    "version": "1.8.1",
-    "publishedAt": "2026-10-05T09:16:51Z",
-    "url": "https://github.com/Open-WP-Club/Priority-Processing-WooCommerce/releases/tag/1.8.1",
-    "notes": "\n\n---\n\n### 📦 Plugin Download\n- **WordPress Plugin**: [`Priority-Processing-WooCommerce.zip`](https://github.com/Open-WP-Club/Priority-Processing-WooCommerce/releases/download/1.8.1/Priority-Processing-WooCommerce.zip)\n- **Installation**: Download and upload via WordPress Admin → Plugins → Add New → Upload Plugin\n\n*Built automatically from tag 1.8.1*",
     "category": "plugin"
   },
   {

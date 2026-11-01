@@ -290,11 +290,11 @@
         "name": "google-scholar-wp.zip",
         "url": "https://github.com/Open-WP-Club/google-scholar-wp/releases/download/1.7.0/google-scholar-wp.zip",
         "size": 84127,
-        "downloadCount": 5,
+        "downloadCount": 6,
         "contentType": "application/zip"
       }
     ],
-    "releaseDownloads": 5
+    "releaseDownloads": 6
   },
   {
     "id": "gravity-forms-shopify-integration",
@@ -463,11 +463,11 @@
         "name": "llms-txt-for-wp.zip",
         "url": "https://github.com/Open-WP-Club/llms-txt-for-wp/releases/download/1.1.0/llms-txt-for-wp.zip",
         "size": 91807,
-        "downloadCount": 14,
+        "downloadCount": 15,
         "contentType": "application/zip"
       }
     ],
-    "releaseDownloads": 14
+    "releaseDownloads": 15
   },
   {
     "id": "local-pickup-woocommerce",
@@ -538,17 +538,17 @@
         "name": "logo-link-wp.zip",
         "url": "https://github.com/Open-WP-Club/logo-link-wp/releases/download/1.3.0/logo-link-wp.zip",
         "size": 18916,
-        "downloadCount": 13,
+        "downloadCount": 15,
         "contentType": "application/zip"
       }
     ],
-    "releaseDownloads": 13
+    "releaseDownloads": 15
   },
   {
     "id": "multi-store-sync-for-woocommerce",
     "name": "Multi Store Sync For WooCommerce",
     "description": "Automatically synchronize products, stock levels, and inventory from your main WooCommerce store to multiple remote WooCommerce stores. Built from the ground up as a standalone solution with enterprise-grade features.",
-    "version": "5.3.0",
+    "version": "5.4.0",
     "downloads": "",
     "rating": "",
     "githubUrl": "https://github.com/Open-WP-Club/multi-store-sync-for-woocommerce",
@@ -571,18 +571,18 @@
     "language": "PHP",
     "defaultBranch": "main",
     "category": "plugin",
-    "releasePublishedAt": "2026-10-23T12:38:16Z",
-    "releaseUrl": "https://github.com/Open-WP-Club/multi-store-sync-for-woocommerce/releases/tag/5.3.0",
+    "releasePublishedAt": "2026-10-25T15:05:47Z",
+    "releaseUrl": "https://github.com/Open-WP-Club/multi-store-sync-for-woocommerce/releases/tag/5.4.0",
     "releaseAssets": [
       {
-        "name": "wc-multi-store-sync-5.3.0.zip",
-        "url": "https://github.com/Open-WP-Club/multi-store-sync-for-woocommerce/releases/download/5.3.0/wc-multi-store-sync-5.3.0.zip",
-        "size": 537290,
-        "downloadCount": 2,
+        "name": "wc-multi-store-sync-5.4.0.zip",
+        "url": "https://github.com/Open-WP-Club/multi-store-sync-for-woocommerce/releases/download/5.4.0/wc-multi-store-sync-5.4.0.zip",
+        "size": 542512,
+        "downloadCount": 3,
         "contentType": "application/zip"
       }
     ],
-    "releaseDownloads": 2
+    "releaseDownloads": 3
   },
   {
     "id": "opengraph-svg-generator-wp",
@@ -761,7 +761,7 @@
     "id": "plugin-hub",
     "name": "Plugin Hub",
     "description": "Plugin Hub is Open WP Club official way of installing/updating plugins from their official repos.",
-    "version": "1.5.1",
+    "version": "1.8.0",
     "downloads": "",
     "rating": "",
     "githubUrl": "https://github.com/Open-WP-Club/plugin-hub",
@@ -776,18 +776,18 @@
     "language": "PHP",
     "defaultBranch": "main",
     "category": "plugin",
-    "releasePublishedAt": "2026-10-13T08:43:02Z",
-    "releaseUrl": "https://github.com/Open-WP-Club/plugin-hub/releases/tag/1.5.1",
+    "releasePublishedAt": "2026-10-28T09:23:05Z",
+    "releaseUrl": "https://github.com/Open-WP-Club/plugin-hub/releases/tag/1.8.0",
     "releaseAssets": [
       {
         "name": "plugin-hub.zip",
-        "url": "https://github.com/Open-WP-Club/plugin-hub/releases/download/1.5.1/plugin-hub.zip",
-        "size": 51293,
-        "downloadCount": 4,
+        "url": "https://github.com/Open-WP-Club/plugin-hub/releases/download/1.8.0/plugin-hub.zip",
+        "size": 124965,
+        "downloadCount": 3,
         "contentType": "application/zip"
       }
     ],
-    "releaseDownloads": 4
+    "releaseDownloads": 3
   },
   {
     "id": "plugins-showcase-wp",
@@ -822,7 +822,7 @@
     "id": "priority-processing-woocommerce",
     "name": "Priority Processing WooCommerce",
     "description": "A WordPress plugin that adds a priority processing and express shipping option to WooCommerce checkout, allowing customers to pay an additional fee for faster order handling.",
-    "version": "1.8.1",
+    "version": "1.9.1",
     "downloads": "",
     "rating": "",
     "githubUrl": "https://github.com/Open-WP-Club/Priority-Processing-WooCommerce",
@@ -837,18 +837,18 @@
     "language": "PHP",
     "defaultBranch": "main",
     "category": "plugin",
-    "releasePublishedAt": "2026-10-05T09:16:51Z",
-    "releaseUrl": "https://github.com/Open-WP-Club/Priority-Processing-WooCommerce/releases/tag/1.8.1",
+    "releasePublishedAt": "2026-10-28T20:26:50Z",
+    "releaseUrl": "https://github.com/Open-WP-Club/Priority-Processing-WooCommerce/releases/tag/1.9.1",
     "releaseAssets": [
       {
         "name": "Priority-Processing-WooCommerce.zip",
-        "url": "https://github.com/Open-WP-Club/Priority-Processing-WooCommerce/releases/download/1.8.1/Priority-Processing-WooCommerce.zip",
-        "size": 67500,
-        "downloadCount": 6,
+        "url": "https://github.com/Open-WP-Club/Priority-Processing-WooCommerce/releases/download/1.9.1/Priority-Processing-WooCommerce.zip",
+        "size": 93283,
+        "downloadCount": 3,
         "contentType": "application/zip"
       }
     ],
-    "releaseDownloads": 6
+    "releaseDownloads": 3
   },
   {
     "id": "product-health-check-woocommerce",
