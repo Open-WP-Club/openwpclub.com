@@ -11,7 +11,8 @@ export function filterItems(
   items: HTMLElement[],
   query: string,
   active: string,
-  categoryKeywords: Record<string, string[]>
+  categoryKeywords: Record<string, string[]>,
+  selectedTopics: string[] = []
 ): HTMLElement[] {
   return items.filter((item) => {
     const name = item.dataset.name || '';
@@ -19,7 +20,8 @@ export function filterItems(
     const topics = item.dataset.topics || '';
     return (
       (!query || name.includes(query) || desc.includes(query) || topics.includes(query)) &&
-      matchesCategory(topics, active, categoryKeywords)
+      matchesCategory(topics, active, categoryKeywords) &&
+      (selectedTopics.length === 0 || selectedTopics.some((topic) => (item.dataset.filterTopics || '').split(/\s+/).includes(topic)))
     );
   });
 }

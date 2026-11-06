@@ -24,6 +24,10 @@ const plugins = defineCollection({
     language: z.string().nullable(),
     defaultBranch: z.string(),
     category: z.enum(['plugin', 'app', 'website', 'tool']).default('plugin'),
+    compatibility: z.object({
+      wordpress: z.string(), wordpressTested: z.string(), php: z.string(),
+      woocommerce: z.string(), woocommerceTested: z.string(),
+    }).nullable().default(null),
     releasePublishedAt: z.string().default(''),
     releaseUrl: z.string().default(''),
     releaseDownloads: z.number().default(0),

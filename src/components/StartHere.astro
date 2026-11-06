@@ -1,0 +1,28 @@
+---
+import { Icon } from 'astro-icon/components';
+import { getCollection } from 'astro:content';
+const plugins = await getCollection('plugins');
+import { starterGroups as groups } from '../data/getting-started';
+---
+<section class="py-16 bg-gray-50 dark:bg-gray-950" aria-labelledby="start-here-heading">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center"><h2 id="start-here-heading" class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">Start here</h2><p class="mt-3 text-lg text-gray-600 dark:text-gray-400">Find a useful plugin, get help with your site, or make your first contribution.</p></div>
+    <div class="mt-10 grid md:grid-cols-2 gap-6">
+      {groups.map((group) => <div class="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-6 sm:p-8">
+        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">{group.title}</h3><p class="mt-2 text-sm text-gray-600 dark:text-gray-400">{group.description}</p>
+        <ul class="mt-5 divide-y divide-gray-100 dark:divide-gray-700">{group.items.map((item) => { const plugin = plugins.find((p) => p.id === item.id && p.data.category === 'plugin'); return plugin && <li class="py-3"><a href={`/plugins/${plugin.id}/`} class="font-semibold text-blue-600 dark:text-blue-400 hover:underline">{plugin.data.name} <Icon name="lucide:arrow-right" class="inline size-4" /></a><p class="mt-1 text-sm text-gray-600 dark:text-gray-400">{item.benefit}</p></li>; })}</ul>
+      </div>)}
+    </div>
+    <div class="mt-6 grid gap-4 sm:grid-cols-2">
+      <a href="/support/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-6 hover:border-blue-400 dark:hover:border-blue-500">
+        <h3 class="font-semibold text-gray-900 dark:text-white">Choose and maintain plugins <span aria-hidden="true" class="text-blue-500">→</span></h3>
+        <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">Learn what to check before installing, how to test updates, and where to find help.</p>
+      </a>
+      <a href="/first-contribution/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-6 hover:border-blue-400 dark:hover:border-blue-500">
+        <h3 class="font-semibold text-gray-900 dark:text-white">Make your first contribution <span aria-hidden="true" class="text-blue-500">→</span></h3>
+        <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">Help by testing, improving documentation, writing code, translating, or answering questions.</p>
+      </a>
+    </div>
+    <div class="mt-8 text-center flex flex-wrap justify-center gap-6"><a href="/start-here/" class="font-medium text-blue-600 dark:text-blue-400 hover:underline">Explore the starter guide →</a><a href="/plugins/" class="font-medium text-blue-600 dark:text-blue-400 hover:underline">Browse all plugins →</a></div>
+  </div>
+</section>

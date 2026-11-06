@@ -6,6 +6,9 @@ import Contact from '../components/Contact.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import { getCollection } from 'astro:content';
 import { GITHUB_ORG_URL, DISCORD_URL, CONTACT_EMAIL } from '../lib/config';
+import issueData from '../data/contribution-issues.json';
+const issues = issueData as { updatedAt: string; items: Array<{ title: string; url: string; repo: string; labels: string[] }> };
+const issueSearch = 'https://github.com/search?q=org%3AOpen-WP-Club+is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22%2Cdocumentation%2C%22help+wanted%22%2Ctesting&type=issues';
 
 const allItems = await getCollection('plugins');
 const pluginCount = allItems.filter((p) => p.data.category === 'plugin').length;
@@ -16,14 +19,14 @@ const ways = [
     title: 'Write code',
     description: 'Pick an open issue, fix a bug, or build a new feature. We use PHP for plugins, Astro + Tailwind for the website, and TypeScript for tooling.',
     action: 'Browse open issues',
-    href: `${GITHUB_ORG_URL}/.github/issues`,
+    href: 'https://github.com/search?q=org%3AOpen-WP-Club+is%3Aissue+is%3Aopen&type=issues',
   },
   {
     icon: 'lucide:bug',
     title: 'Test & report bugs',
-    description: 'Install our plugins, use them on real sites, and tell us what breaks. Detailed bug reports are just as valuable as code.',
-    action: 'Report a bug',
-    href: `${GITHUB_ORG_URL}/.github/issues/new`,
+    description: 'Try our plugins on a test site and tell us what breaks. Detailed bug reports are just as valuable as code.',
+    action: 'Learn how to report a bug',
+    href: '/first-contribution/',
   },
   {
     icon: 'lucide:file-text',
@@ -58,21 +61,21 @@ const ways = [
     title: 'Spare LLM credits',
     description: 'Got unused Claude, OpenAI, or other LLM credits sitting around? Point them at our open issues - there\'s always a backlog of bug fixes, docs, and small features waiting for someone to pick them up.',
     action: 'Browse open issues',
-    href: `${GITHUB_ORG_URL}/.github/issues`,
+    href: 'https://github.com/search?q=org%3AOpen-WP-Club+is%3Aissue+is%3Aopen&type=issues',
   },
 ];
 
 const steps = [
-  { step: '1', title: 'Join our Discord', description: 'Say hello, introduce yourself, and ask any questions. No formalities.' },
+  { step: '1', title: 'Choose how to help', description: 'Pick a task below, test a plugin, improve documentation, or ask the community where help is needed.' },
   { step: '2', title: 'Find something to work on', description: 'Browse our GitHub issues labeled "good first issue" or pick any open bug/feature that interests you.' },
-  { step: '3', title: 'Fork, code, PR', description: 'Fork the repo, make your changes, and open a pull request. We review all PRs and help you get them merged.' },
-  { step: '4', title: 'You\'re in', description: 'After your first merged contribution, you\'re a contributor. No applications, no approval process, no waiting list.' },
+  { step: '3', title: 'Make your contribution', description: 'Share a useful bug report, help in the community, or open a pull request with your changes.' },
+  { step: '4', title: 'You\'re in', description: 'Every contribution helps. There are no applications or waiting lists.' },
 ];
 ---
 
 <BaseLayout
   title="How to Join - Open WP Club"
-  description="Join Open WP Club - contribute code, report bugs, write docs, or help the community. No applications, no gatekeeping. Your first PR makes you a member."
+  description="Join Open WP Club - contribute code, report bugs, write docs, or help the community. No applications, no gatekeeping. Find a contribution that suits your skills."
 >
   <Breadcrumbs items={[{ label: 'How to Join' }]} />
 
@@ -97,6 +100,24 @@ const steps = [
 
         <!-- Main content -->
         <div class="lg:col-span-2 space-y-10">
+
+          <div id="open-issues" class="scroll-mt-24 bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6 sm:p-8">
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Help with an open issue</h2>
+            <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">Pick a task that interests you. Check the discussion to see whether someone is already working on it.</p>
+            {issues.items.length > 0 ? <ul class="mt-5 divide-y divide-gray-100 dark:divide-gray-700">{issues.items.map((issue) => <li class="py-3"><a href={issue.url} target="_blank" rel="noopener noreferrer" class="font-medium text-blue-600 dark:text-blue-400 hover:underline">{issue.title}</a><p class="mt-1 text-xs text-gray-500 dark:text-gray-400">{issue.repo} · {issue.labels.join(' · ')}</p></li>)}</ul> : <p class="mt-4 text-sm text-gray-600 dark:text-gray-400">There are no suggested tasks available right now. Browse GitHub for current opportunities.</p>}
+            {issues.updatedAt && <p class="mt-3 text-xs text-gray-500 dark:text-gray-400">Suggestions refreshed {new Date(issues.updatedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })}.</p>}
+            <a href={issueSearch} target="_blank" rel="noopener noreferrer" class="inline-block mt-4 text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline">Browse contribution opportunities on GitHub →</a>
+          </div>
+          <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6 sm:p-8">
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Your first contribution</h2>
+            <ul class="mt-4 space-y-3 text-sm text-gray-600 dark:text-gray-400">
+              <li><strong class="text-gray-900 dark:text-white">Test:</strong> Use a test site, reproduce a problem, and report the steps and WordPress, PHP and WooCommerce versions.</li>
+              <li><strong class="text-gray-900 dark:text-white">Document:</strong> Clarify a README or add an example. Open a pull request with your change.</li>
+              <li><strong class="text-gray-900 dark:text-white">Code:</strong> Check the issue discussion, ask questions if needed, and describe how you tested your pull request.</li>
+              <li><strong class="text-gray-900 dark:text-white">Help others:</strong> Answer a question or help reproduce a report in Discord.</li>
+            </ul>
+            <a href="/first-contribution/" class="mt-5 inline-block font-medium text-blue-600 dark:text-blue-400 hover:underline">Read the first contribution guide →</a>
+          </div>
 
           <!-- Ways to contribute -->
           <div>

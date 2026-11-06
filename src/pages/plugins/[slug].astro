@@ -1,5 +1,6 @@
 ---
 import { pluginDownloadUrl } from '../../lib/plugin-download';
+import { Image } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
 import GitHubIcon from '../../components/icons/GitHubIcon.astro';
 import PluginCard from '../../components/PluginCard.astro';
@@ -9,6 +10,7 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import DataFreshness from '../../components/DataFreshness.astro';
 import { getCollection } from 'astro:content';
 import { readFileSync, existsSync } from 'node:fs';
+import pluginScreenshots from '../../data/plugin-screenshots.json';
 
 export async function getStaticPaths() {
   const allItems = await getCollection('plugins');
@@ -21,6 +23,21 @@ export async function getStaticPaths() {
 
 const { plugin, allPlugins } = Astro.props;
 const { name, description, version, githubUrl, wordpressUrl, stars, openIssues, lastPush, license, language, downloads } = plugin.data;
+
+const compatibility = plugin.data.compatibility;
+const compatibilityRows = [
+  { label: 'WordPress minimum', value: compatibility?.wordpress },
+  { label: 'WordPress tested up to', value: compatibility?.wordpressTested },
+  { label: 'PHP minimum', value: compatibility?.php },
+  ...(compatibility?.woocommerce || compatibility?.woocommerceTested ? [
+    { label: 'WooCommerce minimum', value: compatibility?.woocommerce },
+    { label: 'WooCommerce tested up to', value: compatibility?.woocommerceTested },
+  ] : []),
+];
+
+const screenshot = (pluginScreenshots as Array<{ plugin: string; src: string; caption: string }>).find((item) => item.plugin === plugin.id);
+const screenshotImages = import.meta.glob<{ default: ImageMetadata }>('/src/assets/plugin-screenshots/*.png', { eager: true });
+const screenshotImage = screenshot && screenshotImages[`/src/assets/plugin-screenshots/${plugin.id}.png`]?.default;
 
 const downloadsNum = downloads ? parseInt(downloads, 10) : 0;
 
@@ -183,7 +200,12 @@ const softwareSchema = {
       <div class="lg:grid lg:grid-cols-3 lg:gap-8">
 
         <!-- README -->
-        <div class="lg:col-span-2">
+        <div class="lg:col-span-2 space-y-6">
+          {screenshot && screenshotImage && <figure class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6 sm:p-8">
+            <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">Screenshot</h2>
+            <a href={screenshot.src} aria-label={`Open full-size screenshot: ${screenshot.caption}`}><Image src={screenshotImage} alt={screenshot.caption} widths={[480, 800, 1200, 1440]} sizes="(min-width: 1024px) 66vw, 100vw" loading="lazy" class="w-full h-auto rounded-lg border border-gray-200 dark:border-gray-700" /></a>
+            <figcaption class="mt-3 text-sm text-gray-600 dark:text-gray-400">{screenshot.caption}</figcaption>
+          </figure>}
           <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6 sm:p-8 lg:p-10">
             <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-6 pb-4 border-b border-gray-200 dark:border-gray-700">README</h2>
             <div class="prose dark:prose-invert max-w-none" set:html={processedHtml} />
@@ -230,7 +252,7 @@ const softwareSchema = {
               )}
               {lastPush && (
                 <div class="flex justify-between">
-                  <dt class="text-gray-500 dark:text-gray-400">Last updated</dt>
+                  <dt class="text-gray-500 dark:text-gray-400">Last repository activity</dt>
                   <dd class="text-gray-900 dark:text-white font-medium">{formatDate(lastPush)}</dd>
                 </div>
               )}
@@ -260,6 +282,19 @@ const softwareSchema = {
                 </div>
               )}
             </dl>
+          </div>
+
+          <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+            <h3 class="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider mb-4">Compatibility</h3>
+            <dl class="space-y-3 text-sm">
+              {compatibilityRows.map((row) => (
+                <div class="flex justify-between gap-4">
+                  <dt class="text-gray-500 dark:text-gray-400">{row.label}</dt>
+                  <dd class="text-right text-gray-900 dark:text-white font-medium">{row.value || 'Not declared'}</dd>
+                </div>
+              ))}
+            </dl>
+            <p class="mt-4 text-xs text-gray-500 dark:text-gray-400">Declared by the plugin in its source files. Missing information does not indicate compatibility.</p>
           </div>
 
           <!-- Download card -->
@@ -320,9 +355,10 @@ const softwareSchema = {
                     target="_blank"
                     rel="noopener noreferrer"
                     title={`${c.login} (${c.contributions} commits)`}
+                    aria-label={`${c.login} on GitHub (${c.contributions} commits)`}
                     class="group relative"
                   >
-                    <img
+                    <Image
                       src={`${c.avatar}&s=64`}
                       alt={c.login}
                       width="32"

@@ -7,6 +7,14 @@
       "contributions": 16
     }
   ],
+  "adminova": [
+    {
+      "login": "MrGKanev",
+      "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
+      "profileUrl": "https://github.com/MrGKanev",
+      "contributions": 17
+    }
+  ],
   "agentready-wp": [
     {
       "login": "MrGKanev",
@@ -138,7 +146,7 @@
       "login": "MrGKanev",
       "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
       "profileUrl": "https://github.com/MrGKanev",
-      "contributions": 136
+      "contributions": 150
     }
   ],
   "opengraph-svg-generator-wp": [
@@ -154,7 +162,7 @@
       "login": "MrGKanev",
       "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
       "profileUrl": "https://github.com/MrGKanev",
-      "contributions": 76
+      "contributions": 77
     }
   ],
   "order-payment-limiter-woo": [
@@ -194,7 +202,7 @@
       "login": "MrGKanev",
       "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
       "profileUrl": "https://github.com/MrGKanev",
-      "contributions": 31
+      "contributions": 41
     }
   ],
   "plugins-showcase-wp": [
@@ -210,7 +218,7 @@
       "login": "MrGKanev",
       "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
       "profileUrl": "https://github.com/MrGKanev",
-      "contributions": 72
+      "contributions": 79
     }
   ],
   "product-health-check-woocommerce": [
@@ -282,7 +290,7 @@
       "login": "MrGKanev",
       "avatar": "https://avatars.githubusercontent.com/u/5780974?v=4",
       "profileUrl": "https://github.com/MrGKanev",
-      "contributions": 8
+      "contributions": 168
     }
   ],
   "taxonomy-showcase-woocommerce": [

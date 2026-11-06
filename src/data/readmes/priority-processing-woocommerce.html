@@ -1,6 +1,6 @@
 <h1>WooCommerce Priority Processing</h1>
 <p>A WordPress plugin that adds a priority processing and express shipping option to WooCommerce checkout, allowing customers to pay an additional fee for faster order handling.</p>
-<p>Current version: <strong>1.8.1</strong></p>
+<p>Current version: <strong>1.9.2</strong></p>
 <h2>Features</h2>
 <ul>
 <li><strong>Priority Processing Option</strong>: Add a checkbox at checkout for priority processing</li>
@@ -25,10 +25,17 @@
 <ol>
 <li>Upload the plugin files to <code>/wp-content/plugins/woocommerce-priority-processing/</code></li>
 <li>Activate the plugin through the WordPress admin</li>
-<li>Go to <strong>WooCommerce &gt; Priority Processing</strong> to configure settings</li>
+<li>Go to <strong>WooCommerce &gt; Settings &gt; Priority Processing</strong> to configure settings</li>
 </ol>
 <h2>Configuration</h2>
-<p>Navigate to <strong>WooCommerce &gt; Priority Processing</strong> to customize:</p>
+<p>Navigate to <strong>WooCommerce &gt; Settings &gt; Priority Processing</strong> (sections: General, Access, Display, Messages, Badge, Statistics) to customize. The old <strong>WooCommerce &gt; Priority Processing</strong> URL redirects there.</p>
+<h3>Daily Limit &amp; Cart Button</h3>
+<ul>
+<li><strong>Daily Limit</strong>: Cap the number of priority orders per day (0 = unlimited). Once reached the option is hidden for customers, the fee cannot be applied and a sold-out notice is shown. Orders already placed and manual admin changes are not affected.</li>
+<li><strong>Cart Page Button</strong>: A one-click Add/Remove Priority Processing toggle on the classic cart and the Cart Block, with a footer fallback for themes/builders that bypass the WooCommerce hooks.</li>
+<li><strong>Order List</strong>: A Priority filter (All / Priority only / Not priority) and bulk actions <em>Mark as priority</em> / <em>Remove priority</em> on the orders screen (HPOS and legacy storage).</li>
+</ul>
+<p>Settings reference:</p>
 <h3>Basic Settings</h3>
 <ul>
 <li><strong>Enable/Disable</strong>: Toggle the priority processing feature</li>
@@ -144,6 +151,33 @@ pnpm run test:integration
 <li><strong>Fallback Support</strong>: Separate admin page if needed</li>
 </ul>
 <h2>Changelog</h2>
+<h3>1.9.2</h3>
+<ul>
+<li>Hide the priority message inside the WoodMart sticky add-to-cart bar (mobile), where it broke the layout. The message under the main add-to-cart button is unchanged.</li>
+<li>Add tests for the theme compatibility styles.</li>
+</ul>
+<h3>1.9.1</h3>
+<ul>
+<li>Fully translate the cart button labels into Bulgarian ("Добави приоритетна обработка" / "Премахни приоритетната обработка") instead of mixing English and Bulgarian.</li>
+<li>Add translation tests: every template string must be translated, placeholders must match the source, and the compiled <code>.mo</code> must match the <code>.po</code>.</li>
+</ul>
+<h3>1.9.0</h3>
+<ul>
+<li>Move settings into a native <strong>WooCommerce &gt; Settings &gt; Priority Processing</strong> tab with sections; the old page redirects.</li>
+<li>Add a one-click priority toggle on the cart page (classic cart and Cart Block).</li>
+<li>Add a daily limit for priority orders with a sold-out notice in classic and block checkout.</li>
+<li>Add an orders list filter and <em>Mark as priority</em> / <em>Remove priority</em> bulk actions (HPOS and legacy).</li>
+<li>Fix a fatal error when saving a settings section while fields were missing from the request.</li>
+<li>Add unit tests for every new feature plus integration tests (<code>pnpm test:integration</code>) covering both order storage modes.</li>
+<li>Complete the Bulgarian translation, including the checkout form and JS messages (error notices, "added to shipping" label), which are now translated server-side.</li>
+</ul>
+<h3>1.8.2</h3>
+<ul>
+<li>Show the same-day cutoff notice (with live countdown) in the WooCommerce Checkout Block, exposed through the Store API.</li>
+<li>Add a footer fallback that places cart and product messages when a theme or layout builder (e.g. WoodMart) bypasses the WooCommerce hooks and blocks.</li>
+<li>Add tests for the fallback and the block cutoff data.</li>
+<li>Regenerate the translation template and complete the Bulgarian translation (all 167 strings).</li>
+</ul>
 <h3>1.8.1</h3>
 <ul>
 <li>Fix missing motivational messages in the WooCommerce Cart Block and block product templates.</li>

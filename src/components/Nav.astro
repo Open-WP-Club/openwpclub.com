@@ -17,6 +17,8 @@ const links = [
       { href: '/sponsors/', label: 'Sponsors' },
       { href: '/advertise/', label: 'Advertise' },
       { href: '/join/', label: 'How to Join' },
+      { href: '/first-contribution/', label: 'First Contribution' },
+      { href: '/support/', label: 'Plugin Support' },
     ],
   },
   { href: '/plugins/', label: 'Plugins' },
@@ -25,7 +27,7 @@ const links = [
   { href: '/contributors/', label: 'Contributors' },
 ];
 
-const isMissionActive = ['/mission/', '/tech-stack/', '/join/', '/services/', '/sponsors/', '/advertise/'].some((p) => pathname.startsWith(p));
+const isMissionActive = ['/mission/', '/tech-stack/', '/join/', '/first-contribution/', '/support/', '/services/', '/sponsors/', '/advertise/'].some((p) => pathname.startsWith(p));
 
 // Build static search index at build time
 const [allPlugins, allPosts] = await Promise.all([
@@ -81,6 +83,7 @@ const searchIndex = [
                     {link.children.map((child) => (
                       <a
                         href={child.href}
+                        aria-label={child.label}
                         class:list={[
                           'block px-4 py-2 text-sm transition-colors duration-200',
                           pathname === child.href

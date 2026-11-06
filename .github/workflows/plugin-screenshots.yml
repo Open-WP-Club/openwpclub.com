@@ -1,0 +1,53 @@
+name: Generate plugin screenshots
+
+on:
+  workflow_dispatch:
+    inputs:
+      selection:
+        description: 'missing, all, or a plugin slug'
+        required: true
+        default: missing
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  screenshots:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    concurrency:
+      group: website-data-refresh
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+        with:
+          version: 11.20.0
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm exec playwright install --with-deps chromium
+      - name: Generate screenshots in WordPress Playground
+        run: pnpm exec tsx scripts/screenshots/generate.ts
+        env:
+          SCREENSHOT_SELECTION: ${{ inputs.selection }}
+      - name: Upload generation report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: screenshot-report
+          path: screenshot-report/
+          if-no-files-found: warn
+      - run: pnpm check
+      - run: pnpm build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: plugin-screenshots
+          path: |
+            public/images/plugin-screenshots/
+            src/assets/plugin-screenshots/
+            src/data/plugin-screenshots.json
+          if-no-files-found: warn

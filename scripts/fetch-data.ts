@@ -19,6 +19,7 @@ import { marked } from 'marked';
 import sanitizeHtml from 'sanitize-html';
 import { rewriteImageUrls } from '../src/lib/fetchGitHubData';
 import type { ReleaseAsset } from '../src/lib/app-releases';
+import { parsePluginCompatibility } from '../src/lib/plugin-compatibility';
 
 // Resolve paths
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -166,6 +167,9 @@ async function cachedFetch(url: string): Promise<{ data: unknown; status: number
 
 async function cachedFetchText(url: string): Promise<string | null> {
   const h = headers();
+  // The catalog and plugin source files are public. GitHub's raw host can
+  // reject otherwise valid API credentials, so request these anonymously.
+  if (new URL(url).hostname === 'raw.githubusercontent.com') delete h.Authorization;
   const cached = etagCache[url];
   if (cached?.etag) h['If-None-Match'] = cached.etag;
   try {
@@ -212,6 +216,28 @@ async function fetchRepoStats(repoName: string) {
     language: (d.language as string) ?? null,
     defaultBranch: (d.default_branch as string) ?? 'main',
   };
+}
+
+async function fetchPluginCompatibility(repo: string, branch: string) {
+  const result = await cachedFetch(`https://api.github.com/repos/${ORG}/${repo}/contents?ref=${encodeURIComponent(branch)}`);
+  if (!result || ![200, 304].includes(result.status) || !Array.isArray(result.data)) {
+    throw new Error(`Plugin metadata listing unavailable for ${repo}`);
+  }
+  const files = result.data as Array<{ name: string; type: string; download_url: string | null }>;
+  const candidates = files.filter((file) => file.type === 'file' && (/\.php$/i.test(file.name) || /^readme\.txt$/i.test(file.name)) && file.download_url);
+  const contents = await Promise.all(candidates.map(async (file) => {
+    let content = await cachedFetchText(file.download_url!);
+    if (content === null) {
+      const fallback = await cachedFetch(`https://api.github.com/repos/${ORG}/${repo}/contents/${encodeURIComponent(file.name)}?ref=${encodeURIComponent(branch)}`);
+      const data = fallback?.data as { content?: string; encoding?: string } | undefined;
+      if (fallback && [200, 304].includes(fallback.status) && data?.encoding === 'base64' && typeof data.content === 'string') content = Buffer.from(data.content, 'base64').toString('utf8');
+    }
+    if (content === null) throw new Error(`Plugin metadata file unavailable for ${repo}: ${file.name}`);
+    return { name: file.name, content };
+  }));
+  const main = contents.find((file) => /\.php$/i.test(file.name) && /^\s*(?:[/*#]\s*)?Plugin Name\s*:/im.test(file.content.slice(0, 8192)));
+  const readme = contents.find((file) => /^readme\.txt$/i.test(file.name));
+  return parsePluginCompatibility(main?.content || '', readme?.content || '');
 }
 
 interface GitHubReleaseAsset {
@@ -372,6 +398,8 @@ async function main() {
   let totalStars = 0, totalForks = 0, failedCount = 0;
 
   const appMetadata = loadAppMetadata();
+  const previousPlugins = existsSync(resolve(DATA_DIR, 'plugins.json')) ? JSON.parse(readFileSync(resolve(DATA_DIR, 'plugins.json'), 'utf8')) as Array<{ id: string; compatibility?: unknown }> : [];
+  const previousCompatibility = new Map(previousPlugins.map((item) => [item.id, item.compatibility]));
   const pluginData: Array<Record<string, unknown>> = [];
   const repositoryReleases: Array<{
     repo: string;
@@ -389,17 +417,21 @@ async function main() {
       batch.map(async (p) => {
         const stats = await fetchRepoStats(p.slug);
         const metadata = appMetadata[p.slug];
-        const [readmeHtml, latestRelease] = await Promise.all([
+        const [readmeHtml, latestRelease, compatibility] = await Promise.all([
           fetchReadme(p.slug, stats.defaultBranch),
           p.category !== 'website' ? fetchLatestRelease(p.slug) : Promise.resolve(null),
+          p.category === 'plugin' ? fetchPluginCompatibility(p.slug, stats.defaultBranch).catch((error) => {
+            console.warn(`  ${error.message}; retaining previous compatibility data`);
+            return previousCompatibility.get(p.slug) || null;
+          }) : Promise.resolve(null),
         ]);
-        return { product: p, stats, metadata, readmeHtml, latestRelease };
+        return { product: p, stats, metadata, readmeHtml, latestRelease, compatibility };
       })
     );
     for (const r of results) {
       if (r.status === 'rejected') throw r.reason;
       if (r.status === 'fulfilled') {
-        const { product, stats, metadata, readmeHtml, latestRelease } = r.value;
+        const { product, stats, metadata, readmeHtml, latestRelease, compatibility } = r.value;
         totalStars += stats.stars;
         totalForks += stats.forks;
         if (stats.stars === 0 && stats.lastPush === '') failedCount++;
@@ -422,6 +454,7 @@ async function main() {
           language: stats.language,
           defaultBranch: stats.defaultBranch,
           category: product.category,
+          ...(product.category === 'plugin' && { compatibility }),
           releasePublishedAt: latestRelease?.publishedAt || '',
           releaseUrl: latestRelease?.url || '',
           releaseAssets: latestRelease?.assets || [],

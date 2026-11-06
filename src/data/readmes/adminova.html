@@ -1,0 +1,66 @@
+<h1>Adminova</h1>
+<p><a href="https://github.com/Open-WP-Club/adminova/actions/workflows/tests.yml"><img src="https://github.com/Open-WP-Club/adminova/actions/workflows/tests.yml/badge.svg" alt="Tests" /></a></p>
+<p>Modern look and a one-screen overview (sales, orders by status, low stock) for the WordPress / WooCommerce admin. Skin only: no core changes, no database changes (just one per-user setting for dark mode).</p>
+<h2>Features</h2>
+<p>Every extra can be switched on/off in Settings &gt; Adminova; a switched-off extra registers no hooks at all.</p>
+<ul>
+<li>Modern look with dark mode (default) and per-user accent colour; mobile-friendly layout</li>
+<li>Dashboard card: sales vs yesterday, 7-day chart, latest orders, status links, low stock, quick actions</li>
+<li>Ctrl/Cmd+K palette: jump to admin pages, search orders and products</li>
+<li>New-order pop-up with a beep (checks every 30s while an admin page is open)</li>
+<li>Orders list: bulk "Print order slips" and "Export to CSV", saved filters</li>
+<li>Dashboard: quick order note, "Restock" button on low-stock products</li>
+<li>Profit (off by default): cost price field on products, Profit tile on the dashboard</li>
+<li>Customer history box on the order screen</li>
+<li>New-order email / Telegram message (off by default)</li>
+<li>Log of recent order status changes with Undo (Settings &gt; Adminova)</li>
+</ul>
+<h2>Install</h2>
+<p>Back up the site, then Plugins &gt; Add New &gt; Upload <code>adminova.zip</code> (build it with <code>bin/build-zip.sh</code>) and activate.</p>
+<h2>If something looks wrong</h2>
+<ul>
+<li>Deactivate the plugin: the stock admin comes back.</li>
+<li>Can't reach the admin? Add <code>define('ADMINOVA_DISABLE', true);</code> to <code>wp-config.php</code>.</li>
+</ul>
+<h2>Dev</h2>
+<p>Three layers of tests, from fastest to most realistic:</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>What it runs</th>
+<th>Needs</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>composer test:unit</code></td>
+<td>pure logic (parsing, sanitising, maths) with a few hand-written stubs</td>
+<td>PHP 8.3+</td>
+</tr>
+<tr>
+<td><code>composer test:monkey</code></td>
+<td>handlers, permissions and rendering with WordPress/WooCommerce mocked (Brain Monkey + Mockery)</td>
+<td>PHP 8.3+</td>
+</tr>
+<tr>
+<td><code>composer test:integration</code></td>
+<td>the same flows against real WordPress + WooCommerce in <code>wp-env</code></td>
+<td>Docker, Node</td>
+</tr>
+</tbody></table>
+<p><code>composer test</code> runs the first two. Also <code>composer lint</code> (PHPCS, WordPress standards) and <code>composer analyse</code> (PHPStan).
+First time: <code>composer install &amp;&amp; composer install -d tools/phpunit9 &amp;&amp; npm install</code>, then <code>npm run env:start</code> before <code>composer test:integration</code>.
+The integration suite runs on PHPUnit 9.6 (<code>tools/phpunit9</code>) because the WordPress test library does not support newer PHPUnit yet.
+The WordPress test library and a <code>wp-tests-config.php</code> are normally provided by <code>wp-env</code>; if <code>wp-env start</code> stops after the database on your machine, see <code>tests/integration/README.md</code>.</p>
+<p>The plugin itself needs PHP 7.4+; the dev tools need PHP 8.3+. WooCommerce 8+ is optional.</p>
+<p>Layout: <code>adminova.php</code> (bootstrap), <code>includes/</code> (one class per file), <code>assets/</code>, <code>tests/{unit,monkey,integration}</code>, <code>languages/</code>, <code>uninstall.php</code>.</p>
+<h2>Links</h2>
+<ul>
+<li>Repository: <a href="https://github.com/Open-WP-Club/adminova">https://github.com/Open-WP-Club/adminova</a></li>
+<li>Issues and feature requests: <a href="https://github.com/Open-WP-Club/adminova/issues">https://github.com/Open-WP-Club/adminova/issues</a></li>
+<li>Changelog: <a href="https://github.com/Open-WP-Club/adminova/blob/main/CHANGELOG.md">CHANGELOG.md</a></li>
+</ul>
+<h2>Authors</h2>
+<p>Made by <a href="https://github.com/Open-WP-Club">Open WP Club</a>. Developer: Gabriel Kanev.</p>
+<h2>License</h2>
+<p>GPL-2.0-or-later. See <a href="https://github.com/Open-WP-Club/adminova/blob/main/LICENSE">LICENSE</a> (GNU General Public License, version 2).</p>

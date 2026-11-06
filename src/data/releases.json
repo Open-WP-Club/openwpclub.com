@@ -1,11 +1,11 @@
 [
   {
     "repo": "priority-processing-woocommerce",
-    "name": "1.9.1",
-    "version": "1.9.1",
-    "publishedAt": "2026-10-28T20:26:50Z",
-    "url": "https://github.com/Open-WP-Club/Priority-Processing-WooCommerce/releases/tag/1.9.1",
-    "notes": "**Full Changelog**: https://github.com/Open-WP-Club/Priority-Processing-WooCommerce/compare/1.9.0...1.9.1\n\n---\n\n### 📦 Plugin Download\n- **WordPress Plugin**: [`Priority-Processing-WooCommerce.zip`](https://github.com/Open-WP-Club/Priority-Processing-WooCommerce/releases/download/1.9.1/Priority-Processing-WooCommerce.zip)\n- **Installation**: Download and upload via WordPress Admin → Plugins → Add New → Upload Plugin\n\n*Built automatically from tag 1.9.1*",
+    "name": "1.9.2",
+    "version": "1.9.2",
+    "publishedAt": "2026-11-02T06:17:23Z",
+    "url": "https://github.com/Open-WP-Club/Priority-Processing-WooCommerce/releases/tag/1.9.2",
+    "notes": "- Hide the priority message inside the WoodMart sticky add-to-cart bar (mobile), where it broke the layout. The message under the main add-to-cart button is unchanged.\n- Add tests for the theme compatibility styles.\n\n**Full Changelog**: https://github.com/Open-WP-Club/Priority-Processing-WooCommerce/compare/1.9.1...1.9.2\n\n---\n\n### 📦 Plugin Download\n- **WordPress Plugin**: [`Priority-Processing-WooCommerce.zip`](https://github.com/Open-WP-Club/Priority-Processing-WooCommerce/releases/download/1.9.2/Priority-Processing-WooCommerce.zip)\n- **Installation**: Download and upload via WordPress Admin → Plugins → Add New → Upload Plugin\n\n*Built automatically from tag 1.9.2*",
     "category": "plugin"
   },
   {

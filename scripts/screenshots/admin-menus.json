@@ -1,0 +1,22 @@
+{
+  "disable-gutenberg-for-wp": "Disable Gutenberg",
+  "google-scholar-wp": "Scholar Profile",
+  "inventory-insights-woocommerce": "Inventory Insights",
+  "last-user-orders-by-roles": "User Orders by Role",
+  "llms-txt-for-wp": "LLMs.txt",
+  "opengraph-svg-generator-wp": "OpenGraph SVG",
+  "plugin-hub": "Plugin Hub",
+  "plugins-showcase-wp": "Plugin Showcase",
+  "priority-processing-woocommerce": "Priority Processing",
+  "product-health-check-woocommerce": "Product Health",
+  "rank-math-automation-wp": "RankMath Sync",
+  "smart-product-export-woo": "Smart Product Exporter",
+  "stageguard": "StageGuard",
+  "team-manager-wordpress": "Team Members",
+  "user-self-delete": "User Self Delete",
+  "wp-file-visibility-manager": "File Visibility",
+  "wp-historical-preservation-mode": "Historical Preservation",
+  "wp-internal-linking": "Internal Linking",
+  "wp-sanitize": "Data Sanitizer",
+  "wp-user-blocking": "User Blocking"
+}

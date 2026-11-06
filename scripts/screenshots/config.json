@@ -1,0 +1,8 @@
+[
+  {
+    "plugin": "logo-link-wp",
+    "path": "/wp-admin/options-general.php",
+    "selector": "text=Logo Link for WP Settings",
+    "caption": "Logo Link for WP settings in the WordPress dashboard"
+  }
+]

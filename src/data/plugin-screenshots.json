@@ -1,0 +1,202 @@
+[
+  {
+    "plugin": "adminova",
+    "src": "/images/plugin-screenshots/adminova.png",
+    "caption": "Adminova activated in the WordPress plugins screen"
+  },
+  {
+    "plugin": "agentready-wp",
+    "src": "/images/plugin-screenshots/agentready-wp.png",
+    "caption": "Agentready WP activated in the WordPress plugins screen"
+  },
+  {
+    "plugin": "better-user-search",
+    "src": "/images/plugin-screenshots/better-user-search.png",
+    "caption": "Better User Search activated in the WordPress plugins screen"
+  },
+  {
+    "plugin": "better-viewer-fluent-forms",
+    "src": "/images/plugin-screenshots/better-viewer-fluent-forms.png",
+    "caption": "Better Viewer Fluent Forms activated in the WordPress plugins screen"
+  },
+  {
+    "plugin": "bulk-order-editor",
+    "src": "/images/plugin-screenshots/bulk-order-editor.png",
+    "caption": "Bulk Order Editor activated in the WordPress plugins screen"
+  },
+  {
+    "plugin": "disable-gutenberg-for-wp",
+    "src": "/images/plugin-screenshots/disable-gutenberg-for-wp.png",
+    "caption": "Disable Gutenberg For WP in the WordPress dashboard"
+  },
+  {
+    "plugin": "eu-vat-wp",
+    "src": "/images/plugin-screenshots/eu-vat-wp.png",
+    "caption": "EU VAT WP activated in the WordPress plugins screen"
+  },
+  {
+    "plugin": "google-scholar-wp",
+    "src": "/images/plugin-screenshots/google-scholar-wp.png",
+    "caption": "Google Scholar WP in the WordPress dashboard"
+  },
+  {
+    "plugin": "inventory-alerts-woo",
+    "src": "/images/plugin-screenshots/inventory-alerts-woo.png",
+    "caption": "Inventory Alerts Woo activated in the WordPress plugins screen"
+  },
+  {
+    "plugin": "inventory-insights-woocommerce",
+    "src": "/images/plugin-screenshots/inventory-insights-woocommerce.png",
+    "caption": "Inventory Insights WooCommerce in the WordPress dashboard"
+  },
+  {
+    "plugin": "last-user-orders-by-roles",
+    "src": "/images/plugin-screenshots/last-user-orders-by-roles.png",
+    "caption": "Last User Orders By Roles in the WordPress dashboard"
+  },
+  {
+    "plugin": "llms-txt-for-wp",
+    "src": "/images/plugin-screenshots/llms-txt-for-wp.png",
+    "caption": "LLMs Txt For WP in the WordPress dashboard"
+  },
+  {
+    "plugin": "local-pickup-woocommerce",
+    "src": "/images/plugin-screenshots/local-pickup-woocommerce.png",
+    "caption": "Local Pickup WooCommerce activated in the WordPress plugins screen"
+  },
+  {
+    "plugin": "logo-link-wp",
+    "src": "/images/plugin-screenshots/logo-link-wp.png",
+    "caption": "Logo Link for WP settings in the WordPress dashboard"
+  },
+  {
+    "plugin": "multi-store-sync-for-woocommerce",
+    "src": "/images/plugin-screenshots/multi-store-sync-for-woocommerce.png",
+    "caption": "Multi Store Sync For WooCommerce activated in the WordPress plugins screen"
+  },
+  {
+    "plugin": "order-payment-limiter-woo",
+    "src": "/images/plugin-screenshots/order-payment-limiter-woo.png",
+    "caption": "Order Payment Limiter Woo activated in the WordPress plugins screen"
+  },
+  {
+    "plugin": "order-printing-woocommerce",
+    "src": "/images/plugin-screenshots/order-printing-woocommerce.png",
+    "caption": "Order Printing WooCommerce activated in the WordPress plugins screen"
+  },
+  {
+    "plugin": "payment-method-highlighter-for-woocommerce",
+    "src": "/images/plugin-screenshots/payment-method-highlighter-for-woocommerce.png",
+    "caption": "Payment Method Highlighter For WooCommerce activated in the WordPress plugins screen"
+  },
+  {
+    "plugin": "phone-order-woo",
+    "src": "/images/plugin-screenshots/phone-order-woo.png",
+    "caption": "Phone Order Woo activated in the WordPress plugins screen"
+  },
+  {
+    "plugin": "plugin-hub",
+    "src": "/images/plugin-screenshots/plugin-hub.png",
+    "caption": "Plugin Hub in the WordPress dashboard"
+  },
+  {
+    "plugin": "plugins-showcase-wp",
+    "src": "/images/plugin-screenshots/plugins-showcase-wp.png",
+    "caption": "Plugins Showcase WP in the WordPress dashboard"
+  },
+  {
+    "plugin": "priority-processing-woocommerce",
+    "src": "/images/plugin-screenshots/priority-processing-woocommerce.png",
+    "caption": "Priority Processing WooCommerce activated in the WordPress plugins screen"
+  },
+  {
+    "plugin": "product-health-check-woocommerce",
+    "src": "/images/plugin-screenshots/product-health-check-woocommerce.png",
+    "caption": "Product Health Check WooCommerce in the WordPress dashboard"
+  },
+  {
+    "plugin": "rank-math-automation-wp",
+    "src": "/images/plugin-screenshots/rank-math-automation-wp.png",
+    "caption": "Rank Math Automation WP in the WordPress dashboard"
+  },
+  {
+    "plugin": "resume-builder",
+    "src": "/images/plugin-screenshots/resume-builder.png",
+    "caption": "Resume Builder activated in the WordPress plugins screen"
+  },
+  {
+    "plugin": "sku-auto-woocommerce",
+    "src": "/images/plugin-screenshots/sku-auto-woocommerce.png",
+    "caption": "SKU Auto WooCommerce activated in the WordPress plugins screen"
+  },
+  {
+    "plugin": "smart-product-export-woo",
+    "src": "/images/plugin-screenshots/smart-product-export-woo.png",
+    "caption": "Smart Product Export Woo in the WordPress dashboard"
+  },
+  {
+    "plugin": "spam-user-detective-wp",
+    "src": "/images/plugin-screenshots/spam-user-detective-wp.png",
+    "caption": "Spam User Detective WP activated in the WordPress plugins screen"
+  },
+  {
+    "plugin": "stageguard",
+    "src": "/images/plugin-screenshots/stageguard.png",
+    "caption": "StageGuard in the WordPress dashboard"
+  },
+  {
+    "plugin": "taxonomy-showcase-woocommerce",
+    "src": "/images/plugin-screenshots/taxonomy-showcase-woocommerce.png",
+    "caption": "Taxonomy Showcase WooCommerce activated in the WordPress plugins screen"
+  },
+  {
+    "plugin": "team-manager-wordpress",
+    "src": "/images/plugin-screenshots/team-manager-wordpress.png",
+    "caption": "Team Manager WordPress in the WordPress dashboard"
+  },
+  {
+    "plugin": "user-self-delete",
+    "src": "/images/plugin-screenshots/user-self-delete.png",
+    "caption": "User Self Delete in the WordPress dashboard"
+  },
+  {
+    "plugin": "wc-pre-order",
+    "src": "/images/plugin-screenshots/wc-pre-order.png",
+    "caption": "WC Pre Order activated in the WordPress plugins screen"
+  },
+  {
+    "plugin": "woocommerce-phone-number-validator",
+    "src": "/images/plugin-screenshots/woocommerce-phone-number-validator.png",
+    "caption": "WooCommerce Phone Number Validator activated in the WordPress plugins screen"
+  },
+  {
+    "plugin": "wp-file-visibility-manager",
+    "src": "/images/plugin-screenshots/wp-file-visibility-manager.png",
+    "caption": "WP File Visibility Manager in the WordPress dashboard"
+  },
+  {
+    "plugin": "wp-historical-preservation-mode",
+    "src": "/images/plugin-screenshots/wp-historical-preservation-mode.png",
+    "caption": "WP Historical Preservation Mode in the WordPress dashboard"
+  },
+  {
+    "plugin": "wp-internal-linking",
+    "src": "/images/plugin-screenshots/wp-internal-linking.png",
+    "caption": "WP Internal Linking in the WordPress dashboard"
+  },
+  {
+    "plugin": "wp-sanitize",
+    "src": "/images/plugin-screenshots/wp-sanitize.png",
+    "caption": "WP Sanitize in the WordPress dashboard"
+  },
+  {
+    "plugin": "wp-simple-order-history",
+    "src": "/images/plugin-screenshots/wp-simple-order-history.png",
+    "caption": "WP Simple Order History activated in the WordPress plugins screen"
+  },
+  {
+    "plugin": "wp-user-blocking",
+    "src": "/images/plugin-screenshots/wp-user-blocking.png",
+    "caption": "WP User Blocking in the WordPress dashboard"
+  }
+]

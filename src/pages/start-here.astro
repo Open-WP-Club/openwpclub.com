@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { getCollection } from 'astro:content';
+import { starterGroups } from '../data/getting-started';
+const plugins = await getCollection('plugins');
+---
+<BaseLayout title="Start Here - Open WP Club" description="Find a useful WordPress plugin, learn how to choose and install it, and know where to get help.">
+  <Breadcrumbs items={[{ label: 'Start Here' }]} />
+  <section class="bg-gradient-to-br from-blue-50 to-white dark:from-gray-900 dark:to-gray-950 py-16">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="text-sm font-semibold uppercase tracking-wider text-blue-600 dark:text-blue-400">A good place to begin</p>
+      <h1 class="mt-3 text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 dark:text-white">Find a tool for the job at hand.</h1>
+      <p class="mt-5 max-w-2xl text-lg leading-relaxed text-gray-600 dark:text-gray-400">Whether you run a store or look after WordPress sites, start with a real need. These open-source plugins are a small selection from our catalog.</p>
+      <div class="mt-8 flex flex-wrap gap-3"><a href="#stores" class="rounded-lg bg-blue-600 px-5 py-3 font-medium text-white hover:bg-blue-700">I run a store</a><a href="#admins" class="rounded-lg border border-gray-300 dark:border-gray-600 px-5 py-3 font-medium text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-800">I build or manage sites</a></div>
+    </div>
+  </section>
+  <section class="py-14 bg-gray-50 dark:bg-gray-950"><div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+    {starterGroups.map((group) => <div id={group.id} class="scroll-mt-24"><h2 class="text-3xl font-bold text-gray-900 dark:text-white">{group.title}</h2><p class="mt-3 max-w-2xl text-gray-600 dark:text-gray-400">{group.description}</p><div class="mt-6 grid gap-4 md:grid-cols-3">{group.items.map((item) => { const plugin = plugins.find((p) => p.id === item.id && p.data.category === 'plugin'); return plugin && <article class="flex flex-col rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-6"><h3 class="text-lg font-semibold text-gray-900 dark:text-white">{plugin.data.name}</h3><p class="mt-3 flex-1 text-sm leading-relaxed text-gray-600 dark:text-gray-400">{item.benefit}</p><a href={`/plugins/${plugin.id}/`} class="mt-5 font-medium text-blue-600 dark:text-blue-400 hover:underline">Explore this plugin →</a></article>; })}</div></div>)}
+    <div class="rounded-xl border border-blue-100 dark:border-blue-900 bg-white dark:bg-gray-800 p-6 sm:p-8"><h2 class="text-2xl font-bold text-gray-900 dark:text-white">Before you install</h2><ol class="mt-5 grid gap-5 sm:grid-cols-3 text-sm leading-relaxed text-gray-600 dark:text-gray-400"><li><strong class="block text-gray-900 dark:text-white mb-1">1. Check the details</strong>Read the plugin page and its documentation. Check declared requirements and whether it fits your setup.</li><li><strong class="block text-gray-900 dark:text-white mb-1">2. Try it safely</strong>Back up your site and try the plugin on a staging or test site before using it in production.</li><li><strong class="block text-gray-900 dark:text-white mb-1">3. Keep it healthy</strong>Review updates and test changes with the rest of your plugins. Ask for help if something is unclear.</li></ol><div class="mt-6 flex flex-wrap gap-5 text-sm font-medium"><a href="/plugins/" class="text-blue-600 dark:text-blue-400 hover:underline">Browse the full catalog →</a><a href="/support/" class="text-blue-600 dark:text-blue-400 hover:underline">Choosing and maintaining plugins →</a></div></div>
+    <div class="text-center"><h2 class="text-2xl font-bold text-gray-900 dark:text-white">Want to make these tools better?</h2><p class="mt-3 text-gray-600 dark:text-gray-400">A clear bug report or a small documentation fix can help the next person.</p><a href="/first-contribution/" class="mt-4 inline-block font-medium text-blue-600 dark:text-blue-400 hover:underline">Make your first contribution →</a></div>
+  </div></section>
+</BaseLayout>

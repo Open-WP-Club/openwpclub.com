@@ -19,3 +19,10 @@ blob-report/
 
 # Approved sponsor logos are source assets
 !public/images/sponsors/*.png
+
+# Generated plugin screenshots are published site assets
+!public/images/plugin-screenshots/*.png
+!src/assets/plugin-screenshots/*.png
+
+# Screenshot generation report
+screenshot-report/
