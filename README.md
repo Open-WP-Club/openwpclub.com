@@ -41,6 +41,7 @@ pnpm preview   # preview the production build locally
 | `pnpm build:fresh` | Refresh GitHub data, then build for production |
 | `pnpm preview` | Preview production build locally |
 | `pnpm fetch-data` | Fetch plugin + contributor data from GitHub and print a summary |
+| `pnpm generate:og` | Regenerate social-sharing images for plugins, apps and blog posts |
 | `pnpm test` | Run unit tests |
 | `pnpm check` | Run Astro and TypeScript checks |
 | `pnpm check:links` | Validate built internal links and release downloads |
@@ -60,6 +61,11 @@ fallback supports `README.md`, `readme.md`, and `README.MD`. Failed optional
 traffic reads retain both the old data and its source date. App descriptions, platforms,
 requirements, icons, and screenshots are maintained in `src/data/apps.json`;
 repository versions and release assets continue to come from GitHub.
+
+Social-sharing images are saved in `public/og/` and copied as-is during normal
+builds. Run `pnpm generate:og` after changing the catalog, blog content, or
+image designs when you want to refresh them, then commit the resulting files.
+New entries need this step before their social-sharing images become available.
 
 To check the data first without building:
 

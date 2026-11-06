@@ -1,6 +1,7 @@
 node_modules/
 dist/
 .astro/
+.cache/og-images/
 .env
 .env.*
 !.env.example
@@ -23,6 +24,8 @@ blob-report/
 # Generated plugin screenshots are published site assets
 !public/images/plugin-screenshots/*.png
 !src/assets/plugin-screenshots/*.png
+!src/assets/openwpclub-github.png
+!public/og/**/*.png
 
 # Screenshot generation report
 screenshot-report/

@@ -5,6 +5,7 @@ import { Resvg } from '@resvg/resvg-js';
 import sharp from 'sharp';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
+import { cachedOgImage, ogRendererVersion } from '../../../lib/og-image-cache';
 
 function loadFont(filename: string): ArrayBuffer {
   const buf = readFileSync(resolve(process.cwd(), 'src/assets/fonts', filename));
@@ -13,8 +14,11 @@ function loadFont(filename: string): ArrayBuffer {
 
 const fontBold = loadFont('inter-bold.woff');
 const fontRegular = loadFont('inter-regular.woff');
+const logo = `data:image/png;base64,${readFileSync(resolve(process.cwd(), 'src/assets/openwpclub-github.png')).toString('base64')}`;
+const rendererVersion = ogRendererVersion('src/pages/og/plugin/[slug].png.ts');
 
 export const getStaticPaths: GetStaticPaths = async () => {
+  if (process.env.OPENWP_GENERATE_OG !== '1') return [];
   const allItems = await getCollection('plugins');
   const plugins = allItems.filter((p) => p.data.category === 'plugin');
   return plugins.map((plugin) => ({
@@ -24,19 +28,18 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export async function GET({ props }: APIContext) {
-  const { plugin } = props as { plugin: { data: { name: string; description: string; stars: number; version: string; language: string | null; downloads: string } } };
-  const { name, description, stars, version, language, downloads } = plugin.data;
+  const { plugin } = props as { plugin: { data: { name: string; description: string; version: string; downloads: string } } };
+  const { name, description, version, downloads } = plugin.data;
 
   const [bold, regular] = [fontBold, fontRegular];
 
   const downloadsNum = downloads ? parseInt(downloads, 10) : 0;
   const statsLine = [
-    stars > 0 ? `★ ${stars}` : '',
-    downloadsNum > 0 ? `↓ ${downloadsNum.toLocaleString()}` : '',
+    downloadsNum > 0 ? `${downloadsNum.toLocaleString()} downloads` : '',
     version && version !== 'N/A' ? `v${version}` : '',
-    language || '',
   ].filter(Boolean).join('  •  ');
 
+  const optimized = await cachedOgImage(rendererVersion, { name, description, version, downloads }, async () => {
   const svg = await satori(
     {
       type: 'div',
@@ -46,7 +49,7 @@ export async function GET({ props }: APIContext) {
           flexDirection: 'column',
           width: '100%',
           height: '100%',
-          background: 'linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%)',
+          background: '#ffffff',
           padding: '60px',
           fontFamily: 'Inter',
         },
@@ -56,33 +59,11 @@ export async function GET({ props }: APIContext) {
             props: {
               style: { display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '8px' },
               children: [
+                { type: 'img', props: { src: logo, width: 48, height: 48, style: { borderRadius: '10px' } } },
                 {
                   type: 'div',
                   props: {
-                    style: {
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      width: '48px',
-                      height: '48px',
-                      borderRadius: '12px',
-                      background: '#3b82f6',
-                    },
-                    children: [
-                      {
-                        type: 'div',
-                        props: {
-                          style: { color: 'white', fontSize: '24px', fontWeight: 700 },
-                          children: '⟨⟩',
-                        },
-                      },
-                    ],
-                  },
-                },
-                {
-                  type: 'div',
-                  props: {
-                    style: { color: '#93c5fd', fontSize: '20px', fontWeight: 700 },
+                    style: { color: '#1d4ed8', fontSize: '20px', fontWeight: 700 },
                     children: 'Open WP Club',
                   },
                 },
@@ -98,7 +79,7 @@ export async function GET({ props }: APIContext) {
                   type: 'div',
                   props: {
                     style: {
-                      color: 'white',
+                      color: '#0f172a',
                       fontSize: name.length > 30 ? '42px' : '52px',
                       fontWeight: 700,
                       lineHeight: 1.2,
@@ -111,7 +92,7 @@ export async function GET({ props }: APIContext) {
                   type: 'div',
                   props: {
                     style: {
-                      color: '#94a3b8',
+                      color: '#475569',
                       fontSize: '24px',
                       lineHeight: 1.4,
                       overflow: 'hidden',
@@ -132,14 +113,14 @@ export async function GET({ props }: APIContext) {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
-                borderTop: '1px solid #334155',
+                borderTop: '1px solid #e2e8f0',
                 paddingTop: '24px',
               },
               children: [
                 {
                   type: 'div',
                   props: {
-                    style: { color: '#93c5fd', fontSize: '20px' },
+                    style: { color: '#1d4ed8', fontSize: '26px' },
                     children: statsLine,
                   },
                 },
@@ -151,7 +132,7 @@ export async function GET({ props }: APIContext) {
                       alignItems: 'center',
                       gap: '8px',
                       color: '#64748b',
-                      fontSize: '18px',
+                      fontSize: '24px',
                     },
                     children: 'Free & Open Source',
                   },
@@ -174,7 +155,8 @@ export async function GET({ props }: APIContext) {
 
   const resvg = new Resvg(svg, { fitTo: { mode: 'width', value: 1200 } });
   const png = resvg.render().asPng();
-  const optimized = await sharp(png).png({ palette: true, quality: 90, compressionLevel: 9, effort: 8 }).toBuffer();
+  return sharp(png).png({ palette: true, quality: 90, compressionLevel: 9, effort: 8 }).toBuffer();
+  });
 
   return new Response(new Uint8Array(optimized), {
     headers: {

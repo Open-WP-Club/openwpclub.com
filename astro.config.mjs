@@ -5,6 +5,8 @@ import icon from 'astro-icon';
 
 export default defineConfig({
   site: 'https://openwpclub.com',
+  // Do not copy old public/og files over freshly generated social images.
+  publicDir: process.env.OPENWP_GENERATE_OG === '1' ? './.cache/empty-public' : './public',
   trailingSlash: 'always',
   integrations: [sitemap(), icon({ iconDir: 'src/components/icons' })],
   prefetch: {

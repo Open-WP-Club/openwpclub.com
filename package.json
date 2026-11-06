@@ -15,7 +15,8 @@
     "test:e2e": "playwright test",
     "check:links": "tsx scripts/check-links.ts",
     "fetch-data": "tsx scripts/fetch-data.ts",
-    "fetch-releases": "node scripts/fetch-releases.mjs"
+    "fetch-releases": "node scripts/fetch-releases.mjs",
+    "generate:og": "node scripts/generate-og.mjs"
   },
   "keywords": [
     "wordpress",
