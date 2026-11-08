@@ -1,5 +1,14 @@
 [
   {
+    "repo": "phone-order-woo",
+    "name": "2.0.1",
+    "version": "2.0.1",
+    "publishedAt": "2026-11-07T15:52:03Z",
+    "url": "https://github.com/Open-WP-Club/phone-order-woo/releases/tag/2.0.1",
+    "notes": "Maintenance release with updated dependencies and fixes for CI, release packaging, and phone order blocks.\n\n- Update WordPress Scripts to 37.1.0, Interactivity to 8.1.0, Babel Runtime to 8.1.0, and WordPress/WooCommerce PHP stubs.\n- Track dependency lock files and audit Composer dependencies without requiring an installation.\n- Fix release ZIPs to include PHP classes, production autoloading, and compiled block assets.\n- Fix block form output, frontend script loading, block metadata, and stylesheet paths.\n- Handle WooCommerce order creation errors and store analytics through HPOS-compatible CRUD.\n- Add block build/asset checks to CI and update GitHub Actions runtimes.\n- Override vulnerable serialize-javascript used by build tooling.\n\nValidation: PHPCS, PHPStan, Composer audit, production npm audit, block build, and block metadata checks pass. Production npm dependencies have no reported vulnerabilities; development tooling retains 22 low/moderate advisories.\n\nRequirements remain WordPress 6.9+, WooCommerce 9.0+, PHP 8.0+. Build tooling uses Node.js 24.\n",
+    "category": "plugin"
+  },
+  {
     "repo": "priority-processing-woocommerce",
     "name": "1.9.2",
     "version": "1.9.2",
@@ -186,15 +195,6 @@
     "publishedAt": "2026-01-19T13:04:36Z",
     "url": "https://github.com/Open-WP-Club/logo-link-wp/releases/tag/1.3.0",
     "notes": "**Full Changelog**: https://github.com/Open-WP-Club/logo-link-wp/compare/1.2.1...1.3.0\n\n---\n\n### 📦 Plugin Download\n- **WordPress Plugin**: [`logo-link-wp.zip`](https://github.com/Open-WP-Club/logo-link-wp/releases/download/1.3.0/logo-link-wp.zip)\n- **Installation**: Download and upload through WordPress Admin → Plugins → Add New → Upload Plugin\n\n*Built automatically from tag 1.3.0*",
-    "category": "plugin"
-  },
-  {
-    "repo": "phone-order-woo",
-    "name": "2.0.0",
-    "version": "2.0.0",
-    "publishedAt": "2026-01-13T12:04:18Z",
-    "url": "https://github.com/Open-WP-Club/phone-order-woo/releases/tag/2.0.0",
-    "notes": "## What's Changed\r\n* 2.0.0 by @MrGKanev in https://github.com/Open-WP-Club/phone-order-woo/pull/4\r\n\r\n\r\n**Full Changelog**: https://github.com/Open-WP-Club/phone-order-woo/compare/1.1.0...2.0.0\n\n---\n\n### 📦 Plugin Download\n- **WordPress Plugin**: [`phone-order-woo.zip`](https://github.com/Open-WP-Club/phone-order-woo/releases/download/2.0.0/phone-order-woo.zip)\n- **Installation**: Download and upload through WordPress Admin → Plugins → Add New → Upload Plugin\n\n*Built automatically from tag 2.0.0*",
     "category": "plugin"
   },
   {

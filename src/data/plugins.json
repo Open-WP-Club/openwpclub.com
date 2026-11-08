@@ -174,11 +174,11 @@
         "name": "client-fluent-submissions.zip",
         "url": "https://github.com/Open-WP-Club/better-viewer-fluent-forms/releases/download/1.1.7/client-fluent-submissions.zip",
         "size": 26754,
-        "downloadCount": 7,
+        "downloadCount": 8,
         "contentType": "application/zip"
       }
     ],
-    "releaseDownloads": 7
+    "releaseDownloads": 8
   },
   {
     "id": "bulk-order-editor",
@@ -284,11 +284,11 @@
         "name": "WP-eu-vat.zip",
         "url": "https://github.com/Open-WP-Club/eu-vat-wp/releases/download/1.0.0/WP-eu-vat.zip",
         "size": 11461,
-        "downloadCount": 5,
+        "downloadCount": 7,
         "contentType": "application/zip"
       }
     ],
-    "releaseDownloads": 5
+    "releaseDownloads": 7
   },
   {
     "id": "fulfill-for-woocommerce",
@@ -721,11 +721,11 @@
         "name": "wc-multi-store-sync-5.4.0.zip",
         "url": "https://github.com/Open-WP-Club/multi-store-sync-for-woocommerce/releases/download/5.4.0/wc-multi-store-sync-5.4.0.zip",
         "size": 542512,
-        "downloadCount": 6,
+        "downloadCount": 7,
         "contentType": "application/zip"
       }
     ],
-    "releaseDownloads": 6
+    "releaseDownloads": 7
   },
   {
     "id": "opengraph-svg-generator-wp",
@@ -900,7 +900,7 @@
     "id": "phone-order-woo",
     "name": "Phone Order Woo",
     "description": " phone-based order creation with Gutenberg blocks and WordPress Interactivity API for WooCommerce stores",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "downloads": "",
     "rating": "",
     "githubUrl": "https://github.com/Open-WP-Club/phone-order-woo",
@@ -922,18 +922,18 @@
       "woocommerce": "9.0",
       "woocommerceTested": "9.5"
     },
-    "releasePublishedAt": "2026-01-13T12:04:18Z",
-    "releaseUrl": "https://github.com/Open-WP-Club/phone-order-woo/releases/tag/2.0.0",
+    "releasePublishedAt": "2026-11-07T15:52:03Z",
+    "releaseUrl": "https://github.com/Open-WP-Club/phone-order-woo/releases/tag/2.0.1",
     "releaseAssets": [
       {
         "name": "phone-order-woo.zip",
-        "url": "https://github.com/Open-WP-Club/phone-order-woo/releases/download/2.0.0/phone-order-woo.zip",
-        "size": 23093,
-        "downloadCount": 7,
+        "url": "https://github.com/Open-WP-Club/phone-order-woo/releases/download/2.0.1/phone-order-woo.zip",
+        "size": 58029,
+        "downloadCount": 2,
         "contentType": "application/zip"
       }
     ],
-    "releaseDownloads": 7
+    "releaseDownloads": 2
   },
   {
     "id": "plugin-hub",
@@ -1202,11 +1202,11 @@
         "name": "woocommerce-sku-auto-2.2.2.zip",
         "url": "https://github.com/Open-WP-Club/sku-auto-woocommerce/releases/download/2.2.2/woocommerce-sku-auto-2.2.2.zip",
         "size": 43285,
-        "downloadCount": 13,
+        "downloadCount": 14,
         "contentType": "application/zip"
       }
     ],
-    "releaseDownloads": 13
+    "releaseDownloads": 14
   },
   {
     "id": "smart-product-export-woo",
@@ -1567,11 +1567,11 @@
         "name": "User-Self-Delete.zip",
         "url": "https://github.com/Open-WP-Club/User-Self-Delete/releases/download/2.1.0/User-Self-Delete.zip",
         "size": 36446,
-        "downloadCount": 3,
+        "downloadCount": 4,
         "contentType": "application/zip"
       }
     ],
-    "releaseDownloads": 3
+    "releaseDownloads": 4
   },
   {
     "id": "wc-pre-order",
