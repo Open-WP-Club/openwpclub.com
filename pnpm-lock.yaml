@@ -66,6 +66,9 @@ importers:
       '@types/sanitize-html':
         specifier: ^2.16.2
         version: 2.16.2
+      astro-broken-links:
+        specifier: ^0.1.1
+        version: 0.1.1(astro@7.3.5(@types/node@26.1.2)(jiti@2.7.0)(tsx@4.23.15)(yaml@2.9.1))
       pagefind:
         specifier: ^1.5.2
         version: 1.5.2
@@ -1182,6 +1185,16 @@ packages:
     resolution: {integrity: sha512-Izi8RQcffqCeNVgFigKli1ssklIbpHnCYc6AknXGYoB6grJqyeby7jv12JUQgmTAnIDnbck1uxksT4dzN3PWBA==}
     engines: {node: '>=12'}
 
+  astro-broken-links@0.1.1:
+    resolution: {integrity: sha512-EenhseDS7mIJEECNXVg3mJfzMmGdlfovExRbaxoJ40Md82NGdyd8Dzld6ScYGtmZlveoI/nNtNromEpqYTiBgg==}
+    engines: {node: '>=22.0.0'}
+    hasBin: true
+    peerDependencies:
+      astro: ^5.0.0 || ^6.0.0 || ^7.0.0
+    peerDependenciesMeta:
+      astro:
+        optional: true
+
   astro-icon@1.2.0:
     resolution: {integrity: sha512-0848V2WZuTPhqGSqLeZimLJZ5wmamMtWYzvA2kvg8s2DrUPZ3/nrTcHJWN0eJHt62jy7uvNxgTNiUJGIr7JNxg==}
     engines: {node: '>=22.12.0'}
@@ -1395,6 +1408,10 @@ packages:
 
   entities@8.1.0:
     resolution: {integrity: sha512-kxL7msIffSuh9aaFAMD7rxAIuTRMAHMeBtgHW2yUdWw732ZNh4MehkF2gdjvtdmikkaIP9bFDDJOPlsvm7avrA==}
+    engines: {node: '>=20.19.0'}
+
+  entities@9.0.0:
+    resolution: {integrity: sha512-oJFNDJg3kTPwAD1cNn2+WmUq4wFoo09npc3Ydf1D7ED4smRiWrsKnaLxykrTWgyGEcusc87P5dxlAleol9kpkg==}
     engines: {node: '>=20.19.0'}
 
   es-module-lexer@2.3.2:
@@ -1855,6 +1872,12 @@ packages:
 
   parse-srcset@1.0.2:
     resolution: {integrity: sha512-/2qh0lav6CmI15FzA3i/2Bzk2zCgQhGMkvhOhKNcBVQ1ldgpbfiNTVslmooUmWJcADi1f1kIeynbDRVzNlfR6Q==}
+
+  parse5-sax-parser@8.0.1:
+    resolution: {integrity: sha512-6eHc4FeWwv8uBX1yMZ8Vl5zcT61k8EpK/rgRwNl/BLY4pOkUqXI1RIwGSIvxyBXzl5TGj4TvIQBJGwTU4P+ddg==}
+
+  parse5@8.1.1:
+    resolution: {integrity: sha512-EcR/6WDcU7b2N3vQSxKALCk9lXGtUMQxXio008OEMBE0kavu/7JLfBEeFPzi43nMqVDSbEn3QCK+BMCc9zO//w==}
 
   path-browserify@1.0.1:
     resolution: {integrity: sha512-b7uo2UCUOYZcnF/3ID0lulOJi/bafxa1xPe7ZPsammBSpjSWQkjNxlt635YGS2MiR9GjvuXCtz2emr3jbsz98g==}
@@ -3365,6 +3388,12 @@ snapshots:
 
   assertion-error@2.0.1: {}
 
+  astro-broken-links@0.1.1(astro@7.3.5(@types/node@26.1.2)(jiti@2.7.0)(tsx@4.23.15)(yaml@2.9.1)):
+    dependencies:
+      parse5-sax-parser: 8.0.1
+    optionalDependencies:
+      astro: 7.3.5(@types/node@26.1.2)(jiti@2.7.0)(tsx@4.23.15)(yaml@2.9.1)
+
   astro-icon@1.2.0:
     dependencies:
       '@iconify/tools': 5.0.14
@@ -3627,6 +3656,8 @@ snapshots:
   entities@4.5.0: {}
 
   entities@8.1.0: {}
+
+  entities@9.0.0: {}
 
   es-module-lexer@2.3.2: {}
 
@@ -4044,6 +4075,14 @@ snapshots:
       hex-rgb: 4.3.0
 
   parse-srcset@1.0.2: {}
+
+  parse5-sax-parser@8.0.1:
+    dependencies:
+      parse5: 8.1.1
+
+  parse5@8.1.1:
+    dependencies:
+      entities: 9.0.0
 
   path-browserify@1.0.1: {}
 

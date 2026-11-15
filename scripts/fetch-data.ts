@@ -16,7 +16,7 @@ import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { marked } from 'marked';
-import sanitizeHtml from 'sanitize-html';
+import { sanitizeReadme } from '../src/lib/readme';
 import { rewriteImageUrls } from '../src/lib/fetchGitHubData';
 import type { ReleaseAsset } from '../src/lib/app-releases';
 import { parsePluginCompatibility } from '../src/lib/plugin-compatibility';
@@ -301,21 +301,6 @@ async function fetchReadme(repoName: string, defaultBranch: string): Promise<str
   return rewriteImageUrls(await marked.parse(stripSponsorshipBlock(content)), repoName, defaultBranch);
 }
 
-function sanitizeReadme(html: string): string {
-  return sanitizeHtml(html, {
-    allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img', 'details', 'summary', 'picture', 'source', 'video']),
-    allowedAttributes: {
-      ...sanitizeHtml.defaults.allowedAttributes,
-      img: ['src', 'alt', 'title', 'width', 'height', 'loading'],
-      a: ['href', 'title', 'target', 'rel'],
-      code: ['class'],
-      span: ['class'],
-      pre: ['class'],
-      div: ['class'],
-    },
-    allowedSchemes: ['http', 'https', 'mailto'],
-  });
-}
 
 async function main() {
   console.log('--- Open WP Club Data Fetch ---\n');

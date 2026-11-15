@@ -17,6 +17,7 @@ minimumReleaseAgeExclude:
   - source-map-js@1.2.2
   - http-cache-semantics@4.3.0
   - postcss-selector-parser@7.1.6
+  - astro-broken-links@0.1.0 || 0.1.1
 
 overrides:
   "@iconify/tools": "^5.0.14"

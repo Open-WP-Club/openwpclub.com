@@ -82,12 +82,12 @@ const buildDate = lastUpdated
               Discord
             </a>
           </li>
-          <li>
+          {TWITTER_URL && <li>
             <a href={TWITTER_URL} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors">
               <TwitterIcon class="size-4" />
               Twitter/X
             </a>
-          </li>
+          </li>}
           <li>
             <a href={`${GITHUB_ORG_URL}/.github/blob/main/CONTRIBUTING.md`} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors">
               <Icon name="lucide:git-pull-request" class="size-4" />

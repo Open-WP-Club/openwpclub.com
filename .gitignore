@@ -29,3 +29,6 @@ blob-report/
 
 # Screenshot generation report
 screenshot-report/
+
+# Link checker reports and HTTP cache
+.link-audit/

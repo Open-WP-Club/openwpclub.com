@@ -1,4 +1,5 @@
 ---
+import { sanitizeReadme } from '../../lib/readme';
 import { pluginDownloadUrl } from '../../lib/plugin-download';
 import { Image } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
@@ -45,7 +46,7 @@ const readmePath = `src/data/readmes/${plugin.id}.html`;
 let safeReadmeHtml = `<p>No README available. Visit the <a href="${githubUrl}">GitHub repository</a> for more information.</p>`;
 if (existsSync(readmePath)) {
   try {
-    safeReadmeHtml = readFileSync(readmePath, 'utf-8');
+    safeReadmeHtml = sanitizeReadme(readFileSync(readmePath, 'utf-8'));
   } catch (e) {
     console.warn(`[plugins/${plugin.id}] Failed to read README: ${(e as Error).message}`);
   }

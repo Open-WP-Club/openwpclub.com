@@ -171,3 +171,16 @@ MIT - see [LICENSE](LICENSE) for details.
 - [GitHub](https://github.com/Open-WP-Club)
 - [Discord](https://discord.gg/ysBW334DYR)
 - Email: contact@openwpclub.com
+
+
+## Link validation
+
+`astro-broken-links` runs at the end of every Astro build. Missing local pages, fragments and assets fail the build; fix the source reference before deploying. Reports are written to `.link-audit/report.json` and are not committed.
+
+```sh
+pnpm build
+# Optional live HTTP audit (slower; successful responses are cached locally):
+CHECK_EXTERNAL_LINKS=1 pnpm build
+```
+
+External endpoints requiring authentication or blocking automated requests (HTTP 401, 403, 418, 429 or 999) are reported as warnings. Other HTTP failures remain errors. No baseline or blanket URL exclusions suppress local broken links.

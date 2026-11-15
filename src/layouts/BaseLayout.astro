@@ -100,7 +100,7 @@ const orgSchema = {
     <!-- Social verification -->
     <link rel="me" href={GITHUB_ORG_URL} />
     <link rel="me" href={DISCORD_URL} />
-    <link rel="me" href={TWITTER_URL} />
+    {TWITTER_URL && <link rel="me" href={TWITTER_URL} />}
 
     <!-- View Transitions -->
     <ClientRouter />
